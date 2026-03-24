@@ -749,7 +749,7 @@ function initDate() {
   const now = new Date();
   const h = now.getHours();
   const greet = h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
-  document.getElementById('dash-greeting').innerHTML = greet + ', <span style="color:var(--red)">Jubie.</span>';
+  document.getElementById('dash-greeting').textContent = greet + ', Jubie.';
   document.getElementById('dash-date').textContent = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
 }
 
