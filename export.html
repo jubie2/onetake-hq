@@ -140,7 +140,7 @@
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/modern-screenshot@4.5.4/dist/index.iife.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 </head>
 <body>
@@ -848,29 +848,22 @@ const PREVIEW_MAX_W = 320;
 const previewScale = (w) => Math.min(1, PREVIEW_MAX_W / w);
 
 const captureToBlob = async (el, w, h, bg) => {
-  // html2canvas honors border-radius + overflow:hidden correctly (unlike
-  // html-to-image's foreignObject pipeline, which loses pill clipping).
-  // Temporarily clear the preview's scale transform so html2canvas sees
-  // the artboard at native size with no inherited transform.
+  // modern-screenshot honors both border-radius/overflow:hidden AND text
+  // metrics correctly — html2canvas had a bug where it dropped spaces
+  // between certain words in mid-weight text. Temporarily clear the
+  // preview's scale transform so capture sees native pixel dimensions.
   const innerWrap = el.parentElement;
   const prevTransform = innerWrap.style.transform;
   innerWrap.style.transform = 'none';
   try {
-    const canvas = await html2canvas(el, {
+    await document.fonts.ready;
+    return await modernScreenshot.domToBlob(el, {
       width: w,
       height: h,
-      windowWidth: w,
-      windowHeight: h,
-      backgroundColor: bg || '#050f3a',
       scale: 1,
-      useCORS: true,
-      allowTaint: true,
-      logging: false,
-      removeContainer: true,
+      backgroundColor: bg || '#050f3a',
+      type: 'image/png',
     });
-    return await new Promise((resolve, reject) =>
-      canvas.toBlob(b => (b ? resolve(b) : reject(new Error('toBlob returned null'))), 'image/png')
-    );
   } finally {
     innerWrap.style.transform = prevTransform;
   }
