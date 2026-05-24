@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Initial Win — Headless Export</title>
+<meta name="viewport" content="width=2000,initial-scale=1" />
+<style>
+  html, body { margin: 0; padding: 0; background: #1a1a1a; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  /* Each artboard: native pixel size, isolated stacking context */
+  .ab {
+    position: relative;
+    overflow: hidden;
+    margin: 32px auto;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
+  }
+  .stage-frame { width: 100%; height: 100%; position: relative; overflow: hidden; }
+  .wp-deep {
+    background:
+      radial-gradient(50% 40% at 25% 30%, rgba(80,140,255,0.5), rgba(80,140,255,0) 70%),
+      radial-gradient(60% 50% at 80% 75%, rgba(40,90,220,0.55), rgba(40,90,220,0) 70%),
+      linear-gradient(160deg, #050f3a 0%, #081e6e 45%, #0a2bb0 100%);
+  }
+  .grain {
+    position:absolute; inset:0; opacity:0.14; mix-blend-mode:overlay; pointer-events:none;
+    background-image: radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+
+  /* Yelp-ish (original layout) */
+  .yp { color: #1a1a1a; background: #fff; height:100%; display:flex; flex-direction:column; }
+  .yp-nav { height: 56px; background:#c41200; display:flex; align-items:center; padding:0 24px; gap:24px; color:#fff; font-weight:700; }
+  .yp-nav .logo { font-size:22px; letter-spacing:-0.02em; }
+  .yp-nav .search { flex:1; max-width:560px; height:36px; background:#fff; border-radius:4px; display:flex; align-items:center; padding:0 12px; gap:10px; color:#777; font-weight:500; font-size:14px; }
+  .yp-nav .links { display:flex; gap:18px; font-size:14px; font-weight:500; align-items:center; }
+  .yp-banner { height:200px; position:relative; overflow:hidden; }
+  .yp-content { display:grid; grid-template-columns: 1fr 360px; gap:32px; padding:24px 48px 32px; flex:1; min-height:0;}
+  .yp-h1 { font-size:30px; font-weight:800; letter-spacing:-0.02em; margin:0; }
+  .yp-stars { display:flex; align-items:center; gap:8px; margin-top:6px; }
+  .yp-meta { font-size:13px; color:#444; margin-top:4px; }
+  .yp-tags { display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;}
+  .yp-tag { font-size:12px; background:#f1f3f5; padding:4px 10px; border-radius:999px; color:#444; }
+  .yp-actions { display:flex; gap:8px; margin-top:14px; }
+  .yp-btn { padding:8px 14px; border-radius:4px; font-size:13px; font-weight:600; border:1px solid #d0d0d0; background:#fff; cursor:pointer; font-family: inherit; }
+  .yp-btn.primary { background:#c41200; color:#fff; border-color:#c41200; }
+  .yp-section-title { font-size:18px; font-weight:700; margin:24px 0 10px; }
+  .yp-photos { display:grid; grid-template-columns: repeat(4, 1fr); gap:6px; }
+  .yp-photo { aspect-ratio:1/1; border-radius:4px; overflow:hidden; position:relative; }
+  .yp-review { border-top:1px solid #eee; padding:14px 0; display:grid; grid-template-columns:48px 1fr; gap:12px; }
+  .yp-avatar { width:44px; height:44px; border-radius:50%; }
+  .yp-rev-name { font-weight:700; font-size:14px; }
+  .yp-rev-loc { font-size:12px; color:#666; }
+  .yp-rev-stars { display:flex; gap:2px; margin:6px 0;}
+  .yp-rev-text { font-size:13px; line-height:1.5; color:#222; }
+  .yp-aside-card { border:1px solid #e2e2e2; border-radius:8px; padding:16px; }
+  .yp-aside-row { display:flex; justify-content:space-between; font-size:13px; padding:6px 0; border-bottom:1px dashed #eee;}
+  .yp-aside-row:last-child { border-bottom:none; }
+  .yp-open { color:#1f7a1f; font-weight:600; }
+  .yp-list { font-size:13px; line-height:1.7; }
+
+  /* Brand atomic styles */
+  .brand-font {
+    font-family: "Avenir Next", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+  }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useMemo } = React;
+
+const NAVY = "#0A1330";
+const BLUE = "#1E5BFF";
+const BLUE_HI = "#3a7bff";
+
+const FONT_STACK = '"Avenir Next", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif';
+const UI_FONT = '-apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif';
+
+/* ====== Brand primitives (inlined) ====== */
+const PillWordmark = ({ h = 80, padX = 0.55, padY = 0.32, shadow = true, bg = "#ffffff" }) => {
+  const fontSize = h * 0.42;
+  const padXpx = h * padX;
+  const padYpx = h * padY;
+  return (
+    <div style={{
+      display:'inline-flex', alignItems:'center', justifyContent:'center',
+      background: bg,
+      padding: `${padYpx}px ${padXpx}px`,
+      borderRadius: h,
+      boxShadow: shadow
+        ? `0 ${h*0.04}px ${h*0.18}px -${h*0.04}px rgba(10,20,60,0.18),
+           0 ${h*0.01}px ${h*0.04}px -${h*0.005}px rgba(10,20,60,0.10),
+           inset 0 1px 0 rgba(255,255,255,0.9)`
+        : 'none',
+      fontFamily: FONT_STACK,
+      fontWeight: 900,
+      letterSpacing: '-0.025em',
+      fontSize, lineHeight: 1, whiteSpace: 'nowrap',
+    }}>
+      <span style={{color: NAVY}}>initial</span>
+      <span style={{color: BLUE, marginLeft: fontSize*0.08}}>win</span>
+    </div>
+  );
+};
+
+const Monogram = ({ size = 200, mode = "pill" }) => {
+  const fontSize = size * 0.5;
+  const baseInner = (
+    <span><span style={{color: mode==='pill' ? NAVY : '#fff'}}>i</span>
+    <span style={{color: mode==='pill' ? BLUE : (mode==='blue' ? 'rgba(255,255,255,0.65)' : BLUE_HI), marginLeft: fontSize*0.04}}>w</span></span>
+  );
+  if (mode === "pill") {
+    return (
+      <div style={{
+        width: size, height: size, borderRadius: size*0.28,
+        background:'#ffffff',
+        boxShadow:`0 ${size*0.04}px ${size*0.12}px -${size*0.02}px rgba(10,20,60,0.25),
+                   inset 0 ${size*0.012}px 0 rgba(255,255,255,0.9)`,
+        display:'grid', placeItems:'center',
+        fontFamily: FONT_STACK,
+        fontWeight:900, letterSpacing:'-0.04em', fontSize, lineHeight:1,
+      }}>{baseInner}</div>
+    );
+  }
+  if (mode === "blue") {
+    return (
+      <div style={{
+        width: size, height: size, borderRadius: size*0.28,
+        background:`linear-gradient(160deg, ${BLUE_HI}, ${BLUE} 55%, #0a3ad6)`,
+        boxShadow:`0 ${size*0.05}px ${size*0.15}px -${size*0.03}px rgba(10,40,180,0.5),
+                   inset 0 ${size*0.012}px 0 rgba(255,255,255,0.5),
+                   inset 0 -${size*0.008}px 0 rgba(0,0,20,0.25)`,
+        display:'grid', placeItems:'center',
+        fontFamily: FONT_STACK,
+        fontWeight:900, letterSpacing:'-0.04em', fontSize, lineHeight:1,
+        position:'relative', overflow:'hidden',
+      }}>
+        <div style={{position:'absolute', inset:`${size*0.03}px ${size*0.03}px auto ${size*0.03}px`, height:'45%',
+          borderRadius:`${size*0.25}px ${size*0.25}px ${size*0.4}px ${size*0.4}px`,
+          background:'linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0) 80%)', filter:'blur(2px)'}}/>
+        <span style={{position:'relative', zIndex:1}}>{baseInner}</span>
+      </div>
+    );
+  }
+  return (
+    <div style={{
+      width: size, height: size, borderRadius: size*0.28,
+      background: NAVY,
+      display:'grid', placeItems:'center',
+      fontFamily: FONT_STACK,
+      fontWeight:900, letterSpacing:'-0.04em', fontSize, lineHeight:1,
+    }}>{baseInner}</div>
+  );
+};
+
+const Orb = ({ size = 120, x = 0, y = 0, opacity = 1 }) => (
+  <div style={{
+    position:'absolute', left:x, top:y, width:size, height:size, borderRadius:'50%',
+    background:`radial-gradient(circle at 32% 22%, rgba(255,255,255,0.85) 0%, #5c8bff 35%, #0a2bb0 75%, #050f3a 100%)`,
+    boxShadow:`0 ${size*0.1}px ${size*0.25}px rgba(0,10,60,0.45),
+               inset 0 ${size*0.04}px ${size*0.06}px rgba(255,255,255,0.45),
+               inset 0 -${size*0.03}px ${size*0.05}px rgba(0,0,30,0.3)`,
+    opacity,
+  }}>
+    <div style={{position:'absolute', left:'18%', top:'12%', width:'34%', height:'18%',
+      borderRadius:'50%', background:'rgba(255,255,255,0.7)', filter:'blur(2px)'}}/>
+  </div>
+);
+
+/* ====== Scenes ====== */
+const Wallpaper = () => {
+  const orbs = useMemo(() => {
+    const out = []; let s = 17;
+    const r = () => { s = (s*9301+49297)%233280; return s/233280; };
+    for (let i=0;i<14;i++) out.push({size:80+r()*260, x:r()*1920, y:r()*1080, op:0.6+r()*0.4});
+    return out;
+  }, []);
+  return (
+    <div className="stage-frame wp-deep">
+      <div style={{position:'absolute', inset:0, background:'radial-gradient(40% 30% at 30% 35%, rgba(140,180,255,0.32), rgba(140,180,255,0) 70%)'}}/>
+      <div style={{position:'absolute', inset:0, background:'radial-gradient(35% 30% at 75% 70%, rgba(60,110,255,0.42), rgba(60,110,255,0) 70%)'}}/>
+      <div style={{position:'absolute', left:'-10%', top:'10%', width:'120%', height:'40%',
+        background:'linear-gradient(100deg, transparent 30%, rgba(255,255,255,0.06) 50%, transparent 70%)',
+        transform:'rotate(-8deg)', filter:'blur(20px)'}}/>
+      {orbs.map((o,i)=>(<Orb key={i} size={o.size} x={o.x-o.size/2} y={o.y-o.size/2} opacity={o.op}/>))}
+      <Orb size={460} x={1140} y={130} opacity={0.95}/>
+      <Orb size={300} x={120} y={580} opacity={0.85}/>
+      <div className="grain"/>
+    </div>
+  );
+};
+
+const AvatarPill = () => (
+  <div className="stage-frame wp-deep" style={{display:'grid', placeItems:'center'}}>
+    <div style={{position:'absolute', left:120, top:160}}><Orb size={70} opacity={0.65}/></div>
+    <div style={{position:'absolute', right:140, bottom:200}}><Orb size={90} opacity={0.7}/></div>
+    <div style={{position:'absolute', right:200, top:120}}><Orb size={50} opacity={0.6}/></div>
+    <PillWordmark h={170}/>
+  </div>
+);
+
+const AvatarMonoBlue = () => (
+  <div className="stage-frame" style={{
+    background:'radial-gradient(70% 60% at 50% 40%, #1a3fb8 0%, #0b2a8a 55%, #03103f 100%)',
+    display:'grid', placeItems:'center'
+  }}>
+    <div style={{position:'absolute', inset:0, background:'radial-gradient(35% 25% at 25% 25%, rgba(140,180,255,0.32), rgba(140,180,255,0) 70%)'}}/>
+    <div style={{position:'absolute', left:140, top:140}}><Orb size={80} opacity={0.6}/></div>
+    <div style={{position:'absolute', right:160, bottom:180}}><Orb size={100} opacity={0.7}/></div>
+    <Monogram size={620} mode="blue"/>
+  </div>
+);
+
+const AvatarMonoPill = () => (
+  <div className="stage-frame wp-deep" style={{display:'grid', placeItems:'center'}}>
+    <div style={{position:'absolute', left:140, top:140}}><Orb size={80} opacity={0.6}/></div>
+    <div style={{position:'absolute', right:160, bottom:180}}><Orb size={100} opacity={0.7}/></div>
+    <Monogram size={620} mode="pill"/>
+  </div>
+);
+
+const Star = ({filled=true, size=18}) => (
+  <svg width={size} height={size} viewBox="0 0 24 24">
+    <path d="M12 2 l3.1 6.6 7.2 1 -5.2 5.1 1.3 7.3 -6.4 -3.4 -6.4 3.4 1.3 -7.3 -5.2 -5.1 7.2 -1 Z"
+      fill={filled ? "#e63d29" : "#d8d8d8"} />
+  </svg>
+);
+const Stars = ({count=5, size=18}) => (
+  <span style={{display:'inline-flex', gap:2}}>
+    {Array.from({length:5}).map((_,i)=>(<Star key={i} filled={i<count} size={size}/>))}
+  </span>
+);
+const PhotoTile = ({ kind }) => {
+  const swatches = {
+    web1: 'linear-gradient(135deg, #1546e0, #3a6cff)',
+    web2: 'linear-gradient(135deg, #0a2bb0, #5c8bff)',
+    spa1: 'linear-gradient(135deg, #f7d9d3, #e8b3a8)',
+    desk: 'linear-gradient(135deg, #0e1a3a, #1a3fb8)',
+  };
+  return (
+    <div className="yp-photo" style={{background: swatches[kind] || '#ddd'}}>
+      {kind==='web1' && (
+        <div style={{position:'absolute', inset:0, display:'grid', placeItems:'center'}}>
+          <PillWordmark h={36}/>
+        </div>
+      )}
+      {kind==='web2' && (
+        <div style={{position:'absolute', right:14, bottom:14}}>
+          <Monogram size={70} mode="blue"/>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const YelpPage = () => {
+  const reviews = [
+    { name:'Marisol R.', loc:'La Jolla, CA', stars:5, date:'4/12/2026',
+      text:'We launched with Initial Win three months ago and our med spa booked out for six weeks straight. The site is fast, beautiful, and the AI chat actually books appointments while we sleep. Easily the best money we\'ve spent on marketing.' },
+    { name:'Devon K.', loc:'San Diego, CA', stars:5, date:'3/28/2026',
+      text:'Cole and the team rebuilt our entire website in under two weeks. SEO traffic is up 240% and the booking widget integrated perfectly with our Vagaro. The monthly retainer is worth every penny.' },
+    { name:'Priya S.', loc:'Encinitas, CA', stars:5, date:'2/9/2026',
+      text:'Was nervous about another agency after two bad experiences. Initial Win is the real deal — communicative, fast, and the design is gorgeous. Multiple clients have asked who built our site.' },
+  ];
+  return (
+    <div className="stage-frame">
+      <div className="yp" style={{fontFamily: UI_FONT}}>
+        <div className="yp-nav">
+          <div className="logo">reviewly</div>
+          <div className="search">
+            <span>🔍</span>
+            <span style={{flex:1}}>Find · web design</span>
+            <span style={{borderLeft:'1px solid #ddd', paddingLeft:10}}>Near · San Diego, CA</span>
+          </div>
+          <div className="links">
+            <span>Write a Review</span>
+            <span>For Businesses</span>
+            <span>Log In</span>
+            <span style={{background:'#fff', color:'#c41200', padding:'6px 12px', borderRadius:4}}>Sign Up</span>
+          </div>
+        </div>
+
+        <div className="yp-banner" style={{background:'radial-gradient(70% 60% at 30% 40%, #1a3fb8 0%, #050f3a 100%)'}}>
+          <div style={{position:'absolute', inset:0, background:'radial-gradient(30% 25% at 80% 30%, rgba(140,180,255,0.4), rgba(140,180,255,0) 70%)'}}/>
+          <div style={{position:'absolute', right:60, top:30}}><Orb size={140} opacity={0.85}/></div>
+          <div style={{position:'absolute', right:240, top:90}}><Orb size={70} opacity={0.7}/></div>
+          <div style={{position:'absolute', right:380, top:40}}><Orb size={50} opacity={0.55}/></div>
+          <div style={{position:'absolute', left:48, top:'50%', transform:'translateY(-50%)'}}>
+            <PillWordmark h={72}/>
+            <div style={{marginTop:14, color:'rgba(255,255,255,0.88)', fontSize:14, fontWeight:500, letterSpacing:'0.02em'}}>
+              Websites that book appointments while you sleep.
+            </div>
+          </div>
+        </div>
+
+        <div className="yp-content">
+          <div style={{minWidth:0, overflow:'hidden'}}>
+            <div style={{display:'flex', gap:18, alignItems:'flex-start', marginTop:-44}}>
+              <div style={{borderRadius:18, overflow:'hidden', boxShadow:'0 10px 30px -8px rgba(0,0,0,0.25)', flexShrink:0, background:'#fff', padding:8}}>
+                <Monogram size={84} mode="pill"/>
+              </div>
+              <div style={{paddingTop:48}}>
+                <h1 className="yp-h1">Initial Win</h1>
+                <div className="yp-stars">
+                  <Stars count={5}/>
+                  <span style={{fontSize:13, fontWeight:600}}>5.0</span>
+                  <span style={{fontSize:13, color:'#666'}}>(127 reviews)</span>
+                  <span className="yp-tag" style={{background:'#1f7a1f', color:'#fff'}}>Claimed</span>
+                </div>
+                <div className="yp-meta">$$ · Web Design · Marketing · SEO Agencies</div>
+                <div className="yp-tags">
+                  <span className="yp-tag">Website Design</span>
+                  <span className="yp-tag">Med Spa Specialists</span>
+                  <span className="yp-tag">AI Booking</span>
+                  <span className="yp-tag">SEO</span>
+                </div>
+                <div className="yp-actions">
+                  <button className="yp-btn primary">Get a Quote</button>
+                  <button className="yp-btn">Call</button>
+                  <button className="yp-btn">Website</button>
+                  <button className="yp-btn">Save</button>
+                  <button className="yp-btn">Share</button>
+                </div>
+              </div>
+            </div>
+
+            <div className="yp-section-title">Photos & Videos</div>
+            <div className="yp-photos">
+              <PhotoTile kind="web1"/>
+              <PhotoTile kind="spa1"/>
+              <PhotoTile kind="desk"/>
+              <PhotoTile kind="web2"/>
+            </div>
+
+            <div className="yp-section-title">Recommended Reviews (127)</div>
+            <div>
+              {reviews.map((r,i)=>(
+                <div className="yp-review" key={i}>
+                  <div className="yp-avatar" style={{background: ['#cfd8e8','#e8d4cf','#d4cfe8'][i]}}/>
+                  <div>
+                    <div className="yp-rev-name">{r.name}</div>
+                    <div className="yp-rev-loc">{r.loc}</div>
+                    <div className="yp-rev-stars"><Stars count={r.stars} size={14}/><span style={{fontSize:12, color:'#666', marginLeft:6}}>{r.date}</span></div>
+                    <div className="yp-rev-text">{r.text}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div className="yp-aside-card">
+              <div style={{fontSize:14, fontWeight:700, marginBottom:8}}>Hours</div>
+              {[
+                ['Mon', '9:00 AM – 6:00 PM'],
+                ['Tue', '9:00 AM – 6:00 PM'],
+                ['Wed', '9:00 AM – 6:00 PM'],
+                ['Thu', '9:00 AM – 6:00 PM'],
+                ['Fri', '9:00 AM – 5:00 PM'],
+                ['Sat', 'By appointment'],
+                ['Sun', 'Closed'],
+              ].map(([d,h],i)=>(
+                <div className="yp-aside-row" key={i}>
+                  <span style={{fontWeight:600}}>{d}</span>
+                  <span>{h}</span>
+                </div>
+              ))}
+              <div style={{marginTop:10, fontSize:13}}>
+                <span className="yp-open">Open now</span> · Closes 6:00 PM
+              </div>
+            </div>
+
+            <div className="yp-aside-card" style={{marginTop:16}}>
+              <div style={{fontSize:14, fontWeight:700, marginBottom:8}}>Services</div>
+              <div className="yp-list">
+                · Website Design & Development<br/>
+                · Monthly Retainer (Care Plan)<br/>
+                · Med Spa Specialists<br/>
+                · AI Booking & Chat Integration<br/>
+                · SEO & Local Listings<br/>
+                · Brand Identity
+              </div>
+            </div>
+
+            <div className="yp-aside-card" style={{marginTop:16}}>
+              <div style={{fontSize:14, fontWeight:700, marginBottom:8}}>Location & Contact</div>
+              <div style={{fontSize:13, lineHeight:1.6, color:'#222'}}>
+                1234 India St, Suite 200<br/>
+                San Diego, CA 92101<br/>
+                (619) 555-0142<br/>
+                initialwin.com
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Banner = () => (
+  <div className="stage-frame">
+    <div style={{position:'absolute', inset:0,
+      background:'radial-gradient(60% 80% at 25% 50%, #1a3fb8 0%, #0b2a8a 50%, #050f3a 100%)'}}/>
+    <div style={{position:'absolute', inset:0,
+      background:'radial-gradient(40% 100% at 85% 50%, rgba(60,110,255,0.55), rgba(60,110,255,0) 70%)'}}/>
+    <div style={{position:'absolute', left:'-10%', top:'-20%', width:'120%', height:'140%',
+      background:'linear-gradient(100deg, transparent 35%, rgba(255,255,255,0.07) 50%, transparent 65%)',
+      transform:'rotate(-6deg)', filter:'blur(14px)'}}/>
+    <div style={{position:'absolute', right:120, top:60}}><Orb size={220} opacity={0.95}/></div>
+    <div style={{position:'absolute', right:80, bottom:60}}><Orb size={130} opacity={0.85}/></div>
+    <div style={{position:'absolute', right:340, top:140}}><Orb size={90} opacity={0.7}/></div>
+    <div style={{position:'absolute', right:520, bottom:90}}><Orb size={60} opacity={0.6}/></div>
+
+    <div style={{position:'absolute', left:80, top:'50%', transform:'translateY(-50%)', maxWidth:780}}>
+      <PillWordmark h={110}/>
+      <div style={{marginTop:24, fontSize:24, lineHeight:1.3, fontWeight:500,
+        color:'rgba(255,255,255,0.92)', letterSpacing:'-0.01em', maxWidth:680, fontFamily: UI_FONT}}>
+        Websites that book appointments while you sleep.
+      </div>
+      <div style={{marginTop:14, fontSize:13, fontWeight:600, letterSpacing:'0.18em',
+        textTransform:'uppercase', color:'rgba(180,210,255,0.7)', fontFamily: UI_FONT}}>
+        AI-Native Web Design · San Diego
+      </div>
+    </div>
+    <div className="grain"/>
+  </div>
+);
+
+const LockupOnLight = () => (
+  <div className="stage-frame" style={{
+    background:'linear-gradient(160deg, #f4f7ff 0%, #e3ecff 100%)',
+    display:'grid', placeItems:'center'}}>
+    <PillWordmark h={150}/>
+  </div>
+);
+
+const LockupOnDeep = () => (
+  <div className="stage-frame wp-deep" style={{display:'grid', placeItems:'center'}}>
+    <PillWordmark h={150}/>
+  </div>
+);
+
+const MonogramRow = () => (
+  <div className="stage-frame" style={{
+    background:'linear-gradient(160deg, #eaf0ff, #c9d8ff)',
+    display:'grid', placeItems:'center'}}>
+    <div style={{display:'flex', gap:48, alignItems:'center'}}>
+      <Monogram size={220} mode="pill"/>
+      <Monogram size={220} mode="blue"/>
+      <Monogram size={220} mode="navy"/>
+    </div>
+  </div>
+);
+
+/* ====== Social Profile Icon ====== */
+const SocialIcon = ({ circleMask = false }) => {
+  const id = (
+    <div style={{
+      position:'absolute', inset:0,
+      background:`radial-gradient(120% 100% at 30% 22%, ${BLUE_HI} 0%, ${BLUE} 45%, #0a3ad6 100%)`,
+    }}>
+      {/* atmospheric glow */}
+      <div style={{position:'absolute', inset:0,
+        background:'radial-gradient(40% 30% at 28% 22%, rgba(255,255,255,0.55), rgba(255,255,255,0) 70%)'}}/>
+      <div style={{position:'absolute', inset:0,
+        background:'radial-gradient(45% 40% at 78% 80%, rgba(20,40,140,0.55), rgba(20,40,140,0) 70%)'}}/>
+      {/* top glass sheen */}
+      <div style={{position:'absolute', left:'6%', right:'6%', top:'6%', height:'42%',
+        borderRadius:'50% 50% 60% 60% / 50% 50% 100% 100%',
+        background:'linear-gradient(180deg, rgba(255,255,255,0.42), rgba(255,255,255,0) 80%)',
+        filter:'blur(2px)', pointerEvents:'none'}}/>
+      {/* bottom inner glow */}
+      <div style={{position:'absolute', left:'8%', right:'8%', bottom:'4%', height:'30%',
+        borderRadius:'50%',
+        background:'radial-gradient(80% 100% at 50% 100%, rgba(120,180,255,0.55), rgba(120,180,255,0) 70%)',
+        pointerEvents:'none'}}/>
+
+      {/* monogram */}
+      <div style={{position:'absolute', inset:0, display:'grid', placeItems:'center'}}>
+        <div style={{
+          fontFamily: FONT_STACK,
+          fontWeight: 900,
+          letterSpacing: '-0.04em',
+          fontSize: 560,
+          lineHeight: 1,
+          color:'#fff',
+          textShadow:'0 12px 40px rgba(0,10,60,0.4)',
+          display:'flex',
+        }}>
+          <span style={{color:'#ffffff'}}>i</span>
+          <span style={{color:'rgba(255,255,255,0.7)', marginLeft: 22}}>w</span>
+        </div>
+      </div>
+
+      {/* edge */}
+      <div style={{position:'absolute', inset:0, boxShadow:'inset 0 0 0 2px rgba(255,255,255,0.25)', borderRadius: circleMask ? '50%' : 0, pointerEvents:'none'}}/>
+    </div>
+  );
+  return (
+    <div className="stage-frame" style={{
+      borderRadius: circleMask ? '50%' : 0,
+      overflow:'hidden',
+      // checkerboard around the circle preview so transparency is obvious
+      background: circleMask
+        ? 'repeating-conic-gradient(#1f1f23 0% 25%, #2a2a2f 0% 50%) 50% / 80px 80px'
+        : 'transparent',
+    }}>
+      {circleMask
+        ? <div style={{position:'absolute', inset:0, borderRadius:'50%', overflow:'hidden'}}>{id}</div>
+        : id}
+    </div>
+  );
+};
+
+/* ====== Google Business Profile Pack ====== */
+const TAG_FONT = UI_FONT;
+
+const FloatingOrbs = ({ count = 6, seed = 9, w = 1080, h = 1080 }) => {
+  const orbs = useMemo(() => {
+    const out = []; let s = seed;
+    const r = () => { s = (s*9301+49297)%233280; return s/233280; };
+    for (let i=0;i<count;i++) out.push({size:60+r()*220, x:r()*w, y:r()*h, op:0.55+r()*0.4});
+    return out;
+  }, [count, seed, w, h]);
+  return <>{orbs.map((o,i)=>(<Orb key={i} size={o.size} x={o.x-o.size/2} y={o.y-o.size/2} opacity={o.op}/>))}</>;
+};
+
+const GMBCover = () => (
+  <div className="stage-frame wp-deep">
+    <div style={{position:'absolute', inset:0, background:'radial-gradient(40% 60% at 50% 50%, rgba(140,180,255,0.32), rgba(140,180,255,0) 70%)'}}/>
+    <FloatingOrbs count={7} seed={31} w={1080} h={608}/>
+    <div style={{position:'absolute', right:80, top:80}}><Orb size={180} opacity={0.9}/></div>
+    <div style={{position:'absolute', left:60, bottom:60}}><Orb size={130} opacity={0.85}/></div>
+    <div style={{position:'absolute', inset:0, display:'grid', placeItems:'center'}}>
+      <div style={{display:'flex', flexDirection:'column', alignItems:'center', gap:24}}>
+        <PillWordmark h={120}/>
+        <div style={{fontFamily:TAG_FONT, color:'rgba(220,235,255,0.85)', fontSize:22, fontWeight:600, letterSpacing:'0.18em', textTransform:'uppercase'}}>
+          Web Design · San Diego
+        </div>
+      </div>
+    </div>
+    <div className="grain"/>
+  </div>
+);
+
+const GMBLogoSquare = () => (
+  <div className="stage-frame" style={{background:'#ffffff', display:'grid', placeItems:'center'}}>
+    <PillWordmark h={120} shadow={false}/>
+  </div>
+);
+
+const ServiceCard = ({ headline, bullets, badge, footer, light=false }) => (
+  <div className="stage-frame" style={{
+    background: light
+      ? 'linear-gradient(160deg, #f4f7ff 0%, #e3ecff 60%, #c9d8ff 100%)'
+      : 'radial-gradient(70% 60% at 30% 30%, #1a3fb8 0%, #0a2bb0 50%, #050f3a 100%)',
+    color: light ? '#0A1330' : '#fff',
+    fontFamily: UI_FONT,
+    padding: 80,
+  }}>
+    {!light && <FloatingOrbs count={4} seed={71} w={1080} h={1080}/>}
+    <div style={{position:'absolute', top:80, left:80}}>
+      <Monogram size={140} mode={light ? "blue" : "pill"}/>
+    </div>
+    {badge && (
+      <div style={{position:'absolute', top:108, right:80,
+        background: light ? '#fff' : 'rgba(255,255,255,0.12)',
+        color: light ? NAVY : '#fff',
+        padding:'14px 22px', borderRadius:999,
+        fontWeight:700, fontSize:22, letterSpacing:'0.04em',
+        border: light ? '1px solid rgba(10,20,60,0.08)' : '1px solid rgba(255,255,255,0.25)',
+        backdropFilter:'blur(8px)',
+      }}>{badge}</div>
+    )}
+    <div style={{position:'absolute', left:80, right:80, bottom:80}}>
+      <div style={{fontSize:72, fontWeight:800, lineHeight:1.05, letterSpacing:'-0.025em', maxWidth:840, marginBottom:40}}>
+        {headline}
+      </div>
+      <div style={{display:'flex', flexDirection:'column', gap:18, fontSize:30, fontWeight:500, opacity:0.92}}>
+        {bullets.map((b,i)=>(
+          <div key={i} style={{display:'flex', alignItems:'center', gap:18}}>
+            <div style={{width:14, height:14, borderRadius:'50%',
+              background: light ? BLUE : '#7aa6ff',
+              boxShadow: light ? 'none' : '0 0 12px rgba(122,166,255,0.6)'}}/>
+            <span>{b}</span>
+          </div>
+        ))}
+      </div>
+      {footer && <div style={{marginTop:40, fontSize:20, fontWeight:600, letterSpacing:'0.18em', textTransform:'uppercase', opacity:0.7}}>{footer}</div>}
+    </div>
+  </div>
+);
+
+const GMBServiceWebsite = () => (
+  <ServiceCard
+    headline="Custom Websites Built in 7 Days"
+    bullets={["Mobile-optimized", "SEO-ready", "Booking integrated"]}
+    badge="Website Design"
+    footer="initialwin.com"
+  />
+);
+const GMBServiceRetainer = () => (
+  <ServiceCard
+    headline={<>Ongoing Site +<br/>Marketing Care</>}
+    bullets={["Updates & edits", "Hosting & security", "Analytics & SEO"]}
+    badge={<><span style={{fontSize:30, fontWeight:900}}>$497</span><span style={{opacity:0.7}}>/mo</span></>}
+    footer="Monthly Retainer · Cancel anytime"
+  />
+);
+const GMBServiceMedSpa = () => (
+  <ServiceCard
+    light
+    headline="Websites That Book Appointments"
+    bullets={["HIPAA-aware", "Treatment galleries", "Online booking"]}
+    badge="Med Spa Specialists"
+    footer="Trusted by San Diego clinics"
+  />
+);
+
+const GMBQuote = () => (
+  <div className="stage-frame" style={{
+    background:'radial-gradient(70% 60% at 50% 40%, #1a3fb8 0%, #0a2bb0 55%, #050f3a 100%)',
+    color:'#fff', fontFamily: UI_FONT, display:'grid', placeItems:'center', padding:100,
+  }}>
+    <FloatingOrbs count={4} seed={113} w={1080} h={1080}/>
+    <div style={{position:'absolute', left:60, top:40, fontSize:360, fontFamily:'"Times New Roman", serif',
+      color:'rgba(122,166,255,0.35)', lineHeight:1, fontWeight:700}}>“</div>
+    <div style={{position:'absolute', right:60, bottom:-100, fontSize:360, fontFamily:'"Times New Roman", serif',
+      color:'rgba(122,166,255,0.35)', lineHeight:1, fontWeight:700}}>”</div>
+    <div style={{position:'relative', textAlign:'center', maxWidth:880}}>
+      <div style={{fontSize:68, fontWeight:700, lineHeight:1.2, letterSpacing:'-0.02em'}}>
+        Websites that book appointments while you sleep.
+      </div>
+      <div style={{marginTop:48, display:'inline-flex', alignItems:'center', gap:18}}>
+        <div style={{height:1, width:60, background:'rgba(255,255,255,0.4)'}}/>
+        <PillWordmark h={56}/>
+        <div style={{height:1, width:60, background:'rgba(255,255,255,0.4)'}}/>
+      </div>
+    </div>
+  </div>
+);
+
+const GMBProcess = () => {
+  const steps = [
+    {n:1, t:"Discovery Call",   d:"30-min strategy session. We learn your business and goals."},
+    {n:2, t:"Build in 7 Days",  d:"Design, copy, integrations. You review before launch."},
+    {n:3, t:"Launch & Optimize", d:"Go live, then SEO + analytics + ongoing care."},
+  ];
+  return (
+    <div className="stage-frame" style={{
+      background:'radial-gradient(70% 60% at 30% 20%, #1a3fb8 0%, #0a2bb0 55%, #050f3a 100%)',
+      color:'#fff', fontFamily: UI_FONT, padding:80,
+    }}>
+      <FloatingOrbs count={3} seed={211} w={1080} h={1080}/>
+      <div style={{position:'absolute', top:80, left:80, display:'flex', alignItems:'center', gap:18}}>
+        <Monogram size={100} mode="pill"/>
+        <div style={{fontSize:22, fontWeight:700, letterSpacing:'0.18em', textTransform:'uppercase', opacity:0.7}}>3-Step Process</div>
+      </div>
+      <div style={{position:'absolute', left:80, right:80, top:260, fontSize:64, fontWeight:800, letterSpacing:'-0.02em', lineHeight:1.05}}>
+        From hello to launch<br/>in two weeks.
+      </div>
+      <div style={{position:'absolute', left:80, right:80, bottom:80, display:'flex', flexDirection:'column', gap:34}}>
+        {steps.map(s => (
+          <div key={s.n} style={{display:'flex', alignItems:'flex-start', gap:28}}>
+            <div style={{
+              width:84, height:84, borderRadius:'50%',
+              background:'linear-gradient(160deg, #7aa6ff, #1E5BFF 60%, #0a3ad6)',
+              boxShadow:'0 12px 30px -8px rgba(20,70,224,0.6), inset 0 2px 0 rgba(255,255,255,0.4)',
+              display:'grid', placeItems:'center',
+              fontFamily:FONT_STACK, fontWeight:900, fontSize:42, color:'#fff',
+              flexShrink:0,
+            }}>{s.n}</div>
+            <div style={{paddingTop:8}}>
+              <div style={{fontSize:32, fontWeight:800, letterSpacing:'-0.01em'}}>{s.t}</div>
+              <div style={{fontSize:22, fontWeight:500, opacity:0.78, marginTop:4, maxWidth:760}}>{s.d}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const GMBCTA = () => (
+  <div className="stage-frame" style={{
+    background:'radial-gradient(70% 60% at 50% 30%, #1a3fb8 0%, #0a2bb0 55%, #050f3a 100%)',
+    color:'#fff', fontFamily: UI_FONT, padding:80,
+    display:'grid', placeItems:'center',
+  }}>
+    <FloatingOrbs count={5} seed={303} w={1080} h={1080}/>
+    <div style={{position:'absolute', top:80, left:0, right:0, display:'flex', justifyContent:'center'}}>
+      <PillWordmark h={70}/>
+    </div>
+    <div style={{position:'relative', textAlign:'center'}}>
+      <div style={{fontSize:24, fontWeight:700, letterSpacing:'0.22em', textTransform:'uppercase', color:'#7aa6ff', marginBottom:30}}>
+        Limited Spots · May 2026
+      </div>
+      <div style={{fontSize:96, fontWeight:900, lineHeight:1.0, letterSpacing:'-0.03em', maxWidth:900, margin:'0 auto'}}>
+        Get Your Free<br/>Website Build
+      </div>
+      <div style={{marginTop:36, fontSize:28, fontWeight:500, opacity:0.85}}>
+        No setup fees · Cancel anytime
+      </div>
+      <div style={{marginTop:60, display:'inline-flex', alignItems:'center', gap:14,
+        padding:'24px 42px', borderRadius:999,
+        background:'#fff', color:NAVY,
+        fontSize:32, fontWeight:800, letterSpacing:'-0.01em',
+        boxShadow:'0 16px 40px -8px rgba(0,0,0,0.4)'}}>
+        Book Your Free Call →
+      </div>
+    </div>
+    <div style={{position:'absolute', bottom:60, left:0, right:0, textAlign:'center', fontSize:24, fontWeight:700, letterSpacing:'0.18em', color:'rgba(220,235,255,0.7)'}}>
+      INITIALWIN.COM
+    </div>
+  </div>
+);
+
+const GMBBannerWide = () => (
+  <div className="stage-frame">
+    <div style={{position:'absolute', inset:0,
+      background:'radial-gradient(60% 80% at 25% 50%, #1a3fb8 0%, #0b2a8a 50%, #050f3a 100%)'}}/>
+    <div style={{position:'absolute', inset:0,
+      background:'radial-gradient(40% 100% at 80% 50%, rgba(60,110,255,0.55), rgba(60,110,255,0) 70%)'}}/>
+    <FloatingOrbs count={5} seed={419} w={1920} h={1080}/>
+    <div style={{position:'absolute', right:160, top:160}}><Orb size={340} opacity={0.95}/></div>
+    <div style={{position:'absolute', right:120, bottom:140}}><Orb size={200} opacity={0.85}/></div>
+    <div style={{position:'absolute', right:480, top:340}}><Orb size={140} opacity={0.7}/></div>
+    <div style={{position:'absolute', left:120, top:'50%', transform:'translateY(-50%)', maxWidth:1100}}>
+      <PillWordmark h={130}/>
+      <div style={{marginTop:48, fontSize:96, fontWeight:900, lineHeight:1.0, letterSpacing:'-0.03em', color:'#fff', fontFamily:UI_FONT, maxWidth:1000}}>
+        Websites That<br/>Pay For Themselves
+      </div>
+      <div style={{marginTop:32, fontSize:28, fontWeight:600, letterSpacing:'0.18em',
+        textTransform:'uppercase', color:'rgba(180,210,255,0.75)', fontFamily:UI_FONT}}>
+        AI-Native Web Design · San Diego
+      </div>
+    </div>
+    <div className="grain"/>
+  </div>
+);
+
+/* ====== Layout ====== */
+const Artboard = ({ name, w, h, children }) => (
+  <div className="ab" data-name={name} style={{width: w, height: h}}>{children}</div>
+);
+
+const App = () => (
+  <div>
+    <Artboard name="wallpaper-1920x1080" w={1920} h={1080}><Wallpaper/></Artboard>
+    <Artboard name="avatar-pill-1024x1024" w={1024} h={1024}><AvatarPill/></Artboard>
+    <Artboard name="avatar-monogram-blue-1024x1024" w={1024} h={1024}><AvatarMonoBlue/></Artboard>
+    <Artboard name="avatar-monogram-pill-1024x1024" w={1024} h={1024}><AvatarMonoPill/></Artboard>
+    <Artboard name="yelp-page-1440x900" w={1440} h={900}><YelpPage/></Artboard>
+    <Artboard name="banner-1500x500" w={1500} h={500}><Banner/></Artboard>
+    <Artboard name="wordmark-light-1100x420" w={1100} h={420}><LockupOnLight/></Artboard>
+    <Artboard name="wordmark-deep-1100x420" w={1100} h={420}><LockupOnDeep/></Artboard>
+    <Artboard name="monogram-set-1100x420" w={1100} h={420}><MonogramRow/></Artboard>
+    <Artboard name="social-icon-1024x1024" w={1024} h={1024}><SocialIcon/></Artboard>
+    <Artboard name="social-icon-circle-preview-1024x1024" w={1024} h={1024}><SocialIcon circleMask/></Artboard>
+    <Artboard name="gmb-cover-1080x608" w={1080} h={608}><GMBCover/></Artboard>
+    <Artboard name="gmb-logo-square-720x720" w={720} h={720}><GMBLogoSquare/></Artboard>
+    <Artboard name="gmb-service-website-1080x1080" w={1080} h={1080}><GMBServiceWebsite/></Artboard>
+    <Artboard name="gmb-service-retainer-1080x1080" w={1080} h={1080}><GMBServiceRetainer/></Artboard>
+    <Artboard name="gmb-service-medspa-1080x1080" w={1080} h={1080}><GMBServiceMedSpa/></Artboard>
+    <Artboard name="gmb-quote-1080x1080" w={1080} h={1080}><GMBQuote/></Artboard>
+    <Artboard name="gmb-process-1080x1080" w={1080} h={1080}><GMBProcess/></Artboard>
+    <Artboard name="gmb-cta-1080x1080" w={1080} h={1080}><GMBCTA/></Artboard>
+    <Artboard name="gmb-banner-wide-1920x1080" w={1920} h={1080}><GMBBannerWide/></Artboard>
+  </div>
+);
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
