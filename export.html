@@ -2,15 +2,86 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Initial Win — Headless Export</title>
-<meta name="viewport" content="width=2000,initial-scale=1" />
+<title>Initial Win — Asset Export</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <style>
-  html, body { margin: 0; padding: 0; background: #1a1a1a; }
+  html, body { margin: 0; padding: 0; background: #0e0e10; }
   * { box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: #fff;
   }
-  /* Each artboard: native pixel size, isolated stacking context */
+
+  /* ── App shell ─────────────────────────────────── */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; padding: 16px 28px;
+    background: rgba(14,14,16,0.85); backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .tb-title { font-weight: 800; font-size: 17px; letter-spacing: -0.01em; }
+  .tb-sub   { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+  .tb-actions { display: flex; gap: 8px; }
+  .btn {
+    appearance: none; border: 0; cursor: pointer;
+    background: #1E5BFF; color: #fff;
+    padding: 9px 16px; border-radius: 8px;
+    font: 600 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    transition: background 0.12s ease, transform 0.05s ease;
+  }
+  .btn:hover { background: #3a7bff; }
+  .btn:active { transform: translateY(1px); }
+  .btn:disabled { opacity: 0.55; cursor: wait; }
+  .btn-ghost {
+    background: rgba(255,255,255,0.08); color: #fff;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.15); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+    padding: 28px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  .card {
+    background: #1a1a1d;
+    border-radius: 14px;
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,0.05);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .card-head {
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+  }
+  .card-name { font-weight: 600; font-size: 13px; word-break: break-word; }
+  .card-dim  { font-size: 11px; color: rgba(255,255,255,0.45);
+               font-family: ui-monospace, "SF Mono", Menlo, monospace; margin-top: 3px; }
+
+  .preview-wrap {
+    background: #050507; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.04);
+    align-self: flex-start;
+    max-width: 100%;
+  }
+  .preview-inner { transform-origin: top left; }
+  /* Neutralize the original .ab layout/decoration when wrapped in our card */
+  .preview-wrap .ab { margin: 0 !important; box-shadow: none !important; }
+
+  .status {
+    position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
+    background: #1E5BFF; color: #fff;
+    padding: 11px 20px; border-radius: 999px;
+    font-size: 13px; font-weight: 600;
+    box-shadow: 0 12px 30px -8px rgba(30,91,255,0.6);
+    opacity: 0; transition: opacity 0.18s ease, transform 0.18s ease;
+    pointer-events: none; z-index: 200;
+  }
+  .status.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ── Original export.html design styles (kept intact) ─────────── */
   .ab {
     position: relative;
     overflow: hidden;
@@ -29,8 +100,6 @@
     background-image: radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px);
     background-size: 3px 3px;
   }
-
-  /* Yelp-ish (original layout) */
   .yp { color: #1a1a1a; background: #fff; height:100%; display:flex; flex-direction:column; }
   .yp-nav { height: 56px; background:#c41200; display:flex; align-items:center; padding:0 24px; gap:24px; color:#fff; font-weight:700; }
   .yp-nav .logo { font-size:22px; letter-spacing:-0.02em; }
@@ -61,7 +130,6 @@
   .yp-open { color:#1f7a1f; font-weight:600; }
   .yp-list { font-size:13px; line-height:1.7; }
 
-  /* Brand atomic styles */
   .brand-font {
     font-family: "Avenir Next", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     font-weight: 900;
@@ -69,15 +137,17 @@
   }
 </style>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 </head>
 <body>
 <div id="root"></div>
 
 <script type="text/babel">
-const { useMemo } = React;
+const { useMemo, useState, useRef } = React;
 
 const NAVY = "#0A1330";
 const BLUE = "#1E5BFF";
@@ -86,7 +156,7 @@ const BLUE_HI = "#3a7bff";
 const FONT_STACK = '"Avenir Next", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif';
 const UI_FONT = '-apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif';
 
-/* ====== Brand primitives (inlined) ====== */
+/* ====== Brand primitives ====== */
 const PillWordmark = ({ h = 80, padX = 0.55, padY = 0.32, shadow = true, bg = "#ffffff" }) => {
   const fontSize = h * 0.42;
   const padXpx = h * padX;
@@ -470,23 +540,19 @@ const SocialIcon = ({ circleMask = false }) => {
       position:'absolute', inset:0,
       background:`radial-gradient(120% 100% at 30% 22%, ${BLUE_HI} 0%, ${BLUE} 45%, #0a3ad6 100%)`,
     }}>
-      {/* atmospheric glow */}
       <div style={{position:'absolute', inset:0,
         background:'radial-gradient(40% 30% at 28% 22%, rgba(255,255,255,0.55), rgba(255,255,255,0) 70%)'}}/>
       <div style={{position:'absolute', inset:0,
         background:'radial-gradient(45% 40% at 78% 80%, rgba(20,40,140,0.55), rgba(20,40,140,0) 70%)'}}/>
-      {/* top glass sheen */}
       <div style={{position:'absolute', left:'6%', right:'6%', top:'6%', height:'42%',
         borderRadius:'50% 50% 60% 60% / 50% 50% 100% 100%',
         background:'linear-gradient(180deg, rgba(255,255,255,0.42), rgba(255,255,255,0) 80%)',
         filter:'blur(2px)', pointerEvents:'none'}}/>
-      {/* bottom inner glow */}
       <div style={{position:'absolute', left:'8%', right:'8%', bottom:'4%', height:'30%',
         borderRadius:'50%',
         background:'radial-gradient(80% 100% at 50% 100%, rgba(120,180,255,0.55), rgba(120,180,255,0) 70%)',
         pointerEvents:'none'}}/>
 
-      {/* monogram */}
       <div style={{position:'absolute', inset:0, display:'grid', placeItems:'center'}}>
         <div style={{
           fontFamily: FONT_STACK,
@@ -503,7 +569,6 @@ const SocialIcon = ({ circleMask = false }) => {
         </div>
       </div>
 
-      {/* edge */}
       <div style={{position:'absolute', inset:0, boxShadow:'inset 0 0 0 2px rgba(255,255,255,0.25)', borderRadius: circleMask ? '50%' : 0, pointerEvents:'none'}}/>
     </div>
   );
@@ -511,7 +576,6 @@ const SocialIcon = ({ circleMask = false }) => {
     <div className="stage-frame" style={{
       borderRadius: circleMask ? '50%' : 0,
       overflow:'hidden',
-      // checkerboard around the circle preview so transparency is obvious
       background: circleMask
         ? 'repeating-conic-gradient(#1f1f23 0% 25%, #2a2a2f 0% 50%) 50% / 80px 80px'
         : 'transparent',
@@ -750,35 +814,172 @@ const GMBBannerWide = () => (
   </div>
 );
 
-/* ====== Layout ====== */
-const Artboard = ({ name, w, h, children }) => (
-  <div className="ab" data-name={name} style={{width: w, height: h}}>{children}</div>
-);
+/* ====== Manifest ──────────────────────────────────────────────
+   `bg` is the fallback color baked into each exported PNG so no
+   artboard can come out with transparent gaps if a gradient layer
+   fails to render in the user's browser. Each value matches the
+   dominant color of that scene's design. */
+const ARTBOARDS = [
+  { name: "wallpaper-1920x1080",                   w: 1920, h: 1080, bg: "#050f3a", Component: Wallpaper },
+  { name: "avatar-pill-1024x1024",                 w: 1024, h: 1024, bg: "#050f3a", Component: AvatarPill },
+  { name: "avatar-monogram-blue-1024x1024",        w: 1024, h: 1024, bg: "#03103f", Component: AvatarMonoBlue },
+  { name: "avatar-monogram-pill-1024x1024",        w: 1024, h: 1024, bg: "#050f3a", Component: AvatarMonoPill },
+  { name: "yelp-page-1440x900",                    w: 1440, h: 900,  bg: "#ffffff", Component: YelpPage },
+  { name: "banner-1500x500",                       w: 1500, h: 500,  bg: "#050f3a", Component: Banner },
+  { name: "wordmark-light-1100x420",               w: 1100, h: 420,  bg: "#f4f7ff", Component: LockupOnLight },
+  { name: "wordmark-deep-1100x420",                w: 1100, h: 420,  bg: "#050f3a", Component: LockupOnDeep },
+  { name: "monogram-set-1100x420",                 w: 1100, h: 420,  bg: "#eaf0ff", Component: MonogramRow },
+  { name: "social-icon-1024x1024",                 w: 1024, h: 1024, bg: "#0a3ad6", Component: () => <SocialIcon/> },
+  { name: "social-icon-circle-preview-1024x1024",  w: 1024, h: 1024, bg: "#1f1f23", Component: () => <SocialIcon circleMask/> },
+  { name: "gmb-cover-1080x608",                    w: 1080, h: 608,  bg: "#050f3a", Component: GMBCover },
+  { name: "gmb-logo-square-720x720",               w: 720,  h: 720,  bg: "#ffffff", Component: GMBLogoSquare },
+  { name: "gmb-service-website-1080x1080",         w: 1080, h: 1080, bg: "#050f3a", Component: GMBServiceWebsite },
+  { name: "gmb-service-retainer-1080x1080",        w: 1080, h: 1080, bg: "#050f3a", Component: GMBServiceRetainer },
+  { name: "gmb-service-medspa-1080x1080",          w: 1080, h: 1080, bg: "#f4f7ff", Component: GMBServiceMedSpa },
+  { name: "gmb-quote-1080x1080",                   w: 1080, h: 1080, bg: "#050f3a", Component: GMBQuote },
+  { name: "gmb-process-1080x1080",                 w: 1080, h: 1080, bg: "#050f3a", Component: GMBProcess },
+  { name: "gmb-cta-1080x1080",                     w: 1080, h: 1080, bg: "#050f3a", Component: GMBCTA },
+  { name: "gmb-banner-wide-1920x1080",             w: 1920, h: 1080, bg: "#050f3a", Component: GMBBannerWide },
+];
+const ARTBOARD_BG = Object.fromEntries(ARTBOARDS.map(a => [a.name, a.bg]));
 
-const App = () => (
-  <div>
-    <Artboard name="wallpaper-1920x1080" w={1920} h={1080}><Wallpaper/></Artboard>
-    <Artboard name="avatar-pill-1024x1024" w={1024} h={1024}><AvatarPill/></Artboard>
-    <Artboard name="avatar-monogram-blue-1024x1024" w={1024} h={1024}><AvatarMonoBlue/></Artboard>
-    <Artboard name="avatar-monogram-pill-1024x1024" w={1024} h={1024}><AvatarMonoPill/></Artboard>
-    <Artboard name="yelp-page-1440x900" w={1440} h={900}><YelpPage/></Artboard>
-    <Artboard name="banner-1500x500" w={1500} h={500}><Banner/></Artboard>
-    <Artboard name="wordmark-light-1100x420" w={1100} h={420}><LockupOnLight/></Artboard>
-    <Artboard name="wordmark-deep-1100x420" w={1100} h={420}><LockupOnDeep/></Artboard>
-    <Artboard name="monogram-set-1100x420" w={1100} h={420}><MonogramRow/></Artboard>
-    <Artboard name="social-icon-1024x1024" w={1024} h={1024}><SocialIcon/></Artboard>
-    <Artboard name="social-icon-circle-preview-1024x1024" w={1024} h={1024}><SocialIcon circleMask/></Artboard>
-    <Artboard name="gmb-cover-1080x608" w={1080} h={608}><GMBCover/></Artboard>
-    <Artboard name="gmb-logo-square-720x720" w={720} h={720}><GMBLogoSquare/></Artboard>
-    <Artboard name="gmb-service-website-1080x1080" w={1080} h={1080}><GMBServiceWebsite/></Artboard>
-    <Artboard name="gmb-service-retainer-1080x1080" w={1080} h={1080}><GMBServiceRetainer/></Artboard>
-    <Artboard name="gmb-service-medspa-1080x1080" w={1080} h={1080}><GMBServiceMedSpa/></Artboard>
-    <Artboard name="gmb-quote-1080x1080" w={1080} h={1080}><GMBQuote/></Artboard>
-    <Artboard name="gmb-process-1080x1080" w={1080} h={1080}><GMBProcess/></Artboard>
-    <Artboard name="gmb-cta-1080x1080" w={1080} h={1080}><GMBCTA/></Artboard>
-    <Artboard name="gmb-banner-wide-1920x1080" w={1920} h={1080}><GMBBannerWide/></Artboard>
-  </div>
-);
+/* ====== Capture helpers ====== */
+const PREVIEW_MAX_W = 320;
+const previewScale = (w) => Math.min(1, PREVIEW_MAX_W / w);
+
+const captureToBlob = async (el, w, h, bg) => {
+  // html2canvas honors border-radius + overflow:hidden correctly (unlike
+  // html-to-image's foreignObject pipeline, which loses pill clipping).
+  // Temporarily clear the preview's scale transform so html2canvas sees
+  // the artboard at native size with no inherited transform.
+  const innerWrap = el.parentElement;
+  const prevTransform = innerWrap.style.transform;
+  innerWrap.style.transform = 'none';
+  try {
+    const canvas = await html2canvas(el, {
+      width: w,
+      height: h,
+      windowWidth: w,
+      windowHeight: h,
+      backgroundColor: bg || '#050f3a',
+      scale: 1,
+      useCORS: true,
+      allowTaint: true,
+      logging: false,
+      removeContainer: true,
+    });
+    return await new Promise((resolve, reject) =>
+      canvas.toBlob(b => (b ? resolve(b) : reject(new Error('toBlob returned null'))), 'image/png')
+    );
+  } finally {
+    innerWrap.style.transform = prevTransform;
+  }
+};
+
+const triggerDownload = (blob, filename) => {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+};
+
+/* ====== Card ====== */
+const ArtboardCard = ({ name, w, h, bg, Component }) => {
+  const abRef = useRef(null);
+  const [busy, setBusy] = useState(false);
+  const scale = previewScale(w);
+
+  const download = async () => {
+    if (!abRef.current || busy) return;
+    setBusy(true);
+    try {
+      const blob = await captureToBlob(abRef.current, w, h, bg);
+      if (!blob) throw new Error('Capture returned no data');
+      triggerDownload(blob, `${name}.png`);
+    } catch (e) {
+      console.error('Download failed for', name, e);
+      alert(`Export failed for ${name}: ${e.message || e}`);
+    }
+    setBusy(false);
+  };
+
+  return (
+    <div className="card">
+      <div className="card-head">
+        <div style={{minWidth:0}}>
+          <div className="card-name">{name}</div>
+          <div className="card-dim">{w} × {h}</div>
+        </div>
+        <button className="btn" onClick={download} disabled={busy}>
+          {busy ? 'Exporting…' : 'Download PNG'}
+        </button>
+      </div>
+      <div className="preview-wrap" style={{ width: w * scale, height: h * scale }}>
+        <div className="preview-inner" style={{ transform: `scale(${scale})` }}>
+          <div ref={abRef} className="ab" data-name={name} style={{ width: w, height: h }}>
+            <Component />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ====== App shell ====== */
+const App = () => {
+  const [zipBusy, setZipBusy] = useState(false);
+  const [status, setStatus] = useState('');
+
+  const downloadZip = async () => {
+    if (zipBusy) return;
+    setZipBusy(true);
+    try {
+      const zip = new JSZip();
+      const nodes = document.querySelectorAll('.ab[data-name]');
+      for (let i = 0; i < nodes.length; i++) {
+        const el = nodes[i];
+        const name = el.dataset.name;
+        const w = parseInt(el.style.width, 10);
+        const h = parseInt(el.style.height, 10);
+        setStatus(`Rendering ${i + 1}/${nodes.length} — ${name}`);
+        const blob = await captureToBlob(el, w, h, ARTBOARD_BG[name]);
+        if (blob) zip.file(`${name}.png`, blob);
+      }
+      setStatus('Packaging ZIP…');
+      const zipBlob = await zip.generateAsync({ type: 'blob' });
+      triggerDownload(zipBlob, 'initial-win-assets.zip');
+      setStatus('Done!');
+    } catch (e) {
+      console.error(e);
+      setStatus('Error: ' + (e.message || e));
+    }
+    setTimeout(() => setStatus(''), 2500);
+    setZipBusy(false);
+  };
+
+  return (
+    <>
+      <div className="topbar">
+        <div>
+          <div className="tb-title">Initial Win — Asset Export</div>
+          <div className="tb-sub">{ARTBOARDS.length} artboards · download each as a PNG, or grab the full set as a ZIP</div>
+        </div>
+        <div className="tb-actions">
+          <button className="btn" onClick={downloadZip} disabled={zipBusy}>
+            {zipBusy ? 'Building ZIP…' : 'Download all (ZIP)'}
+          </button>
+        </div>
+      </div>
+      <div className="grid">
+        {ARTBOARDS.map(a => <ArtboardCard key={a.name} {...a} />)}
+      </div>
+      <div className={'status' + (status ? ' show' : '')}>{status}</div>
+    </>
+  );
+};
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 </script>
