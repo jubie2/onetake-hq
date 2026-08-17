@@ -7,7 +7,8 @@ Registered at pyRevit startup; edit -> RELOAD pyRevit -> curl to test.
 Smoke test:
     curl http://localhost:48884/onetake-v1/status
 """
-from pyrevit import routes, HOST_APP, __version__ as PYREVIT_VERSION
+from pyrevit import routes, HOST_APP
+from pyrevit import versionmgr
 
 from Autodesk.Revit.DB import (
     Transaction,
@@ -54,7 +55,7 @@ def status():
         'ok': True,
         'revit_version': HOST_APP.version,
         'revit_build': HOST_APP.build,
-        'pyrevit_version': str(PYREVIT_VERSION),
+        'pyrevit_version': versionmgr.get_pyrevit_version().get_formatted(),
     }
 
 
