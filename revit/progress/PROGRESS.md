@@ -1,6 +1,6 @@
 # Revit / OneTake — PROGRESS (read this first)
 
-<!-- auto --> **Last checkpoint:** 2026-08-18 01:15:51 | Revit: not running | git claude/trusting-thompson-232391@d2732c9, 5 uncommitted
+<!-- auto --> **Last checkpoint:** 2026-08-18 01:33:04 | Revit: up, 'Pho Hung El cajon REV-1', 309 walls, schedule 29 rows | git claude/trusting-thompson-232391@3e69d88, 6 uncommitted
 
 This file is the single "where did we leave off" note. The header line above is
 rewritten by `tools/checkpoint.ps1`; the sections below are edited by hand (or by

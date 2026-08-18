@@ -50,6 +50,7 @@ Hard-won constraints for this project. Do not re-derive these; they are verified
 - **Develop new Revit functionality in `OneTake.extension/dev_scripts/` and run it via
   `POST /onetake-v1/dev/run {"file":"x.py"}` (no reload; returns full traceback). Promote proven
   code into `startup.py` as verbs in batches — reload once per several verbs, not per verb.
+- Before reloading: `powershell -File tools/check-startup.ps1` (syntax check; a bad reload kills ALL routes).
 - Edit `startup.py` → **reload pyRevit** (routes are registered at startup;
   a plain script re-run does not re-register them) → curl the endpoint.
 - Return errors as JSON from handlers so the calling agent can read them.

@@ -1712,7 +1712,7 @@ def export_view(doc, request):
     view = _find_view(doc, data.get('name'))
     if view is None:
         return _err('View not found.', 404)
-    path = data.get('path') or os.path.join(os.environ.get('TEMP', 'C:\'), 'onetake_view.png')
+    path = data.get('path') or os.path.join(os.environ.get('TEMP', 'C:/'), 'onetake_view.png')
     crop = data.get('crop')
     if crop:
         t = Transaction(doc, 'OneTake: crop view')
