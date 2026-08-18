@@ -50,3 +50,13 @@ Hard-won constraints for this project. Do not re-derive these; they are verified
 - Edit `startup.py` → **reload pyRevit** (routes are registered at startup;
   a plain script re-run does not re-register them) → curl the endpoint.
 - Return errors as JSON from handlers so the calling agent can read them.
+
+## Progress / resume (READ `progress/PROGRESS.md` FIRST)
+- `progress/PROGRESS.md` = where we left off + next steps. Update its
+  "Where we left off" / "Next up" / "Session notes" sections at the end of a session.
+- `tools/checkpoint.ps1` snapshots Revit + git + the equipment schedule into
+  `progress/` (`state.json`, `schedule-latest.csv`, `log.md`); `-Commit` also
+  git-commits/pushes. A Stop hook runs it after every Claude turn.
+- `tools/Progress-Terminal.cmd` = live, self-restarting terminal (auto-saves on
+  change / every 10 min); `tools/install-autostart.ps1` puts it in the Startup folder.
+- Equipment schedule for Pho Hung: Revit view `EQUIPMENT SCHEDULE (E) - PHO HUNG` (id 4980435).

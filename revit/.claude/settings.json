@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"[Console]::OutputEncoding=[Text.Encoding]::UTF8; Get-Content -Encoding UTF8 -Raw 'C:/dev/onetake-hq/revit/progress/PROGRESS.md'\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"C:/dev/onetake-hq/revit/tools/checkpoint.ps1\" -Quiet",
+            "timeout": 90
+          }
+        ]
+      }
+    ]
+  }
+}

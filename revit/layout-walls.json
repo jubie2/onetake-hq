@@ -1,0 +1,40 @@
+{
+  "_note": "Pho Hung El Cajon rough draft, built 2026-08-17 via onetake-v1 routes. Decimal FEET, origin = outer SW corner (project origin), X east, Y north. Level '1st Floor Level', walls 10 ft. Annotations/tags in view 'Proposed Floor Plan'. Schedule view: 'EQUIPMENT SCHEDULE (E) - PHO HUNG' (id 4980435).",
+  "perimeter": {
+    "4978036": {"type":"Generic - 8\"", "pts":[[11.0,0],[6.3,0]]},
+    "4978037": {"type":"Generic - 8\"", "pts":[[6.3,0],[6.3,13.5]], "note":"roof-access/elec rooms W wall (exterior; recess)"},
+    "4978038": {"type":"Generic - 8\"", "pts":[[6.3,13.5],[0,13.5]]},
+    "4978039": {"type":"Generic - 8\"", "pts":[[0,13.5],[0,40.4]]},
+    "4978040": {"type":"Generic - 8\"", "pts":[[0,40.4],[6.3,40.4]]},
+    "4978041": {"type":"Generic - 8\"", "pts":[[6.3,40.4],[6.3,49.25]], "note":"entry door + air curtain 04"},
+    "4977659": {"type":"Storefront",   "pts":[[6.3,49.25],[33.533,63.1667]], "printed":"30'-7\""},
+    "4977745": {"type":"Generic - 8\"", "pts":[[33.533,63.1667],[34.75,63.1667]]},
+    "4977746": {"type":"Generic - 8\"", "pts":[[34.75,63.1667],[34.75,30.0833]], "printed":"33'-1\""},
+    "4977747": {"type":"Generic - 8\"", "pts":[[34.75,30.0833],[63.5833,30.0833]], "printed":"28'-10\""},
+    "4977748": {"type":"Generic - 8\"", "pts":[[63.5833,30.0833],[63.5833,0]], "printed":"30'-1\""},
+    "4977749": {"type":"Storefront",   "pts":[[63.5833,0],[11.0,0]], "printed":"52'-7\"", "door_panels":{"4977759":"double entry (28)","4977773":"single"}}
+  },
+  "partitions_generic_5in": {
+    "4977861":"kitchen W stub (34.75,30.0833)-(34.75,27.9)",
+    "4977862":"janitor S (26.1,27.9)-(34.75,27.9)",
+    "4977863":"janitor W (26.1,27.9)-(26.1,41.1)",
+    "4978047":"janitor N / women S (22.0,41.1)-(34.75,41.1)",
+    "4978049":"restroom block W (22.0,41.1)-(22.0,57.27)",
+    "4978051":"women N (22.0,49.8)-(34.75,49.8)",
+    "4978053":"men W (26.3,49.8)-(26.3,59.47)",
+    "4977868":"men N (27.7,58.7)-(34.75,58.7) LOW CONFIDENCE (now starts inside men's; extend W to 26.3 if kept)",
+    "4977869":"kitchen S (34.75,8.2)-(63.5833,8.2)",
+    "4977870":"rooms E (11,0)-(11,13.5)",
+    "4978043":"roof access N (6.3,13.5)-(11,13.5)",
+    "4978046":"roof/elec split (6.3,5.2)-(11,5.2)"
+  },
+  "walk_in_cooler_walls": [4977935,4977936,4977937,4977938],
+  "room_separation_lines": [4977892,4977893,4977895,4978055,4978056,4978057],
+  "rooms": {"4977897":"(E) DINING AREA W","4977899":"(E) DINING AREA E","4980442":"(E) KITCHEN (590 SF)","4977901":"WALK-IN COOLER (09) (103 SF)","4977903":"(E) SERVICE AREA (121 SF)","4977905":"JANITOR / STORAGE","4977907":"(E) ADA WOMEN RESTROOM (102 SF)","4977909":"(E) ADA MEN RESTROOM (69 SF)","4977911":"HALL","4977913":"EXIT HALL","4977917":"(E) ROOF ACCESS","4977919":"(E) ELECTRICAL ROOM"},
+  "schedule_items": {
+    "01":[4977940],"02":[4978066,4978067],"03":[4977943],"04":[4978064],"05":[4977944],"06":[4977945],"07":[4977947],"08":[4978068,4978069],"09":[4978070],"10":[4978071],"11":[4978074],"12":[4977952,4977953],"13":[4978075],"14":[4978076],"15":[4977955],"16":[4978077],"17":[4978078],"18":[4977958],"19":[4977961],"20":[4978079],"21":[4978080],"22":[4977965],"23":[4977963,4977964,4977966,4978081],"24":[4977967],"25":[4978082],"26":[4977968],"27":[4978083],"28":[4978065],"29":[4977973],
+    "_how":"item no. = Type Mark on duplicated 'PH-xx ...' family types; Comments=EXISTING (schedule filter); Description/Manufacturer/Model on the PH- types"
+  },
+  "doors": {"4978058":"entry (04) on 4978041","4978059":"roof access","4978060":"electrical","4978061":"women","4978062":"hall","4978063":"men","4977978":"janitor","4977981":"N exit"},
+  "other": {"cashier_counter":4977939, "WC_women":4977969, "lav_women":4977970, "WC_men":4977971, "lav_men":4977972}
+}

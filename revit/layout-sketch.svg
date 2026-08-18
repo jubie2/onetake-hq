@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-60 -80 800 780" width="1000" height="975" font-family="monospace" font-size="9">
+<rect x="-60" y="-80" width="800" height="780" fill="#fff"/>
+<!-- 10 px per foot; y flipped so north is up. origin = outer SW corner of building -->
+<g transform="translate(0,660) scale(10,-10)">
+  <!-- PERIMETER (closed loop, 8 vertices) -->
+  <polygon points="0,0 0,49.25 6.3,49.25 33.5,63.2 34.8,63.2 34.8,30.1 63.6,30.1 63.6,0" fill="#f7f7f7" stroke="#000" stroke-width="0.6"/>
+  <!-- INTERIOR PARTITIONS -->
+  <g stroke="#0057b8" stroke-width="0.35" fill="none">
+    <line x1="34.8" y1="30.1" x2="34.8" y2="27.9"/>          <!-- I1 kitchen W / janitor E stub -->
+    <line x1="26.1" y1="27.9" x2="34.8" y2="27.9"/>          <!-- I2 janitor S -->
+    <line x1="26.1" y1="27.9" x2="26.1" y2="41.1"/>          <!-- I3 janitor W -->
+    <line x1="23.5" y1="41.1" x2="34.8" y2="41.1"/>          <!-- I4 janitor N / women's S -->
+    <line x1="23.5" y1="41.1" x2="23.5" y2="58.1"/>          <!-- I5 restroom block W -->
+    <line x1="23.5" y1="49.8" x2="34.8" y2="49.8"/>          <!-- I6 women's N -->
+    <line x1="27.7" y1="49.8" x2="27.7" y2="60.2"/>          <!-- I7 men's W / hall E -->
+    <line x1="27.7" y1="58.7" x2="34.8" y2="58.7"/>          <!-- I8 men's N (low confidence) -->
+    <line x1="34.8" y1="8.2"  x2="63.6" y2="8.2"/>           <!-- I9 kitchen S -->
+    <line x1="11.0" y1="0"    x2="11.0" y2="13.5"/>          <!-- I11 roof/elec rooms E -->
+    <line x1="6.1"  y1="0"    x2="6.1"  y2="13.5"/>          <!-- I13 rooms W -->
+    <line x1="6.1"  y1="13.5" x2="11.0" y2="13.5"/>          <!-- I12 roof access N -->
+    <line x1="6.1"  y1="5.2"  x2="11.0" y2="5.2"/>           <!-- I14 roof/elec partition -->
+    <line x1="6.3"  y1="49.25" x2="6.3" y2="40.4" stroke-dasharray="1,0.6"/> <!-- I15 vestibule wall w/ door 04 (low confidence) -->
+  </g>
+  <!-- counters (NOT walls, TODO) -->
+  <g stroke="#999" stroke-width="0.2" stroke-dasharray="0.8,0.5" fill="none">
+    <rect x="19.8" y="13.1" width="3" height="14"/>   <!-- cashier counter 3'x14' -->
+    <rect x="29.9" y="16.1" width="12" height="5.7"/> <!-- cook line / hood counter -->
+    <rect x="42.4" y="16.5" width="13.7" height="8"/> <!-- walk-in cooler -->
+    <rect x="57.2" y="8.9"  width="6.4" height="9"/>  <!-- freezers -->
+  </g>
+</g>
+<!-- labels (screen space: x*10, 660 - y*10) -->
+<g fill="#000">
+  <text x="200" y="330">(E) DINING 500 SF</text>
+  <text x="400" y="440">(E) DINING 500 SF</text>
+  <text x="440" y="470" fill="#0057b8">KITCHEN  28.8 x 21.9 = 631 SF (printed 674)</text>
+  <text x="240" y="205" fill="#0057b8">WOMEN 11.3x8.7=98 (101)</text>
+  <text x="280" y="120" fill="#0057b8">MEN 7.1x8.9=63</text>
+  <text x="240" y="150" fill="#0057b8">hall</text>
+  <text x="265" y="320" fill="#0057b8">JANITOR/STOR</text>
+  <text x="222" y="450" fill="#666">SERVICE ~122 (counters)</text>
+  <text x="62" y="580" fill="#0057b8">ROOF ACC.</text>
+  <text x="62" y="640" fill="#0057b8">ELEC</text>
+  <text x="235" y="435" fill="#666">cashier</text>
+  <text x="300" y="480" fill="#666">cook line</text>
+  <text x="430" y="500" fill="#666">walk-in</text>
+  <text x="575" y="560" fill="#666">frzr</text>
+</g>
+<!-- dimensions -->
+<g fill="#c00" font-weight="bold">
+  <text x="-52" y="420" transform="rotate(-90 -52 420)">49'-3" (0,0)-(0,49.25)</text>
+  <text x="250" y="682">bottom 63.6' total; storefront 52'-7" = x 11.0 → 63.6</text>
+  <text x="120" y="80" transform="rotate(-27 120 80)">angled 30'-7" (6.3,49.25)→(33.5,63.2)</text>
+  <text x="365" y="200" transform="rotate(-90 365 200)">33'-1" x=34.8, y 30.1→63.2</text>
+  <text x="400" y="352">28'-10" y=30.1, x 34.8→63.6</text>
+  <text x="655" y="500" transform="rotate(-90 655 500)">30'-1" x=63.6, y 0→30.1</text>
+  <text x="70" y="180" fill="#000">top step (0,49.25)→(6.3,49.25) = 6.3'</text>
+  <text x="380" y="-30" fill="#000">top step (33.5,63.2)→(34.8,63.2) = 1.3'</text>
+</g>
+<!-- vertex ticks -->
+<g fill="#000" font-size="8">
+  <text x="-8" y="672">V1 (0,0)</text>
+  <text x="-58" y="165">V2 (0,49.25)</text>
+  <text x="330" y="0">V4 (33.5,63.2)</text>
+  <text x="352" y="30">V5 (34.8,63.2)</text>
+  <text x="352" y="370">V6 (34.8,30.1)</text>
+  <text x="600" y="355">V7 (63.6,30.1)</text>
+  <text x="600" y="672">V8 (63.6,0)</text>
+</g>
+<text x="-55" y="-60" font-size="12" font-weight="bold">Extracted wall layout — decimal feet, origin = outer SW corner, 10px/ft. Black = perimeter, blue = partitions, grey dashed = counters/equipment (not walls)</text>
+</svg>
