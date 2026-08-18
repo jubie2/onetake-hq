@@ -1,6 +1,6 @@
 # Revit / OneTake — PROGRESS (read this first)
 
-<!-- auto --> **Last checkpoint:** 2026-08-18 01:33:04 | Revit: up, 'Pho Hung El cajon REV-1', 309 walls, schedule 29 rows | git claude/trusting-thompson-232391@3e69d88, 6 uncommitted
+<!-- auto --> **Last checkpoint:** 2026-08-18 01:47:37 | Revit: up, 'Pho Hung El cajon REV-1', 310 walls, schedule 30 rows | git claude/trusting-thompson-232391@e7e8471, 15 uncommitted
 
 This file is the single "where did we leave off" note. The header line above is
 rewritten by `tools/checkpoint.ps1`; the sections below are edited by hand (or by
@@ -9,6 +9,7 @@ Claude at the end of a session). Machine snapshot lives next to it in
 append-only history in `log.md`.
 
 ## Where we left off
+- 2026-08-18 02:00 — **Curtain walls replaced by solid Generic 8" walls + Fixed2 windows** (S: 4981922 w/ windows 12-19.1, 21.9-32.6, 36.2-46.7, 52.5-62.5; W: 4981923/4981924 w/ 13.9 & 6.45 ft windows; diagonal 4981925 w/ two 9 ft windows). S doors = Single-Glass 36x80 at 20.5 (hinge W) + pair 46.7-52.7 (hinges outer), all swing out; air curtain 28 = 4981953. All door swings/hinges + toilets set per pdf (dev_scripts/facing.py). Added: stub wall 4981977 (29.4, 22.9-26.3), 2 electrical panels, 5 floor drains/sinks. **Dimensions in view read like the pdf**: 52-7, 49-3, 30-1, 28-10, 33-1, 30-7 (centerline refs via dev_scripts/dims.py / dims_rp.py / dim_diag.py) + counter 3 & 14, kitchen counter 2-1. Model saved (REV-1). Real view export: `progress/views/proposed-floor-plan.png`.
 - 2026-08-18 01:20 — verification pass vs pdf: overlay `progress/model-vs-pdf-overlay.png` (model drawn over the pdf at
   the same scale) — perimeter, patio, kitchen/alcove walls, restroom block, cooler, doors and equipment coincide; restroom
   fixtures repositioned; tag audit 35/35 correct; wall centerlines = printed dims (52-7, 49-3, 30-1, 28-10, 33-1, 30-7).
@@ -56,6 +57,7 @@ append-only history in `log.md`.
 - (none)
 
 ## Session notes (newest first)
+- 2026-08-18 — Windows instead of curtain walls; door/toilet facings; pdf dimensions; panels/drains — all via dev_scripts (no reloads).
 - 2026-08-18 — Added /dev/run (dev_scripts/ runner, no-reload dev loop), /export-view, /save, /views, /open-view.
   RULE: new Revit code goes in dev_scripts/ first; batch promotions to startup.py.
 - 2026-08-18 — Finished storefront doors + render check on REV-1; Revit relaunched by Claude on REV-1.
