@@ -33,6 +33,10 @@ from Autodesk.Revit.DB import (
     CurveArray,
     ElementTransformUtils,
     LocationCurve,
+    LocationPoint,
+    StorageType,
+    View,
+    BuiltInCategory,
 )
 from Autodesk.Revit.DB.Structure import StructuralType
 import math
@@ -984,3 +988,457 @@ def list_warnings(doc):
         except Exception as ex:
             out.append({'error': str(ex)})
     return {'ok': True, 'count': len(out), 'warnings': out}
+
+
+# -- Schedule inspection / cloning, element info, tags -----------------------
+
+def _pval(el, name):
+    """String value of an instance param, falling back to the type param."""
+    try:
+        p = el.LookupParameter(name)
+        if p is None and hasattr(el, 'Symbol') and el.Symbol is not None:
+            p = el.Symbol.LookupParameter(name)
+        if p is None:
+            return "<no such param>"
+        if p.StorageType == StorageType.String:
+            return p.AsString()
+        return p.AsValueString()
+    except Exception:
+        return None
+
+
+def _schedule_info(doc, v, with_rows=3):
+    from Autodesk.Revit.DB import ScheduleSheetInstance
+    sdef = v.Definition
+    fields = []
+    for i in range(sdef.GetFieldCount()):
+        f = sdef.GetField(i)
+        try:
+            pname = f.GetName()
+        except Exception:
+            pname = None
+        fields.append({'index': i, 'heading': f.ColumnHeading, 'param': pname,
+                       'type': str(f.FieldType), 'width_ft': f.GridColumnWidth,
+                       'hidden': f.IsHidden,
+                       'align': str(f.HorizontalAlignment)})
+    filters = []
+    for flt in sdef.GetFilters():
+        try:
+            fld = sdef.GetField(flt.FieldId)
+            val = None
+            if flt.IsStringValue:
+                val = flt.GetStringValue()
+            elif flt.IsDoubleValue:
+                val = flt.GetDoubleValue()
+            elif flt.IsIntegerValue:
+                val = flt.GetIntegerValue()
+            elif flt.IsElementIdValue:
+                val = flt.GetElementIdValue().Value
+            filters.append({'field': fld.ColumnHeading, 'type': str(flt.FilterType), 'value': val})
+        except Exception as ex:
+            filters.append({'error': str(ex)})
+    sorts = []
+    for sg in sdef.GetSortGroupFields():
+        try:
+            sorts.append({'field': sdef.GetField(sg.FieldId).ColumnHeading,
+                          'order': str(sg.SortOrder), 'header': sg.ShowHeader,
+                          'footer': sg.ShowFooter, 'blank_line': sg.ShowBlankLine})
+        except Exception:
+            pass
+    placed = []
+    for ssi in FilteredElementCollector(doc).OfClass(ScheduleSheetInstance):
+        try:
+            if ssi.ScheduleId == v.Id:
+                owner = doc.GetElement(ssi.OwnerViewId)
+                placed.append({'view_id': ssi.OwnerViewId.Value,
+                               'view': owner.Name if owner else None,
+                               'sheet_number': getattr(owner, 'SheetNumber', None),
+                               'x': ssi.Point.X, 'y': ssi.Point.Y})
+        except Exception:
+            pass
+    cat = None
+    try:
+        c = doc.Settings.Categories.get_Item(BuiltInCategory(sdef.CategoryId.Value))
+        cat = c.Name if c else None
+    except Exception:
+        cat = None
+    return {'id': v.Id.Value, 'name': v.Name, 'category_id': sdef.CategoryId.Value,
+            'category': cat, 'itemized': sdef.IsItemized,
+            'show_title': sdef.ShowTitle, 'show_headers': sdef.ShowHeaders,
+            'fields': fields, 'filters': filters, 'sort': sorts,
+            'placed_on': placed,
+            'rows': _schedule_rows(v, with_rows) if with_rows else []}
+
+
+@api.route('/schedules', methods=['GET'])
+def list_schedules(doc, request):
+    """All non-template schedules with columns, filters, sort, placement + first rows."""
+    if doc is None:
+        return _err('No active document.', 409)
+    from Autodesk.Revit.DB import ViewSchedule
+    out = []
+    for v in FilteredElementCollector(doc).OfClass(ViewSchedule):
+        if v.IsTemplate or v.IsTitleblockRevisionSchedule:
+            continue
+        try:
+            out.append(_schedule_info(doc, v, 4))
+        except Exception as ex:
+            out.append({'id': v.Id.Value, 'name': v.Name, 'error': str(ex)})
+    out.sort(key=lambda d: d.get('name') or '')
+    return {'ok': True, 'count': len(out), 'schedules': out}
+
+
+@api.route('/schedule-clone', methods=['POST'])
+def clone_schedule(doc, request):
+    """Duplicate an existing schedule (keeps every column, heading, width, appearance)
+    under a new name, replacing its filters.
+    Body: {"source": "EQUIPMENT SCHEDULE" (name or id), "name": "EQUIPMENT SCHEDULE (E) - PHO HUNG",
+           "filters": [{"heading": "STATUS", "equals": "EXISTING"}],   # optional; [] = no filters
+           "keep_filters": false, "replace": true}"""
+    from Autodesk.Revit.DB import (ViewSchedule, ViewDuplicateOption, ScheduleFilter,
+                                   ScheduleFilterType)
+    if doc is None:
+        return _err('No active document.', 409)
+    data = request.data or {}
+    src_key = data.get('source')
+    name = data.get('name')
+    if not src_key or not name:
+        return _err('Required: source, name.')
+    src = None
+    for v in FilteredElementCollector(doc).OfClass(ViewSchedule):
+        if v.IsTemplate:
+            continue
+        if v.Name == src_key or str(v.Id.Value) == str(src_key):
+            src = v
+            break
+    if src is None:
+        return _err('Source schedule "{}" not found.'.format(src_key), 404)
+    t = Transaction(doc, 'OneTake: clone schedule -> {}'.format(name))
+    _prep(t)
+    t.Start()
+    try:
+        old_ids = []
+        renamed_old = []
+        if data.get("replace", True):
+            old_ids = [v.Id for v in FilteredElementCollector(doc).OfClass(ViewSchedule)
+                       if v.Name == name and not v.IsTemplate and v.Id != src.Id]
+            for oid in old_ids:
+                try:
+                    doc.Delete(oid)
+                except Exception:
+                    # active view etc. cannot be deleted: rename it out of the way
+                    ov = doc.GetElement(oid)
+                    ov.Name = name + " - OLD"
+                    renamed_old.append(oid.Value)
+        new_id = src.Duplicate(ViewDuplicateOption.Duplicate)
+        new = doc.GetElement(new_id)
+        new.Name = name
+        sdef = new.Definition
+        if not data.get('keep_filters', False):
+            while sdef.GetFilterCount() > 0:
+                sdef.RemoveFilter(0)
+        # optional extra fields, e.g. a hidden "Comments" column to filter on
+        for af in (data.get("add_fields") or []):
+            for sf in sdef.GetSchedulableFields():
+                try:
+                    nm = sf.GetName(doc)
+                except Exception:
+                    nm = None
+                if nm == af.get("param"):
+                    fld = sdef.AddField(sf)
+                    fld.IsHidden = bool(af.get("hidden", True))
+                    if af.get("heading"):
+                        fld.ColumnHeading = af["heading"]
+                    break
+        missing = []
+        for flt in (data.get('filters') or []):
+            fid = None
+            for i in range(sdef.GetFieldCount()):
+                f = sdef.GetField(i)
+                nm = None
+                try:
+                    nm = f.GetName()
+                except Exception:
+                    pass
+                if f.ColumnHeading == flt.get('heading') or nm == flt.get('heading') \
+                        or nm == flt.get('param'):
+                    fid = f.FieldId
+                    break
+            if fid is None:
+                missing.append(flt)
+                continue
+            ftype = ScheduleFilterType.Equal
+            if flt.get('contains') is not None:
+                ftype = ScheduleFilterType.Contains
+                val = flt['contains']
+            elif flt.get('not_equals') is not None:
+                ftype = ScheduleFilterType.NotEqual
+                val = flt['not_equals']
+            else:
+                val = flt.get('equals')
+            sdef.AddFilter(ScheduleFilter(fid, ftype, str(val)))
+        doc.Regenerate()
+        info = _schedule_info(doc, new, 40)
+        t.Commit()
+    except Exception as ex:
+        t.RollBack()
+        return _err('Revit API error (nothing committed): {}'.format(ex), 500)
+    return {'ok': True, 'source_id': src.Id.Value, 'deleted_old_ids': [i.Value for i in old_ids], "renamed_old_ids": renamed_old,
+            'missing_filters': missing, 'schedule': info}
+
+
+@api.route('/element-info', methods=['POST'])
+def element_info(doc, request):
+    """Body: {"ids": [...], "params": ["Mark","Type Mark","Comments","Description"]}"""
+    if doc is None:
+        return _err('No active document.', 409)
+    data = request.data or {}
+    ids = data.get('ids') or []
+    params = data.get('params') or ['Mark', 'Type Mark', 'Comments', 'Description',
+                                    'Manufacturer', 'Model']
+    out = []
+    for i in ids:
+        el = doc.GetElement(ElementId(long(i)))
+        if el is None:
+            out.append({'id': i, 'error': 'not found'})
+            continue
+        d = {'id': i, 'category': el.Category.Name if el.Category else None,
+             'class': el.GetType().Name}
+        try:
+            d['family'] = el.Symbol.FamilyName
+            d['type'] = el.Symbol.get_Parameter(BuiltInParameter.SYMBOL_NAME_PARAM).AsString()
+        except Exception:
+            pass
+        try:
+            d['level_id'] = el.LevelId.Value
+        except Exception:
+            pass
+        try:
+            bb = el.get_BoundingBox(None)
+            if bb:
+                d['bbox'] = [bb.Min.X, bb.Min.Y, bb.Max.X, bb.Max.Y]
+            loc = el.Location
+            if isinstance(loc, LocationPoint):
+                d['xy'] = [loc.Point.X, loc.Point.Y]
+        except Exception:
+            pass
+        for p in params:
+            d[p] = _pval(el, p)
+        out.append(d)
+    return {'ok': True, 'elements': out}
+
+
+def _find_view(doc, vname):
+    if not vname:
+        return doc.ActiveView
+    for v in FilteredElementCollector(doc).OfClass(View):
+        if not v.IsTemplate and v.Name == vname:
+            return v
+    return None
+
+
+@api.route('/tags', methods=['POST'])
+def list_or_create_tags(doc, request):
+    """Body {"view": "Proposed Floor Plan"}  -> list independent tags in that view.
+    Body {"view": ..., "items":[{"id": 4977940, "dx": 0, "dy": 1.5}], "tag_symbol_id": optional,
+          "leader": false, "orientation": "Horizontal", "retag": false}  -> create tags.
+    Offsets in FEET from the element location point."""
+    if doc is None:
+        return _err('No active document.', 409)
+    from Autodesk.Revit.DB import IndependentTag, TagOrientation, Reference, TagMode
+    data = request.data or {}
+    view = _find_view(doc, data.get('view'))
+    if view is None:
+        return _err('View "{}" not found.'.format(data.get('view')), 404)
+    existing = []
+    already = {}
+    for tg in FilteredElementCollector(doc, view.Id).OfClass(IndependentTag):
+        hosts = []
+        try:
+            hosts = [r.ElementId.Value for r in tg.GetTaggedReferences()]
+        except Exception:
+            pass
+        for h in hosts:
+            already[h] = tg.Id.Value
+        try:
+            txt = tg.TagText
+        except Exception:
+            txt = None
+        try:
+            existing.append({'id': tg.Id.Value, 'hosts': hosts, 'text': txt,
+                             'category': tg.Category.Name if tg.Category else None,
+                             'x': tg.TagHeadPosition.X, 'y': tg.TagHeadPosition.Y})
+        except Exception:
+            existing.append({'id': tg.Id.Value, 'hosts': hosts, 'text': txt})
+    items = data.get('items') or []
+    if not items:
+        return {'ok': True, 'view': view.Name, 'count': len(existing), 'tags': existing}
+    orient = TagOrientation.Horizontal
+    if str(data.get('orientation', '')).lower().startswith('v'):
+        orient = TagOrientation.Vertical
+    tag_type = None
+    if data.get('tag_symbol_id'):
+        tag_type = ElementId(long(data['tag_symbol_id']))
+    leader = bool(data.get('leader', False))
+    made, skipped, errors = [], [], []
+    t = Transaction(doc, 'OneTake: tag {} elements'.format(len(items)))
+    _prep(t)
+    t.Start()
+    try:
+        for it in items:
+            eid = long(it['id'])
+            if eid in already and not data.get('retag'):
+                skipped.append({'id': eid, 'tag_id': already[eid]})
+                continue
+            try:
+                el = doc.GetElement(ElementId(eid))
+                if el is None:
+                    errors.append({'id': eid, 'error': 'not found'})
+                    continue
+                loc = el.Location
+                if isinstance(loc, LocationPoint):
+                    base = loc.Point
+                else:
+                    bb = el.get_BoundingBox(view)
+                    base = (bb.Min + bb.Max) / 2.0
+                pt = XYZ(base.X + float(it.get('dx', 0)), base.Y + float(it.get('dy', 0)), base.Z)
+                ref = Reference(el)
+                if tag_type is not None:
+                    tag = IndependentTag.Create(doc, tag_type, view.Id, ref, leader, orient, pt)
+                else:
+                    tag = IndependentTag.Create(doc, view.Id, ref, leader,
+                                                TagMode.TM_ADDBY_CATEGORY, orient, pt)
+                doc.Regenerate()
+                try:
+                    txt = tag.TagText
+                except Exception:
+                    txt = None
+                made.append({'id': eid, 'tag_id': tag.Id.Value, 'text': txt})
+            except Exception as ex:
+                errors.append({'id': eid, 'error': str(ex)})
+        t.Commit()
+    except Exception as ex:
+        t.RollBack()
+        return _err('Revit API error (nothing committed): {}'.format(ex), 500)
+    return {'ok': True, 'view': view.Name, 'tags': made, 'skipped': skipped,
+            'errors': errors, 'count': len(made)}
+
+
+@api.route('/tag-family-from', methods=['POST'])
+def tag_family_from(doc, request):
+    """Derive a new tag family from a loaded one (e.g. make a Multi-Category tag out of
+    'Plumbing Fixture Tag' so one Type-Mark tag works on every equipment category).
+    Body: {"source_family": "Plumbing Fixture Tag", "new_name": "OneTake Equipment Tag",
+           "category": "OST_MultiCategoryTags"}"""
+    from Autodesk.Revit.DB import (Family, Category, SaveAsOptions, IFamilyLoadOptions)
+    import os, tempfile
+    if doc is None:
+        return _err('No active document.', 409)
+    data = request.data or {}
+    src_name = data.get('source_family')
+    new_name = data.get('new_name') or 'OneTake Equipment Tag'
+    cat_name = data.get('category') or 'OST_MultiCategoryTags'
+    src = None
+    for f in FilteredElementCollector(doc).OfClass(Family):
+        if f.Name == src_name:
+            src = f
+            break
+    if src is None:
+        return _err('Family "{}" not found.'.format(src_name), 404)
+    # already there?
+    for f in FilteredElementCollector(doc).OfClass(Family):
+        if f.Name == new_name:
+            syms = [doc.GetElement(i) for i in f.GetFamilySymbolIds()]
+            return {'ok': True, 'existing': True, 'family_id': f.Id.Value,
+                    'symbol_ids': [s.Id.Value for s in syms],
+                    'category': f.FamilyCategory.Name if f.FamilyCategory else None}
+    fam_doc = None
+    # reuse an already-open family doc for this family (a previous failed call)
+    for d in HOST_APP.uiapp.Application.Documents:
+        try:
+            if d.IsFamilyDocument and d.Title.split(".")[0] == src_name:
+                fam_doc = d
+        except Exception:
+            pass
+    if fam_doc is None:
+        fam_doc = doc.EditFamily(src)
+    try:
+        t = Transaction(fam_doc, "OneTake: recategorize tag")
+        t.Start()
+        try:
+            cat = fam_doc.Settings.Categories.get_Item(getattr(BuiltInCategory, cat_name))
+            fam_doc.OwnerFamily.FamilyCategory = cat
+            t.Commit()
+        except Exception as ex:
+            t.RollBack()
+            raise Exception("recategorize to {} failed: {}".format(cat_name, ex))
+        labels = []
+        try:
+            from Autodesk.Revit.DB import TextElement
+            for te in FilteredElementCollector(fam_doc).OfClass(TextElement):
+                labels.append({'id': te.Id.Value, 'class': te.GetType().Name,
+                               'text': getattr(te, 'Text', None)})
+        except Exception:
+            pass
+        path = os.path.join(tempfile.gettempdir(), new_name + '.rfa')
+        if os.path.exists(path):
+            os.remove(path)
+        opts = SaveAsOptions()
+        opts.OverwriteExistingFile = True
+        fam_doc.SaveAs(path, opts)
+        newfam = fam_doc.LoadFamily(doc)
+    finally:
+        try:
+            fam_doc.Close(False)
+        except Exception:
+            pass
+    if newfam is None:
+        return _err('LoadFamily returned None', 500)
+    t2 = Transaction(doc, 'OneTake: activate tag symbols')
+    _prep(t2)
+    t2.Start()
+    syms = []
+    for i in newfam.GetFamilySymbolIds():
+        s = doc.GetElement(i)
+        if not s.IsActive:
+            s.Activate()
+        syms.append(s.Id.Value)
+    t2.Commit()
+    return {'ok': True, 'existing': False, 'family_id': newfam.Id.Value, 'name': newfam.Name,
+            'category': newfam.FamilyCategory.Name if newfam.FamilyCategory else None,
+            'symbol_ids': syms, 'saved_as': path, 'labels': labels}
+
+
+@api.route('/docs', methods=['GET'])
+def list_docs(doc):
+    """Open documents (project + family docs), for recovery after failed EditFamily."""
+    import System
+    System.GC.Collect()
+    System.GC.WaitForPendingFinalizers()
+    out = []
+    for d in HOST_APP.uiapp.Application.Documents:
+        try:
+            out.append({'title': d.Title, 'family': d.IsFamilyDocument,
+                        'modifiable': d.IsModifiable, 'path': d.PathName})
+        except Exception as ex:
+            out.append({'error': str(ex)})
+    return {'ok': True, 'docs': out}
+
+
+@api.route('/close-doc', methods=['POST'])
+def close_doc(doc, request):
+    """Body {"title": "Plumbing Fixture Tag.rfa"} -> close that (family) doc without saving."""
+    import System
+    System.GC.Collect()
+    System.GC.WaitForPendingFinalizers()
+    title = (request.data or {}).get('title')
+    for d in list(HOST_APP.uiapp.Application.Documents):
+        try:
+            if d.Title == title or d.Title.split('.')[0] == title:
+                if not d.IsFamilyDocument:
+                    return _err('Refusing to close a project document.', 400)
+                ok = d.Close(False)
+                return {'ok': True, 'closed': bool(ok), 'title': title}
+        except Exception as ex:
+            return _err('close failed: {}'.format(ex), 500)
+    return _err('doc "{}" not open'.format(title), 404)

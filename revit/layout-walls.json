@@ -1,5 +1,5 @@
 {
-  "_note": "Pho Hung El Cajon rough draft, built 2026-08-17 via onetake-v1 routes. Decimal FEET, origin = outer SW corner (project origin), X east, Y north. Level '1st Floor Level', walls 10 ft. Annotations/tags in view 'Proposed Floor Plan'. Schedule view: 'EQUIPMENT SCHEDULE (E) - PHO HUNG' (id 4980435).",
+  "_note": "Pho Hung El Cajon rough draft, built 2026-08-17 via onetake-v1 routes. Decimal FEET, origin = outer SW corner (project origin), X east, Y north. Level '1st Floor Level', walls 10 ft. Annotations/tags in view 'Proposed Floor Plan'. Schedule view: 'EQUIPMENT SCHEDULE (E) - PHO HUNG' (id 4980444; cloned from EQUIPMENT SCHEDULE 3965108, hidden Comments=EXISTING filter). Item tags 01-29 in Proposed Floor Plan via OneTake * Tag families (Type Mark).",
   "perimeter": {
     "4978036": {"type":"Generic - 8\"", "pts":[[11.0,0],[6.3,0]]},
     "4978037": {"type":"Generic - 8\"", "pts":[[6.3,0],[6.3,13.5]], "note":"roof-access/elec rooms W wall (exterior; recess)"},

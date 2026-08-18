@@ -84,6 +84,9 @@ function Render($state, $revitNow, $msg) {
 }
 
 # ---- main loop -----------------------------------------------------------
+# pid file so "delta" / install-autostart can tell we are alive
+$PidFile = Join-Path $Prog "terminal.pid"
+try { Set-Content -Path $PidFile -Value $PID -Encoding ascii } catch {}
 Save-Checkpoint "progress terminal started"
 $lastSave = Get-Date
 $lastSig  = ""
@@ -134,6 +137,7 @@ try {
     Write-Host "`n  saving final checkpoint..." -ForegroundColor Cyan
     Save-Checkpoint "progress terminal closed"
     Write-Host "  done - pick up next time from revit/progress/PROGRESS.md" -ForegroundColor Green
+    try { Remove-Item $PidFile -Force -ErrorAction SilentlyContinue } catch {}
 }
 # exit code tells the .cmd supervisor whether this was a deliberate quit
 if ($quit) { exit 0 } else { exit 1 }

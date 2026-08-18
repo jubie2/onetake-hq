@@ -59,4 +59,4 @@ Hard-won constraints for this project. Do not re-derive these; they are verified
   git-commits/pushes. A Stop hook runs it after every Claude turn.
 - `tools/Progress-Terminal.cmd` = live, self-restarting terminal (auto-saves on
   change / every 10 min); `tools/install-autostart.ps1` puts it in the Startup folder.
-- Equipment schedule for Pho Hung: Revit view `EQUIPMENT SCHEDULE (E) - PHO HUNG` (id 4980435).
+- Equipment schedule for Pho Hung: Revit view `EQUIPMENT SCHEDULE (E) - PHO HUNG` (id 4980444).

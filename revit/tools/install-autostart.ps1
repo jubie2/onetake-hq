@@ -22,8 +22,9 @@ $sc.Description      = "OneTake Revit live progress terminal (auto-saves checkpo
 $sc.Save()
 Write-Host "installed: $Lnk  (runs at every logon)" -ForegroundColor Green
 
-$running = Get-Process powershell -ErrorAction SilentlyContinue |
-    Where-Object { $_.MainWindowTitle -like "OneTake Revit - progress terminal*" }
+$running = $false
+$pidFile = Join-Path (Split-Path $PSScriptRoot -Parent) "progress\terminal.pid"
+if (Test-Path $pidFile) { try { $running = [bool](Get-Process -Id ([int](Get-Content $pidFile)) -ErrorAction SilentlyContinue) } catch {} }
 if (-not $running) {
     Start-Process -FilePath $Cmd -WorkingDirectory $PSScriptRoot
     Write-Host "started the terminal now"
