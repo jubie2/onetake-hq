@@ -1,0 +1,296 @@
+{
+    "01":  {
+               "ids":  [
+                           4977940
+                       ],
+               "d":  "ELEC. POS",
+               "mfg":  "-",
+               "model":  "-",
+               "elec":  "120V / 1 / 60Hz",
+               "rem":  "EXISTING"
+           },
+    "02":  {
+               "ids":  [
+                           4981589,
+                           4981590
+                       ],
+               "d":  "HAND SINK, WALL-MOUNT W/ SPLASH GUARD STAINLESS STEEL/NSF, W/ SOAP \u0026 TOWEL DISPENSER. OVERALL: 15-1/4\" W x 15-3/4\" D x 14-3/8\" H",
+               "mfg":  "GSW",
+               "model":  "HS-1615S",
+               "water":  "1/2\" HOT / 1/2\" COLD",
+               "waste":  "DIRECT",
+               "rem":  "EXISTING - DIRECT DRAINAGE"
+           },
+    "03":  {
+               "ids":  [
+                           4977943
+                       ],
+               "d":  "SINGLE GLASS DOOR REFRIGERATOR (W:27\" D:31-1/2\" H:81-1/4\"), SUPPORTED BY 4\" HIGH CASTERS",
+               "mfg":  "BLUEAIR",
+               "model":  "BKGM23-HC",
+               "elec":  "120V / 1 / 60Hz",
+               "rem":  "EXISTING - SELF CONTAINED"
+           },
+    "04":  {
+               "ids":  [
+                           4978064
+                       ],
+               "d":  "AIR CURTAIN W/ MICRO SWITCH (WALL-MOUNT)",
+               "mfg":  "MARS",
+               "model":  "TRE",
+               "elec":  "120V / 1 / 60Hz",
+               "rem":  "EXISTING"
+           },
+    "05":  {
+               "ids":  [
+                           4977944
+                       ],
+               "d":  "TYPE I HOOD (12\u0027W x 4\u0027D)",
+               "mfg":  "CAPTIVEAIRE",
+               "model":  "4824ND-2",
+               "rem":  "EXISTING - TYPE I HOOD"
+           },
+    "06":  {
+               "ids":  [
+                           4977945
+                       ],
+               "d":  "CHINESE WOK RANGES (108\" x 42\" x 32\")",
+               "mfg":  "ABC RESTAURANT EQUIPMENT",
+               "model":  "ABC-4",
+               "water":  "COLD",
+               "waste":  "INDIRECT",
+               "btu":  "440,000",
+               "rem":  "EXISTING - DRAIN TO FLOOR SINK"
+           },
+    "07":  {
+               "ids":  [
+                           4977947
+                       ],
+               "d":  "GAS DEEP FRYER (15-3/8\"W x 30-1/10\"D x 44-2/5\"H), SUPPORTED BY 6\" CASTERS",
+               "mfg":  "ATOSA",
+               "model":  "ATFS-50",
+               "rem":  "EXISTING - GAS"
+           },
+    "08":  {
+               "ids":  [
+                           4978068,
+                           4978069
+                       ],
+               "d":  "STAINLESS STEEL SPLASH GUARD FOR DEEP FRYER (20.5\"W x 18\"H)",
+               "mfg":  "ASSURE",
+               "model":  "190FG1820",
+               "rem":  "EXISTING"
+           },
+    "09":  {
+               "ids":  [
+                           4978070
+                       ],
+               "d":  "WALK IN COOLER",
+               "mfg":  "KOLPAK",
+               "model":  "-",
+               "waste":  "INDIRECT",
+               "rem":  "EXISTING - DRAIN TO FLOOR SINK"
+           },
+    "10":  {
+               "ids":  [
+                           4981554
+                       ],
+               "d":  "HAND SINK, WALL-MOUNT W/ BACK SPLASH GUARD STAINLESS STEEL/NSF, W/ SOAP \u0026 TOWEL DISPENSER. OVERALL: 15-1/4\" W x 15-3/4\" D x 14-3/8\" H",
+               "mfg":  "GSW",
+               "model":  "HS-1615W",
+               "water":  "1/2\" HOT / 1/2\" COLD",
+               "waste":  "DIRECT",
+               "rem":  "EXISTING - DIRECT DRAINAGE"
+           },
+    "11":  {
+               "ids":  [
+                           4978074
+                       ],
+               "d":  "LOCKER (15\"W x 20\"D x 77\"H), SUPPORTED BY 6\" HIGH ROUND LEGS",
+               "mfg":  "GSW",
+               "model":  "EL-5DR",
+               "rem":  "EXISTING"
+           },
+    "12":  {
+               "ids":  [
+                           4977952,
+                           4977953
+                       ],
+               "d":  "REACH-IN 2 DOOR FREEZER (54.1\"W x 30.7\"D x 81.9\"H), WITH 4\" CASTERS",
+               "mfg":  "COOLER DEPOT",
+               "model":  "KF-49B",
+               "elec":  "120V / 1 / 60Hz",
+               "rem":  "EXISTING - SELF CONTAINED"
+           },
+    "13":  {
+               "ids":  [
+                           4978075
+                       ],
+               "d":  "TYPE I HOOD (7\u0027W x 4\u0027D)",
+               "mfg":  "CAPTIVEAIRE",
+               "model":  "4824ND-2",
+               "rem":  "EXISTING - TYPE I HOOD"
+           },
+    "14":  {
+               "ids":  [
+                           4978076
+                       ],
+               "d":  "GAS STOCK POT STOVE, 2 BURNERS (18\"W x 41.7\"D x 22.8\"H), WITH 4\" LEGS",
+               "mfg":  "ATOSA USA",
+               "model":  "ATSP-18-2",
+               "rem":  "EXISTING - GAS"
+           },
+    "15":  {
+               "ids":  [
+                           4977955
+                       ],
+               "d":  "4 BURNER GAS COUNTERTOP RANGE (24\"W x 26-13/16\"D x 15\"H), WITH LEGS",
+               "mfg":  "COOKING PERFORMANCE GROUP",
+               "model":  "R-CPG-24-NL",
+               "rem":  "EXISTING - GAS"
+           },
+    "16":  {
+               "ids":  [
+                           4978077
+                       ],
+               "d":  "STAINLESS STEEL WORK TABLE (36\"W x 30\"D x 34\"H), SUPPORTED BY 6\" HIGH ROUND LEGS",
+               "mfg":  "REGENCY",
+               "model":  "600TS3036S",
+               "rem":  "EXISTING"
+           },
+    "17":  {
+               "ids":  [
+                           4978078
+                       ],
+               "d":  "PREP. SINK W/ TABLE (SINK: 18\"W x 24\"D x 14\"H, TABLE: 96\"W x 30\"D x 45\"H)",
+               "mfg":  "ADVANCE TABCO",
+               "model":  "TKMS-308 / TA-11L",
+               "water":  "1/2\" HOT / 1/2\" COLD",
+               "waste":  "INDIRECT",
+               "rem":  "EXISTING - DRAIN TO FLOOR SINK"
+           },
+    "18":  {
+               "ids":  [
+                           4977958
+                       ],
+               "d":  "3 COMP SINK W/ 2 24\"x24\" DRAINBOARDS W/ SPLASH GUARD, SIZE: 103\"W x 27\"D x 45\"H, 11-1/2\"H BACKSPLASH",
+               "mfg":  "ADVANCE TABCO",
+               "model":  "94-3-54-24RL",
+               "water":  "1/2\" HOT / 1/2\" COLD",
+               "waste":  "INDIRECT",
+               "rem":  "EXISTING - DRAIN TO FLOOR SINK"
+           },
+    "19":  {
+               "ids":  [
+                           4977961
+                       ],
+               "d":  "ELEC. SELF CONTAINED CUBE ICE MAKER (24.54\"W x 26.27\"D x 33\"H), SUPPORTED BY 6\" HIGH ROUND LEGS",
+               "mfg":  "ICE-O-MATIC",
+               "model":  "ICEU220",
+               "elec":  "120V / 1 / 60Hz",
+               "water":  "COLD",
+               "waste":  "INDIRECT",
+               "rem":  "EXISTING - DRAIN TO FLOOR SINK"
+           },
+    "20":  {
+               "ids":  [
+                           4978079
+                       ],
+               "d":  "WATER FILTER",
+               "mfg":  "PENTAIR",
+               "model":  "QC71 HEAD / 4FC-S.F.C",
+               "water":  "COLD",
+               "rem":  "EXISTING"
+           },
+    "21":  {
+               "ids":  [
+                           4978080
+                       ],
+               "d":  "STORAGE SHELVING 4 TIER, 18\" DEEP 3\u0027x1\u0027-6\", 6\" ABOVE GROUND, 5\u0027 HEIGHT TOTAL (1 LOT)",
+               "mfg":  "REGENCY",
+               "model":  "460EC1836",
+               "rem":  "EXISTING"
+           },
+    "22":  {
+               "ids":  [
+                           4977965
+                       ],
+               "d":  "STORAGE SHELVING 4 TIER, 18\" DEEP 3\u0027-6\"x1\u0027-6\", 6\" ABOVE GROUND, 5\u0027 HEIGHT TOTAL (1 LOT)",
+               "mfg":  "REGENCY",
+               "model":  "460EC1860",
+               "rem":  "EXISTING"
+           },
+    "23":  {
+               "ids":  [
+                           4977963,
+                           4977964,
+                           4977966,
+                           4978081
+                       ],
+               "d":  "STORAGE SHELVING 4 TIER, 18\" DEEP 4\u0027x1\u0027-6\", 6\" ABOVE GROUND, 5\u0027 HEIGHT TOTAL (4 LOT)",
+               "mfg":  "REGENCY",
+               "model":  "460EC1848",
+               "rem":  "EXISTING"
+           },
+    "24":  {
+               "ids":  [
+                           4981591
+                       ],
+               "d":  "MOP SINK (24\"W x 24\"D x 14\"H)",
+               "mfg":  "GSW",
+               "model":  "SE2424FM",
+               "water":  "1/2\" HOT / 1/2\" COLD",
+               "waste":  "DIRECT",
+               "rem":  "EXISTING - DIRECT DRAINAGE"
+           },
+    "25":  {
+               "ids":  [
+                           4978082
+                       ],
+               "d":  "SS MOP SINK UTILITY SHELF (24\"W x 8\"D) WITH MOP/BROOM HOLDERS \u0026 RAG HOOKS",
+               "mfg":  "REGENCY",
+               "model":  "600WSU824",
+               "rem":  "EXISTING"
+           },
+    "26":  {
+               "ids":  [
+                           4977968
+                       ],
+               "d":  "GAS TANK WATER HEATER, 81 GAL",
+               "mfg":  "AO SMITH",
+               "model":  "BTR-154",
+               "water":  "COLD IN / HOT OUT",
+               "waste":  "INDIRECT",
+               "btu":  "154,000",
+               "rem":  "EXISTING - INDIRECT DRAIN TO FLOOR SINK"
+           },
+    "27":  {
+               "ids":  [
+                           4978083
+                       ],
+               "d":  "CUSTOM STAINLESS STEEL LEFT/RIGHT SPLASH (30\"W x 18\"H)",
+               "mfg":  "CUSTOM",
+               "model":  "CUSTOM",
+               "rem":  "EXISTING"
+           },
+    "28":  {
+               "ids":  [
+                           4978065
+                       ],
+               "d":  "AIR CURTAIN W/ MICRO SWITCH (WALL-MOUNT)",
+               "mfg":  "MARS",
+               "model":  "TRE",
+               "elec":  "120V / 1 / 60Hz",
+               "rem":  "EXISTING"
+           },
+    "29":  {
+               "ids":  [
+                           4977973
+                       ],
+               "d":  "GREASE INTERCEPTOR",
+               "mfg":  "-",
+               "model":  "-",
+               "waste":  "INDIRECT",
+               "rem":  "EXISTING"
+           }
+}

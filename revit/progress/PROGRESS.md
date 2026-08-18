@@ -1,6 +1,6 @@
 # Revit / OneTake — PROGRESS (read this first)
 
-<!-- auto --> **Last checkpoint:** 2026-08-17 22:54:46 | Revit: up, 'Pho Hung El cajon', 305 walls, schedule 32 rows | git claude/trusting-thompson-232391@6354c2d, 11 uncommitted
+<!-- auto --> **Last checkpoint:** 2026-08-18 00:04:05 | Revit: not running | git claude/trusting-thompson-232391@469b21a, 8 uncommitted
 
 This file is the single "where did we leave off" note. The header line above is
 rewritten by `tools/checkpoint.ps1`; the sections below are edited by hand (or by
@@ -9,6 +9,18 @@ Claude at the end of a session). Machine snapshot lives next to it in
 append-only history in `log.md`.
 
 ## Where we left off
+- **2026-08-18 layout matched to the EQUIPMENT PLAN pdf** (see `layout-walls.json` for every id/coordinate):
+  W wall straightened to x=6.3 (storefront 25.9-49.25 w/ entry door 04 at y 41.3), kitchen S wall moved to
+  y=15.8 + freezer alcove (x 56.5-63.6, y 7.9-15.8), janitor/restroom block rebuilt (x 25.3-34.75; women 40.7-52.4,
+  men 52.4-diag; janitor S at 30.08), roof-access/elec rooms top y=11.2 + 2nd door, cooler 42.4-56.1 x 16.5-23 + door,
+  PATIO low walls (x 6.55-24.9, y 0 to -24) + room 399 SF, cashier counter 3x13.5 at x 20.1-23.1, kitchen counter,
+  all 29 items repositioned per plan (bboxes recorded), 3 stranded hand/mop sinks re-hosted, tags redone (35), rooms
+  renamed to plan names, separation lines rebuilt. New verbs: move (dx/dy/to/rotate/flip), wall-move, curtain-grid,
+  curtain-door panel_id, docs/close-doc; `tools/render-plan.ps1` renders the model to PNG for comparison.
+- **BLOCKED at the end:** Revit on FrancisAsus is paused by an Autodesk "Device limit reached" dialog (Revit also open on
+  FrancisNG). Routes server unreachable until the dialog is dismissed. Remaining: S storefront doors onto exact plan
+  positions (single 19.1-21.9, double 46.7-52.5) via curtain-grid + curtain-door(panel_id); move air curtain 28 to x 49.6;
+  render `tools/render-plan.ps1 -ItemsJson <eq_items.json>` and eyeball vs the pdf; then checkpoint -Commit.
 - Project open in Revit: **Pho Hung El cajon** (Revit 2025.4.2, pyRevit 6.4, routes :48884 OK)
 - Rough draft of the El Cajon plan built via `onetake-v1` verbs on level `1st Floor Level`
   (walls 10 ft; geometry in `revit/layout-walls.json`, sketch `revit/layout-sketch.svg`)
@@ -38,6 +50,7 @@ append-only history in `log.md`.
 - (none)
 
 ## Session notes (newest first)
+- 2026-08-18 — Layout matched to pdf (walls, patio, equipment positions, rooms). Revit got licence-paused at the very end; storefront door re-grid + render check pending.
 - 2026-08-17 — (E) schedule rebuilt to match project EQUIPMENT SCHEDULE columns (id 4980444); 35 elements
   tagged 01–29 on Proposed Floor Plan; new verbs schedules, schedule-clone, element-info, tags,
   tag-family-from, docs, close-doc; `delta` command installed (resume Claude + progress terminal).

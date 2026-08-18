@@ -740,6 +740,8 @@ def curtain_door(doc, request):
     if grid is None:
         return _err('Wall {} is not a curtain wall.'.format(data['wall_id']))
     best, bd = None, 1e9
+    if data.get("panel_id"):
+        best, bd = doc.GetElement(ElementId(long(data["panel_id"]))), 0.0
     for pid in grid.GetPanelIds():
         p = doc.GetElement(pid)
         bb = p.get_BoundingBox(None)
@@ -1442,3 +1444,198 @@ def close_doc(doc, request):
         except Exception as ex:
             return _err('close failed: {}'.format(ex), 500)
     return _err('doc "{}" not open'.format(title), 404)
+
+
+# -- Move / rotate elements, re-point walls -------------------------------------
+
+def _elem_center(el, view=None):
+    loc = el.Location
+    if isinstance(loc, LocationPoint):
+        return loc.Point
+    bb = el.get_BoundingBox(view)
+    if bb is None:
+        return None
+    return (bb.Min + bb.Max) * 0.5
+
+
+@api.route('/move', methods=['POST'])
+def move_elements(doc, request):
+    """Move / rotate elements. FEET, degrees.
+    Body: {"items": [{"id": 1, "dx": 1.5, "dy": -2},          # relative
+                     {"id": 2, "to": [30.5, 17.5]},           # absolute: location point (or bbox center) -> to
+                     {"id": 3, "to": [..], "by": "bbox"},     # use bbox center as the reference point
+                     {"id": 4, "rotate_deg": 90}]}            # rotate about its own point / bbox center
+    Hosted elements move along their host; walls can be moved too (use /wall-move to re-point)."""
+    if doc is None:
+        return _err('No active document.', 409)
+    items = (request.data or {}).get('items') or []
+    if not items:
+        return _err('Required: items.')
+    out = []
+    t = Transaction(doc, 'OneTake: move {} elements'.format(len(items)))
+    _prep(t)
+    t.Start()
+    try:
+        for it in items:
+            eid = long(it['id'])
+            el = doc.GetElement(ElementId(eid))
+            if el is None:
+                out.append({'id': eid, 'error': 'not found'})
+                continue
+            res = {'id': eid}
+            try:
+                if it.get("flip"):
+                    try:
+                        el.flipFacing()
+                        res["flipped"] = True
+                    except Exception as ex:
+                        res["flip_error"] = str(ex)
+                if it.get("flip_hand"):
+                    try:
+                        el.flipHand()
+                    except Exception as ex:
+                        res["flip_hand_error"] = str(ex)
+                if it.get('rotate_deg'):
+                    c = _elem_center(el)
+                    axis = Line.CreateBound(c, c + XYZ.BasisZ)
+                    ElementTransformUtils.RotateElement(doc, el.Id, axis,
+                                                        math.radians(float(it['rotate_deg'])))
+                    doc.Regenerate()
+                    res['rotated'] = float(it['rotate_deg'])
+                dx = dy = 0.0
+                if it.get('to') is not None:
+                    ref = None
+                    if it.get('by') == 'bbox':
+                        bb = el.get_BoundingBox(None)
+                        if bb is not None:
+                            ref = (bb.Min + bb.Max) * 0.5
+                    if ref is None:
+                        ref = _elem_center(el)
+                    if ref is None:
+                        res['error'] = 'no location'
+                        out.append(res)
+                        continue
+                    dx = float(it['to'][0]) - ref.X
+                    dy = float(it['to'][1]) - ref.Y
+                else:
+                    dx = float(it.get('dx', 0))
+                    dy = float(it.get('dy', 0))
+                if abs(dx) > 1e-6 or abs(dy) > 1e-6:
+                    ElementTransformUtils.MoveElement(doc, el.Id, XYZ(dx, dy, 0))
+                    doc.Regenerate()
+                res['moved'] = [round(dx, 3), round(dy, 3)]
+                c = _elem_center(el)
+                if c is not None:
+                    res['now'] = [round(c.X, 2), round(c.Y, 2)]
+                bb = el.get_BoundingBox(None)
+                if bb is not None:
+                    res['bbox'] = [round(bb.Min.X, 2), round(bb.Min.Y, 2), round(bb.Max.X, 2), round(bb.Max.Y, 2)]
+            except Exception as ex:
+                res['error'] = str(ex)
+            out.append(res)
+        t.Commit()
+    except Exception as ex:
+        t.RollBack()
+        return _err('Revit API error (nothing committed): {}'.format(ex), 500)
+    return {'ok': True, 'results': out}
+
+
+@api.route('/wall-move', methods=['POST'])
+def wall_move(doc, request):
+    """Re-point walls (keeps hosted doors etc. where possible). FEET.
+    Body: {"walls": [{"id": 123, "start": [x, y], "end": [x, y]}]}"""
+    if doc is None:
+        return _err('No active document.', 409)
+    walls = (request.data or {}).get('walls') or []
+    if not walls:
+        return _err('Required: walls.')
+    out = []
+    t = Transaction(doc, 'OneTake: re-point {} walls'.format(len(walls)))
+    _prep(t)
+    t.Start()
+    try:
+        for w in walls:
+            wid = long(w['id'])
+            wall = doc.GetElement(ElementId(wid))
+            if wall is None or not isinstance(wall, Wall):
+                out.append({'id': wid, 'error': 'not a wall'})
+                continue
+            try:
+                lc = wall.Location
+                z = lc.Curve.GetEndPoint(0).Z
+                p0 = XYZ(float(w['start'][0]), float(w['start'][1]), z)
+                p1 = XYZ(float(w['end'][0]), float(w['end'][1]), z)
+                lc.Curve = Line.CreateBound(p0, p1)
+                doc.Regenerate()
+                c = wall.Location.Curve
+                out.append({'id': wid, 'start': [round(c.GetEndPoint(0).X, 3), round(c.GetEndPoint(0).Y, 3)],
+                            'end': [round(c.GetEndPoint(1).X, 3), round(c.GetEndPoint(1).Y, 3)],
+                            'length_ft': round(c.Length, 3)})
+            except Exception as ex:
+                out.append({'id': wid, 'error': str(ex)})
+        t.Commit()
+    except Exception as ex:
+        t.RollBack()
+        return _err('Revit API error (nothing committed): {}'.format(ex), 500)
+    return {'ok': True, 'results': out}
+
+
+@api.route('/curtain-grid', methods=['POST'])
+def curtain_grid(doc, request):
+    """Inspect / edit a curtain wall grid. FEET.
+    Body: {"wall_id": 123}                                  -> list panels (id, type, bbox) + grid lines
+          {"wall_id": 123, "add_at": [[x,y], ...], "u": false} -> add grid lines through those points
+          {"wall_id": 123, "remove_ids": [...]}             -> remove grid lines"""
+    if doc is None:
+        return _err('No active document.', 409)
+    data = request.data or {}
+    wall = doc.GetElement(ElementId(long(data.get('wall_id') or 0)))
+    grid = getattr(wall, 'CurtainGrid', None)
+    if grid is None:
+        return _err('Not a curtain wall.', 400)
+    added, removed, errors = [], [], []
+    if data.get('add_at') or data.get('remove_ids'):
+        t = Transaction(doc, 'OneTake: curtain grid')
+        _prep(t)
+        t.Start()
+        try:
+            for pt in (data.get('add_at') or []):
+                try:
+                    z = wall.Location.Curve.GetEndPoint(0).Z + 3.0
+                    gl = grid.AddGridLine(bool(data.get('u', False)), XYZ(float(pt[0]), float(pt[1]), z), False)
+                    added.append(gl.Id.Value)
+                except Exception as ex:
+                    errors.append({'add_at': pt, 'error': str(ex)})
+            for gid in (data.get('remove_ids') or []):
+                try:
+                    doc.Delete(ElementId(long(gid)))
+                    removed.append(gid)
+                except Exception as ex:
+                    errors.append({'remove': gid, 'error': str(ex)})
+            doc.Regenerate()
+            t.Commit()
+        except Exception as ex:
+            t.RollBack()
+            return _err('Revit API error (nothing committed): {}'.format(ex), 500)
+    panels = []
+    for pid in grid.GetPanelIds():
+        p = doc.GetElement(pid)
+        bb = p.get_BoundingBox(None)
+        try:
+            tname = p.Symbol.FamilyName + ' : ' + p.Symbol.get_Parameter(BuiltInParameter.SYMBOL_NAME_PARAM).AsString()
+        except Exception:
+            tname = p.GetType().Name
+        panels.append({'id': pid.Value, 'type': tname,
+                       'bbox': [round(bb.Min.X, 2), round(bb.Min.Y, 2), round(bb.Max.X, 2), round(bb.Max.Y, 2)] if bb else None})
+    lines = []
+    for lid in list(grid.GetUGridLineIds()) + list(grid.GetVGridLineIds()):
+        gl = doc.GetElement(lid)
+        try:
+            c = gl.FullCurve
+            lines.append({'id': lid.Value, 'u': lid in grid.GetUGridLineIds(),
+                          'p0': [round(c.GetEndPoint(0).X, 2), round(c.GetEndPoint(0).Y, 2), round(c.GetEndPoint(0).Z, 2)],
+                          'p1': [round(c.GetEndPoint(1).X, 2), round(c.GetEndPoint(1).Y, 2), round(c.GetEndPoint(1).Z, 2)]})
+        except Exception:
+            lines.append({'id': lid.Value})
+    return {'ok': True, 'added': added, 'removed': removed, 'errors': errors,
+            'panels': sorted(panels, key=lambda d: (d['bbox'] or [0])[0]), 'grid_lines': lines}
