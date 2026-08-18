@@ -1696,3 +1696,92 @@ def save_doc(doc):
     except Exception as ex:
         return _err('Save failed: {}'.format(ex), 500)
     return {'ok': True, 'path': doc.PathName, 'title': doc.Title}
+
+
+@api.route('/export-view', methods=['POST'])
+def export_view(doc, request):
+    """Export a view to PNG. Body {"name": "Proposed Floor Plan", "path": "C:/tmp/view.png",
+    "width_px": 3000, "crop": [xmin, ymin, xmax, ymax] (feet, optional; sets the crop box)}"""
+    from Autodesk.Revit.DB import (ImageExportOptions, ImageFileType, ExportRange,
+                                   ZoomFitType, ImageResolution, BoundingBoxXYZ)
+    from System.Collections.Generic import List
+    import os
+    if doc is None:
+        return _err('No active document.', 409)
+    data = request.data or {}
+    view = _find_view(doc, data.get('name'))
+    if view is None:
+        return _err('View not found.', 404)
+    path = data.get('path') or os.path.join(os.environ.get('TEMP', 'C:\'), 'onetake_view.png')
+    crop = data.get('crop')
+    if crop:
+        t = Transaction(doc, 'OneTake: crop view')
+        _prep(t)
+        t.Start()
+        try:
+            bb = BoundingBoxXYZ()
+            bb.Min = XYZ(float(crop[0]), float(crop[1]), -10)
+            bb.Max = XYZ(float(crop[2]), float(crop[3]), 100)
+            view.CropBox = bb
+            view.CropBoxActive = True
+            view.CropBoxVisible = False
+            t.Commit()
+        except Exception as ex:
+            t.RollBack()
+            return _err('crop failed: {}'.format(ex), 500)
+    opts = ImageExportOptions()
+    opts.ExportRange = ExportRange.SetOfViews
+    ids = List[ElementId]()
+    ids.Add(view.Id)
+    opts.SetViewsAndSheets(ids)
+    opts.FilePath = path
+    opts.HLRandWFViewsFileType = ImageFileType.PNG
+    opts.ShadowViewsFileType = ImageFileType.PNG
+    opts.ZoomType = ZoomFitType.FitToPage
+    opts.PixelSize = int(data.get('width_px') or 3000)
+    opts.ImageResolution = ImageResolution.DPI_150
+    try:
+        doc.ExportImage(opts)
+    except Exception as ex:
+        return _err('ExportImage failed: {}'.format(ex), 500)
+    # Revit appends " - Floor Plan - <name>" to the file name; find what it wrote
+    d = os.path.dirname(path)
+    stem = os.path.splitext(os.path.basename(path))[0]
+    written = [os.path.join(d, f) for f in os.listdir(d) if f.startswith(stem) and f.lower().endswith('.png')]
+    return {'ok': True, 'files': written}
+
+
+# ── Dev runner: execute a script from dev_scripts/ without reloading ─────────
+
+@api.route('/dev/run', methods=['POST'])
+def dev_run(uiapp, request):
+    """Body {"file": "scratch.py", "args": {...}} -> execfile(dev_scripts/<file>) with globals
+    doc, uiapp, uidoc, args, result. Returns {"ok": true, "result": <result>} or the FULL
+    traceback on failure. Files are restricted to dev_scripts/ (no path escapes)."""
+    import os, traceback
+    data = request.data or {}
+    fname = data.get('file') or 'scratch.py'
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dev_scripts')
+    path = os.path.abspath(os.path.join(base, fname))
+    if not path.startswith(base + os.sep) or not path.lower().endswith('.py'):
+        return _err('file must be a .py inside dev_scripts/', 400)
+    if not os.path.exists(path):
+        return _err('not found: {}'.format(path), 404)
+    uidoc = uiapp.ActiveUIDocument
+    doc = uidoc.Document if uidoc else None
+    g = {'__name__': '__onetake_dev__', '__file__': path,
+         'doc': doc, 'uiapp': uiapp, 'uidoc': uidoc,
+         'args': data.get('args') or {}, 'result': None,
+         'HOST_APP': HOST_APP, 'Transaction': Transaction, '_prep': _prep, '_err': _err,
+         'FilteredElementCollector': FilteredElementCollector, 'ElementId': ElementId, 'XYZ': XYZ}
+    try:
+        execfile(path, g)
+    except Exception:
+        return {'ok': False, 'file': fname, 'traceback': traceback.format_exc()}
+    out = g.get('result')
+    try:
+        import json
+        json.dumps(out)
+    except Exception:
+        out = repr(out)
+    return {'ok': True, 'file': fname, 'result': out}

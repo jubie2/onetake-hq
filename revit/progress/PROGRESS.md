@@ -1,6 +1,6 @@
 # Revit / OneTake — PROGRESS (read this first)
 
-<!-- auto --> **Last checkpoint:** 2026-08-18 01:04:16 | Revit: up, 'Pho Hung El cajon REV-1', 309 walls, schedule 32 rows | git claude/trusting-thompson-232391@d3efbe3, 6 uncommitted
+<!-- auto --> **Last checkpoint:** 2026-08-18 01:15:51 | Revit: not running | git claude/trusting-thompson-232391@d2732c9, 5 uncommitted
 
 This file is the single "where did we leave off" note. The header line above is
 rewritten by `tools/checkpoint.ps1`; the sections below are edited by hand (or by
@@ -56,6 +56,8 @@ append-only history in `log.md`.
 - (none)
 
 ## Session notes (newest first)
+- 2026-08-18 — Added /dev/run (dev_scripts/ runner, no-reload dev loop), /export-view, /save, /views, /open-view.
+  RULE: new Revit code goes in dev_scripts/ first; batch promotions to startup.py.
 - 2026-08-18 — Finished storefront doors + render check on REV-1; Revit relaunched by Claude on REV-1.
 - 2026-08-18 — Layout matched to pdf (walls, patio, equipment positions, rooms). Revit got licence-paused at the very end; storefront door re-grid + render check pending.
 - 2026-08-17 — (E) schedule rebuilt to match project EQUIPMENT SCHEDULE columns (id 4980444); 35 elements
