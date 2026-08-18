@@ -55,6 +55,11 @@
       deleted the 4 test walls (`deleted_ids 4977585–4977588`) — model clean
 
 ## In progress
+- [x] 2026-08-17 local: **progress/resume system** - `revit/progress/PROGRESS.md` (read first),
+      `tools/checkpoint.ps1` (Revit+git+schedule snapshot; Stop-hook after every Claude turn),
+      `tools/Progress-Terminal.cmd` (live self-restarting terminal, Startup-folder autostart).
+      Equipment schedule located: view `EQUIPMENT SCHEDULE (E) - PHO HUNG` id 4980435, 29 items.
+      Rough-draft verbs + layout files committed/pushed (`e7df93f`).
 - [ ] Commit + push the `/delete` verb (working tree)
 - [ ] Two Revit 2025 processes were open with the same project (PIDs 35736 /
       35760); only 35760 owns port 48884. First `/delete` call hung ~2 min
