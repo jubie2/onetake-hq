@@ -45,9 +45,21 @@
 - [x] Install Claude Code locally on the Revit machine (step 4) — done, it
       ran this session
 
+- [x] 2026-08-17 local: `startup.py` fix committed + pushed (`2484df4`) —
+      needed a repo-local git identity (`jubie2 <johnson7848@gmail.com>`) and
+      a one-time GCM browser sign-in (session shell sets
+      `GCM_INTERACTIVE=never`; override with `$env:GCM_INTERACTIVE="always"`)
+- [x] 2026-08-17 local: added verb **`POST /onetake-v1/delete`**
+      `{"ids":[...]}` (one transaction, returns deleted/not_found); reloaded
+      pyRevit via `POST /pyrevit-core/sessions/` (works from curl);
+      deleted the 4 test walls (`deleted_ids 4977585–4977588`) — model clean
+
 ## In progress
-- [ ] Commit + push the `startup.py` fix on branch `claude/trusting-thompson-232391`
-- [ ] Ctrl+Z the 4 test walls in "Pho Hung El cajon" (don't save them)
+- [ ] Commit + push the `/delete` verb (working tree)
+- [ ] Two Revit 2025 processes were open with the same project (PIDs 35736 /
+      35760); only 35760 owns port 48884. First `/delete` call hung ~2 min
+      (server blocked until Revit went idle) then cleared — keep ONE Revit
+      instance open when driving via routes
 
 ## Next up
 - [ ] SETUP.md smoke-test command hard-codes `"Level 1"` — note that real

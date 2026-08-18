@@ -166,3 +166,46 @@ def create_walls(doc, request):
         t.RollBack()
         return _err('Revit API error (nothing committed): {}'.format(ex), 500)
     return {'ok': True, 'wall_ids': created, 'count': len(created)}
+
+
+@api.route('/delete', methods=['POST'])
+def delete_elements(doc, request):
+    """Delete elements by explicit ElementId list. One transaction; undoable.
+
+    Body: {"ids": [4977585, 4977586]}
+    Returns which ids were deleted (incl. dependents Revit removed) and
+    which were not found. Refuses an empty list.
+    """
+    if doc is None:
+        return _err('No active document.', 409)
+    data = request.data or {}
+    ids = data.get('ids')
+    if not ids or not isinstance(ids, list):
+        return _err('Required: ids, a non-empty list of element ids.')
+
+    found, missing = [], []
+    for raw in ids:
+        try:
+            eid = ElementId(long(raw))
+        except (ValueError, TypeError):
+            return _err('Bad element id: {}'.format(raw))
+        if doc.GetElement(eid) is None:
+            missing.append(raw)
+        else:
+            found.append(eid)
+    if not found:
+        return _err('None of the ids exist in this document.', 404)
+
+    deleted = []
+    t = Transaction(doc, 'OneTake: delete {} elements'.format(len(found)))
+    t.Start()
+    try:
+        for eid in found:
+            for did in doc.Delete(eid):
+                deleted.append(did.Value)
+        t.Commit()
+    except Exception as ex:
+        t.RollBack()
+        return _err('Revit API error (nothing committed): {}'.format(ex), 500)
+    return {'ok': True, 'deleted_ids': deleted, 'count': len(deleted),
+            'not_found': missing}
