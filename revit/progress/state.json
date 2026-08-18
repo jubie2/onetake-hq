@@ -1,5 +1,5 @@
 ﻿{
-    "checkpoint_at":  "2026-08-18 02:19:12",
+    "checkpoint_at":  "2026-08-18 02:29:26",
     "machine":  "FRANCISASUS",
     "revit":  {
                   "up":  true,
@@ -17,17 +17,17 @@
                                  "Mechanical Roof Plan"
                              ],
                   "wall_types":  17,
-                  "wall_count":  313,
+                  "wall_count":  315,
                   "schedule":  {
                                    "name":  "EQUIPMENT SCHEDULE (E) - PHO HUNG",
                                    "id":  "4980444",
-                                   "rows":  30
+                                   "rows":  32
                                }
               },
     "git":  {
                 "branch":  "claude/trusting-thompson-232391",
-                "head":  "f5686d8",
-                "dirty":  5
+                "head":  "f7b683a",
+                "dirty":  12
             },
     "note":  ""
 }
