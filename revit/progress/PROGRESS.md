@@ -1,6 +1,6 @@
 # Revit / OneTake — PROGRESS (read this first)
 
-<!-- auto --> **Last checkpoint:** 2026-08-18 00:53:52 | Revit: up, 'Pho Hung El cajon REV-1', 309 walls, schedule 32 rows | git claude/trusting-thompson-232391@bceef5b, 8 uncommitted
+<!-- auto --> **Last checkpoint:** 2026-08-18 01:04:16 | Revit: up, 'Pho Hung El cajon REV-1', 309 walls, schedule 32 rows | git claude/trusting-thompson-232391@d3efbe3, 6 uncommitted
 
 This file is the single "where did we leave off" note. The header line above is
 rewritten by `tools/checkpoint.ps1`; the sections below are edited by hand (or by
@@ -9,6 +9,11 @@ Claude at the end of a session). Machine snapshot lives next to it in
 append-only history in `log.md`.
 
 ## Where we left off
+- 2026-08-18 01:20 — verification pass vs pdf: overlay `progress/model-vs-pdf-overlay.png` (model drawn over the pdf at
+  the same scale) — perimeter, patio, kitchen/alcove walls, restroom block, cooler, doors and equipment coincide; restroom
+  fixtures repositioned; tag audit 35/35 correct; wall centerlines = printed dims (52-7, 49-3, 30-1, 28-10, 33-1, 30-7).
+  Model SAVED via new `POST /save` (REV-1.rvt). Dimension annotations were NOT added: the /dimensions verb measures faces
+  (reads 30-4 / 28-4) — needs a centerline-reference option to print the pdf numbers.
 - 2026-08-18 00:55 — model file is now **Pho Hung El cajon REV-1.rvt** (Dropbox/2026/Pho Hung El Cajon); routes server on Revit PID 8720.
   S storefront doors re-gridded to exact plan positions (single 19.2-21.8, double 46.8-52.4), air curtain 28 over it,
   locker 11 rotated into alcove, stray N exit door removed. Rendered check: `progress/model-plan.png` (tools/render-plan.ps1).
@@ -41,7 +46,8 @@ append-only history in `log.md`.
 - [ ] Review the El Cajon rough draft in Revit; fix anything off, then re-checkpoint
 - [ ] Equipment schedule: fill ELECTRICAL / GAS SIZE / BTU cells that were unknown (only description-derived values set); add (N) items if scope needs
 - [ ] Place (E) schedule on sheet A09 next to the source if wanted
-- [ ] Nudge overlapping equipment tags in Proposed Floor Plan (placed 1 ft above each element, no leader)
+- [ ] Dimension strings: add centerline-reference support to /dimensions so 52-7 / 49-3 / 30-1 / 28-10 / 33-1 / 30-7 / 3 / 14 / 10 / 2-6 print like the pdf
+- [ ] Hood families 05/13 draw oversize (12x4 / 7x4 needed); wok range family is a 6-burner (plan 108x42)
 - [ ] SETUP.md smoke-test hard-codes `"Level 1"` — default to lowest level or document
 - [ ] Try revit-mcp-server on a real project; list what's missing vs our verbs
 - [ ] First real layout: program → solver → verbs pipeline

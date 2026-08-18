@@ -1,5 +1,5 @@
 {
-  "_note": "Pho Hung El Cajon — matched to the EQUIPMENT PLAN pdf 2026-08-18. Decimal FEET; origin: x=11 at the SW corner of the S storefront (plan px 205,890), y=0 at the S storefront; X east, Y north. Level '1st Floor Level', walls 10 ft (patio low walls 3.5 ft). View 'Proposed Floor Plan'. Schedule 'EQUIPMENT SCHEDULE (E) - PHO HUNG' (id 4980444). Plan scale used: 13.31 px/ft from the 52'-7\" / 49'-3\" printed dims.",
+  "_note": "MODEL FILE: Pho Hung El cajon REV-1.rvt (Dropbox). Pho Hung El Cajon — matched to the EQUIPMENT PLAN pdf 2026-08-18. Decimal FEET; origin: x=11 at the SW corner of the S storefront (plan px 205,890), y=0 at the S storefront; X east, Y north. Level '1st Floor Level', walls 10 ft (patio low walls 3.5 ft). View 'Proposed Floor Plan'. Schedule 'EQUIPMENT SCHEDULE (E) - PHO HUNG' (id 4980444). Plan scale used: 13.31 px/ft from the 52'-7\" / 49'-3\" printed dims.",
   "perimeter": {
     "4978036": {"type":"Generic - 8\"", "pts":[[11.0,0],[6.3,0]], "note":"rooms S wall"},
     "4978037": {"type":"Generic - 8\"", "pts":[[6.3,0],[6.3,11.2]], "note":"roof-access/elec rooms W wall; doors 4978060 (elec, y3.7), 4978059 (roof, y9.7), 4981550 (roof 2nd leaf, y6.95)"},
@@ -68,6 +68,6 @@
     "_how":"item no. = Type Mark on 'PH-xx' types (tags) + instance param Item (schedule); Comments=EXISTING (schedule filter); Description(s)/MFG/MODEL/REMARKS/WATER/WASTE/ELECTRICAL/TOTAL BTU on instances"
   },
   "doors": {"4978058":"W entry (04) 36in on 4978041 y41.3","4978059":"roof access 30in y9.7","4981550":"roof access 30in y6.95","4978060":"electrical 30in y3.7","4978061":"women 36in on 4978049 y48.7","4978062":"men 36in y53.9","4977978":"janitor 36in on 4977862 x30.7","4981551":"walk-in cooler 36in on 4977937 x47"},
-  "restroom_fixtures": {"4977969":"WC women (33.6,45.5) -> plan: WC at (31.7,50.9) facing S, lav on E wall (33.7,42.4)","4977970":"lav women","4977971":"WC men (33.6,53)","4977972":"lav men"},
-  "known_gaps": ["hood families 05/13 draw larger than 12x4 / 7x4", "restroom fixtures not repositioned to plan", "kitchen 'vestibule' door in wall x=29.4 (plan shows a 36in swing between service area and kitchen at y 26.3-29.3) not modeled — modeled as room separation line only"]
+  "restroom_fixtures": {"4977969":"WC women 30.9-32.5 x 48.8-52.2 (back on men S wall)","4977970":"lav women on E wall 33.9-34.5 x 41.8-43.0","4977971":"WC men 31.2-34.5 x 53.7-55.3 (back on E wall)","4977972":"lav men on S wall 31.1-32.3 x 52.6-53.2"},
+  "known_gaps": ["hood families 05/13 draw larger than 12x4 / 7x4", "kitchen 'vestibule' door in wall x=29.4 (plan shows a 36in swing between service area and kitchen at y 26.3-29.3) not modeled — modeled as room separation line only"]
 }

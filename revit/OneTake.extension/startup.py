@@ -1684,3 +1684,15 @@ def open_view(uiapp, request):
             uidoc.RequestViewChange(v)
             return {'ok': True, 'view_id': v.Id.Value, 'name': v.Name, 'type': str(v.ViewType)}
     return _err('View "{}" not found.'.format(name), 404)
+
+
+@api.route('/save', methods=['POST'])
+def save_doc(doc):
+    """Save the active document in place (doc.Save())."""
+    if doc is None:
+        return _err('No active document.', 409)
+    try:
+        doc.Save()
+    except Exception as ex:
+        return _err('Save failed: {}'.format(ex), 500)
+    return {'ok': True, 'path': doc.PathName, 'title': doc.Title}
