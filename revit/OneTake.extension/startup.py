@@ -1608,7 +1608,14 @@ def curtain_grid(doc, request):
                     errors.append({'add_at': pt, 'error': str(ex)})
             for gid in (data.get('remove_ids') or []):
                 try:
-                    doc.Delete(ElementId(long(gid)))
+                    gl = doc.GetElement(ElementId(long(gid)))
+                    try:
+                        gl.Lock = False
+                    except Exception:
+                        pass
+                    segs = list(gl.AllSegmentCurves)
+                    for sc in segs:
+                        gl.RemoveSegment(sc)
                     removed.append(gid)
                 except Exception as ex:
                     errors.append({'remove': gid, 'error': str(ex)})
@@ -1639,3 +1646,41 @@ def curtain_grid(doc, request):
             lines.append({'id': lid.Value})
     return {'ok': True, 'added': added, 'removed': removed, 'errors': errors,
             'panels': sorted(panels, key=lambda d: (d['bbox'] or [0])[0]), 'grid_lines': lines}
+
+
+@api.route('/views', methods=['GET'])
+def list_views(doc):
+    """Floor plans, ceiling plans, schedules-free view list: id, name, type, is_active."""
+    if doc is None:
+        return _err('No active document.', 409)
+    out = []
+    active = doc.ActiveView.Id
+    for v in FilteredElementCollector(doc).OfClass(View):
+        if v.IsTemplate:
+            continue
+        vt = str(v.ViewType)
+        if vt not in ('FloorPlan', 'CeilingPlan', 'DrawingSheet', 'ThreeD', 'Elevation', 'Section', 'AreaPlan'):
+            continue
+        d = {'id': v.Id.Value, 'name': v.Name, 'type': vt, 'active': v.Id == active}
+        try:
+            d['sheet_number'] = v.SheetNumber
+        except Exception:
+            pass
+        out.append(d)
+    out.sort(key=lambda d: (d['type'], d['name']))
+    return {'ok': True, 'count': len(out), 'views': out}
+
+
+@api.route('/open-view', methods=['POST'])
+def open_view(uiapp, request):
+    """Body {"name": "Proposed Floor Plan"} -> make that view active in Revit."""
+    uidoc = uiapp.ActiveUIDocument
+    if uidoc is None:
+        return _err('No active document.', 409)
+    doc = uidoc.Document
+    name = (request.data or {}).get('name')
+    for v in FilteredElementCollector(doc).OfClass(View):
+        if not v.IsTemplate and v.Name == name:
+            uidoc.RequestViewChange(v)
+            return {'ok': True, 'view_id': v.Id.Value, 'name': v.Name, 'type': str(v.ViewType)}
+    return _err('View "{}" not found.'.format(name), 404)

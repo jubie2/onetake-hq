@@ -36,12 +36,12 @@ for ($x = [Math]::Ceiling($X0/10)*10; $x -le $X1; $x += 10) { $g.DrawLine($penGr
 for ($y = [Math]::Ceiling($Y0/10)*10; $y -le $Y1; $y += 10) { $g.DrawLine($penGrid, 0, (PY $y), $W, (PY $y)); $g.DrawString("$y", $fontS, [System.Drawing.Brushes]::Gray, 2, (PY $y)-10) }
 # walls
 $walls = (Invoke-RestMethod "$Base/walls" -TimeoutSec 120).walls | Where-Object { $_.start[0] -ge $X0 -and $_.start[0] -le $X1 -and $_.start[1] -ge $Y0 -and $_.start[1] -le $Y1 }
-foreach ($w in $walls) {
+foreach ($wl in $walls) {
     $pen = $penWall
-    if ($w.type -match 'Storefront|Curtain') { $pen = $penGlass }
-    elseif ($w.type -match 'walkin') { $pen = $penThin }
-    elseif ($w.type -match '5"') { $pen = $penThin }
-    $g.DrawLine($pen, (PX $w.start[0]), (PY $w.start[1]), (PX $w.end[0]), (PY $w.end[1]))
+    if ($wl.type -match "Storefront|Curtain") { $pen = $penGlass }
+    elseif ($wl.type -match "walkin") { $pen = $penThin }
+    elseif ($wl.type -match '5"') { $pen = $penThin }
+    $g.DrawLine($pen, (PX $wl.start[0]), (PY $wl.start[1]), (PX $wl.end[0]), (PY $wl.end[1]))
 }
 # patio low walls are Generic - 6" ... drawn same; fine
 # equipment + doors

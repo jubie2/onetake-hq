@@ -12,7 +12,7 @@
     "4977746": {"type":"Generic - 8\"", "pts":[[34.75,63.1667],[34.75,30.0833]], "printed":"33'-1\""},
     "4981585": {"type":"Generic - 8\"", "pts":[[63.5833,30.0833],[34.75,30.0833]], "printed":"28'-10\"", "note":"kitchen N wall (drawn E->W so hosted sink 02 lands inside); hosts 02 hand sink 4981589 at x 43.8"},
     "4977748": {"type":"Generic - 8\"", "pts":[[63.5833,30.0833],[63.5833,0]], "printed":"30'-1\""},
-    "4977749": {"type":"Storefront",   "pts":[[63.5833,0],[11.0,0]], "printed":"52'-7\"", "door_panels":{"4977773":"single (plan wants x 19.1-21.9; panel is 15.9-20.5)","4977759":"double entry (28) (plan wants 46.7-52.5; panel is 49.35-53.9)"}, "grid_v_lines_x":[15.78,20.56,25.34,30.12,34.9,39.68,44.46,49.24,54.02,58.8], "todo":"add V grid lines at 19.1/21.9 and 46.7/52.5, swap those panels to doors, glaze the old door panels (curtain-door now accepts panel_id)"}
+    "4977749": {"type":"Storefront",   "pts":[[63.5833,0],[11.0,0]], "printed":"52'-7\"", "door_panels":{"4981655":"single 19.2-21.8 (plan 19.1-21.9)","4981705":"double entry (28) 46.8-52.4 (plan 46.7-52.5)"}, "note":"old 4.78-ft mullions at 20.56/49.24 removed (segments), new V grid lines at 19.1/21.9/46.7/52.5"}
   },
   "patio_low_walls_3ft6": {
     "4981545":"(6.55,0)-(6.55,-24)", "4981546":"(6.55,-24)-(23.5,-24)", "4981547":"(23.5,-24)-(23.5,-7)", "4981548":"(23.5,-7)-(24.9,-7)", "4981549":"(24.9,-7)-(24.9,0)",
@@ -46,7 +46,7 @@
     "08":{"ids":[4978068,4978069],"at":"splash guards x 38.25 and 40.05, y 16.2-18.2 (rotated 90)"},
     "09":{"ids":[4978070],"at":"cooler symbol (49.2,19.8) inside cooler 42.4-56.1 x 16.5-23.0"},
     "10":{"ids":[4981554],"at":"56.7-58.2, 15.8-17.2 on alcove W wall"},
-    "11":{"ids":[4978074],"at":"locker 55.7-58.7, 8.4-10.0"},
+    "11":{"ids":[4978074],"at":"locker 56.6-58.2, 7.7-10.7 (rotated, inside alcove)"},
     "12":{"ids":[4977952,4977953],"at":"freezers 60.2-63.6 x 12.65-17.15 and 8.35-12.85"},
     "13":{"ids":[4978075],"at":"hood 7x4 centered (61.4,22.4) — family draws 5.6 x 10.6"},
     "14":{"ids":[4978076],"at":"stock pot stove 60.3-63.1, 19.4-21.0"},
@@ -63,11 +63,11 @@
     "25":{"ids":[4978082],"at":"utility shelf on janitor N wall (28.0,40.2)"},
     "26":{"ids":[4977968],"at":"water heater 27.1-28.3, 36.8-38.8"},
     "27":{"ids":[4978083],"at":"SS splash between 18 and 17 at x 55.6, y 27.0-29.8"},
-    "28":{"ids":[4978065],"at":"air curtain over S double door (51,0.5) — move to 49.6 once door panels are re-gridded"},
+    "28":{"ids":[4978065],"at":"air curtain over S double door (49.6,0.5)"},
     "29":{"ids":[4977973],"at":"grease interceptor 43.5-49.5, -17.5 to -10.5"},
     "_how":"item no. = Type Mark on 'PH-xx' types (tags) + instance param Item (schedule); Comments=EXISTING (schedule filter); Description(s)/MFG/MODEL/REMARKS/WATER/WASTE/ELECTRICAL/TOTAL BTU on instances"
   },
-  "doors": {"4978058":"W entry (04) 36in on 4978041 y41.3","4978059":"roof access 30in y9.7","4981550":"roof access 30in y6.95","4978060":"electrical 30in y3.7","4978061":"women 36in on 4978049 y48.7","4978062":"men 36in y53.9","4977978":"janitor 36in on 4977862 x30.7","4981551":"walk-in cooler 36in on 4977937 x47","4977981":"N exit on wing wall (34.8,61) LOW CONFIDENCE"},
+  "doors": {"4978058":"W entry (04) 36in on 4978041 y41.3","4978059":"roof access 30in y9.7","4981550":"roof access 30in y6.95","4978060":"electrical 30in y3.7","4978061":"women 36in on 4978049 y48.7","4978062":"men 36in y53.9","4977978":"janitor 36in on 4977862 x30.7","4981551":"walk-in cooler 36in on 4977937 x47"},
   "restroom_fixtures": {"4977969":"WC women (33.6,45.5) -> plan: WC at (31.7,50.9) facing S, lav on E wall (33.7,42.4)","4977970":"lav women","4977971":"WC men (33.6,53)","4977972":"lav men"},
-  "known_gaps": ["S storefront doors sit on the old 4.78-ft grid (single 15.9-20.5 vs plan 19.1-21.9; double 49.35-53.9 vs plan 46.7-52.5)", "hood families 05/13 draw larger than 12x4 / 7x4", "restroom fixtures not repositioned to plan", "kitchen 'vestibule' door in wall x=29.4 (plan shows a 36in swing between service area and kitchen at y 26.3-29.3) not modeled — modeled as room separation line only"]
+  "known_gaps": ["hood families 05/13 draw larger than 12x4 / 7x4", "restroom fixtures not repositioned to plan", "kitchen 'vestibule' door in wall x=29.4 (plan shows a 36in swing between service area and kitchen at y 26.3-29.3) not modeled — modeled as room separation line only"]
 }
