@@ -107,3 +107,9 @@
 - 2026-08-20 20:12:52 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@f164754 dirty=3 | saction-group helper so multi-step operations commit as one
 - 2026-08-20 20:12:53 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@f164754 dirty=3 | do-able group, and use it in the multi-element verbs.
 - 2026-08-20 20:12:53 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@f164754 dirty=3 |  update CLAUDE.md's Workflow section with these rules:
+- 2026-08-20 20:12:57 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@78e7405 dirty=0
+- 2026-08-20 20:12:57 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@78e7405 dirty=3
+- 2026-08-20 20:13:02 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@78e7405 dirty=3 |  instead of reading startup.py.
+- 2026-08-20 20:13:03 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@78e7405 dirty=3 | Y geometry change: call /export-view and actually READ the PNG to
+- 2026-08-20 20:13:06 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@78e7405 dirty=3 | tinuing. Never chain three geometry ops without looking.
+- 2026-08-20 20:13:09 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@78e7405 dirty=3 | ever a single element — one call, one transaction.

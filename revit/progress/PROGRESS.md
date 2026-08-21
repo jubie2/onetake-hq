@@ -1,6 +1,6 @@
 # Revit / OneTake — PROGRESS (read this first)
 
-<!-- auto --> **Last checkpoint:** 2026-08-20 20:12:55 | Revit: up, 'Pho Hung El cajon REV-1.0001', 309 walls, schedule 30 rows | git claude/trusting-thompson-232391@f164754, 3 uncommitted
+<!-- auto --> **Last checkpoint:** 2026-08-20 20:13:12 | Revit: up, 'Pho Hung El cajon REV-1.0001', 309 walls, schedule 30 rows | git claude/trusting-thompson-232391@78e7405, 3 uncommitted
 
 This file is the single "where did we leave off" note. The header line above is
 rewritten by `tools/checkpoint.ps1`; the sections below are edited by hand (or by
@@ -61,6 +61,10 @@ append-only history in `log.md`.
 - (none)
 
 ## Session notes (newest first)
+- 2026-08-20 20:13:09 - ever a single element — one call, one transaction.
+- 2026-08-20 20:13:06 - tinuing. Never chain three geometry ops without looking.
+- 2026-08-20 20:13:03 - Y geometry change: call /export-view and actually READ the PNG to
+- 2026-08-20 20:13:02 -  instead of reading startup.py.
 - 2026-08-20 20:12:53 -  update CLAUDE.md's Workflow section with these rules:
 - 2026-08-20 20:12:53 - do-able group, and use it in the multi-element verbs.
 - 2026-08-20 20:12:52 - saction-group helper so multi-step operations commit as one
