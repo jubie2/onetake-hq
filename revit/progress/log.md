@@ -99,3 +99,11 @@
 - 2026-08-20 19:48:45 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=32 | git claude/trusting-thompson-232391@43e634e dirty=5
 - 2026-08-20 19:59:01 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@43e634e dirty=5
 - 2026-08-20 20:12:41 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@43e634e dirty=5 | ts, both via dev_scripts first, then promote together in ONE reload:
+- 2026-08-20 20:12:45 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@f164754 dirty=0
+- 2026-08-20 20:12:46 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@f164754 dirty=3
+- 2026-08-20 20:12:47 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@f164754 dirty=3 | etake-v1/verbs — returns every registered route: path, method,
+- 2026-08-20 20:12:48 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@f164754 dirty=3 | d its docstring. Introspect the api object rather than hardcoding a list,
+- 2026-08-20 20:12:50 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@f164754 dirty=3 |  never drift out of date.
+- 2026-08-20 20:12:52 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@f164754 dirty=3 | saction-group helper so multi-step operations commit as one
+- 2026-08-20 20:12:53 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@f164754 dirty=3 | do-able group, and use it in the multi-element verbs.
+- 2026-08-20 20:12:53 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@f164754 dirty=3 |  update CLAUDE.md's Workflow section with these rules:
