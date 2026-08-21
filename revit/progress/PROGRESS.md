@@ -1,6 +1,6 @@
 # Revit / OneTake — PROGRESS (read this first)
 
-<!-- auto --> **Last checkpoint:** 2026-08-18 02:36:18 | Revit: up, 'Pho Hung El cajon REV-1', 315 walls, schedule 32 rows | git claude/trusting-thompson-232391@18ca337, 9 uncommitted
+<!-- auto --> **Last checkpoint:** 2026-08-20 20:12:43 | Revit: up, 'Pho Hung El cajon REV-1.0001', 309 walls, schedule 30 rows | git claude/trusting-thompson-232391@43e634e, 5 uncommitted
 
 This file is the single "where did we leave off" note. The header line above is
 rewritten by `tools/checkpoint.ps1`; the sections below are edited by hand (or by
@@ -61,6 +61,7 @@ append-only history in `log.md`.
 - (none)
 
 ## Session notes (newest first)
+- 2026-08-20 20:12:41 - ts, both via dev_scripts first, then promote together in ONE reload:
 - 2026-08-18 — Windows instead of curtain walls; door/toilet facings; pdf dimensions; panels/drains — all via dev_scripts (no reloads).
 - 2026-08-18 — Added /dev/run (dev_scripts/ runner, no-reload dev loop), /export-view, /save, /views, /open-view.
   RULE: new Revit code goes in dev_scripts/ first; batch promotions to startup.py.

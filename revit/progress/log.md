@@ -87,3 +87,15 @@
 - 2026-08-18 02:34:46 | revit=up 'Pho Hung El cajon REV-1' walls=315 sched_rows=32 | git claude/trusting-thompson-232391@18ca337 dirty=8
 - 2026-08-18 02:35:18 | revit=up 'Pho Hung El cajon REV-1' walls=1 sched_rows=1 | git claude/trusting-thompson-232391@18ca337 dirty=8
 - 2026-08-18 02:35:59 | revit=up 'Pho Hung El cajon REV-1' walls=315 sched_rows=32 | git claude/trusting-thompson-232391@18ca337 dirty=9
+- 2026-08-18 02:36:33 | revit=up 'Pho Hung El cajon REV-1' walls=315 sched_rows=32 | git claude/trusting-thompson-232391@43e634e dirty=0
+- 2026-08-18 02:36:39 | revit=up 'Pho Hung El cajon REV-1' walls=315 sched_rows=32 | git claude/trusting-thompson-232391@43e634e dirty=3
+- 2026-08-18 02:47:21 | revit=up 'Pho Hung El cajon REV-1' walls=315 sched_rows=31 | git claude/trusting-thompson-232391@43e634e dirty=4
+- 2026-08-18 17:42:29 | revit=up '' walls=315 sched_rows=31 | git claude/trusting-thompson-232391@43e634e dirty=4
+- 2026-08-18 17:53:09 | revit=up 'Pho Hung El cajon REV-1' walls=315 sched_rows=31 | git claude/trusting-thompson-232391@43e634e dirty=4
+- 2026-08-20 15:34:06 | revit=up '6633 Electric Ave MDU' walls=357 sched_rows= | git claude/trusting-thompson-232391@43e634e dirty=4
+- 2026-08-20 19:37:16 | revit=down | git claude/trusting-thompson-232391@43e634e dirty=5 | progress terminal started
+- 2026-08-20 19:44:49 | revit=up 'Pho Hung El cajon' walls=277 sched_rows= | git claude/trusting-thompson-232391@43e634e dirty=5
+- 2026-08-20 19:45:55 | revit=down | git claude/trusting-thompson-232391@43e634e dirty=5
+- 2026-08-20 19:48:45 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=32 | git claude/trusting-thompson-232391@43e634e dirty=5
+- 2026-08-20 19:59:01 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@43e634e dirty=5
+- 2026-08-20 20:12:41 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@43e634e dirty=5 | ts, both via dev_scripts first, then promote together in ONE reload:
