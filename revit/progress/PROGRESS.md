@@ -1,6 +1,6 @@
 # Revit / OneTake — PROGRESS (read this first)
 
-<!-- auto --> **Last checkpoint:** 2026-08-20 20:13:12 | Revit: up, 'Pho Hung El cajon REV-1.0001', 309 walls, schedule 30 rows | git claude/trusting-thompson-232391@78e7405, 3 uncommitted
+<!-- auto --> **Last checkpoint:** 2026-08-21 10:32:37 | Revit: up, 'Pho Hung El cajon REV-1', 312 walls, schedule 32 rows | git claude/trusting-thompson-232391@8adaeab, 6 uncommitted
 
 This file is the single "where did we leave off" note. The header line above is
 rewritten by `tools/checkpoint.ps1`; the sections below are edited by hand (or by
@@ -9,6 +9,7 @@ Claude at the end of a session). Machine snapshot lives next to it in
 append-only history in `log.md`.
 
 ## Where we left off
+- 2026-08-21 — **File identity check.** Revit had been reopened on `Pho Hung El cajon REV-1.0001.rvt` (a Revit BACKUP file, a snapshot from 8/18 ~01:30: curtain walls 4977749/4977659 still present, old restroom W wall 4978049, no wok range, 26 schedule items, 309 walls). Saved + closed it and reopened **`Pho Hung El cajon REV-1.rvt`** = our real model (315 walls, wok 4984262, restroom walls 4983947-54, S wall 4981922, curtain walls gone). Item 04 (W-entry air curtain) had gone missing from it, so re-placed as **4984843** on wall 4978041 at (6.3,41.9) with params + tag -> schedule back to **29 items**, tag audit 35/35. Saved. RULE: always confirm the open doc via GET /docs before editing — `.000N.rvt` names are Revit backups, not our file.
 - 2026-08-18 03:40 — Polish pass: exterior walls -> Generic 6" (pdf thickness); wok range 06 replaced by real family `Wok_Range_Gas_12` type PH-06 9FT (4984262, x 29.2-38.2 exactly per pdf; Generic Models + OneTake Generic Model Tag); floor sinks/drains at the pdf F.S./F.D. label spots (4982000-4,4984244-7); cashier counter 34" high, kitchen counter 2-6 deep (type PH-COUNTER 30in); dims added 14 (cooler) / 7 (cooler depth) / 10 (service run) / 33-1 restored. Audit: 29 rows, 35 tags OK. Saved. Remaining nits: hood 05/13 plan symbol includes duct (type says 12x4/7x4), shelf 22 family fixed 4 ft (pdf 5 ft), dining room areas differ from pdf 500/500 (geometry follows dims).
 - 2026-08-18 03:10 — **PDF-line-registered rebuild + full audit.** `tools/pdf-overlay.py` registers the vector PDF (origin pt 297.4,1223.2; 18 pt/ft) to model feet, draws `progress/pdf-vs-model-overlay.png`, lists PDF lines w/o model wall (`progress/pdf-gaps.json`). Walls corrected: wing E wall jogs to x 33.25 above y 48.5 (walls 4983953/4983954), women block y 41.5/47.35/53.15 w/ chase 24.9-26.6 (4983947-4983952), men W 25.8 (4983949), diagonal end (33.25,63.7), kitchen S wall y 15.25 x 28.6-56.15, alcove x 56.15/y 8.25, cooler 42.2-55.8 x 16.9-23.5 door .8, W wall segs 12.75/26.5/40.4/43.4, rooms N wall 12.75. Doors 4983956 (women) 4983957 (men). Items 04/29 re-placed (4984121/4984122). Audit: 29 schedule rows, 35 tags reseated, all doors swing/hinge per pdf, rooms valid (women 93, men 57). Dims 52-7/49-3/30-1/28-10/33-1/30-7 present. Saved REV-1.
 - 2026-08-18 02:30 — **Vector PDF acquired**: `revit/reference/pho-hung-el-cajon-plans.pdf` (8 sheets; Equipment Plan = page index 3). `tools/pdf-extract.py` (run with pyRevit CPython, PyMuPDF in tools/pylib) renders it (`reference/equipment-plan.png`, 10368x6912) and dumps 4748 line segments + 703 words to `reference/equipment-plan-lines.json` (PDF points; 1/4"=1ft -> 18 pt/ft). NEXT: locate the plan origin in that file, convert to feet, and overlay/diff against the model walls exactly (no more screenshot guessing).
@@ -61,6 +62,8 @@ append-only history in `log.md`.
 - (none)
 
 ## Session notes (newest first)
+- 2026-08-20 20:13:15 - d reconcile it with what we actually built — correct anything stale.
+- 2026-08-20 20:13:14 - -vault/Revit Project - Workflow Rules.md (I just pushed it)
 - 2026-08-20 20:13:09 - ever a single element — one call, one transaction.
 - 2026-08-20 20:13:06 - tinuing. Never chain three geometry ops without looking.
 - 2026-08-20 20:13:03 - Y geometry change: call /export-view and actually READ the PNG to

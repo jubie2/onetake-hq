@@ -113,3 +113,7 @@
 - 2026-08-20 20:13:03 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@78e7405 dirty=3 | Y geometry change: call /export-view and actually READ the PNG to
 - 2026-08-20 20:13:06 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@78e7405 dirty=3 | tinuing. Never chain three geometry ops without looking.
 - 2026-08-20 20:13:09 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@78e7405 dirty=3 | ever a single element — one call, one transaction.
+- 2026-08-20 20:13:14 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@8adaeab dirty=0
+- 2026-08-20 20:13:14 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@8adaeab dirty=3 | -vault/Revit Project - Workflow Rules.md (I just pushed it)
+- 2026-08-20 20:13:15 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@8adaeab dirty=3 | d reconcile it with what we actually built — correct anything stale.
+- 2026-08-21 10:32:37 | revit=up 'Pho Hung El cajon REV-1' walls=312 sched_rows=32 | git claude/trusting-thompson-232391@8adaeab dirty=6

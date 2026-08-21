@@ -1,12 +1,12 @@
 ﻿{
-    "checkpoint_at":  "2026-08-20 20:13:12",
+    "checkpoint_at":  "2026-08-21 10:32:37",
     "machine":  "FRANCISASUS",
     "revit":  {
                   "up":  true,
                   "revit_version":  "2025",
                   "revit_build":  "20250515_1515(x64)",
                   "pyrevit_version":  "6.4.0.26100+0515",
-                  "doc_title":  "Pho Hung El cajon REV-1.0001",
+                  "doc_title":  "Pho Hung El cajon REV-1",
                   "levels":  [
                                  "1st Floor Level",
                                  "Max Height",
@@ -17,17 +17,17 @@
                                  "Mechanical Roof Plan"
                              ],
                   "wall_types":  17,
-                  "wall_count":  309,
+                  "wall_count":  312,
                   "schedule":  {
                                    "name":  "EQUIPMENT SCHEDULE (E) - PHO HUNG",
                                    "id":  "4980444",
-                                   "rows":  30
+                                   "rows":  32
                                }
               },
     "git":  {
                 "branch":  "claude/trusting-thompson-232391",
-                "head":  "78e7405",
-                "dirty":  3
+                "head":  "8adaeab",
+                "dirty":  6
             },
     "note":  ""
 }
