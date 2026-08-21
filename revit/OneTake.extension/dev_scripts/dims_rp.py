@@ -1,6 +1,6 @@
 # Dimensions via short reference planes.  args {"view":..., "items":[{"planes":[[[x0,y0],[x1,y1]],[[..],[..]]], "at":[[lx0,ly0],[lx1,ly1]], "label":..},
 #   or {"wall": wallId (centerline), "plane": [[x0,y0],[x1,y1]], "at": [[..],[..]]}]}
-from Autodesk.Revit.DB import Options, Line, ReferenceArray, View, XYZ as _XYZ
+from Autodesk.Revit.DB import Options, Line, ReferenceArray, View, ReferencePlane, XYZ as _XYZ
 def find_view(name):
     for v in FilteredElementCollector(doc).OfClass(View):
         if not v.IsTemplate and v.Name == name:
@@ -14,7 +14,22 @@ def center_ref(wall):
             p0, p1 = g.GetEndPoint(0), g.GetEndPoint(1)
             if lc.Distance(_XYZ(p0.X, p0.Y, 0)) < 0.05 and lc.Distance(_XYZ(p1.X, p1.Y, 0)) < 0.05:
                 return g.Reference
+existing_names = set()
+for _rp in FilteredElementCollector(doc).OfClass(ReferencePlane):
+    try:
+        existing_names.add(_rp.Name)
+    except Exception:
+        pass
+
+def uniq(name):
+    n = name; i = 2
+    while n in existing_names:
+        n = "%s %d" % (name, i); i += 1
+    existing_names.add(n)
+    return n
+
 def make_rp(seg, name):
+    name = uniq(name)
     a = _XYZ(float(seg[0][0]), float(seg[0][1]), 0); b = _XYZ(float(seg[1][0]), float(seg[1][1]), 0)
     rp = doc.Create.NewReferencePlane(a, b, _XYZ.BasisZ, view)
     try:

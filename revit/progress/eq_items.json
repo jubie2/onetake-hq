@@ -33,11 +33,11 @@
            },
     "04":  {
                "ids":  [
-                           4984843
+                           4988340
                        ],
                "d":  "AIR CURTAIN W/ MICRO SWITCH (WALL-MOUNT)",
                "mfg":  "MARS",
-               "model":  "TRE",
+               "model":  "LPV236-1U-OB",
                "elec":  "120V / 1 / 60Hz",
                "rem":  "EXISTING"
            },
@@ -104,7 +104,7 @@
            },
     "11":  {
                "ids":  [
-                           4978074
+                           4988344
                        ],
                "d":  "LOCKER (15\"W x 20\"D x 77\"H), SUPPORTED BY 6\" HIGH ROUND LEGS",
                "mfg":  "GSW",
@@ -151,7 +151,7 @@
            },
     "16":  {
                "ids":  [
-                           4978077
+                           4988346
                        ],
                "d":  "STAINLESS STEEL WORK TABLE (36\"W x 30\"D x 34\"H), SUPPORTED BY 6\" HIGH ROUND LEGS",
                "mfg":  "REGENCY",
@@ -245,7 +245,7 @@
            },
     "25":  {
                "ids":  [
-                           4978082
+                           4988348
                        ],
                "d":  "SS MOP SINK UTILITY SHELF (24\"W x 8\"D) WITH MOP/BROOM HOLDERS \u0026 RAG HOOKS",
                "mfg":  "REGENCY",
@@ -275,11 +275,11 @@
            },
     "28":  {
                "ids":  [
-                           4981953
+                           4988342
                        ],
                "d":  "AIR CURTAIN W/ MICRO SWITCH (WALL-MOUNT)",
                "mfg":  "MARS",
-               "model":  "TRE",
+               "model":  "LPV272-1U-OB",
                "elec":  "120V / 1 / 60Hz",
                "rem":  "EXISTING"
            },

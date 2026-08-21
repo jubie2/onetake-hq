@@ -117,3 +117,6 @@
 - 2026-08-20 20:13:14 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@8adaeab dirty=3 | -vault/Revit Project - Workflow Rules.md (I just pushed it)
 - 2026-08-20 20:13:15 | revit=up 'Pho Hung El cajon REV-1.0001' walls=309 sched_rows=30 | git claude/trusting-thompson-232391@8adaeab dirty=3 | d reconcile it with what we actually built — correct anything stale.
 - 2026-08-21 10:32:37 | revit=up 'Pho Hung El cajon REV-1' walls=312 sched_rows=32 | git claude/trusting-thompson-232391@8adaeab dirty=6
+- 2026-08-21 11:43:12 | revit=up '' walls= sched_rows= | git claude/trusting-thompson-232391@7a8f9b0 dirty=6
+- 2026-08-21 11:48:07 | revit=up '' walls= sched_rows= | git claude/trusting-thompson-232391@7a8f9b0 dirty=9
+- 2026-08-21 12:10:47 | revit=up 'Pho Hung El cajon REV-1' walls=316 sched_rows=32 | git claude/trusting-thompson-232391@7a8f9b0 dirty=14
