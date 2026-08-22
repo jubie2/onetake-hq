@@ -45,12 +45,19 @@ old Logan Ave text.
   walls=4). `room_labels.py` writes the room name as a TextNote placed on the view plane
   (`NewRoomTag` silently produces nothing in section views — the tag never appears in the view).
   Result: Section 1 = 6 keynote tags / 5 labels, Sections 2 and 3 = 2 tags / 6 labels each.
-- `ADU - North Elevation`, `ADU - East Elevation`, `ADU - Section 2` still report a viewport box 2.5-6 ft
-  wide with the drawing at the RIGHT end (cause still unknown - not the title line, not the annotation
-  crop, and `SetCurveInView` reports 0 levels so datum extents are not it either). Workaround in place:
-  the viewport centre is offset left by (box/2 - drawing/2) so the drawing lands correctly, and their
-  view titles - which fall off the page - are replaced by TextNotes placed on the sheet
-  (`sheet_text.py`).
+- **Oversized viewport boxes SOLVED.** `view_outliers.py` lists every element in a view whose bbox
+  (converted to view-local coords) sticks out past the crop. Culprit: the **Levels** `1st Floor Level` and
+  `2nd FLoor Plan` ran from local X -266 to -159, i.e. 244 ft left of the crop = the missing 5.08 ft of
+  paper (244/48). Annotation crop does NOT clip datum extents.
+  Fix: `trim_levels2.py` re-points each level to the crop width via
+  `SetDatumExtentType(DatumEnds.End0/End1, view, ViewSpecific)` then `SetCurveInView(...)`.
+  Note the signature: DatumEnds first, DatumExtentType last - the obvious ordering throws
+  "expected DatumEnds, got DatumExtentType".
+  Two combinations refuse the trim ("curve is unbound or not coincident with the datum plane"):
+  1st Floor Level / 2nd FLoor Plan in `ADU - North Elevation` and `ADU - Section 2`. For those the levels
+  are hidden per view instead (`hide_outliers.py`; hide Levels ONLY - the {3D} Camera cannot be hidden and
+  one bad id fails the whole `HideElements` call). Cost: those two views show no level datum tags.
+  All seven views now have viewport boxes of 0.94-1.02 ft, real view titles, and a clean 2x2 layout.
 
 ## Gotchas found
 - Viewport size ≠ crop size. Two things inflate it: the **view title line** (set `Viewport.LabelLineLength`)
