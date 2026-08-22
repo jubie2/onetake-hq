@@ -287,3 +287,10 @@ Coverage by face (each elevation keys only what is actually on it, which is the 
 South 1,2,4 · North 1,2,4,5 · East 1,2,3,4,5 · West 1,2,3,4,5,6.
 The "grilles" in the middle of the north/south walls are the 36"x16" **bathroom windows**, not louvers -
 keynote 2 is the right call there. The gable louvers only exist on the east and west gable ends.
+
+**Update:** user wants every legend item keyed on EVERY elevation, not only on the face where it is
+visible. `LIMIT` is now unbounded for the elevation group (`FACE = nearD + 3.0` is kept only for
+choosing a blank patch of the wall we are actually looking at for keynote 4). All four elevations now
+carry 1-6. Trade-off, deliberate and at the user's direction: on the north and south elevations the
+louver and exterior door leaders point at the correct part of the building, but those items are on the
+gable ends and so are not drawn on that face.

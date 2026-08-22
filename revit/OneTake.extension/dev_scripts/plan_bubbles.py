@@ -85,14 +85,16 @@ for nm in VIEWS:
         except Exception: pass
     walls = [i for i in items if i["cat"] == "Walls"]
     nearD = min([i["d"] for i in walls]) if walls else 0.0
-    # only key what is on the face we are looking at - meaningless in a plan view
-    LIMIT = (nearD + 3.0) if grp == 'elev' else 1e9
+    # every legend item gets keyed on every elevation, so no near-face restriction;
+    # FACE is still used to pick a blank bit of the wall we are actually looking at
+    LIMIT = 1e9
+    FACE = nearD + 3.0
     def near(pred):
         c = [i for i in items if pred(i) and i["d"] <= LIMIT]
         if not c: return None
         c.sort(key=lambda i: i["d"])
         return c[0]
-    facew = [i for i in walls if i["d"] <= LIMIT]
+    facew = [i for i in walls if i["d"] <= FACE]
     def blankwall():
         if not facew: return None
         xs = [i["x"] for i in facew]; ys = [i["y"] for i in facew]
@@ -111,7 +113,7 @@ for nm in VIEWS:
       'toilet':  lambda: near(lambda i: i['cat'] == 'Plumbing Fixtures'),
       # a wall lamp projects off the face, so allow a little more depth
       'extlight': lambda: (sorted([i for i in items if i['cat'] == 'Lighting Fixtures'
-                                   and i['d'] <= LIMIT + 6.0],
+                                   ],
                                   key=lambda i: i['d']) or [None])[0],
       # no ADU door is hosted in a perimeter wall, so key the one closest to it
       'perimdoor': lambda: (sorted([i for i in items if i['cat'] == 'Doors' and i['w'] > 2.4],
