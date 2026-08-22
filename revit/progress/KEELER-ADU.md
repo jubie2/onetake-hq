@@ -59,6 +59,45 @@ old Logan Ave text.
   one bad id fails the whole `HideElements` call). Cost: those two views show no level datum tags.
   All seven views now have viewport boxes of 0.94-1.02 ft, real view titles, and a clean 2x2 layout.
 
+## Cut-off elevations on sheet A105 (2026-08-21)
+User reported "the east elevation, west elevation adu is cut off" on the PRE-EXISTING sheet **A105
+Elevations** (not our ADU-2). Cause: `East Elev.` and `West Elev.` were cropped to only ~24.5 ft of
+world Y (-149..-124.7 and -150.1..-125.6) and Z ~26, while the ADU is **44 ft deep and 28 ft to the
+ridge** — so both lost ~10 ft off one side, ~6 ft off the other, and the roof.
+Fix: `copy_crop.py` copies a crop rectangle from a source view to a target view of the same
+ViewDirection (maps source-local -> world -> target-local, so it works even between different views).
+Copied `ADU - East/West Elevation` -> `East Elev.` / `West Elev.` = 44 x 35 ft, Z -4..31. Then
+`anno_crop.py` (both were OFF) and `trim_levels2.py` brought the viewport boxes from 2.27/1.17 to
+1.02/0.94 ft. `North Elev. (Bldg-1)` / `South Elev. (Bldg-1)` on that sheet were left alone.
+
+## The general datum-trim fix — `set_datums.py`
+Supersedes `trim_levels2.py`. Earlier attempts failed with *"The curve is unbound or not coincident
+with the original one of the datum"* because they built the replacement line from **view-local** X and
+the existing curve's **model** Y/Z — a line that is not in the datum's plane. The working recipe:
+1. take the datum's existing curve in the view (model space), `p0` and unit direction `d`;
+2. project the crop's four world corners onto `d` to get the needed span;
+3. rebuild the line as `p0 + d*(tmin-pad) .. p0 + d*(tmax+pad)` — exactly collinear, so Revit accepts it.
+Still fails when a level has **no curve in that view at all** (`GetCurvesInView` empty both for
+ViewSpecific and Model): `1st Floor Level` / `2nd FLoor Plan` in `ADU - North Elevation` and all three
+in `ADU - Section 2`. Those stay hidden via `hide_outliers.py`, so those two views carry no level tags.
+
+## Sheet clean-up pass (2026-08-21)
+- **Viewport titles were off-sheet** because old compensating `Viewport.LabelOffset` values survived the
+  box fix: North Elevation **-5.04 ft**, Section 2 **-5.10**, East Elevation **-1.54**.
+  `reset_labels.py` zeroes them; do this whenever a viewport box changes size.
+- **The real plan-viewport inflator was annotation categories, not the crop.** Hiding **Sections** and
+  **Elevations** categories in the ADU plan views dropped the boxes from 1.16 x 1.29 to 0.85 x 0.94
+  (those markers belong to the main house). `tidy_plans.py` does category hides + label nudges.
+  `hide_each.py` hides outliers one element at a time — `View.HideElements` fails the WHOLE batch if any
+  single id is un-hideable (Cameras, group members), so never hide in bulk.
+- Dashed rectangle in `ADU - Section 2` = a **Callout** boundary, not the crop and not the imported CAD.
+  Hidden via the Callouts category. Imported CAD (`Crystal Design - Comanche Dr.7-14-16.dwg`, 10-13
+  instances per view) was also bleeding into every ADU view — `hide_imports.py`.
+- Final layout: ADU-1 plans side by side at (0.62/1.62, 1.25), legend (2.45,1.30), notes (0.52,0.40);
+  ADU-2 and ADU-3 in a 2x2 at x 0.62/1.80, y 1.33/0.45, legend (2.52,1.60).
+- **Known thin sheet:** ADU-4 Roof Plan carries no slope/ridge annotation — the source roof plan has
+  none over the ADU. Would need new annotation, not a layout fix.
+
 ## Gotchas found
 - Viewport size ≠ crop size. Two things inflate it: the **view title line** (set `Viewport.LabelLineLength`)
   and the **annotation crop** (`BuiltInParameter.VIEWER_ANNOTATION_CROP_ACTIVE` = 1).
