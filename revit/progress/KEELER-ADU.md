@@ -116,6 +116,46 @@ Two more gotchas from that pass:
 - Text type: use **`ARCH TEXT 12 1/8"`** (0.125 in), what the ROOF LEGEND and the rest of the set use.
   Plain `ARCH TEXT` renders far too small at 1/4" = 1'-0".
 
+## Round 2 — gap-filling against the existing 31 sheets (2026-08-21)
+`sheet_audit.py` dumps every sheet with its viewports/schedules; that comparison drove this round.
+
+**ADU-7 Door & Window Schedule** (`adu_schedules.py`, `build_adu7.py`). The ADU's 20 doors / 16 windows
+sit on the SAME levels and phase as the main house, so neither can isolate them. Instead **Comments =
+"ADU"** is stamped on all 36 (the field was empty, and Comments is already a column in both schedules),
+`DOOR SCHEDULE`/`WINDOWS SCHEDULE` are duplicated and filtered `Comments Equal ADU`, and the originals
+gained `Comments NotEqual ADU`. **Note this changed A102** — it had been listing the ADU's doors and
+windows mixed in with the main house's all along.
+
+**Drawing List needed nothing.** All 37 sheets have `Appears In Sheet List` ON except A301, AD1, L22,
+L33, S, SD3, and ADU-1..6 were already in the index. Read the rows with
+`GetTableData().GetSectionData(SectionType.Body)` + `GetCellText` — passing an int for SectionType throws.
+
+**ADU-5 / ADU-6 were empty plans** — no lights, outlets, switches, detectors or equipment anywhere in
+the ADU footprint. `adu_devices.py` + `adu_annos.py` placed 80 devices over both floors, reusing the
+families the main building uses: `Outlet-Duplex`/`Outlet-GFI`/`Switch-Single` hosted on room boundary
+walls (outlets 0.8125 ft, switches 3.8125 ft above level — read off existing instances, not invented),
+`Supply Register-Floor 2 way`, `Water Heater`, and view-specific Generic Annotations for the ceiling
+lights (`High_efficacy_Light`), vanity light, smoke and CO.
+- **The `Smoke` family's type names are misleading**: type `CARBONMONOXIDE` draws the SD marker and type
+  `Smoke%20Detector[1]` draws the C marker. Verified on screen; don't trust the names.
+- Generic annotations are VIEW-SPECIFIC. The first pass put both floors' symbols in one view and they
+  stacked invisibly on top of each other. The ADU only had a single MEP plan while A200/A201 each carry
+  two, so `adu_mep_views.py` renamed them `ADU - 1st Floor Mechanical/Electrical Plan` and built matching
+  2nd-floor views; annotations are now routed by the room's level.
+- **Two different views are both named `ELECTRICAL LEGEND`** (id 1182820, the small one A201 uses, and id
+  1019342, a full-page symbol table). Match by id, not name. `del_vp.py` removes a viewport by view id.
+
+**ADU-8 Foundation & Framing** (`adu_framing.py`, `framing_notes.py`). There is no structural framing or
+foundation modelled anywhere near the ADU (6 structural foundations model-wide, 0 framing), and S101 is
+itself **drafted** — 262 detail lines, 138 detail items, 39 text notes. So the ADU sheet is drafted the
+same way: ADU exterior footprint **X 1157.9..1186.5, Y -150.3..-125.7 (28.6 x 24.6 ft)**; 15" continuous
+footing as a pair of offset lines, 21 floor joists @ 16" o.c., 14 roof trusses @ 24" o.c., plus notes.
+`framing_fix.py` hides Rooms/Casework/fixtures so the framing reads.
+- **Note placement in a rotated plan view:** these plans are rotated 90 degrees, so world X runs vertically
+  on the sheet and world Y horizontally. Stack a note block by stepping **X**, and anchor it OUTSIDE the
+  building's X range (X < 1157.9) or it overlaps the drawing. Stepping X also means the list renders
+  bottom-up — reverse it.
+
 ## Gotchas found
 - Viewport size ≠ crop size. Two things inflate it: the **view title line** (set `Viewport.LabelLineLength`)
   and the **annotation crop** (`BuiltInParameter.VIEWER_ANNOTATION_CROP_ACTIVE` = 1).
