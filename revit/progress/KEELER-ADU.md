@@ -222,3 +222,27 @@ that came with the duplicated source section. Re-running the pair is safe but no
   views that escapes both crops.
 - Sheet coordinates: the titleblock spans x 0…2.83, y 0…1.83 ft. Placing a viewport at negative Y puts it
   off the sheet (that was the first attempt's mistake — copied from A101's stored positions).
+
+## Keynotes on the rest of the sheets + roof plan finish (2026-08-22)
+`plan_bubbles.py` extends the drawn-bubble approach to elevations and floor plans.
+- **ADU-2 elevations** use ELEVATION KEYNOTES 1-6. Targets are filtered to the face being looked at:
+  `LIMIT = nearest-wall depth + 3.0` in view-local Z, so North/South get 1,2,4 while East/West also get
+  3 (gable louver) and West gets 6 (exterior door). Numbers that are not visible on a face are correctly
+  skipped. Roofs are exempt from the depth filter - a roof spans the whole depth by definition.
+  The depth filter is meaningless in a plan view, so it is disabled for the plan group.
+- **ADU-1 floor plans** use KEY NOTES 1 (egress landing at the entry door) and 2 (bathroom backing).
+  **Every ADU door reports an Interior host wall**, so `extdoor` found nothing - the entry reads as an
+  opening in the model. Falls back to `perimdoor`: the widest door closest to the perimeter rectangle.
+- Bubbles are parked beside their target (+3.0, +2.2 ft, flipped if that leaves the crop) rather than in
+  a column, because long diagonal leaders made it impossible to tell what was being keyed.
+- **ROOF LEGEND and MECHANICAL KEYNOTES are note lists, not numbered keynotes** - nothing to bubble.
+
+**Roof plan: it IS the ADU's roof** - 31.6 x 27.6 ft over the 28.6 x 24.6 ft ADU footprint, a uniform
+**1'-6" overhang**. It was NOT finished: floor registers, stairs, railings, floors and rooms were all
+showing through, and there were no material notes. `roof_finish.py` hides 14 clutter categories and adds
+shingle / sheathing / fascia / overhang / attic-ventilation notes.
+
+**Still open:** the Floor Plan Legend defines wall types W1/W2/W3, but nothing tags walls on the ADU
+plans - and A101 does not tag them either (0 wall tags). The ADU's main exterior type
+`Generic - 6" NEW 2` has **no Type Mark at all**, so tagging it would first need a mark assigned, and
+that type is shared with 49 walls outside the ADU.
