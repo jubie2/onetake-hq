@@ -1,5 +1,5 @@
 ﻿{
-    "checkpoint_at":  "2026-08-21 18:13:53",
+    "checkpoint_at":  "2026-08-21 18:26:04",
     "machine":  "FRANCISASUS",
     "revit":  {
                   "up":  true,
@@ -17,11 +17,11 @@
                                  "Roof Deck Level"
                              ],
                   "wall_types":  52,
-                  "wall_count":  442
+                  "wall_count":  432
               },
     "git":  {
                 "branch":  "claude/trusting-thompson-232391",
-                "head":  "4f1e7ad",
+                "head":  "fb53dfd",
                 "dirty":  0
             },
     "note":  ""

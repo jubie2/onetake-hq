@@ -23,6 +23,15 @@ Second project (separate from Pho Hung). Read with `progress/PROGRESS.md`.
   Axis-aligned new walls therefore render tilted in those views. Rotating the new house by
   14.295° is a one-shot `ElementTransformUtils.RotateElements` if that reading is wanted.
 
+## SOURCE LIMIT — READ THIS BEFORE PROMISING ACCURACY
+Verified 2026-08-21 with PyMuPDF: **every page of the PDF has 0 vector drawings and 0 text characters**;
+each page is ONE embedded JPEG (p0 4813x3482, p1 4794x3450) = a photo/scan of a paper print reduced onto a
+16in x 11.6in page. `tools/enhance.py` pulls the native JPEG and flattens the photo lighting, but the
+dimension strings are only ~10 px tall in the original pixels — at 9x magnification they are still a blur
+(see scratchpad `text_zoom.png`). So "read the PDF instead of the PNG" makes no difference: the PNG IS that
+JPEG. Matching the drawing exactly is not achievable from this file; it needs the vector PDF/DWG from the
+architect, or a flatbed scan of the full-size sheets.
+
 ## Scale calibration (first-floor sheet) — verified
 Crop box (1299,187)-(3794,3382) of the 4.5× render; **origin px (198.6, 2887); 28.63 px/ft**.
 Check: printed bottom chain 21'-0" + 27'-6" + 24'-0" = 72'-6" lands on detected walls at
