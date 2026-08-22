@@ -182,6 +182,36 @@ Driven by comparing each ADU sheet against its main-building counterpart.
     even with the Rooms category on, so `room_labels.py` returns 0. `sec4_labels.py` places the labels
     from room centres projected onto the section plane instead.
 
+## Section keynotes — why the tags were blank (2026-08-22)
+User: "i don't see any keynotes for the sections still." Correct — the tags `tag_sections.py` placed
+rendered as **empty circles**, and the only numbered tags on the ADU sections were strays inherited from
+the duplicated source view, floating outside the building.
+
+Root cause, in order of discovery:
+1. The tags were element keynotes hosted on ADU walls/roofs. Those types DO carry a Keynote value
+   (`Generic - 6"` roof = '1', `Generic - 6" NEW 2` = '4', `Generic - 6"` wall = '11').
+2. But **the loaded keynote table is Revit's default US CSI file** (keys like `01000`, `09250.E1`,
+   `09820.A8`). It contains none of this office's keynote list, so '1' / '4' / '11' resolve to nothing
+   and the tag draws an empty bubble. `KeynoteTable.GetKeynoteTable(doc)` → entries confirm this.
+3. The office's working tags are **User keynotes**: `Key Source = 'User'` (read-only) and
+   `Key Value = '6'` typed by hand. The numbers come from the drafted `KEYNOTES SECTION` legend view,
+   not from any keynote table.
+4. **The API cannot create a user keynote.** `IndependentTag.Create` with a Reference always produces an
+   element keynote; `Key Source` is read-only, and setting `Key Value` on such a tag stores the value but
+   displays nothing (verified: Key Value = '9', still renders blank).
+
+Fix: `section_bubbles.py` draws the bubbles directly — a leader line, two semicircle detail arcs
+(`Arc.Create` twice; a full-circle arc is rejected), and the number as a TextNote in `ARCH TEXT 12 1/8"`.
+Numbers match the legend: 1 roof shingle, 9 roof truss, 7 double top plate, 2 stucco, 4 gyp bd,
+6 PT bottom plate, 3 slab on grade, 12 footing. Targets are taken from each element's bounding box in
+VIEW coordinates and pulled to the **right-hand end** of the element, with the bubble column at
+`cropMax.X - 5.2`, so the leaders stay short and parallel instead of crossing the drawing.
+For the roof use the bbox BOTTOM (`min.Y + 0.5`) — the top-right corner of a sloped roof's bbox is in
+mid-air.
+
+**Caveat:** `clear_bubbles.py` deletes every CurveElement in those views, which also removes leader lines
+that came with the duplicated source section. Re-running the pair is safe but non-restoring.
+
 ## Gotchas found
 - Viewport size ≠ crop size. Two things inflate it: the **view title line** (set `Viewport.LabelLineLength`)
   and the **annotation crop** (`BuiltInParameter.VIEWER_ANNOTATION_CROP_ACTIVE` = 1).
