@@ -156,6 +156,32 @@ footing as a pair of offset lines, 21 floor joists @ 16" o.c., 14 roof trusses @
   building's X range (X < 1157.9) or it overlaps the drawing. Stepping X also means the list renders
   bottom-up — reverse it.
 
+## Round 3 — matching the office's sheet conventions (2026-08-21)
+Driven by comparing each ADU sheet against its main-building counterpart.
+
+- **Notes views duplicated for the ADU**: `ADU - KEY NOTES Floor Plan` (from A101) on ADU-1,
+  `ADU - GREEN CODE NOTES` (from A102) on ADU-7, `ADU - ATTIC SECTION` (from A200) on ADU-5.
+  Drafting views live on one sheet only, so they must be duplicated - these are independent copies and
+  will NOT track edits to the originals.
+- **Schedules CANNOT be duplicated through the API** — `View.Duplicate` throws "View cannot be
+  duplicated" and `CanViewBeDuplicated` returns False for every ViewSchedule. But Revit DOES allow the
+  same schedule on more than one sheet, so `place_sched.py` places the ORIGINALS: TABLE 4.303.2 on ADU-1,
+  furnace / dryer / exhaust fan / water heater on ADU-5, Electrical Notes on ADU-6, shear wall on ADU-8.
+  One source of truth — editing them updates both the main sheet and the ADU sheet.
+- **Door + window tags** (`adu_tags.py`): 36 tags on the ADU floor plans so ADU-7's schedule can be
+  cross-referenced. Note A101 has NO door/window tags — this is a departure from the office convention,
+  added deliberately.
+- **ADU - Section 4** (`adu_section4b.py`): a second transverse cut at **X = 1168.0** looking west,
+  giving 4 sections to match A103.
+  - `ElementTransformUtils.MoveElement` on a ViewSection does NOT move the cut plane, and neither does
+    rewriting `CropBox.Transform` — both silently leave `view.Origin` unchanged. Build the section with
+    `ViewSection.CreateSection(doc, typeId, bbox)` instead. Frame: `BasisX` = right, `BasisY` = (0,0,1),
+    `BasisZ = right.CrossProduct(up)`; Min/Max `(-22,-17.5,0)..(22,17.5,30)` gives the same 44 x 35 crop
+    as the others, and the resulting ViewDirection came out (-1,0,0).
+  - Rooms behind a freshly created section are not "visible" to `FilteredElementCollector(doc, view.Id)`
+    even with the Rooms category on, so `room_labels.py` returns 0. `sec4_labels.py` places the labels
+    from room centres projected onto the section plane instead.
+
 ## Gotchas found
 - Viewport size ≠ crop size. Two things inflate it: the **view title line** (set `Viewport.LabelLineLength`)
   and the **annotation crop** (`BuiltInParameter.VIEWER_ANNOTATION_CROP_ACTIVE` = 1).
