@@ -28,7 +28,19 @@ Crop box (1299,187)-(3794,3382) of the 4.5× render; **origin px (198.6, 2887); 
 Check: printed bottom chain 21'-0" + 27'-6" + 24'-0" = 72'-6" lands on detected walls at
 x = 799 / 1586 / 2273 px (measured 803 / 1589 / 2274). Overall trace = x 0…72.50 ft ✓, y 0…85.0 ft.
 
-## Built so far (NOT saved — user had the file open)
+## Built so far (NOT saved — user has the file open)
+- **Orientation FIXED**: both floors rotated **14.295°** about (801.26, −290.52) then dy −6.0, so they read
+  square in the project plan views. Apply that exact transform to anything built later (casita, openings).
+- **Floor 2 (A3-20) traced and placed** on `2nd FLoor Level`, height 10 ft, 41 walls after stub cleanup.
+  Sheet-to-sheet alignment solved automatically by wall-line correlation: **dx −7.00 ft, dy −2.75 ft**
+  (page1 calibration: origin px 197.72, 2862.42; 28.503 px/ft). Check: aligned floor-2 extent
+  x 9.34..72.58, y −0.42..84.90 vs floor-1 x 0..72.50, y 0..85.00 — right/top/bottom edges match within
+  ~1 in, and the 2nd storey correctly starts 9.3 ft in from the garage face.
+- The user's crop region = AreaPlan `2nd FLoor Level` **id 1844391** (x 740.9..861.7, y −347.1..−246.0,
+  120.8 × 101.1, rot 0). Crop toggle was off; now switched ON.
+- USER CONFIRMED (2026-08-21): build the **Almond Plan 3-C** here, not the existing MDU unit type.
+
+## Earlier state
 - 89 walls traced from A3-19 placed on **1st Floor Level**, house origin **(765, −333)**,
   height 11.0 ft, types Generic 6"/5" by traced thickness (4.6–7.1" ≈ 2x4/2x6).
 - 45 short trace-noise stubs (<2.6 ft, from text/hatch) deleted → **44 walls** remain.
