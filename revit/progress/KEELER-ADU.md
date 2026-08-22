@@ -267,3 +267,23 @@ anyone redlines them:
 - *Not keyed at all:* elevation keynote **5 EXTERIOR LIGHT** - no exterior light fixture exists on the ADU.
 - Floor-plan keynote 1 points at door 238, the door nearest the perimeter. **Every ADU door reports an
   Interior host wall**, so the model has no true exterior door to key.
+
+## Full elevation keynote coverage (2026-08-22)
+All six ELEVATION KEYNOTES now appear on ADU-2. Two things had to be fixed first:
+- **Keynote 5 EXTERIOR LIGHT had nothing to point at** - the ADU had zero lighting fixtures.
+  `ext_lights.py` places 4 `Antique_Doorwall_lamp_10251` sconces (east wall by the entry, west wall by
+  the stair, both floors) at 6'-6" above each level.
+- **That lamp family never renders in an elevation** - not in the ADU's and not in the main building's
+  either. It shows in plan, 3D and section views only (`lamp_vis.py` proves it: 5 pre-existing lamps,
+  visible in 8 plan/3D views and in `ADU - Section 4`, and in no elevation at all). Flipping the
+  instance does not help. So `plan_bubbles.py` pulls the lamps straight from the document and projects
+  them into the view by hand instead of relying on the view's element set - the fixture really is there,
+  it just does not draw on an elevation with this family. **Swap the family if the sconce must be
+  visible on the elevations.**
+- Also relaxed `extdoor`: it briefly required an Exterior host wall, which matches nothing here because
+  every ADU door reports an Interior host.
+
+Coverage by face (each elevation keys only what is actually on it, which is the correct convention):
+South 1,2,4 · North 1,2,4,5 · East 1,2,3,4,5 · West 1,2,3,4,5,6.
+The "grilles" in the middle of the north/south walls are the 36"x16" **bathroom windows**, not louvers -
+keynote 2 is the right call there. The gable louvers only exist on the east and west gable ends.

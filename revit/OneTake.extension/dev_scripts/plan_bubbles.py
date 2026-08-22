@@ -14,7 +14,8 @@ dry = args.get('dry', True)
 GROUPS = {
  'elev': (['ADU - North Elevation', 'ADU - South Elevation',
            'ADU - East Elevation', 'ADU - West Elevation'],
-          [('1', 'roof'), ('3', 'louver'), ('2', 'window'), ('4', 'stucco'), ('6', 'extdoor')]),
+          [('1', 'roof'), ('3', 'louver'), ('2', 'window'), ('4', 'stucco'),
+           ('5', 'extlight'), ('6', 'extdoor')]),
  'plan': (['ADU - 1st Floor Plan', 'ADU - 2nd Floor Plan'],
           [('1', 'perimdoor'), ('2', 'toilet')]),
 }
@@ -40,7 +41,7 @@ for nm in VIEWS:
         try:
             cn = e.Category.Name if e.Category else ''
             if cn not in ('Roofs', 'Walls', 'Windows', 'Doors', 'Generic Models',
-                          'Plumbing Fixtures'): continue
+                          'Plumbing Fixtures', 'Lighting Fixtures'): continue
             b = e.get_BoundingBox(None)
             if b is None: continue
             c = _XYZ((b.Min.X + b.Max.X) / 2.0, (b.Min.Y + b.Max.Y) / 2.0,
@@ -62,6 +63,24 @@ for nm in VIEWS:
                         abs(c.Y + 150.3), abs(c.Y + 125.7))
             items.append({'cat': cn, 'x': q.X, 'y': q.Y, 'd': abs(q.Z), 'perim': perim,
                           'fam': famname(e), 'ext': ext,
+                          'w': b.Max.X - b.Min.X, 'h': b.Max.Z - b.Min.Z})
+        except Exception: pass
+    # The Antique_Doorwall_lamp family draws in plan/3D/section but never in an elevation
+    # (true of the main building's lamps too), so pull the ADU lamps from the document and
+    # project them in by hand - the fixture IS there, it just does not render here.
+    from Autodesk.Revit.DB import BuiltInCategory as _BIC
+    for e in FEC(doc).OfCategory(_BIC.OST_LightingFixtures).WhereElementIsNotElementType():
+        try:
+            b = e.get_BoundingBox(None)
+            if b is None: continue
+            c = _XYZ((b.Min.X + b.Max.X) / 2.0, (b.Min.Y + b.Max.Y) / 2.0,
+                     (b.Min.Z + b.Max.Z) / 2.0)
+            if not (X0 <= c.X <= X1 and Y0 <= c.Y <= Y1): continue
+            q = inv.OfPoint(c)
+            if not (bb.Min.X + 0.5 <= q.X <= bb.Max.X - 0.5): continue
+            if not (bb.Min.Y + 0.5 <= q.Y <= bb.Max.Y - 0.5): continue
+            items.append({'cat': 'Lighting Fixtures', 'x': q.X, 'y': q.Y, 'd': abs(q.Z),
+                          'perim': 0.0, 'fam': famname(e), 'ext': True,
                           'w': b.Max.X - b.Min.X, 'h': b.Max.Z - b.Min.Z})
         except Exception: pass
     walls = [i for i in items if i["cat"] == "Walls"]
@@ -87,8 +106,13 @@ for nm in VIEWS:
                               ('louver' in i['fam'].lower() or 'vent' in i['fam'].lower())),
       'window':  lambda: near(lambda i: i['cat'] == 'Windows' and i['h'] > 2.5),
       "stucco":  blankwall,
-      'extdoor': lambda: near(lambda i: i['cat'] == 'Doors' and i['ext'] and i['w'] > 2.4),
+      # host wall Function is unreliable here - every ADU door reports Interior
+      'extdoor': lambda: near(lambda i: i['cat'] == 'Doors' and i['w'] > 2.4),
       'toilet':  lambda: near(lambda i: i['cat'] == 'Plumbing Fixtures'),
+      # a wall lamp projects off the face, so allow a little more depth
+      'extlight': lambda: (sorted([i for i in items if i['cat'] == 'Lighting Fixtures'
+                                   and i['d'] <= LIMIT + 6.0],
+                                  key=lambda i: i['d']) or [None])[0],
       # no ADU door is hosted in a perimeter wall, so key the one closest to it
       'perimdoor': lambda: (sorted([i for i in items if i['cat'] == 'Doors' and i['w'] > 2.4],
                                    key=lambda i: i['perim']) or [None])[0],
