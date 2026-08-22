@@ -40,6 +40,21 @@ x = 799 / 1586 / 2273 px (measured 803 / 1589 / 2274). Overall trace = x 0…72.
   120.8 × 101.1, rot 0). Crop toggle was off; now switched ON.
 - USER CONFIRMED (2026-08-21): build the **Almond Plan 3-C** here, not the existing MDU unit type.
 
+## Gap-closing pass (2026-08-21)
+- `tools/fill-gaps.py`: walks each traced wall line in the scan, finds its TRUE full extent and records
+  the breaks. Breaks = window/door openings. Run for floor 1:
+  `fill-gaps.py page0_full.png walls_f1b.json 198.6 2887 28.63 1299 187 walls_f1c.json open_f1.json`
+  floor 2: `... page1_full.png walls_f2.json 197.72 2862.4 28.503 1293 186 walls_f2c.json open_f2.json`
+- Floor 1: 97 -> 74 walls, **572.5 ft** of wall (was 409), **61 openings** found.
+- Floor 2: 99 -> 87 walls, **703.5 ft**, **61 openings** found. Openings are saved in
+  `open_f1.json` / `open_f2.json` (dir, position, a..b, width) — feed these to the window/door step.
+- Rebuilt both floors from the gap-closed sets, cleaned stubs, re-applied the 14.295 deg transform.
+  Floor 1 = 57 walls, floor 2 = 59 walls after cleanup.
+- **Known nuisance:** the sheet note "FOR INTERIOR NOTES AND DIMENSIONS SEE STANDARD PLAN A" is drawn
+  in heavy text and traces as a handful of wall-like bars in the middle-left of the plan
+  (~project x 783..808, y −264..−259). Deleting them by region is whack-a-mole — proper fix is to mask
+  that text rectangle in `trace-segments.py` before tracing (house coords approx x 4..34, y 44..66).
+
 ## Earlier state
 - 89 walls traced from A3-19 placed on **1st Floor Level**, house origin **(765, −333)**,
   height 11.0 ft, types Generic 6"/5" by traced thickness (4.6–7.1" ≈ 2x4/2x6).
