@@ -95,8 +95,26 @@ in `ADU - Section 2`. Those stay hidden via `hide_outliers.py`, so those two vie
   instances per view) was also bleeding into every ADU view — `hide_imports.py`.
 - Final layout: ADU-1 plans side by side at (0.62/1.62, 1.25), legend (2.45,1.30), notes (0.52,0.40);
   ADU-2 and ADU-3 in a 2x2 at x 0.62/1.80, y 1.33/0.45, legend (2.52,1.60).
-- **Known thin sheet:** ADU-4 Roof Plan carries no slope/ridge annotation — the source roof plan has
-  none over the ADU. Would need new annotation, not a layout fix.
+## Roof plan annotation — `roof_notes.py` (2026-08-21)
+ADU-4 had no slope/ridge annotation, so `roof_notes.py` derives it from the roof solid instead of
+hard-coded numbers: walks the geometry, keeps planar faces with `FaceNormal.Z > 0.05` and area > 20 sf,
+and reads pitch + direction off each face normal. ADU roof = **5:12 gable**, ridge running east-west at
+**Y -138.0 from X 1156.4 to 1188.0**, ridge-to-eave run **13.8 ft** each side, eaves at Y -151.8/-124.2.
+Places, per slope: a 9 ft shaft + two barbs as the arrowhead (detail lines), a `5:12` label, an
+`EAVE, TYP.` label 1.7 ft inside the eave; plus one `RIDGE` label on the ridge.
+`roof_clear.py` lists/deletes what it made (text matching the labels + detail curves under 12 ft).
+
+**The bug worth remembering: a roof plane's outward normal tilts TOWARD the downhill side.** So the
+downslope direction is `+horizontal component of the normal`, NOT its negation — the first pass negated
+it and every arrow pointed uphill with the labels landing past the ridge on the wrong slope. Sanity
+check any slope annotation by confirming the arrow tip is farther from the ridge than its tail.
+
+Two more gotchas from that pass:
+- Each sloping face spans the FULL ridge-to-eave run; halving it (mistaking it for a gable half-span)
+  gives 2 ft arrows on a 13.8 ft slope.
+- `Mesh` has no `.Vertex(i)` in IronPython — use `list(mesh.Vertices)`.
+- Text type: use **`ARCH TEXT 12 1/8"`** (0.125 in), what the ROOF LEGEND and the rest of the set use.
+  Plain `ARCH TEXT` renders far too small at 1/4" = 1'-0".
 
 ## Gotchas found
 - Viewport size ≠ crop size. Two things inflate it: the **view title line** (set `Viewport.LabelLineLength`)
