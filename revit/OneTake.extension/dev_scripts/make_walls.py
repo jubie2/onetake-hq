@@ -1,7 +1,27 @@
 # Create walls from a list in ONE transaction group. args:
 # {"level":"1st Floor Level","height_ft":10,"walls":[{"type":"Generic - 5\"","a":[x,y],"b":[x,y]}]}
 from Autodesk.Revit.DB import (Level, Wall, WallType, Line, BuiltInParameter,
-                               TransactionGroup, FilteredElementCollector as FEC)
+                               TransactionGroup, FilteredElementCollector as FEC,
+                               IFailuresPreprocessor, FailureProcessingResult, FailureSeverity)
+
+class _Safe(IFailuresPreprocessor):
+    """Delete warnings; ROLL BACK on errors (never silently resolve = never silently delete)."""
+    def PreprocessFailures(self, fa):
+        bad = False
+        for f in fa.GetFailureMessages():
+            if f.GetSeverity() == FailureSeverity.Warning:
+                fa.DeleteWarning(f)
+            else:
+                bad = True
+        return FailureProcessingResult.ProceedWithRollBack if bad else FailureProcessingResult.Continue
+
+def _safe_tx(name):
+    t = Transaction(doc, name)
+    o = t.GetFailureHandlingOptions()
+    o.SetFailuresPreprocessor(_Safe())
+    o.SetClearAfterRollback(True)
+    t.SetFailureHandlingOptions(o)
+    return t
 level = [l for l in FEC(doc).OfClass(Level) if l.Name == args.get('level', '1st Floor Level')][0]
 types = {}
 for wt in FEC(doc).OfClass(WallType):
