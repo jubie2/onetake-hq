@@ -294,3 +294,24 @@ choosing a blank patch of the wall we are actually looking at for keynote 4). Al
 carry 1-6. Trade-off, deliberate and at the user's direction: on the north and south elevations the
 louver and exterior door leaders point at the correct part of the building, but those items are on the
 gable ends and so are not drawn on that face.
+
+## Audit: which elevation keynotes have nothing drawn under them (2026-08-22)
+`keynote_audit.py` reports, per elevation, the element each keynote points at, its depth past the face
+being viewed, and whether it is in that view's drawn element set.
+
+**Keynote 5 EXTERIOR LIGHT - nothing drawn, on all four elevations.** The fixture exists at the right
+spot, but the lamp mounts on the INSIDE face of the wall (centre 1185.63 against an east wall face at
+1186.29-1186.71) so the wall hides it. Tried and failed: `flipFacing()` (no movement), deleting and
+re-placing with the insertion point outside the wall (Revit snaps it back to 1185.63 every time), and
+swapping to `Emergency Wall Light` (still 0 visible). **No elevation anywhere in this model draws a
+lighting fixture** - `lamp_vis.py` shows all 9 lamps appearing only in plan, 3D and `ADU - Section 4`.
+
+**Keynotes 3 louver and 6 exterior door - nothing drawn on NORTH and SOUTH.** They sit 9-12 ft behind
+the face being viewed (gable ends / other walls), so the leader is at the right position but the near
+wall hides the item. On east and west they are on the face (louver -0.1 ft, door +2.3/+3.7) and read
+correctly.
+
+Keynotes 1 roof, 2 window and 4 stucco land on drawn geometry on all four elevations.
+
+For context, the main building's own elevations carry **almost no keynotes at all**: North/East/West
+have zero tags, South has two (both "1"). The ADU set is now more thoroughly keyed than A105.
