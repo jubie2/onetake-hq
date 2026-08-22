@@ -315,3 +315,11 @@ Keynotes 1 roof, 2 window and 4 stucco land on drawn geometry on all four elevat
 
 For context, the main building's own elevations carry **almost no keynotes at all**: North/East/West
 have zero tags, South has two (both "1"). The ADU set is now more thoroughly keyed than A105.
+
+## A105 also needed the keynotes (2026-08-22)
+The user was looking at **A105**, the pre-existing elevation sheet, while all the keynote work had gone
+onto **ADU-2**. Both sheets show the same ADU (A105's four elevation views were re-cropped to it earlier
+in this job), so `plan_bubbles.py` gained an `a105` group covering
+`North Elev. (Bldg-1)`, `South Elev. (Bldg-1)`, `East Elev.`, `West Elev.` - all four now carry 1-6.
+Lesson: when the user says "the elevation sheet", check WHICH sheet - this model has two of them for the
+same building.

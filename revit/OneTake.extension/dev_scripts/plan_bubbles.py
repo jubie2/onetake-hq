@@ -16,6 +16,9 @@ GROUPS = {
            'ADU - East Elevation', 'ADU - West Elevation'],
           [('1', 'roof'), ('3', 'louver'), ('2', 'window'), ('4', 'stucco'),
            ('5', 'extlight'), ('6', 'extdoor')]),
+ 'a105': (['North Elev. (Bldg-1)', 'South Elev. (Bldg-1)', 'East Elev.', 'West Elev.'],
+          [('1', 'roof'), ('3', 'louver'), ('2', 'window'), ('4', 'stucco'),
+           ('5', 'extlight'), ('6', 'extdoor')]),
  'plan': (['ADU - 1st Floor Plan', 'ADU - 2nd Floor Plan'],
           [('1', 'perimdoor'), ('2', 'toilet')]),
 }
@@ -88,7 +91,7 @@ for nm in VIEWS:
     # every legend item gets keyed on every elevation, so no near-face restriction;
     # FACE is still used to pick a blank bit of the wall we are actually looking at
     LIMIT = 1e9
-    FACE = nearD + 3.0
+    FACE = nearD + 3.0 if grp in ('elev', 'a105') else 1e9
     def near(pred):
         c = [i for i in items if pred(i) and i["d"] <= LIMIT]
         if not c: return None
