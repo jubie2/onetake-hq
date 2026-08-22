@@ -127,3 +127,5 @@
 - 2026-08-21 18:26:04 | revit=up '6633 Electric Ave MDU' walls=432 sched_rows= | git claude/trusting-thompson-232391@fb53dfd dirty=0
 - 2026-08-21 18:38:26 | revit=up '6633 Electric Ave MDU' walls=432 sched_rows= | git claude/trusting-thompson-232391@8738e6d dirty=0
 - 2026-08-21 18:40:47 | revit=up '6633 Electric Ave MDU' walls=432 sched_rows= | git claude/trusting-thompson-232391@8738e6d dirty=3
+- 2026-08-21 18:48:16 | revit=up '6633 Electric Ave MDU' walls=481 sched_rows= | git claude/trusting-thompson-232391@6bb61ce dirty=0
+- 2026-08-21 19:54:54 | revit=up '4439 Keeler Ave (Johnson Version)' walls=263 sched_rows= | git claude/trusting-thompson-232391@6bb61ce dirty=4

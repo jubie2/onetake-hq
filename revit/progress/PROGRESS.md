@@ -1,6 +1,6 @@
 # Revit / OneTake — PROGRESS (read this first)
 
-<!-- auto --> **Last checkpoint:** 2026-08-21 18:41:34 | Revit: up, '6633 Electric Ave MDU', 432 walls, schedule  rows | git claude/trusting-thompson-232391@8738e6d, 3 uncommitted
+<!-- auto --> **Last checkpoint:** 2026-08-21 19:54:54 | Revit: up, '4439 Keeler Ave (Johnson Version)', 263 walls, schedule  rows | git claude/trusting-thompson-232391@6bb61ce, 4 uncommitted
 
 This file is the single "where did we leave off" note. The header line above is
 rewritten by `tools/checkpoint.ps1`; the sections below are edited by hand (or by

@@ -1,28 +1,27 @@
 ﻿{
-    "checkpoint_at":  "2026-08-21 18:41:34",
+    "checkpoint_at":  "2026-08-21 19:54:54",
     "machine":  "FRANCISASUS",
     "revit":  {
                   "up":  true,
                   "revit_version":  "2025",
                   "revit_build":  "20250515_1515(x64)",
                   "pyrevit_version":  "6.4.0.26100+0515",
-                  "doc_title":  "6633 Electric Ave MDU",
+                  "doc_title":  "4439 Keeler Ave (Johnson Version)",
                   "levels":  [
                                  "1st Floor Level",
                                  "Top of Ridge",
                                  "Max Height",
                                  "Grade Level",
-                                 "2nd FLoor Level",
-                                 "2nd FLoor Ceiling",
-                                 "Roof Deck Level"
+                                 "2nd FLoor Plan",
+                                 "2nd FLoor Ceiling"
                              ],
                   "wall_types":  52,
-                  "wall_count":  432
+                  "wall_count":  263
               },
     "git":  {
                 "branch":  "claude/trusting-thompson-232391",
-                "head":  "8738e6d",
-                "dirty":  3
+                "head":  "6bb61ce",
+                "dirty":  4
             },
     "note":  ""
 }
