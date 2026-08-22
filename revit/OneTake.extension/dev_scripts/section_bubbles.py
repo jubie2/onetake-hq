@@ -19,6 +19,10 @@ SPEC = [('1',  'Roofs',    'top'),
         ('2',  'Walls',    'wallmid'),
         ('4',  'Walls',    'innermid'),
         ('6',  'Walls',    'wallbase'),
+        ('10', 'Walls',    'wallmid2'),
+        ('8',  'Walls',    'innermid2'),
+        ('5',  'Walls',    'weep'),
+        ('11', 'Roofs',    'ceil'),
         ('3',  'Floors',   'mid'),
         ('12', 'Floors',   'below')]
 tt = None
@@ -63,11 +67,15 @@ for nm in VIEWS:
             mx = w[1][0] - (1.2 if kind == "innermid" else 0.2)
             if kind == 'walltop':   return (mx, w[1][1] - 0.8)
             if kind == 'wallbase':  return (mx, w[0][1] + 0.8)
+            if kind == 'weep':      return (mx, w[0][1] + 1.9)
+            if kind == 'wallmid2':  return (mx, (w[0][1] + w[1][1]) / 2.0 + 2.5)
+            if kind == 'innermid2': return (mx, (w[0][1] + w[1][1]) / 2.0 - 2.5)
             return (mx, (w[0][1] + w[1][1]) / 2.0)
         w = max(lst, key=lambda z: (z[1][0] - z[0][0]))
         mx = w[1][0] - 2.0                            # near the right end
         if kind == 'top':   return (mx, w[0][1] + 0.5)   # roof surface at the right eave
         if kind == 'under': return (mx, w[0][1] - 1.6)
+        if kind == 'ceil':  return (mx, w[0][1] - 3.2)
         if kind == 'below': return (mx, w[0][1] - 1.0)
         return (mx, (w[0][1] + w[1][1]) / 2.0)
     jobs = []

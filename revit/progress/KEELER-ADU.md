@@ -246,3 +246,24 @@ shingle / sheathing / fascia / overhang / attic-ventilation notes.
 plans - and A101 does not tag them either (0 wall tags). The ADU's main exterior type
 `Generic - 6" NEW 2` has **no Type Mark at all**, so tagging it would first need a mark assigned, and
 that type is shared with 49 walls outside the ADU.
+
+## Wall tags + full keynote coverage (2026-08-22)
+- `wall_tags.py` assigns the missing **Type Mark `W2`** to `Generic - 6" NEW 2` (the ADU's exterior
+  type had none) and tags the longest wall of each marked type on both floor plans.
+  `prune_walltags.py` then dropped the W3 tag: the only `Generic - 6"` wall near the ADU is at
+  **Y -158.7, outside the building rectangle** (it is the stair-landing wall), so the ADU itself uses
+  only **W1 interior and W2 exterior**. Note the Type Mark change also affects 49 walls elsewhere in the
+  model - harmless, since nothing tags walls on the main sheets.
+- Section keynotes went from 8 to the full **12**: added 5 weep screed, 8 studs, 10 R-15, 11 R-30.
+
+**Which keynotes land on a real element, and which only mark the right location** — worth knowing before
+anyone redlines them:
+- *Real element:* 1 roof, 2 stucco (wall face), 4 gyp bd (inner face), 3 slab, 12 footing,
+  and on elevations 2 window, 3 gable louver, 6 exterior door.
+- *Approximate - the component is not modelled*: 9 roof truss, 7 double top plate, 6 PT bottom plate,
+  5 weep screed, 8 studs, 10 R-15 and 11 R-30 insulation. The walls are generic single-layer types with
+  no studs or insulation layers, and there are no trusses or plates in the model, so the leaders point at
+  where each item belongs rather than at an element.
+- *Not keyed at all:* elevation keynote **5 EXTERIOR LIGHT** - no exterior light fixture exists on the ADU.
+- Floor-plan keynote 1 points at door 238, the door nearest the perimeter. **Every ADU door reports an
+  Interior host wall**, so the model has no true exterior door to key.
