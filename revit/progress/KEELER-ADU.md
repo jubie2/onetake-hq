@@ -37,6 +37,21 @@ old Logan Ave text.
 `normalize_views.py`, `set_crops.py`, `anno_crop.py`, `fix_wide.py`, `label_len.py`, `move_vp.py`,
 `replace_vp.py`, `vp_debug.py`, `vp_types.py`, `tb_params.py`, `set_project_info.py`.
 
+## Follow-up pass (user review)
+- Elevation / section crops were clipping the roof: they topped out at world Z 25.9..27.3 but Top of Ridge
+  is 28.0. `crop_height.py` now sets all ADU elevations+sections to world Z **-4 .. 31** — full house shows.
+- Sections had no keynotes/room names. `tag_sections.py` places one keynote tag per distinct
+  KEYNOTE_PARAM value found on the visible roofs/walls/floors (model already carries values: roof=1,
+  walls=4). `room_labels.py` writes the room name as a TextNote placed on the view plane
+  (`NewRoomTag` silently produces nothing in section views — the tag never appears in the view).
+  Result: Section 1 = 6 keynote tags / 5 labels, Sections 2 and 3 = 2 tags / 6 labels each.
+- `ADU - North Elevation`, `ADU - East Elevation`, `ADU - Section 2` still report a viewport box 2.5-6 ft
+  wide with the drawing at the RIGHT end (cause still unknown - not the title line, not the annotation
+  crop, and `SetCurveInView` reports 0 levels so datum extents are not it either). Workaround in place:
+  the viewport centre is offset left by (box/2 - drawing/2) so the drawing lands correctly, and their
+  view titles - which fall off the page - are replaced by TextNotes placed on the sheet
+  (`sheet_text.py`).
+
 ## Gotchas found
 - Viewport size ≠ crop size. Two things inflate it: the **view title line** (set `Viewport.LabelLineLength`)
   and the **annotation crop** (`BuiltInParameter.VIEWER_ANNOTATION_CROP_ACTIVE` = 1).
