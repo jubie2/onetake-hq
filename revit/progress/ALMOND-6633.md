@@ -49,6 +49,21 @@ x = 799 / 1586 / 2273 px (measured 803 / 1589 / 2274). Overall trace = x 0…72.
   120.8 × 101.1, rot 0). Crop toggle was off; now switched ON.
 - USER CONFIRMED (2026-08-21): build the **Almond Plan 3-C** here, not the existing MDU unit type.
 
+## Clean rebuild (2026-08-21, after user feedback)
+1. `clear_region.py` wiped the region (75 walls + hosted openings).
+2. Re-traced with the sheet-note text MASKED: `MASKS='[[295,940,1210,1670]]'` (crop px) in
+   `trace-segments.py`, then `close-shell.py`, then `fill-gaps.py`.
+3. NEW `tools/rationalize.py`: clusters near-collinear lines, snaps everything to the inch, and pulls
+   lines onto printed anchors. Floor 1 anchors x `0,21,48.5,72.5` y `0,85`; floor 2 (raw frame)
+   x `7,28,55.5,79.5` y `2.75,87.75`. Result: floor 1 = 53 walls, x 0.00..72.50, y 0.00..85.00 (exactly
+   the printed 72ft-6in); floor 2 = 71 walls, aligned extent 9.33..72.50 / 0..85.
+4. Built + rotated both (same transform). Openings lists: `op0.json` (44), `op1.json` (56).
+
+**Still open:** the perimeter is not a closed loop — the tracer only sees wall-weight lines, so thin or
+broken runs are missed. Best next approach: rasterise the footprint (flood-fill the exterior white space,
+take the complement, trace + simplify the boundary) to get a guaranteed-closed outline, then re-apply the
+rationalize step.
+
 ## Gap-closing pass (2026-08-21)
 - `tools/fill-gaps.py`: walks each traced wall line in the scan, finds its TRUE full extent and records
   the breaks. Breaks = window/door openings. Run for floor 1:

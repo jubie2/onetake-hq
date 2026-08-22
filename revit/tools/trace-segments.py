@@ -13,7 +13,10 @@ outj = sys.argv[7] if len(sys.argv) > 7 else None
 im = Image.open(src).convert('L')
 W, H = im.size
 box = (int(f[0]*W), int(f[1]*H), int(f[2]*W), int(f[3]*H))
-a = np.asarray(im.crop(box), dtype=np.uint8)
+a = np.asarray(im.crop(box), dtype=np.uint8).copy()
+for r in json.loads(os.environ.get("MASKS", "[]")):
+    x0, y0, x1, y1 = [int(v) for v in r]
+    a[max(0,y0):y1, max(0,x0):x1] = 255          # blank out text/legend blocks
 ink = a < 120
 h, w = ink.shape
 
