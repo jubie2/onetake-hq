@@ -335,3 +335,7 @@ Reference: `delta-design-vault/Approved ADU Set - Reference Standard.md` (full a
 - Steps 3-4 pending: door/window schedules onto ADU-1 per approved A101 convention, titleblock
   Drawn/Check/date fields, then a sheet-by-sheet gap pass against the approved PDF.
 - User is mid-touch-up on some sheets - ASK WHICH before modifying existing ADU sheets.
+
+Round 4 complete (steps 3-4): titleblock fields + issue date fixed on all ADU sheets; solar/shingle
+spec on ADU-4; roof framing note on ADU-8; parity vs the approved set confirmed. Deviations + flags
+recorded in the vault note. Remaining for submittal: Title-24 (energy consultant), user's own revisions.

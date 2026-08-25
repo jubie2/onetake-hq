@@ -55,3 +55,18 @@ job number. Index sheet id "RS-1-7" = the zone (RS-1-7), not a sheet.
 5. `ExportImage` PNGs of a sheet with an off-position raster grow the canvas — pixel forensics on them
    mislead; verify with native `doc.Export` PDF (`PDFExportOptions`) instead. The PDF output is a tile
    mosaic (raster), so read placement by rendering, not by PDF image objects.
+
+## Keeler step 3-4 outcomes (2026-08-24)
+- Titleblock fields set on ADU-1..8: Drawn By FRANCIS N., Checked By "-". Project Issue Date
+  ("Drawing Date" on every titleblock) was stale 08.16.23 → 08.24.26.
+- **Deviation kept:** door/window schedules stay on ADU-7 — they physically do not fit ADU-1 at
+  readable size (approved A101 manages it by *referencing* the CalGreen table instead of placing it).
+- Content parity vs approved confirmed for floor plans / sections / elevations / mech / elec
+  (same office legends). Added to close real gaps: FUTURE SOLAR PANELS label + shingle
+  manufacturer/CRRC spec on the roof plan; ROOF FRAMING NOTE block (truss mfr deferred, 24" o.c.,
+  heel 3 15/16", tail 24" 2x4) on the framing plan.
+- **Flagged, unchanged:** KEYNOTES SECTION legend says R-30 ceiling batt where the approved set used
+  R-38 — Title-24 will dictate the real value; the "MECH General Notes" legend from approved A05 does
+  not exist in the Keeler model (would need to be drafted or copied if wanted).
+- Note-stacking in these rotated plan views: rows step world-X and render bottom-up — always
+  `reversed(lines)`, and keep rows within ~x 1147.5+ or they fall off the crop.
