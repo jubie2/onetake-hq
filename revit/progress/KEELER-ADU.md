@@ -339,3 +339,11 @@ Reference: `delta-design-vault/Approved ADU Set - Reference Standard.md` (full a
 Round 4 complete (steps 3-4): titleblock fields + issue date fixed on all ADU sheets; solar/shingle
 spec on ADU-4; roof framing note on ADU-8; parity vs the approved set confirmed. Deviations + flags
 recorded in the vault note. Remaining for submittal: Title-24 (energy consultant), user's own revisions.
+
+MECH GENERAL NOTES drafted (2026-08-24): full section from the approved A200, cleaned (typos fixed,
+"CITY OF PHOENIX" template leftover -> San Diego, 2010/2007 code refs -> 2022, duct R-5/IECC ->
+R-6/R-8 CA Energy Code). New drafting view `ADU - MECH GENERAL NOTES` (scale 1, 3/32" Arial wrapped
+note) placed on ADU-7 middle column - ADU-5 is full, and ADU-7 is the notes sheet.
+Also caught + fixed: `ADU - 2nd Floor Mechanical Plan` crop had turned OFF (viewport ballooned to
+3.9x6.4 off-sheet); re-activated and re-centred. Watch for this - screenshot.py toggles crops on view
+exports and may be the culprit.
