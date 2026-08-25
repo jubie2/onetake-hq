@@ -323,3 +323,15 @@ in this job), so `plan_bubbles.py` gained an `a105` group covering
 `North Elev. (Bldg-1)`, `South Elev. (Bldg-1)`, `East Elev.`, `West Elev.` - all four now carry 1-6.
 Lesson: when the user says "the elevation sheet", check WHICH sheet - this model has two of them for the
 same building.
+
+## Round 4 — corrections against the approved Cuong set (2026-08-24)
+Reference: `delta-design-vault/Approved ADU Set - Reference Standard.md` (full analysis + gotchas).
+- Step 1 (import paper sheets): **nothing to import** - Keeler already has all equivalents; the
+  approved set even shipped SD0 empty.
+- Step 2 (title page + site plan): fixed A01's stale Logan-Ave content (title, address, scope,
+  building analysis, project data owner/name), added verified ZIP 92113 everywhere incl. Project
+  Address, and replaced the Logan vicinity map with a generated OSM map of the real site.
+  A02 site plan already covers the ADU (13 dims near it).
+- Steps 3-4 pending: door/window schedules onto ADU-1 per approved A101 convention, titleblock
+  Drawn/Check/date fields, then a sheet-by-sheet gap pass against the approved PDF.
+- User is mid-touch-up on some sheets - ASK WHICH before modifying existing ADU sheets.
