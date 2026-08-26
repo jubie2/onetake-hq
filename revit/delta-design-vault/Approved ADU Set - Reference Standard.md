@@ -83,3 +83,28 @@ job number. Index sheet id "RS-1-7" = the zone (RS-1-7), not a sheet.
   the east face (doors), "South" shows the north face, etc. Match by view name, not by compass.
 - API gotcha: TEXT set immediately after `NewFamilyInstance` may not stick (keeps family default
   "5"). Regenerate, re-set, verify — `dev_scripts/retag.py` pattern (also does wipe + copy_from).
+
+## Section keynote layout (2026-08-26, per approved A102)
+- 12 tags per section, balanced: LEFT column top-to-bottom 1 shingle / 7 top plate / 2 stucco /
+  6 PT bottom plate / 5 weep screed; RIGHT column 9 truss / 11 ceiling batt / 8 studs / 4 gyp bd /
+  10 wall batt / 12 footing; 3 slab tagged from BELOW center with a short vertical leader.
+- Tag columns sit ~3 ft outside the wall faces; leaders end ON the element.
+- Compute building extent from the ADU **roof bbox minus the 1'-6" overhang** — wall-based extents
+  pick up stray fragments. Section-view local Y = world Z + offset; get the offset via
+  `inv.OfPoint(worldPt)`, never assume 0. (`dev_scripts/section_retag.py`)
+
+## Floor plan numbering standard (2026-08-26, per approved A101)
+- **Door marks: 101, 102, ... on 1st floor; 201+ on 2nd — counterclockwise starting at the unit
+  entry door.** Window marks: 01+ (1st) / 21+ (2nd), same CCW order. Set the instance Mark; the
+  existing Door Tags + schedules pick it up automatically.
+- Window tags: the office "Window Tag" family shows the TYPE mark (E/KK/32) — switch tags to
+  **"Window Tag - Number"** (ChangeTypeId) to show the instance Mark like the approved set.
+- The ADU DOOR/WINDOW SCHEDULES filter on Comments=ADU, so reusing 101/201/01/21 marks that the
+  main house also uses only raises duplicate-mark warnings, nothing breaks.
+- Plan keynotes (ADU-1 KEYNOTES list: 1 = egress landing, 2 = bath reinforcement) are TAG LABEL
+  tags: 1 at each entry landing, 2 near each bath toilet — both floors are separate entry-level
+  units here.
+- Keeler rotated plan paper orientation: paper-right = world north (+y), paper-down = world east
+  (+x). CCW in world = CCW on paper (rotation, no mirror).
+- Overlapping door-pair tags (bifold pairs, adjacent doors): nudge `IndependentTag.TagHeadPosition`
+  apart along paper-x (`dev_scripts/move_heads.py`).
