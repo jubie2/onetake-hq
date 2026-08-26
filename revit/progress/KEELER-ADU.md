@@ -355,3 +355,14 @@ keynote number, no leader) and asked for the same everywhere - one family, easy 
 TAG LABEL instances at the same centers on ADU N/S/E elevations + all four A105 elevation views
 (42 tags total; his West untouched). Note: the KEYNOTES legends now show an empty item 7 that Francis
 added - leave it, he is mid-revision. Saved + verified on ADU-2 and A105 renders.
+
+Revisions round 2 (2026-08-25): tags now POINT at their targets. Francis's exemplars (ADU - West +
+South Elevation) = TAG LABEL + a bent leader (AnnotationSymbol.addLeader; set Leader.End on the
+element, Elbow at tag height) and only keynotes that exist on that face. Note the VIEW NAMES ARE
+COMPASS-FLIPPED vs geometry (the "West Elevation" view shows the east face with the doors, "South"
+shows the north face, etc.) - match by view name, not by face. Rebuilt ADU - North (1 roof, 2 both
+windows, 4 stucco, 5 corner lamp; dropped 3/6 - no louver or door on that face) and ADU - East
+(1 roof, 3 gable louver, 2 both windows, 4 stucco; dropped 5/6). A105: West/South copied verbatim
+from his exemplars, North/East copied from the rebuilt views. retag.py / move_tag.py / tag_leaders.py /
+face_items.py / view_census.py. GOTCHA: TEXT param set right after NewFamilyInstance does not always
+stick (kept family default "5") - re-set after a Regenerate and verify (retag.py does both).
