@@ -375,3 +375,9 @@ RIGHT column 9 truss / 11 R-30 ceiling batt / 8 studs / 4 gyp bd / 10 R-15 wall 
 1/2/3/4. Numbers follow OUR KEYNOTES SECTION legend (13/14 are blank rows). Building extent taken
 from the ADU roof bbox minus 1'-6" overhang (wall-based extents caught stray fragments); local view
 Y = world Z + zoff (compute via inv.OfPoint, do NOT assume 0). Filed the tag standard in the vault.
+
+Revisions round 5 (2026-08-26): ADU-4 reworked per approved A103. Roof Framing Plan viewport moved
+ADU-8 -> ADU-4 (delete vp + Viewport.Create, keep type); ADU-8's Foundation/2nd-Floor-Framing
+re-spread. Deleted two off-crop duplicate shingle-spec notes + the rotated on-roof solar label;
+added approved-style leader callouts (FUTURE SOLAR PANELS (SEPARATE PERMIT), NEW ROOF SHINGLE) and
+a ROOF SHINGLE SPEC block on the sheet under ROOF LEGEND. roof_sheet.py / find_text.py.

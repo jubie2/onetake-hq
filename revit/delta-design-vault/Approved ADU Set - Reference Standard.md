@@ -108,3 +108,15 @@ job number. Index sheet id "RS-1-7" = the zone (RS-1-7), not a sheet.
   (+x). CCW in world = CCW on paper (rotation, no mirror).
 - Overlapping door-pair tags (bifold pairs, adjacent doors): nudge `IndependentTag.TagHeadPosition`
   apart along paper-x (`dev_scripts/move_heads.py`).
+
+## Roof sheet layout (2026-08-26, per approved A103)
+- Roof sheet carries BOTH the Roof Plan and the **Roof Framing Plan** side by side (framing moved
+  off the foundation sheet). Right side: attic-vent note + ROOF LEGEND + roof shingle spec block.
+- Roof plan callouts are horizontal text OUTSIDE the roof with a leader arrow in:
+  "FUTURE SOLAR PANELS (SEPARATE PERMIT)" on one slope, "NEW ROOF SHINGLE" on the other
+  (drawn line + 17-degree barbs + ARCH TEXT 12 1/8", the roof_notes.py arrow pattern).
+- Shingle spec block text (ours, not Cuong's product IDs): OWENS CORNING (OR EQ.), CLASS 'A',
+  ICC-ESR LISTED / CRRC RATED, OVER (1) LAYER 30# FELT.
+- GOTCHA: two earlier shingle-spec TextNotes sat OUTSIDE the roof plan crop - present in the model,
+  never printed. `FEC(doc, view.Id)` does NOT return annotations outside the annotation crop, so
+  find_text.py (doc-wide TextNote grep by OwnerViewId) is the way to catch orphans.
