@@ -347,3 +347,11 @@ note) placed on ADU-7 middle column - ADU-5 is full, and ADU-7 is the notes shee
 Also caught + fixed: `ADU - 2nd Floor Mechanical Plan` crop had turned OFF (viewport ballooned to
 3.9x6.4 off-sheet); re-activated and re-centred. Watch for this - screenshot.py toggles crops on view
 exports and may be the culprit.
+
+Revisions round 1 (2026-08-25): keynote bubbles -> TAG LABEL family. Francis hand-replaced the drawn
+bubbles on ADU - West Elevation with the office's `TAG LABEL` generic-annotation family (TEXT param =
+keynote number, no leader) and asked for the same everywhere - one family, easy to drag around.
+`bubbles_to_tags.py` deleted the drawn leader+arcs+digit TextNote sets (24 elems/view) and placed
+TAG LABEL instances at the same centers on ADU N/S/E elevations + all four A105 elevation views
+(42 tags total; his West untouched). Note: the KEYNOTES legends now show an empty item 7 that Francis
+added - leave it, he is mid-revision. Saved + verified on ADU-2 and A105 renders.

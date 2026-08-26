@@ -1,5 +1,5 @@
 ﻿{
-    "checkpoint_at":  "2026-08-24 21:48:59",
+    "checkpoint_at":  "2026-08-25 22:19:31",
     "machine":  "FRANCISASUS",
     "revit":  {
                   "up":  true,
@@ -16,12 +16,17 @@
                                  "2nd FLoor Ceiling"
                              ],
                   "wall_types":  52,
-                  "wall_count":  263
+                  "wall_count":  261,
+                  "schedule":  {
+                                   "name":  "EQUIPMENT SCHEDULE (E) - PHO HUNG",
+                                   "id":  null,
+                                   "rows":  1
+                               }
               },
     "git":  {
                 "branch":  "claude/trusting-thompson-232391",
-                "head":  "d5a8b65",
-                "dirty":  0
+                "head":  "b0330dc",
+                "dirty":  11
             },
     "note":  ""
 }
