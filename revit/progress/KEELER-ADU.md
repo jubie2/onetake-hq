@@ -366,3 +366,12 @@ windows, 4 stucco, 5 corner lamp; dropped 3/6 - no louver or door on that face) 
 from his exemplars, North/East copied from the rebuilt views. retag.py / move_tag.py / tag_leaders.py /
 face_items.py / view_census.py. GOTCHA: TEXT param set right after NewFamilyInstance does not always
 stick (kept family default "5") - re-set after a Regenerate and verify (retag.py does both).
+
+Revisions round 3 (2026-08-25): section keynotes redone as TAG LABEL + leaders, balanced both sides
+per the approved A102 (Cuong PDF p.9). section_retag.py wipes the old drawn bubbles and places 12
+tags per section: LEFT column 1 shingle / 7 top plate / 2 stucco / 6 PT plate / 5 weep screed,
+RIGHT column 9 truss / 11 R-30 ceiling batt / 8 studs / 4 gyp bd / 10 R-15 wall batt / 12 footing,
+3 slab tagged from below center (short vertical leader, approved style). Applied to ADU - Section
+1/2/3/4. Numbers follow OUR KEYNOTES SECTION legend (13/14 are blank rows). Building extent taken
+from the ADU roof bbox minus 1'-6" overhang (wall-based extents caught stray fragments); local view
+Y = world Z + zoff (compute via inv.OfPoint, do NOT assume 0). Filed the tag standard in the vault.
