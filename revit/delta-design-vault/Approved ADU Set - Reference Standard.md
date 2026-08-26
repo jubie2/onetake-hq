@@ -70,3 +70,16 @@ job number. Index sheet id "RS-1-7" = the zone (RS-1-7), not a sheet.
   not exist in the Keeler model (would need to be drafted or copied if wanted).
 - Note-stacking in these rotated plan views: rows step world-X and render bottom-up — always
   `reversed(lines)`, and keep rows within ~x 1147.5+ or they fall off the crop.
+
+## Keynote tag standard (2026-08-25, Francis-approved pattern)
+- Keynote bubbles are the **TAG LABEL generic-annotation family** (one family everywhere; TEXT
+  param = keynote number). Never drawn arcs/text: those were retired.
+- Each tag gets a **bent leader** pointing INTO its element: `AnnotationSymbol.addLeader()`, then
+  set `Leader.End` on the element (~1 ft inside a window pane, on the roof surface, on the lamp),
+  `Leader.Elbow` horizontally offset at tag height. Tag sits ~2-4 ft clear of the element.
+- **Only keynotes that exist on that face** — no parking unused numbers in the sky (drop 3/6 where
+  a face has no louver/door). Repeated elements may repeat the tag (each window its own 2).
+- **View names are compass-flipped vs geometry** in the Keeler model: "ADU - West Elevation" shows
+  the east face (doors), "South" shows the north face, etc. Match by view name, not by compass.
+- API gotcha: TEXT set immediately after `NewFamilyInstance` may not stick (keeps family default
+  "5"). Regenerate, re-set, verify — `dev_scripts/retag.py` pattern (also does wipe + copy_from).
