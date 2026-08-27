@@ -457,3 +457,9 @@ pair) on both mech floors. GOTCHA: the 'Smoke' family's TYPE NAMES ARE INVERTED 
 type "Smoke Detector[1]" draws the C symbol and type "CARBONMONOXIDE" draws SD. Instances swapped
 accordingly (sdco_family.py + sdco_swap.py). Same class of naming rot as the
 High_efficacy_Light:CARBONMONOXIDE lights.
+
+Revisions round 17 (2026-08-27): kitchen counter GFI rule (Francis: outlet every ~2 ft around the
+countertop; CEC 210.52(C)). 1st floor already had a 9-outlet GFI run; the 2ND floor kitchen only
+had 3 - copied the 5 missing Outlet-GFI instances up 11 ft with PHASE_CREATED corrected in the
+same transaction (lesson applied); all 5 verified visible in the 2nd floor electrical view.
+Vault updated earlier this round with the full mech device standard + Smoke-family inversion.
