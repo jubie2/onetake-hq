@@ -178,3 +178,15 @@ job number. Index sheet id "RS-1-7" = the zone (RS-1-7), not a sheet.
   copy is invisible); collect elements BEFORE Transaction.Start (in-transaction CurveElement
   collection silently returned 0 on one view); registers "for the 2nd floor" placed at z23 were
   stranded in the attic - sanity-check z against the level.
+
+## Final walkthrough findings (2026-08-27)
+- CHECK VIEWPORT CENTERS: A02's site viewport sat at y=-0.20 (off-sheet) - the sheet printed
+  with an invisible site plan. Sanity-check GetBoxCenter of every viewport against the 3.0x2.0
+  sheet before submitting.
+- Shared "old set" sheets can smuggle stale-project content into a re-used model: A02's fixture
+  table and the whole A06 BMP site plan still showed the previous project's property. Grep for
+  old unit numbers / street names (find_text.py) across ALL views before any submittal.
+- Reusable submittal set shape (18 sheets): A01 title/index, A02 site, A03 general notes,
+  A04/A05 CalGreen, A06 BMP, A101 floor, A102 sections, A103 roof(+framing), A104 elevations,
+  A105 schedules/notes, A200 mech, A201 elec, S101 foundation/framing, SD0-SD2. Title-24 slots
+  in at A106+ when the consultant delivers.

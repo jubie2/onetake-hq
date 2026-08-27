@@ -463,3 +463,22 @@ countertop; CEC 210.52(C)). 1st floor already had a 9-outlet GFI run; the 2ND fl
 had 3 - copied the 5 missing Outlet-GFI instances up 11 ft with PHASE_CREATED corrected in the
 same transaction (lesson applied); all 5 verified visible in the 2nd floor electrical view.
 Vault updated earlier this round with the full mech device standard + Smoke-family inversion.
+
+FINAL WALKTHROUGH (2026-08-27): every sheet rendered + compared vs the approved set. Fixed:
+1. A02 Site viewport sat at center y=-0.20 - OFF THE SHEET (site plan invisible on prints,
+   probably for a long time). Moved to (1.35,1.12); lot/setbacks/ADU now show.
+2. A02 plumbing fixture table listed the old Logan Ave fourplex (units 4357-4367) - rewritten for
+   Keeler: (E) residence + ADU unit 1 + unit 2 (2 lav, kitchen sink, shower, WC, washer each,
+   matching the model).
+3. A06 BMP plan showed the ENTIRE OLD LOGAN SITE - duplicated the Keeler Site view as 'BMP Site
+   Plan - Keeler' (id 2196450), drew fiber-roll perimeter (SE-5), stabilized construction
+   entrance (TC-1) at Keeler Ave, concrete washout (WM-8), portable toilet (WM-9), gravel-bag
+   note; swapped the A06 viewport.
+4. Parked stale old-project Title-24 sheets A106-A110 as X-* (consultant's new T-24 can take
+   A106+) and hid the L* landscape sheets (old site, typos) from the sheet list.
+5. A01 index verified: clean 18-sheet set (A01-A06, A101-A105, A200, A201, S101, SD0-SD2).
+Reviewed clean: A01 (2022 codes, vicinity, project data), A03 notes, A04/A05 CalGreen 2022,
+S101 (ADU foundation + 2nd flr framing + shear schedule), SD0-SD2 standard details.
+OUTSTANDING FOR APPROVAL (external): Title-24 from energy consultant (-> A106+); truss calcs are
+deferred submittal (noted on A01) - OK; R-30 vs R-38 ceiling batt to be set by Title-24;
+Francis's final eye pass.
