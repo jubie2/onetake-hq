@@ -431,3 +431,11 @@ elbow/end per device) on both floors - one connected family per keynote, arrow e
 (T-box, registers, wall diffuser, EF, duct runs, terminations, WH, flue, attic access, return
 grille, FAU rect, IAQ fan). 15 nudged clear of the MINI SPLIT label. Same standard as
 elevations/sections now applies to ALL tagged sheets.
+
+Revisions round 13 (2026-08-26): 2nd floor mech plan was missing the supply registers entirely -
+the original device pass had put the "2nd floor" set at z23.3 (stranded in the attic, invisible to
+any plan; deleted). Copied the five 1st-floor registers up 11 ft (CopyElements) - they landed
+correctly BUT arrived with Phase Created = "Phase 2" while the views show New Construction, so
+they were invisible; set PHASE_CREATED back to New Construction. GOTCHA: CopyElements can assign a
+different phase than the source - always verify PHASE_CREATED when a copied element doesn't show.
+copy_registers.py / fix_registers.py / check_vis.py / check_phase.py / fix_phase.py.
