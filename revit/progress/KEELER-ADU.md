@@ -409,3 +409,10 @@ mini-split head (2x2 square + diagonals + MINI SPLIT (CLG. MTD.) label) in the f
 the south window; SD circles in Bed-1 + Bed-2; SD+CO pair in the hall outside the bedrooms.
 mech_add2.py. Judgement call: one mini split per unit in the open living space only - bedrooms
 already have FAU supply registers.
+
+Revisions round 10 (2026-08-26): dad's callout - FAU-1 + return grille were tags with nothing
+drawn. 2nd floor mech now shows FAU-1 as a dashed 2x4 rect (attic, above the W/D closet) with
+label + keynote 14, the 24"x24" return air grille (2x2 square w/ diagonals) beside it in the hall
+ceiling with keynote 13 moved next to it, near attic access 12 - same cluster as the approved set's
+Loft. Removed the stray 13 tag from the 1st floor (return/FAU serve the attic level only, per
+approved). mech_add3.py.

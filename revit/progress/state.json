@@ -1,27 +1,27 @@
 ﻿{
-    "checkpoint_at":  "2026-08-26 20:12:54",
+    "checkpoint_at":  "2026-08-26 20:14:58",
     "machine":  "FRANCISASUS",
     "revit":  {
                   "up":  true,
                   "revit_version":  "2025",
                   "revit_build":  "20250515_1515(x64)",
                   "pyrevit_version":  "6.4.0.26100+0515",
-                  "doc_title":  null,
+                  "doc_title":  "4439 Keeler Ave (Johnson Version)",
                   "levels":  [
-                                 null
+                                 "1st Floor Level",
+                                 "Top of Ridge",
+                                 "Max Height",
+                                 "Grade Level",
+                                 "2nd FLoor Plan",
+                                 "2nd FLoor Ceiling"
                              ],
-                  "wall_types":  1,
-                  "wall_count":  1,
-                  "schedule":  {
-                                   "name":  "EQUIPMENT SCHEDULE (E) - PHO HUNG",
-                                   "id":  null,
-                                   "rows":  1
-                               }
+                  "wall_types":  52,
+                  "wall_count":  261
               },
     "git":  {
                 "branch":  "claude/trusting-thompson-232391",
-                "head":  "1a04774",
-                "dirty":  5
+                "head":  "1a80e65",
+                "dirty":  6
             },
     "note":  ""
 }
