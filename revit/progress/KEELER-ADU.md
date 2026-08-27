@@ -388,3 +388,9 @@ items 1-15 (TAG LABEL circles + individual TextNotes, manual line breaks - width
 symbol curves deleted. Electrical: sheet matches approved already (DWG legend + notes); added
 superseding 2023 NEC / 2022 CEC code note (DWG text cites 2005/2007, not API-editable).
 mech_fix.py / mech_legend_wrap.py / mech_legend_shift.py / elec_note.py / mech_items.py.
+
+Revisions round 7 (2026-08-26): sheets renumbered to the approved convention (see vault):
+A101/A102/A103/A104/A105/A200/A201/S101 now = the ADU set (short approved-style names too, fixing
+the titleblock title overlap). Old duplicates parked as X-* and hidden from the sheet list.
+renumber_sheets.py / hide_parked.py / shot_sheet.py (render by sheet number - view names are no
+longer unique). NOTE: dev scripts that look sheets up by NAME now hit duplicates - use numbers.

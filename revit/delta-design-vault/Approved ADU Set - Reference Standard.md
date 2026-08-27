@@ -138,3 +138,19 @@ job number. Index sheet id "RS-1-7" = the zone (RS-1-7), not a sheet.
 - CLEANUP found: ~38 drawn duct/fan symbol curves in the mech plan views sat far outside the crop
   (invisible junk from an early annotation pass) - deleted. Same off-crop-annotation gotcha as the
   roof sheet.
+
+## Sheet numbering standard (2026-08-26, per approved index + office habit)
+- Discipline letters: A=architectural, S=structural (SD=structure details), plus A200-series for
+  MEP. Approved Cuong index: A01 title, A02 site, A03 nailing, A04 BMP, A05 general notes,
+  A06/A07 Cal-Green, A101 Floor Plan, A102 Sections, A103 Roof Plan, A104 Elevations,
+  A105-A107 Title-24, A200 Mechanical, A201 Electrical, S101 Foundation/Framing, SD0 notes,
+  SD1/SD2 details.
+- Keeler ADU sheets renumbered to match: ADU-1->A101 Floor Plan, ADU-3->A102 Sections,
+  ADU-4->A103 Roof Plan, ADU-2->A104 Elevations, ADU-7->A105 Door-Windows Schedule & Notes,
+  ADU-5->A200 Mechanical Plan, ADU-6->A201 Electrical Plan, ADU-8->S101 Foundation / Framing Plan.
+  Sheet NAMES shortened to the approved style (long "4439 Keeler Ave ADU - ..." titles overlapped
+  the Drawing Date field in the titleblock).
+- The old parallel sheets that held those numbers are PARKED as X-A101...X-S101 (reversible:
+  strip the X- prefix) and hidden from the sheet list (Appears In Sheet List = off). When the
+  consultant's Title-24 arrives it can take A106+.
+- Sheet numbers must be unique doc-wide - park the old holder first, then renumber.
