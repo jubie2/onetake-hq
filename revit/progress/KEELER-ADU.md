@@ -450,3 +450,10 @@ Revisions round 15 (2026-08-26): bedroom SDs moved next to each room's entry doo
 1167.1,-141.2; Bed-2 door at 1167.1,-135.4), hall keeps SD+CO pair - per Francis + approved set.
 Placement rule: SD near the room door, SD+CO in hall outside sleeping areas. Collect-before-
 transaction pattern used in move_sd.py (in-transaction curve collection failed silently before).
+
+Revisions round 16 (2026-08-27): SD/CO are now the office 'Smoke' generic-annotation FAMILY (one
+draggable unit each) instead of drawn circles+text - placed at the same spots (bedroom doors, hall
+pair) on both mech floors. GOTCHA: the 'Smoke' family's TYPE NAMES ARE INVERTED vs their graphics -
+type "Smoke Detector[1]" draws the C symbol and type "CARBONMONOXIDE" draws SD. Instances swapped
+accordingly (sdco_family.py + sdco_swap.py). Same class of naming rot as the
+High_efficacy_Light:CARBONMONOXIDE lights.
