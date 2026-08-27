@@ -425,3 +425,9 @@ mech_add4.py / mech_fix2/3.py. GOTCHA unresolved: proximity-delete of CurveEleme
 2nd-floor view twice while the identical code worked on the 1st (mech_items listed them fine) -
 worked around with delete_ids by explicit element ids; if it recurs, collect ids first via a
 separate read pass, then delete by id.
+
+Revisions round 12 (2026-08-26): mech keynotes rebuilt as leadered TAG LABELs (wipe + retag with
+elbow/end per device) on both floors - one connected family per keynote, arrow ends ON the device
+(T-box, registers, wall diffuser, EF, duct runs, terminations, WH, flue, attic access, return
+grille, FAU rect, IAQ fan). 15 nudged clear of the MINI SPLIT label. Same standard as
+elevations/sections now applies to ALL tagged sheets.
