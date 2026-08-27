@@ -402,3 +402,10 @@ X blades + EF label, drawn) in each bath by the tub; 22"x30" dashed attic-access
 Pixel - Dash line style) over the 2nd-floor entry closet with keynote 12 moved beside it.
 Register/vent positions reviewed: bedroom vents already sit over closets/at walls, kitchen+dining
 mid-room per Francis's rule - unchanged. mech_add.py / rooms_list.py.
+
+Revisions round 9 (2026-08-26): mech round 2, BOTH floors (user thought 2nd was skipped - both had
+round 8 too; the parked X-A200 old sheet may have caused the confusion). Added per floor: ceiling
+mini-split head (2x2 square + diagonals + MINI SPLIT (CLG. MTD.) label) in the family area tight to
+the south window; SD circles in Bed-1 + Bed-2; SD+CO pair in the hall outside the bedrooms.
+mech_add2.py. Judgement call: one mini split per unit in the open living space only - bedrooms
+already have FAU supply registers.
