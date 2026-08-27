@@ -161,3 +161,20 @@ job number. Index sheet id "RS-1-7" = the zone (RS-1-7), not a sheet.
   or over closets. Every restroom gets an exhaust fan symbol (circle + X blades + "EF").
 - Mech plans carry ROOM TAGS (NewRoomTag at room centers). Note: Room class can't be collected
   directly - collect SpatialElement and isinstance-filter.
+
+## Mech plan device standards (2026-08-26/27, Francis + approved A200)
+- Every mech keynote gets a leadered TAG LABEL (one family) with the arrow ON a drawn device -
+  T-box thermostat, registers, wall diffuser, EF, duct runs w/ arrows, WH, attic access hatch,
+  return grille beside FAU-1 (dashed = in attic), IAQ fan in the living area.
+- SD by each bedroom's ENTRY DOOR; SD + CO pair in the hall outside sleeping areas; each level.
+  SD/CO live ONLY on the mechanical plans (stripped off electrical). They are instances of the
+  office 'Smoke' generic-annotation family - ONE unit each.
+- **'Smoke' family type names are INVERTED vs graphics**: type "Smoke Detector[1]" draws the (C)
+  symbol, type "CARBONMONOXIDE" draws SD. Pick by graphic, not name. (Same rot as the
+  High_efficacy_Light type literally named "CARBONMONOXIDE" - those are ceiling lights.)
+- Mini split (clg. mtd.) near the window in the living space, one per unit; kitchen/dining vents
+  may be mid-room, bedroom vents at walls/closets; dashed 22x30 attic access over a closet.
+- API gotchas bank: CopyElements can land copies in a DIFFERENT PHASE (check PHASE_CREATED when a
+  copy is invisible); collect elements BEFORE Transaction.Start (in-transaction CurveElement
+  collection silently returned 0 on one view); registers "for the 2nd floor" placed at z23 were
+  stranded in the attic - sanity-check z against the level.
