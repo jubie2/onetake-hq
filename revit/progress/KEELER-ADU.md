@@ -394,3 +394,11 @@ A101/A102/A103/A104/A105/A200/A201/S101 now = the ADU set (short approved-style 
 the titleblock title overlap). Old duplicates parked as X-* and hidden from the sheet list.
 renumber_sheets.py / hide_parked.py / shot_sheet.py (render by sheet number - view names are no
 longer unique). NOTE: dev scripts that look sheets up by NAME now hit duplicates - use numbers.
+
+Revisions round 8 (2026-08-26): A200 mech completeness per Francis - room tags added to both mech
+plans (NewRoomTag; rooms: Kitchen 336sf open space, Bath room, Bed-1/2, Closets, Pantry-2nd; no
+"Family" room object exists - the floor-plan Family labels are text); EF symbol (solid circle +
+X blades + EF label, drawn) in each bath by the tub; 22"x30" dashed attic-access hatch (Thin
+Pixel - Dash line style) over the 2nd-floor entry closet with keynote 12 moved beside it.
+Register/vent positions reviewed: bedroom vents already sit over closets/at walls, kitchen+dining
+mid-room per Francis's rule - unchanged. mech_add.py / rooms_list.py.

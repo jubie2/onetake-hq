@@ -154,3 +154,10 @@ job number. Index sheet id "RS-1-7" = the zone (RS-1-7), not a sheet.
   strip the X- prefix) and hidden from the sheet list (Appears In Sheet List = off). When the
   consultant's Title-24 arrives it can take A106+.
 - Sheet numbers must be unique doc-wide - park the old holder first, then renumber.
+
+## Mech plan completeness rules (2026-08-26, Francis)
+- Attic access goes AGAINST A WALL or OVER A CLOSET, never mid-room; drawn as a dashed 22"x30"
+  rectangle + keynote 12. Kitchen/dining supply vents MAY sit mid-room; bedroom vents go at walls
+  or over closets. Every restroom gets an exhaust fan symbol (circle + X blades + "EF").
+- Mech plans carry ROOM TAGS (NewRoomTag at room centers). Note: Room class can't be collected
+  directly - collect SpatialElement and isinstance-filter.
