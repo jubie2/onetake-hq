@@ -381,3 +381,10 @@ ADU-8 -> ADU-4 (delete vp + Viewport.Create, keep type); ADU-8's Foundation/2nd-
 re-spread. Deleted two off-crop duplicate shingle-spec notes + the rotated on-roof solar label;
 added approved-style leader callouts (FUTURE SOLAR PANELS (SEPARATE PERMIT), NEW ROOF SHINGLE) and
 a ROOF SHINGLE SPEC block on the sheet under ROOF LEGEND. roof_sheet.py / find_text.py.
+
+Revisions round 6 (2026-08-26): ADU-5/6 per approved A200/A201. Mech legend rebuilt with numbered
+items 1-15 (TAG LABEL circles + individual TextNotes, manual line breaks - width arg doesn't wrap);
+13 device tags on 1st floor mech plan, 16 on 2nd (approved bare-circle style); 38 off-crop orphan
+symbol curves deleted. Electrical: sheet matches approved already (DWG legend + notes); added
+superseding 2023 NEC / 2022 CEC code note (DWG text cites 2005/2007, not API-editable).
+mech_fix.py / mech_legend_wrap.py / mech_legend_shift.py / elec_note.py / mech_items.py.

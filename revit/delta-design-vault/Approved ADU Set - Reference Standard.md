@@ -120,3 +120,21 @@ job number. Index sheet id "RS-1-7" = the zone (RS-1-7), not a sheet.
 - GOTCHA: two earlier shingle-spec TextNotes sat OUTSIDE the roof plan crop - present in the model,
   never printed. `FEC(doc, view.Id)` does NOT return annotations outside the annotation crop, so
   find_text.py (doc-wide TextNote grep by OwnerViewId) is the way to catch orphans.
+
+## Mechanical / Electrical sheets (2026-08-26, per approved A200/A201)
+- Mechanical: numbered circles (TAG LABEL, no leaders) sit directly beside each device on both
+  floor plans, matching a numbered MECHANICAL KEY NOTES legend. Keeler numbering 1-15:
+  1 thermostat, 2 clg diffuser, 3 wall diffuser, 4 bath EF, 5/6 dryer duct+termination,
+  7/8/9 kitchen hood/duct/termination, 10 WH P&T, 11 WH flue (2nd flr), 12 attic access (2nd),
+  13 return grille, 14 FAU-1 (2nd), 15 IAQ fan. Both floors are separate units - most numbers
+  repeat on each floor.
+- The MECHANICAL KEYNOTES legend was two description-only TextNotes with NO numbers - rebuilt as
+  15 individual notes + TAG LABEL circles, two columns (mech_fix.py). TextNote.Create's width arg
+  did NOT wrap at legend scale - use manual \n line breaks for long items.
+- Electrical (per approved A201): NO numbered keynotes - symbols + wiring arcs + ELECTRICAL NOTES
+  list only. Keeler's electrical legend/notes are an imported DWG (E LEGEND.dwg) citing 2005 NEC /
+  2007 CEC - text not editable via API; added a superseding ELECTRICAL CODE NOTE on ADU-6 stating
+  2023 NEC / 2022 CEC govern.
+- CLEANUP found: ~38 drawn duct/fan symbol curves in the mech plan views sat far outside the crop
+  (invisible junk from an early annotation pass) - deleted. Same off-crop-annotation gotcha as the
+  roof sheet.
