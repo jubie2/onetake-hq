@@ -439,3 +439,9 @@ correctly BUT arrived with Phase Created = "Phase 2" while the views show New Co
 they were invisible; set PHASE_CREATED back to New Construction. GOTCHA: CopyElements can assign a
 different phase than the source - always verify PHASE_CREATED when a copied element doesn't show.
 copy_registers.py / fix_registers.py / check_vis.py / check_phase.py / fix_phase.py.
+
+Revisions round 14 (2026-08-26): SD/CO belong on the MECH plan only (Francis). The electrical
+plans carried 7 'Smoke' generic-annotation symbols (types Smoke Detector / CARBONMONOXIDE) from
+the original device pass - deleted from both ADU electrical views (strip_smoke_elec.py). Mech
+plans keep the drawn SD/CO set. NOTE: the 'High_efficacy_Light' family has a type misnamed
+"CARBONMONOXIDE" - those are ceiling lights, left alone.
