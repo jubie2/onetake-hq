@@ -8,5 +8,6 @@ for s in FEC(doc).OfClass(ViewSheet):
 opt = PDFExportOptions()
 opt.FileName = args.get('name', 'export')
 opt.Combine = True
-ok = doc.Export(r'C:\dev\onetake-hq\revit\progress\views', ids, opt)
-result = 'exported=%s count=%d' % (ok, ids.Count)
+outdir = args.get('dir', r'C:\dev\onetake-hq\revit\progress\views')
+ok = doc.Export(outdir, ids, opt)
+result = 'exported=%s count=%d to %s' % (ok, ids.Count, outdir)

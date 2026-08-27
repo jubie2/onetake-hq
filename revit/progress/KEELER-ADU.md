@@ -482,3 +482,8 @@ S101 (ADU foundation + 2nd flr framing + shear schedule), SD0-SD2 standard detai
 OUTSTANDING FOR APPROVAL (external): Title-24 from energy consultant (-> A106+); truss calcs are
 deferred submittal (noted on A01) - OK; R-30 vs R-38 ceiling batt to be set by Title-24;
 Francis's final eye pass.
+
+PDF SET EXPORTED (2026-08-27): native Revit PDF, 17 sheets combined, saved to the Dropbox project
+folder as "4439 Keeler Ave ADU - Plan Set 08.27.26.pdf" for dad's review. Re-export with
+pdf_export.py (sheets list + dir; use forward slashes in the dir arg - backslashes break the
+routes JSON parser).
