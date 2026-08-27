@@ -445,3 +445,8 @@ plans carried 7 'Smoke' generic-annotation symbols (types Smoke Detector / CARBO
 the original device pass - deleted from both ADU electrical views (strip_smoke_elec.py). Mech
 plans keep the drawn SD/CO set. NOTE: the 'High_efficacy_Light' family has a type misnamed
 "CARBONMONOXIDE" - those are ceiling lights, left alone.
+
+Revisions round 15 (2026-08-26): bedroom SDs moved next to each room's entry door (Bed-1 door at
+1167.1,-141.2; Bed-2 door at 1167.1,-135.4), hall keeps SD+CO pair - per Francis + approved set.
+Placement rule: SD near the room door, SD+CO in hall outside sleeping areas. Collect-before-
+transaction pattern used in move_sd.py (in-transaction curve collection failed silently before).
