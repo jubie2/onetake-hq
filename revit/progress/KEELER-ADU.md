@@ -416,3 +416,12 @@ label + keynote 14, the 24"x24" return air grille (2x2 square w/ diagonals) besi
 ceiling with keynote 13 moved next to it, near attic access 12 - same cluster as the approved set's
 Loft. Removed the stray 13 tag from the 1st floor (return/FAU serve the attic level only, per
 approved). mech_add3.py.
+
+Revisions round 11 (2026-08-26): parity pass vs approved A200 - every keynote now has a DRAWN
+device on both floors: T-box thermostat (1), keynote 3 placed w/ 6"x12" wall diffuser on the bath
+wall (was never placed anywhere), dryer duct run W/D->south wall w/ arrow (5/6), kitchen hood duct
+run ->north wall (8/9), IAQ fan circle relocated Bed-1 -> family area (15; was misplaced).
+mech_add4.py / mech_fix2/3.py. GOTCHA unresolved: proximity-delete of CurveElements found 0 on the
+2nd-floor view twice while the identical code worked on the 1st (mech_items listed them fine) -
+worked around with delete_ids by explicit element ids; if it recurs, collect ids first via a
+separate read pass, then delete by id.
