@@ -190,3 +190,24 @@ job number. Index sheet id "RS-1-7" = the zone (RS-1-7), not a sheet.
   A04/A05 CalGreen, A06 BMP, A101 floor, A102 sections, A103 roof(+framing), A104 elevations,
   A105 schedules/notes, A200 mech, A201 elec, S101 foundation/framing, SD0-SD2. Title-24 slots
   in at A106+ when the consultant delivers.
+
+## Electric Ave build (2026-08-27) — new gotchas
+- **Dependent views are the #1 trap when cloning plan views.** `view.GetPrimaryViewId()` first.
+  Duplicating a dependent gives another dependent: annotations, room tags, and per-view category
+  visibility are shared across the whole family (they polluted A101/A200/A201 simultaneously).
+  Duplicate the PRIMARY for an independent view, then re-crop.
+- Rotated plan views: `CropBox.Transform` is read-only in effect (assigning a transform is
+  ignored). Rotate the crop element via ElementTransformUtils.RotateElement (find it by toggling
+  CropBoxVisible and diffing FEC ids), then set Min/Max from 4-corner world mapping.
+- ViewSection.CreateSection: the model you see is on the **+BasisZ** side of the section box;
+  created view reports ViewDirection = −BasisX/−BasisZ of what you passed. Verify with a render.
+- Wall Location.Curve z = wall base elevation. `curve.Project(XYZ(x,y,0))` on upper-floor walls
+  returns distance ≈ floor height → every host search "misses". Project at the curve's own z.
+- Viewport outline includes annotations outside the crop; enable annotation crop
+  (`VIEWER_ANNOTATION_CROP_ACTIVE`) to clip them. Hide stray parcel-DXF imports/cameras per view.
+- Viewport.Create can grab a titleless type: copy `GetTypeId()` from a sibling viewport.
+- Flat-roof + roof-deck ADU changes the standard keynote kits: elevations (guardrail/trellis/
+  garage door/ext stair instead of shingles/louver), sections (Class A deck system, joists per
+  plan instead of roof truss), mech (mini-split + no attic access/FAU/return grille).
+- Approved-set numbering rules held: doors 101+/201+ CCW from entry, windows 01+/21+, schedules
+  filtered by Comments=ADU.
