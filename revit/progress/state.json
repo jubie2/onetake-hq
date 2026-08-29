@@ -1,29 +1,23 @@
 ﻿{
-    "checkpoint_at":  "2026-08-28 22:27:42",
+    "checkpoint_at":  "2026-08-28 22:42:08",
     "machine":  "FRANCISASUS",
     "revit":  {
                   "up":  true,
                   "revit_version":  "2025",
                   "revit_build":  "20250515_1515(x64)",
                   "pyrevit_version":  "6.4.0.26100+0515",
-                  "doc_title":  "6633 Electric Ave MDU - Johnsons Version (Full Sheet Plan)",
+                  "doc_title":  "Room Tag.rfa",
                   "levels":  [
-                                 "1st Floor Level",
-                                 "Top of Ridge",
-                                 "Max Height",
-                                 "Grade Level",
-                                 "2nd FLoor Level",
-                                 "2nd FLoor Ceiling",
-                                 "Roof Deck Level"
+
                              ],
-                  "wall_types":  52,
-                  "wall_count":  357,
+                  "wall_types":  0,
+                  "wall_count":  0,
                   "schedule_skipped":  "doc is not \u0027Pho Hung\u0027 - schedule read skipped (Revit crash guard)"
               },
     "git":  {
                 "branch":  "claude/trusting-thompson-232391",
-                "head":  "5060626",
-                "dirty":  16
+                "head":  "1edd736",
+                "dirty":  20
             },
     "note":  ""
 }
