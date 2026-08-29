@@ -84,6 +84,24 @@ pointing to anything".
   Placed on **A104** beside the roof plan; A104 renamed "Roof / Framing Plan" (the A01 index is a
   live **Drawing List schedule**, so it re-titles itself - no manual index edit needed).
 
+## Session 2026-08-28c — electrical conventions (Francis's office style)
+Francis: switch by the door with the wire running across to the fixture on the opposite side;
+smoke detectors by the door (smoke reaches them far sooner than mid-room); kitchen GFI every 2 ft.
+- **BUG found while surveying: the recessed cans were on the wrong floor's sheet.** They had been
+  created at level+8.5 ft and ended up at z 12.17 / 23.17 - above each floor's view range - so the
+  1st-floor cans printed on the 2nd-floor plan and the 1st-floor plan had no lights at all.
+  Revit floor plans do **not** draw anything above the **cut plane** (here z 6.42 / 17.42), so the
+  cans are now seated at z 5.0 / 16.0 (just under the cut) and **hidden per-element in the 4
+  sections + 4 elevations** so they don't read as wall fixtures there. (The alternative - raising
+  the cut plane - would stop windows reading as cut openings.)
+- **Switch legs**: curved dashed detail arcs drawn switch -> fixture in each elec view (9 on the
+  1st floor, 7 on the 2nd), bowed perpendicular to the run by ~16% of its length. Switch-to-light
+  pairs are hand-mapped in `ev_elec_rework.py`; added the missing Bath-1 and Master Bed switches.
+- **Kitchen GFI**: 1st floor had 5 along the north counter only - added 3 down the east leg;
+  2nd floor infilled 2. Both kitchens now run ~2 ft o.c. around the whole counter.
+- **Smoke/CO moved to the doors** on both mech plans (`ev_sd_bydoor.py`), keynote leaders dragged
+  along with them.
+
 ## CRASH: Revit stack-overflows on this model
 Three crashes on 8/27 were traced to `/schedule-read` of the Pho Hung schedule (see memory
 `revit-schedule-read-crash`); `checkpoint.ps1` is now gated and that is fixed. On 8/28 Revit
