@@ -16,6 +16,12 @@ param(
     [string]$Note = "",
     [switch]$SessionNote,      # also add the note under "## Session notes" in PROGRESS.md
     [string]$Schedule = "EQUIPMENT SCHEDULE (E) - PHO HUNG",
+    # That schedule only exists in the Pho Hung model.  Asking Revit to read the
+    # table data of a schedule belonging to a different project crashed Revit 2025
+    # outright (stack overflow, 0xC00000FD) on every poll against the Electric Ave
+    # model on 2026-08-27.  So the read is gated on the open document.
+    [string]$ScheduleDoc = "Pho Hung",
+    [switch]$NoSchedule,       # never read the schedule, whatever is open
     [switch]$Quiet
 )
 $ErrorActionPreference = "Continue"
@@ -53,7 +59,11 @@ if ($status -and $status.ok) {
     }
     $walls = Get-Json "$Base/walls" $null 30
     if ($walls -and $walls.ok) { $revit.wall_count = @($walls.walls).Count }
-    $sch = Get-Json "$Base/schedule-read" @{ name = $Schedule } 30
+    $wantSchedule = (-not $NoSchedule) -and $Schedule -and
+                    ($ScheduleDoc -eq "" -or ($revit.doc_title -and $revit.doc_title -like "*$ScheduleDoc*"))
+    $sch = $null
+    if ($wantSchedule) { $sch = Get-Json "$Base/schedule-read" @{ name = $Schedule } 30 }
+    else { $revit.schedule_skipped = "doc is not '$ScheduleDoc' - schedule read skipped (Revit crash guard)" }
     if ($sch -and $sch.ok) {
         $rows = @($sch.rows)
         $revit.schedule = [ordered]@{ name = $Schedule; id = $sch.schedule_id; rows = $rows.Count }

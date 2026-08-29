@@ -1,5 +1,5 @@
 ﻿{
-    "checkpoint_at":  "2026-08-27 20:58:33",
+    "checkpoint_at":  "2026-08-28 18:47:03",
     "machine":  "FRANCISASUS",
     "revit":  {
                   "up":  true,
@@ -17,12 +17,13 @@
                                  "Roof Deck Level"
                              ],
                   "wall_types":  52,
-                  "wall_count":  357
+                  "wall_count":  357,
+                  "schedule_skipped":  "doc is not \u0027Pho Hung\u0027 - schedule read skipped (Revit crash guard)"
               },
     "git":  {
                 "branch":  "claude/trusting-thompson-232391",
-                "head":  "7af8829",
-                "dirty":  193
+                "head":  "c8cbddd",
+                "dirty":  34
             },
     "note":  ""
 }

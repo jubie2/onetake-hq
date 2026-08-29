@@ -40,6 +40,39 @@ Delivery PDF: `Dropbox/2025/RESIDENTIAL/6633 Electric Ave/6633 Electric Ave ADU 
   WM-9 toilet, SE-4 note) swapped in at 1:160.
 - **L1**: stale old-site "Landscaping Plan Copy 1" viewport removed.
 
+## Session 2026-08-28 — sections/elevations re-cut SQUARE to the building
+Francis: "the elevation and section cuts are incorrect its not straight and diagonal to the plan".
+- **Root cause:** the ADU sits at **14.3 deg** in world coords (468 ft of walls at 14.3, 386 ft at
+  104.3). The first pass cut all 8 views along world X/Y, so every cut sliced the building
+  diagonally. Verified with `ev_wall_angles.py` (direction histogram: only 14.3 / 104.3 exist).
+- Defined a building frame u = 14.3 deg (bldg east), v = 104.3 deg (bldg north) and re-cut all
+  4 elevations + 4 sections with `bx` along the frame (`ev_recut2.py`). Cut stations, in the
+  building frame relative to the footprint centre: Section 1 s=-20 (bedrooms), Section 2 s=+18
+  (garage), Section 3 t=+11 (north rooms), Section 4 t=-3 (south rooms).
+- **First re-cut used a wrong centre**: the oriented bbox from "all walls in the region box"
+  caught neighbouring site walls, giving t +/-19.6. The TRUE footprint, taken from opening
+  stations, is **s -31..+27, t -7..+20.5** (58 x 27 ft), centre world (1157.520,104.868).
+  Tag leaders aimed at t=-13..-15 landed in blank space until this was corrected.
+- Re-tagged all 8 views (`ev_retag2.py`): tag parks at the paper edge on the same side as its
+  target (side chosen from `(target-origin).RightDirection`), leader End on the real element.
+- Sheet layout: rows at y=1.55 / y=0.40, keynote legend re-centred at (1.24,0.95) in the clear
+  band between them; A103 right legend column re-anchored (5.58,7.58); A105 keynote 8 bubble
+  circle copied from bubble 7 (a legend "bubble" is a TextNote + a separate small CurveElement -
+  copying the text alone leaves a naked number).
+
+## CRASH: Revit stack-overflows on this model
+Three crashes on 8/27 were traced to `/schedule-read` of the Pho Hung schedule (see memory
+`revit-schedule-read-crash`); `checkpoint.ps1` is now gated and that is fixed. On 8/28 Revit
+stack-overflowed **twice more**, both times while `ev_bldg_frame.py` ran - the only script that
+**iterates `OfCategory(OST_Rooms)`** - with an Area Plan view active. Dump exception both times:
+`0xC00000FD STACK_OVERFLOW`. Walls-only (`ev_frame_walls.py`) and walls+FamilyInstances
+(`ev_faces_frame.py`) run fine on the same model.
+**Rule: do not collect Rooms/Areas in this model - derive geometry from walls + family
+instances.** Face classification: `FamilyInstance.FacingOrientation` is unreliable here (it
+labelled the t=+19.6 face 'S'); classify by the element's station instead.
+Crash triage: `%LOCALAPPDATA%\CrashDumps\Revit.exe.<pid>.dmp` (parse minidump stream type 6 for
+the exception code) + latest `Journals\journal.*.txt` tail for the active view / last add-in call.
+
 ## Flags for dad / Francis (not resolvable from the model)
 - **S / S101 / SD0–SD3**: S is empty; S101 foundation/framing still shows the OLD Logan bldg —
   no structural model exists for the new ADU (structure engineer scope). SD details generic.

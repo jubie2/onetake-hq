@@ -1,6 +1,6 @@
 # Revit / OneTake — PROGRESS (read this first)
 
-<!-- auto --> **Last checkpoint:** 2026-08-27 20:58:33 | Revit: up, '6633 Electric Ave MDU - Johnsons Version (Full Sheet Plan)', 357 walls, schedule  rows | git claude/trusting-thompson-232391@7af8829, 193 uncommitted
+<!-- auto --> **Last checkpoint:** 2026-08-28 18:47:03 | Revit: up, '6633 Electric Ave MDU - Johnsons Version (Full Sheet Plan)', 357 walls, schedule  rows | git claude/trusting-thompson-232391@c8cbddd, 34 uncommitted
 
 This file is the single "where did we leave off" note. The header line above is
 rewritten by `tools/checkpoint.ps1`; the sections below are edited by hand (or by
@@ -9,6 +9,23 @@ Claude at the end of a session). Machine snapshot lives next to it in
 append-only history in `log.md`.
 
 ## Where we left off
+- 2026-08-27 23:2x-23:37 - **Revit crashed 3x in a row (Electric Ave).** All three dumps are
+  the same fault: **stack overflow 0xC00000FD on the main thread**, ~250 nested
+  exception-dispatch frames (Revit Utility.dll -> RaiseException -> ntdll -> coreclr),
+  i.e. runaway recursion inside Revit driven from managed code. In every journal the
+  last thing Revit did was a **pyRevit RequestHandler external event**, and the crash
+  follows the 4th call of a checkpoint poll = `POST /schedule-read`.
+  Cause: `checkpoint.ps1` polls `EQUIPMENT SCHEDULE (E) - PHO HUNG` every ~30 s no
+  matter which model is open. That name **resolves in the Electric Ave model too**
+  (`schedule-latest.csv` had one empty row from 23:12) - a foreign/broken schedule whose
+  table data Revit cannot compute. Reading its cells recursed until the 1 MB main-thread
+  stack was gone. Nothing was lost: last save 20:57, and the crashes happened while only
+  viewing sheets.
+  Fixes in this repo: `checkpoint.ps1` only reads the schedule when the open doc matches
+  `-ScheduleDoc` (default "Pho Hung"), plus a `-NoSchedule` switch; `GET /schedules` no
+  longer reads cell text unless asked (`?rows=4`) - it used to read 4 rows of *every*
+  schedule, the same landmine. startup.py change is live on the next Revit start.
+
 - 2026-08-21 — **File identity check.** Revit had been reopened on `Pho Hung El cajon REV-1.0001.rvt` (a Revit BACKUP file, a snapshot from 8/18 ~01:30: curtain walls 4977749/4977659 still present, old restroom W wall 4978049, no wok range, 26 schedule items, 309 walls). Saved + closed it and reopened **`Pho Hung El cajon REV-1.rvt`** = our real model (315 walls, wok 4984262, restroom walls 4983947-54, S wall 4981922, curtain walls gone). Item 04 (W-entry air curtain) had gone missing from it, so re-placed as **4984843** on wall 4978041 at (6.3,41.9) with params + tag -> schedule back to **29 items**, tag audit 35/35. Saved. RULE: always confirm the open doc via GET /docs before editing — `.000N.rvt` names are Revit backups, not our file.
 - 2026-08-18 03:40 — Polish pass: exterior walls -> Generic 6" (pdf thickness); wok range 06 replaced by real family `Wok_Range_Gas_12` type PH-06 9FT (4984262, x 29.2-38.2 exactly per pdf; Generic Models + OneTake Generic Model Tag); floor sinks/drains at the pdf F.S./F.D. label spots (4982000-4,4984244-7); cashier counter 34" high, kitchen counter 2-6 deep (type PH-COUNTER 30in); dims added 14 (cooler) / 7 (cooler depth) / 10 (service run) / 33-1 restored. Audit: 29 rows, 35 tags OK. Saved. Remaining nits: hood 05/13 plan symbol includes duct (type says 12x4/7x4), shelf 22 family fixed 4 ft (pdf 5 ft), dining room areas differ from pdf 500/500 (geometry follows dims).
 - 2026-08-18 03:10 — **PDF-line-registered rebuild + full audit.** `tools/pdf-overlay.py` registers the vector PDF (origin pt 297.4,1223.2; 18 pt/ft) to model feet, draws `progress/pdf-vs-model-overlay.png`, lists PDF lines w/o model wall (`progress/pdf-gaps.json`). Walls corrected: wing E wall jogs to x 33.25 above y 48.5 (walls 4983953/4983954), women block y 41.5/47.35/53.15 w/ chase 24.9-26.6 (4983947-4983952), men W 25.8 (4983949), diagonal end (33.25,63.7), kitchen S wall y 15.25 x 28.6-56.15, alcove x 56.15/y 8.25, cooler 42.2-55.8 x 16.9-23.5 door .8, W wall segs 12.75/26.5/40.4/43.4, rooms N wall 12.75. Doors 4983956 (women) 4983957 (men). Items 04/29 re-placed (4984121/4984122). Audit: 29 schedule rows, 35 tags reseated, all doors swing/hinge per pdf, rooms valid (women 93, men 57). Dims 52-7/49-3/30-1/28-10/33-1/30-7 present. Saved REV-1.
@@ -49,6 +66,9 @@ append-only history in `log.md`.
   curtain-door, set-params, schedule, schedule-read, warnings
 
 ## Next up
+- [ ] Electric Ave: run `dev_scripts/ev_find_stray_schedule.py` (lists schedules, reads no
+      cell text) and delete the stray `EQUIPMENT SCHEDULE (E) - PHO HUNG` that rode in
+      with the sheet-set rebuild - it is a live crash landmine in that model
 - [ ] Review the El Cajon rough draft in Revit; fix anything off, then re-checkpoint
 - [ ] Equipment schedule: fill ELECTRICAL / GAS SIZE / BTU cells that were unknown (only description-derived values set); add (N) items if scope needs
 - [ ] Place (E) schedule on sheet A09 next to the source if wanted

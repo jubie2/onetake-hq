@@ -1074,7 +1074,16 @@ def _schedule_info(doc, v, with_rows=3):
 
 @api.route('/schedules', methods=['GET'])
 def list_schedules(doc, request):
-    """All non-template schedules with columns, filters, sort, placement + first rows."""
+    """All non-template schedules with columns, filters, sort and placement.
+
+    Cell text is NOT read by default: asking Revit for the table data of a
+    damaged/foreign schedule takes down the whole process (stack overflow,
+    0xC00000FD - Electric Ave, 2026-08-27).  Opt in with ?rows=4 when needed.
+    """
+    try:
+        nrows = int((request.params or {}).get('rows') or 0)
+    except Exception:
+        nrows = 0
     if doc is None:
         return _err('No active document.', 409)
     from Autodesk.Revit.DB import ViewSchedule
@@ -1083,7 +1092,7 @@ def list_schedules(doc, request):
         if v.IsTemplate or v.IsTitleblockRevisionSchedule:
             continue
         try:
-            out.append(_schedule_info(doc, v, 4))
+            out.append(_schedule_info(doc, v, nrows))
         except Exception as ex:
             out.append({'id': v.Id.Value, 'name': v.Name, 'error': str(ex)})
     out.sort(key=lambda d: d.get('name') or '')
