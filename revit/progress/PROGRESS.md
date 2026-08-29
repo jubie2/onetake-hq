@@ -1,6 +1,6 @@
 # Revit / OneTake — PROGRESS (read this first)
 
-<!-- auto --> **Last checkpoint:** 2026-08-28 22:42:08 | Revit: up, 'Room Tag.rfa', 0 walls, schedule  rows | git claude/trusting-thompson-232391@1edd736, 20 uncommitted
+<!-- auto --> **Last checkpoint:** 2026-08-29 13:11:55 | Revit: up, '', 1 walls, schedule  rows | git claude/trusting-thompson-232391@c4257ad, 81 uncommitted
 
 This file is the single "where did we leave off" note. The header line above is
 rewritten by `tools/checkpoint.ps1`; the sections below are edited by hand (or by

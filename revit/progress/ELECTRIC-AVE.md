@@ -102,6 +102,49 @@ smoke detectors by the door (smoke reaches them far sooner than mid-room); kitch
 - **Smoke/CO moved to the doors** on both mech plans (`ev_sd_bydoor.py`), keynote leaders dragged
   along with them.
 
+## Session 2026-08-29 — MY ERROR: deleted a wall; then walkthrough vs the approved set
+
+### The error (own it)
+Chasing the "outlets draw on the outside face" problem I ran a wall **location-curve
+reversal** on the 1st-floor north wall (2189148). Revit did not reverse it - it **deleted the
+wall**, taking its sliding door (mark 106), 3 windows (marks 02/03/04) and 6 devices with it,
+and a checkpoint save wrote that state to disk before it was caught.
+**Rebuilt** (`ev_rebuild_wall.py`): wall on the same line (1127.02,110.32)->(1164.25,119.81),
+type "Generic - 6\" NEW 2", 1st Floor Level, 10'-0" unconnected; door 141640 (72"x82"),
+windows 668499 (36"x60", sill 2'-6"), 2231970 (36"x24", sill 5'-6"), 713872 (48"x48", sill 3'-0");
+marks + Comments=ADU restored; 6 devices re-placed; tags re-added (`ev_retag_openings.py`).
+**Rule: never write `wall.Location.Curve`. Revit may delete and not recreate the wall.**
+
+### Outlet facing - API dead end (proven)
+The outlets/switches are `OneLevelBasedHosted`; their symbol side is fixed at placement.
+Tried and all refused: `flipFacing`, `ElementTransformUtils.RotateElement`,
+`LocationPoint.Rotate`, `MirrorElements`, delete+replace with the point on the room side,
+the `referenceDirection` overload, hosting on `HostObjectUtils.GetSideFaces(Interior)`,
+`Wall.Flip()` (flips Orientation but devices keep facing), and the curve reversal (destructive).
+`CanFlipFacing` is False even on old instances that ARE flipped - the UI sets the side from the
+cursor position, which no API call reproduces. **This one is Francis's: select + spacebar.**
+`ev_select_wrong.py` selects only the devices pointing away from the room they serve.
+
+### Walkthrough vs approved set (Le & Nguyen, PRJ-1133219, 20 pp)
+Approved sheet map: 0 A01, 1 A02, 2 A03 nailing, 3 A04 BMP, 4-6 Cal-Green, 7 A101 floor,
+8 A102 sections, 9 A103 roof, 10 A104 elevations, 11-13 Title-24, 14 A200 mech, 15 A201 elec,
+16-19 structural.
+**Fixed this session:**
+- Section/elevation **reference bubbles were hidden** on both our floor plans - approved A101
+  shows A102/A104 bubbles all round the plans. Categories un-hidden.
+- Window schedule was missing **U-Factor + SHGC** (approved A101 carries them; Title-24
+  plan-check item). Added, and matched the approved column set by hiding Manufacturer/Model,
+  then re-fitted column widths so the table clears the titleblock.
+- A200 had **no equipment schedule for the mini-splits** (approved has a FURNACE UNIT
+  SCHEDULE for its FAU). Added a DUCTLESS MINI-SPLIT SYSTEM SCHEDULE block.
+**Confirmed already matching:** electrical legend + 21 electrical notes + receptacle note,
+mech general notes + keynotes + EF/dryer/WH schedules, floor-plan legend, door/window marks,
+BMP and Cal-Green sheets.
+**Still open (see flags):** outlets to flip; approved draws lights as GREEN high-efficacy dots
+(`High_efficacy_Light` annotation family is loaded here) where ours are plain cans; approved
+chains wires can-to-can where ours run switch->one fixture; no WP (weather-proof) outlet at the
+exterior doors/deck; U-Factor/SHGC values need the Title-24 report.
+
 ## CRASH: Revit stack-overflows on this model
 Three crashes on 8/27 were traced to `/schedule-read` of the Pho Hung schedule (see memory
 `revit-schedule-read-crash`); `checkpoint.ps1` is now gated and that is fixed. On 8/28 Revit

@@ -1,23 +1,18 @@
 ﻿{
-    "checkpoint_at":  "2026-08-28 22:42:08",
+    "checkpoint_at":  "2026-08-29 13:11:55",
     "machine":  "FRANCISASUS",
     "revit":  {
                   "up":  true,
                   "revit_version":  "2025",
                   "revit_build":  "20250515_1515(x64)",
                   "pyrevit_version":  "6.4.0.26100+0515",
-                  "doc_title":  "Room Tag.rfa",
-                  "levels":  [
-
-                             ],
-                  "wall_types":  0,
-                  "wall_count":  0,
+                  "wall_count":  1,
                   "schedule_skipped":  "doc is not \u0027Pho Hung\u0027 - schedule read skipped (Revit crash guard)"
               },
     "git":  {
                 "branch":  "claude/trusting-thompson-232391",
-                "head":  "1edd736",
-                "dirty":  20
+                "head":  "c4257ad",
+                "dirty":  81
             },
     "note":  ""
 }
