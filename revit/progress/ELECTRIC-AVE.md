@@ -60,6 +60,30 @@ Francis: "the elevation and section cuts are incorrect its not straight and diag
   circle copied from bubble 7 (a legend "bubble" is a TextNote + a separate small CurveElement -
   copying the text alone leaves a naked number).
 
+## Session 2026-08-28b — roof framing plan + mech keynotes made real
+Francis: "do the roof framing plan and for the mechanical plan the keynotes aren't actually
+pointing to anything".
+- **Why the mech keynotes pointed at nothing:** the first pass placed keynote tags at guessed
+  coordinates, but **no mechanical devices were ever modelled** in the new building
+  (census: MechEquip 0, AirTerminal 0). Leaders ended in empty space.
+- `ev_mech_devices.py` now DRAWS the devices in each mech view (detail lines/arcs, view-owned so
+  they don't pollute the arch plans) and tags them: thermostat, 3 mini-split heads/floor,
+  condensing unit on pad, ceiling exhaust fans, dryer + kitchen duct runs w/ terminations,
+  kitchen hood, IAQ fan; plus real `Smoke` annotation symbols for SD/CO. Keynotes 1-14 all now
+  land on something. Water heater / dryer / cooktop keynotes point at the **existing families**
+  (WH 2192006 & 2241258, dryer 2192532, cooktops 2194496 & 2207534).
+- **'Smoke' family types are INVERTED vs graphics here too** (type `CARBONMONOXIDE` draws "SD",
+  type `Smoke Detector[1]` draws the CO circle) - same gotcha as Keeler; `ev_mech_fix.py` swaps.
+- Tag placement rule that worked: park the bubble 3.2 ft radially outward from the footprint
+  centre, leader End on the device. SD/CO bubbles then nudged 2 ft further out so they clear the
+  room-name tags.
+- **Roof framing plan** (`ev_roof_framing.py`): new view "ADU Roof Framing Plan" duplicated from
+  Roof Deck Level, joists at 16" o.c. drawn in the two blocks with spans in the SHORT direction -
+  main block (s -27.7..8.2, t -6.0..19.6) spans t with a 4x12 beam at mid-t; east wing
+  (s 8.2..22.5, t -1.4..16.6) spans s. Note: sizes/connections per structural engineer.
+  Placed on **A104** beside the roof plan; A104 renamed "Roof / Framing Plan" (the A01 index is a
+  live **Drawing List schedule**, so it re-titles itself - no manual index edit needed).
+
 ## CRASH: Revit stack-overflows on this model
 Three crashes on 8/27 were traced to `/schedule-read` of the Pho Hung schedule (see memory
 `revit-schedule-read-crash`); `checkpoint.ps1` is now gated and that is fixed. On 8/28 Revit
