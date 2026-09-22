@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-80 -80 667 696" width="667" height="696" font-family="monospace" font-size="9">
+<rect x="-80" y="-80" width="667" height="696" fill="#fff"/>
+<!-- 10 px per foot; y flipped so plan-up is up. origin = outer SW corner of building. true north is to the LEFT (heading 87.9) -->
+<g transform="translate(0,536) scale(10,-10)">
+<!-- ROOMS -->
+<polygon points="50.59,15.22 50.59,34.45 20.22,34.45 16.13,34.45 16.13,22.88 16.13,18.93 14.35,18.93 14.35,15.22" fill="#f4f4f4" stroke="#bbb" stroke-width="0.05"/>
+<polygon points="14.35,15.22 14.35,3.69 12.65,3.69 12.65,0.16 30.57,0.16 50.59,0.16 50.59,15.22" fill="#f4f4f4" stroke="#bbb" stroke-width="0.05"/>
+<polygon points="0.16,0.16 12.65,0.16 12.65,3.69 14.35,3.69 14.35,18.93 16.13,18.93 16.13,22.88 16.13,34.45 4.91,34.45 4.91,32.50 0.16,32.50" fill="#f4f4f4" stroke="#bbb" stroke-width="0.05"/>
+<polygon points="0.16,39.15 0.16,32.50 4.91,32.50 4.91,34.45 16.13,34.45 20.22,34.45 20.22,39.15 14.29,39.15 10.03,39.15" fill="#f4f4f4" stroke="#bbb" stroke-width="0.05"/>
+<polygon points="0.16,46.22 0.16,39.15 10.03,39.15 10.03,43.38 8.11,43.38 8.11,46.22" fill="#f4f4f4" stroke="#bbb" stroke-width="0.05"/>
+<polygon points="0.16,53.48 0.16,46.22 8.11,46.22 8.11,53.48" fill="#f4f4f4" stroke="#bbb" stroke-width="0.05"/>
+<polygon points="8.11,46.22 10.03,46.22 14.29,46.22 14.29,53.48 8.11,53.48" fill="#f4f4f4" stroke="#bbb" stroke-width="0.05"/>
+<polygon points="10.03,39.15 14.29,39.15 14.29,46.22 10.03,46.22 10.03,43.38" fill="#f4f4f4" stroke="#bbb" stroke-width="0.05"/>
+<polygon points="10.03,43.38 10.03,46.22 8.11,46.22 8.11,43.38" fill="#f4f4f4" stroke="#bbb" stroke-width="0.05"/>
+<!-- WALLS: black = exterior, blue = interior -->
+<line x1="0.17" y1="0.17" x2="0.17" y2="53.50" stroke="#000" stroke-width="0.33"/> <!-- W01 53'-4" -->
+<line x1="0.17" y1="0.17" x2="50.58" y2="0.17" stroke="#000" stroke-width="0.33"/> <!-- W02 50'-5" -->
+<line x1="50.58" y1="0.17" x2="50.58" y2="34.42" stroke="#000" stroke-width="0.33"/> <!-- W03 34'-3" -->
+<line x1="20.25" y1="34.42" x2="50.58" y2="34.42" stroke="#000" stroke-width="0.33"/> <!-- W04 30'-4" -->
+<line x1="14.33" y1="39.25" x2="14.33" y2="53.50" stroke="#000" stroke-width="0.33"/> <!-- W05 14'-3" -->
+<line x1="0.17" y1="53.50" x2="14.25" y2="53.50" stroke="#000" stroke-width="0.33"/> <!-- W06 14'-1" -->
+<line x1="14.25" y1="39.17" x2="20.25" y2="39.17" stroke="#000" stroke-width="0.33"/> <!-- W07 6'-0" -->
+<line x1="20.25" y1="34.42" x2="20.25" y2="39.25" stroke="#000" stroke-width="0.33"/> <!-- W08 4'-10" -->
+<line x1="16.17" y1="18.83" x2="16.17" y2="34.42" stroke="#0057b8" stroke-width="0.33"/> <!-- W09 15'-7" -->
+<line x1="4.92" y1="34.42" x2="20.25" y2="34.42" stroke="#0057b8" stroke-width="0.33"/> <!-- W10 15'-4" -->
+<line x1="14.33" y1="3.83" x2="14.33" y2="18.83" stroke="#0057b8" stroke-width="0.33"/> <!-- W11 15'-0" -->
+<line x1="0.17" y1="39.17" x2="14.25" y2="39.17" stroke="#0057b8" stroke-width="0.33"/> <!-- W12 14'-1" -->
+<line x1="0.17" y1="46.25" x2="14.25" y2="46.25" stroke="#0057b8" stroke-width="0.33"/> <!-- W13 14'-1" -->
+<line x1="10.00" y1="39.25" x2="10.00" y2="46.08" stroke="#0057b8" stroke-width="0.33"/> <!-- W14 6'-10" -->
+<line x1="0.17" y1="32.50" x2="4.92" y2="32.50" stroke="#0057b8" stroke-width="0.33"/> <!-- W15 4'-9" -->
+<line x1="12.42" y1="18.92" x2="16.08" y2="18.92" stroke="#0057b8" stroke-width="0.33"/> <!-- W16 3'-8" -->
+<line x1="12.42" y1="22.92" x2="16.08" y2="22.92" stroke="#0057b8" stroke-width="0.33"/> <!-- W17 3'-8" -->
+<line x1="8.08" y1="43.42" x2="8.08" y2="46.08" stroke="#0057b8" stroke-width="0.33"/> <!-- W18 2'-8" -->
+<line x1="4.92" y1="32.50" x2="4.92" y2="34.42" stroke="#0057b8" stroke-width="0.33"/> <!-- W19 1'-11" -->
+<line x1="8.08" y1="43.42" x2="9.92" y2="43.42" stroke="#0057b8" stroke-width="0.33"/> <!-- W20 1'-10" -->
+<line x1="30.58" y1="0.17" x2="30.58" y2="1.25" stroke="#0057b8" stroke-width="0.33"/> <!-- W21 1'-1" -->
+<!-- OPENINGS: red = door, green = window, orange = cased opening -->
+<line x1="10.03" y1="39.48" x2="10.03" y2="42.30" stroke="#c00" stroke-width="0.5"/>
+<line x1="14.29" y1="39.39" x2="14.29" y2="42.37" stroke="#c00" stroke-width="0.5"/>
+<line x1="14.29" y1="46.63" x2="14.29" y2="49.48" stroke="#c00" stroke-width="0.5"/>
+<line x1="50.59" y1="16.97" x2="50.59" y2="21.28" stroke="#c00" stroke-width="0.5"/>
+<line x1="50.59" y1="12.19" x2="50.59" y2="14.62" stroke="#c00" stroke-width="0.5"/>
+<line x1="10.32" y1="34.45" x2="13.23" y2="34.45" stroke="#c00" stroke-width="0.5"/>
+<line x1="16.60" y1="34.45" x2="19.57" y2="34.45" stroke="#c00" stroke-width="0.5"/>
+<line x1="16.99" y1="39.15" x2="19.80" y2="39.15" stroke="#c00" stroke-width="0.5"/>
+<line x1="0.16" y1="34.99" x2="0.16" y2="38.92" stroke="#e80" stroke-width="0.5"/>
+<line x1="16.13" y1="19.16" x2="16.13" y2="22.65" stroke="#e80" stroke-width="0.5"/>
+<line x1="10.27" y1="39.15" x2="14.06" y2="39.15" stroke="#e80" stroke-width="0.5"/>
+<line x1="10.27" y1="46.22" x2="14.06" y2="46.22" stroke="#e80" stroke-width="0.5"/>
+<line x1="50.59" y1="1.31" x2="50.59" y2="11.17" stroke="#090" stroke-width="0.5"/>
+<line x1="50.59" y1="29.25" x2="50.59" y2="33.78" stroke="#090" stroke-width="0.5"/>
+<!-- EQUIPMENT bboxes -->
+<rect x="7.94" y="43.17" width="1.98" height="2.92" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="14.16" y="37.23" width="1.79" height="1.51" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="19.65" y="18.92" width="2.78" height="7.86" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="25.81" y="27.79" width="3.32" height="5.47" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="46.97" y="29.82" width="2.88" height="4.43" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="46.26" y="24.34" width="4.02" height="2.54" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="38.44" y="28.49" width="1.99" height="1.79" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="21.44" y="22.01" width="1.52" height="1.42" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="19.12" y="22.07" width="1.52" height="1.41" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="0.33" y="19.96" width="2.58" height="6.32" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="12.68" y="26.38" width="2.44" height="4.90" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="0.33" y="2.08" width="4.00" height="2.83" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="7.85" y="9.89" width="3.22" height="1.91" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="0.33" y="10.43" width="1.66" height="2.66" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="12.91" y="27.99" width="1.78" height="2.32" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="5.43" y="31.70" width="1.92" height="1.95" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="0.33" y="7.35" width="1.49" height="2.02" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="12.53" y="15.31" width="1.46" height="1.92" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="14.35" y="3.44" width="7.43" height="11.15" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="36.01" y="0.33" width="2.87" height="2.94" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="32.42" y="0.83" width="3.67" height="2.23" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="47.58" y="13.10" width="2.45" height="2.29" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="45.67" y="4.06" width="2.49" height="2.16" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="42.71" y="0.35" width="1.61" height="1.87" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="14.62" y="9.76" width="0.33" height="3.49" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="0.84" y="43.40" width="1.56" height="2.44" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="4.76" y="44.28" width="2.01" height="1.56" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="1.28" y="46.40" width="1.53" height="2.32" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+<rect x="11.52" y="41.42" width="2.17" height="2.02" fill="none" stroke="#999" stroke-width="0.08" stroke-dasharray="0.4,0.3"/>
+</g>
+<g fill="#000">
+<text x="248" y="293" text-anchor="middle" font-weight="bold">101 DINING</text>
+<text x="248" y="304" text-anchor="middle" fill="#555">656.8 sf (Dining Room)</text>
+<text x="265" y="481" text-anchor="middle" font-weight="bold">102 PREP / BACK OF HOUSE</text>
+<text x="265" y="492" text-anchor="middle" fill="#555">541.1 sf (Kitchen 1)</text>
+<text x="102" y="352" text-anchor="middle" font-weight="bold">103 KITCHEN</text>
+<text x="102" y="363" text-anchor="middle" fill="#555">483.2 sf (Kitchen 2)</text>
+<text x="101" y="175" text-anchor="middle" font-weight="bold">104 CORRIDOR</text>
+<text x="101" y="186" text-anchor="middle" fill="#555">95.0 sf (Hallway)</text>
+<text x="61" y="107" text-anchor="middle" font-weight="bold">105 RESTROOM 1</text>
+<text x="61" y="118" text-anchor="middle" fill="#555">58.8 sf (Bathroom 1)</text>
+<text x="41" y="37" text-anchor="middle" font-weight="bold">106 RESTROOM 2</text>
+<text x="41" y="48" text-anchor="middle" fill="#555">53.9 sf (Bathroom 2)</text>
+<text x="109" y="45" text-anchor="middle" font-weight="bold">107 STORAGE / OFFICE</text>
+<text x="109" y="56" text-anchor="middle" fill="#555">41.7 sf (Other 1)</text>
+<text x="117" y="108" text-anchor="middle" font-weight="bold">108 STORAGE</text>
+<text x="117" y="119" text-anchor="middle" fill="#555">26.5 sf (Other 2)</text>
+<text x="90" y="88" text-anchor="middle" font-weight="bold">109 CLOSET</text>
+<text x="90" y="99" text-anchor="middle" fill="#555">4.0 sf (Other 3)</text>
+<text x="103" y="124" fill="#c00" font-size="7">101 2'-10"</text>
+<text x="145" y="124" fill="#c00" font-size="7">102 3'-0"</text>
+<text x="145" y="52" fill="#c00" font-size="7">103 2'-10"</text>
+<text x="508" y="342" fill="#c00" font-size="7">104 4'-4"</text>
+<text x="508" y="399" fill="#c00" font-size="7">105 2'-5"</text>
+<text x="120" y="188" fill="#c00" font-size="7">106 2'-11"</text>
+<text x="183" y="188" fill="#c00" font-size="7">107 3'-0"</text>
+<text x="186" y="141" fill="#c00" font-size="7">108 2'-10"</text>
+<text x="4" y="163" fill="#e80" font-size="7">201 3'-11"</text>
+<text x="164" y="324" fill="#e80" font-size="7">202 3'-6"</text>
+<text x="124" y="141" fill="#e80" font-size="7">203 3'-9"</text>
+<text x="124" y="71" fill="#e80" font-size="7">204 3'-9"</text>
+<text x="508" y="471" fill="#090" font-size="7">01 9'-10"</text>
+<text x="508" y="218" fill="#090" font-size="7">02 4'-6"</text>
+<text x="89" y="92" fill="#777" font-size="6" text-anchor="middle">Fridge</text>
+<text x="150" y="158" fill="#777" font-size="6" text-anchor="middle">Cabinet</text>
+<text x="210" y="309" fill="#777" font-size="6" text-anchor="middle">Cabinet</text>
+<text x="274" y="233" fill="#777" font-size="6" text-anchor="middle">Cabinet</text>
+<text x="484" y="218" fill="#777" font-size="6" text-anchor="middle">Dining table</text>
+<text x="482" y="282" fill="#777" font-size="6" text-anchor="middle">Desk</text>
+<text x="394" y="244" fill="#777" font-size="6" text-anchor="middle">Chair</text>
+<text x="222" y="311" fill="#777" font-size="6" text-anchor="middle">Dining chair</text>
+<text x="198" y="310" fill="#777" font-size="6" text-anchor="middle">Dining chair</text>
+<text x="16" y="307" fill="#777" font-size="6" text-anchor="middle">Cabinet</text>
+<text x="139" y="250" fill="#777" font-size="6" text-anchor="middle">Dining table</text>
+<text x="94" y="430" fill="#777" font-size="6" text-anchor="middle">Cabinet</text>
+<text x="11" y="420" fill="#777" font-size="6" text-anchor="middle">Sink</text>
+<text x="138" y="246" fill="#777" font-size="6" text-anchor="middle">Sink</text>
+<text x="63" y="211" fill="#777" font-size="6" text-anchor="middle">Cabinet</text>
+<text x="10" y="454" fill="#777" font-size="6" text-anchor="middle">Sink</text>
+<text x="132" y="375" fill="#777" font-size="6" text-anchor="middle">Sink</text>
+<text x="374" y="520" fill="#777" font-size="6" text-anchor="middle">Fridge</text>
+<text x="342" y="518" fill="#777" font-size="6" text-anchor="middle">Cabinet</text>
+<text x="488" y="396" fill="#777" font-size="6" text-anchor="middle">Dining table</text>
+<text x="469" y="487" fill="#777" font-size="6" text-anchor="middle">Desk</text>
+<text x="435" y="525" fill="#777" font-size="6" text-anchor="middle">Dining chair</text>
+<text x="147" y="423" fill="#777" font-size="6" text-anchor="middle">TV</text>
+<text x="16" y="92" fill="#777" font-size="6" text-anchor="middle">Toilet</text>
+<text x="57" y="87" fill="#777" font-size="6" text-anchor="middle">Sink</text>
+<text x="20" y="62" fill="#777" font-size="6" text-anchor="middle">Toilet</text>
+<text x="126" y="114" fill="#777" font-size="6" text-anchor="middle">Dining chair</text>
+</g>
+<g fill="#c00" font-weight="bold">
+<text x="-16" y="268">53'  8"</text>
+<text x="241" y="541">50'  9"</text>
+<text x="343" y="185">30'  4"</text>
+<text x="196" y="166">4'  8"</text>
+<text x="500" y="363">34'  7"</text>
+<text x="162" y="138">5' 11"</text>
+<text x="137" y="71">14'  4"</text>
+<text x="60" y="-4">14'  5"</text>
+<text x="0" y="-60">2844 Main St #B, San Diego, CA  |  bbox 50'-9" x 53'-8"  |  21 walls 308 ft  |  true north = LEFT (plan-up heading 87.9)</text>
+</g></svg>

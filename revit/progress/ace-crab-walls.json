@@ -1,0 +1,1729 @@
+{
+ "_note": "Polycam DXF -> feet. Origin = OUTER SW corner of the wall bbox in PLAN orientation (as Polycam drew it; scan origin was at DXF (-25.368, -26.797)). X right, Y up on the plan. NOT rotated to true north: plan-up has compass heading 87.9 deg, i.e. true north is toward plan-LEFT; set Revit True North = 87.9 deg. Wall thickness 0'-4\" is a Polycam SETTING applied to every wall, not a measurement; interior faces are what the scanner measured, so exterior walls are almost certainly thicker than drawn - the outer face is unverified. revit_walls types are placeholders: rename to the real WallType names from GET /doc before /dev/run make_walls.py.",
+ "source": {
+  "dxf": "acecrab_lf.dxf",
+  "csv": "acecrab.csv",
+  "address_on_scan": "2842 Main St San Diego CA",
+  "address_on_drawings": "2844 Main St #B, San Diego, CA",
+  "scan_date": "2026-09-18"
+ },
+ "true_north_heading_of_plan_up_deg": 87.9,
+ "wall_thickness_setting_in": 4.0,
+ "checks": {
+  "bbox_ft": [
+   50.75,
+   53.643
+  ],
+  "bbox_ftin": [
+   "50'-9\"",
+   "53'-8\""
+  ],
+  "printed_overall": [
+   "53'  8\"",
+   "50'  9\""
+  ],
+  "wall_pieces_polycam": 66,
+  "wall_pieces_total_ft_outer": 625.3,
+  "wall_count_merged": 21,
+  "wall_count": 21,
+  "wall_count_ext": 8,
+  "wall_total_ft": 308.0,
+  "wall_total_less_openings_ft": 254.5,
+  "csv_wall_total": "309'  4\"",
+  "rooms": 9,
+  "room_area_diff_pct": {
+   "DINING": 1.9,
+   "PREP / BACK OF HOUSE": 2.0,
+   "KITCHEN": 3.2,
+   "CORRIDOR": 9.2,
+   "RESTROOM 1": 9.4,
+   "RESTROOM 2": 6.9,
+   "STORAGE / OFFICE": 7.7,
+   "STORAGE": 13.6,
+   "CLOSET": 37.5
+  },
+  "openings": {
+   "door": 8,
+   "window": 2,
+   "opening": 4
+  },
+  "openings_without_host": [],
+  "equipment_components": 29,
+  "equipment_labelled": 27
+ },
+ "dims_printed": [
+  {
+   "text": "53'  8\"",
+   "ft": 53.666666666666664,
+   "at": [
+    -0.49,
+    26.82
+   ]
+  },
+  {
+   "text": "50'  9\"",
+   "ft": 50.75,
+   "at": [
+    25.37,
+    -0.49
+   ]
+  },
+  {
+   "text": "30'  4\"",
+   "ft": 30.333333333333332,
+   "at": [
+    35.57,
+    35.1
+   ]
+  },
+  {
+   "text": "4'  8\"",
+   "ft": 4.666666666666667,
+   "at": [
+    20.88,
+    36.96
+   ]
+  },
+  {
+   "text": "34'  7\"",
+   "ft": 34.583333333333336,
+   "at": [
+    51.24,
+    17.31
+   ]
+  },
+  {
+   "text": "5' 11\"",
+   "ft": 5.916666666666667,
+   "at": [
+    17.42,
+    39.81
+   ]
+  },
+  {
+   "text": "14'  4\"",
+   "ft": 14.333333333333334,
+   "at": [
+    14.95,
+    46.48
+   ]
+  },
+  {
+   "text": "14'  5\"",
+   "ft": 14.416666666666666,
+   "at": [
+    7.23,
+    54.13
+   ]
+  }
+ ],
+ "walls": [
+  {
+   "dir": "V",
+   "x": 0.1667,
+   "y0": 0.1667,
+   "y1": 53.5,
+   "t": 4.0,
+   "len": 53.33,
+   "ext": true,
+   "id": "W01"
+  },
+  {
+   "dir": "H",
+   "y": 0.1667,
+   "x0": 0.1667,
+   "x1": 50.5833,
+   "t": 4.0,
+   "len": 50.42,
+   "ext": true,
+   "id": "W02"
+  },
+  {
+   "dir": "V",
+   "x": 50.5833,
+   "y0": 0.1667,
+   "y1": 34.4167,
+   "t": 4.0,
+   "len": 34.25,
+   "ext": true,
+   "id": "W03"
+  },
+  {
+   "dir": "H",
+   "y": 34.4167,
+   "x0": 20.25,
+   "x1": 50.5833,
+   "t": 4.0,
+   "len": 30.33,
+   "ext": true,
+   "id": "W04"
+  },
+  {
+   "dir": "V",
+   "x": 14.3333,
+   "y0": 39.25,
+   "y1": 53.5,
+   "t": 4.0,
+   "len": 14.25,
+   "ext": true,
+   "id": "W05"
+  },
+  {
+   "dir": "H",
+   "y": 53.5,
+   "x0": 0.1667,
+   "x1": 14.25,
+   "t": 4.0,
+   "len": 14.08,
+   "ext": true,
+   "id": "W06"
+  },
+  {
+   "dir": "H",
+   "y": 39.1667,
+   "x0": 14.25,
+   "x1": 20.25,
+   "t": 4.0,
+   "len": 6.0,
+   "ext": true,
+   "id": "W07"
+  },
+  {
+   "dir": "V",
+   "x": 20.25,
+   "y0": 34.4167,
+   "y1": 39.25,
+   "t": 4.0,
+   "len": 4.83,
+   "ext": true,
+   "id": "W08"
+  },
+  {
+   "dir": "V",
+   "x": 16.1667,
+   "y0": 18.8333,
+   "y1": 34.4167,
+   "t": 4.0,
+   "len": 15.58,
+   "ext": false,
+   "id": "W09"
+  },
+  {
+   "dir": "H",
+   "y": 34.4167,
+   "x0": 4.9167,
+   "x1": 20.25,
+   "t": 4.0,
+   "len": 15.33,
+   "ext": false,
+   "id": "W10"
+  },
+  {
+   "dir": "V",
+   "x": 14.3333,
+   "y0": 3.8333,
+   "y1": 18.8333,
+   "t": 4.0,
+   "len": 15.0,
+   "ext": false,
+   "id": "W11"
+  },
+  {
+   "dir": "H",
+   "y": 39.1667,
+   "x0": 0.1667,
+   "x1": 14.25,
+   "t": 4.0,
+   "len": 14.08,
+   "ext": false,
+   "id": "W12"
+  },
+  {
+   "dir": "H",
+   "y": 46.25,
+   "x0": 0.1667,
+   "x1": 14.25,
+   "t": 4.0,
+   "len": 14.08,
+   "ext": false,
+   "id": "W13"
+  },
+  {
+   "dir": "V",
+   "x": 10.0,
+   "y0": 39.25,
+   "y1": 46.0833,
+   "t": 4.0,
+   "len": 6.83,
+   "ext": false,
+   "id": "W14"
+  },
+  {
+   "dir": "H",
+   "y": 32.5,
+   "x0": 0.1667,
+   "x1": 4.9167,
+   "t": 4.0,
+   "len": 4.75,
+   "ext": false,
+   "id": "W15"
+  },
+  {
+   "dir": "H",
+   "y": 18.9167,
+   "x0": 12.4167,
+   "x1": 16.0833,
+   "t": 4.0,
+   "len": 3.67,
+   "ext": false,
+   "id": "W16"
+  },
+  {
+   "dir": "H",
+   "y": 22.9167,
+   "x0": 12.4167,
+   "x1": 16.0833,
+   "t": 4.0,
+   "len": 3.67,
+   "ext": false,
+   "id": "W17"
+  },
+  {
+   "dir": "V",
+   "x": 8.0833,
+   "y0": 43.4167,
+   "y1": 46.0833,
+   "t": 4.0,
+   "len": 2.67,
+   "ext": false,
+   "id": "W18"
+  },
+  {
+   "dir": "V",
+   "x": 4.9167,
+   "y0": 32.5,
+   "y1": 34.4167,
+   "t": 4.0,
+   "len": 1.92,
+   "ext": false,
+   "id": "W19"
+  },
+  {
+   "dir": "H",
+   "y": 43.4167,
+   "x0": 8.0833,
+   "x1": 9.9167,
+   "t": 4.0,
+   "len": 1.83,
+   "ext": false,
+   "id": "W20"
+  },
+  {
+   "dir": "V",
+   "x": 30.5833,
+   "y0": 0.1667,
+   "y1": 1.25,
+   "t": 4.0,
+   "len": 1.08,
+   "ext": false,
+   "id": "W21"
+  }
+ ],
+ "revit_walls": [
+  {
+   "id": "W01",
+   "type": "EXT 0'-4\"",
+   "a": [
+    0.1667,
+    0.1667
+   ],
+   "b": [
+    0.1667,
+    53.5
+   ],
+   "ext": true
+  },
+  {
+   "id": "W02",
+   "type": "EXT 0'-4\"",
+   "a": [
+    0.1667,
+    0.1667
+   ],
+   "b": [
+    50.5833,
+    0.1667
+   ],
+   "ext": true
+  },
+  {
+   "id": "W03",
+   "type": "EXT 0'-4\"",
+   "a": [
+    50.5833,
+    0.1667
+   ],
+   "b": [
+    50.5833,
+    34.4167
+   ],
+   "ext": true
+  },
+  {
+   "id": "W04",
+   "type": "EXT 0'-4\"",
+   "a": [
+    20.25,
+    34.4167
+   ],
+   "b": [
+    50.5833,
+    34.4167
+   ],
+   "ext": true
+  },
+  {
+   "id": "W05",
+   "type": "EXT 0'-4\"",
+   "a": [
+    14.3333,
+    39.25
+   ],
+   "b": [
+    14.3333,
+    53.5
+   ],
+   "ext": true
+  },
+  {
+   "id": "W06",
+   "type": "EXT 0'-4\"",
+   "a": [
+    0.1667,
+    53.5
+   ],
+   "b": [
+    14.25,
+    53.5
+   ],
+   "ext": true
+  },
+  {
+   "id": "W07",
+   "type": "EXT 0'-4\"",
+   "a": [
+    14.25,
+    39.1667
+   ],
+   "b": [
+    20.25,
+    39.1667
+   ],
+   "ext": true
+  },
+  {
+   "id": "W08",
+   "type": "EXT 0'-4\"",
+   "a": [
+    20.25,
+    34.4167
+   ],
+   "b": [
+    20.25,
+    39.25
+   ],
+   "ext": true
+  },
+  {
+   "id": "W09",
+   "type": "Generic - 4\"",
+   "a": [
+    16.1667,
+    18.8333
+   ],
+   "b": [
+    16.1667,
+    34.4167
+   ],
+   "ext": false
+  },
+  {
+   "id": "W10",
+   "type": "Generic - 4\"",
+   "a": [
+    4.9167,
+    34.4167
+   ],
+   "b": [
+    20.25,
+    34.4167
+   ],
+   "ext": false
+  },
+  {
+   "id": "W11",
+   "type": "Generic - 4\"",
+   "a": [
+    14.3333,
+    3.8333
+   ],
+   "b": [
+    14.3333,
+    18.8333
+   ],
+   "ext": false
+  },
+  {
+   "id": "W12",
+   "type": "Generic - 4\"",
+   "a": [
+    0.1667,
+    39.1667
+   ],
+   "b": [
+    14.25,
+    39.1667
+   ],
+   "ext": false
+  },
+  {
+   "id": "W13",
+   "type": "Generic - 4\"",
+   "a": [
+    0.1667,
+    46.25
+   ],
+   "b": [
+    14.25,
+    46.25
+   ],
+   "ext": false
+  },
+  {
+   "id": "W14",
+   "type": "Generic - 4\"",
+   "a": [
+    10.0,
+    39.25
+   ],
+   "b": [
+    10.0,
+    46.0833
+   ],
+   "ext": false
+  },
+  {
+   "id": "W15",
+   "type": "Generic - 4\"",
+   "a": [
+    0.1667,
+    32.5
+   ],
+   "b": [
+    4.9167,
+    32.5
+   ],
+   "ext": false
+  },
+  {
+   "id": "W16",
+   "type": "Generic - 4\"",
+   "a": [
+    12.4167,
+    18.9167
+   ],
+   "b": [
+    16.0833,
+    18.9167
+   ],
+   "ext": false
+  },
+  {
+   "id": "W17",
+   "type": "Generic - 4\"",
+   "a": [
+    12.4167,
+    22.9167
+   ],
+   "b": [
+    16.0833,
+    22.9167
+   ],
+   "ext": false
+  },
+  {
+   "id": "W18",
+   "type": "Generic - 4\"",
+   "a": [
+    8.0833,
+    43.4167
+   ],
+   "b": [
+    8.0833,
+    46.0833
+   ],
+   "ext": false
+  },
+  {
+   "id": "W19",
+   "type": "Generic - 4\"",
+   "a": [
+    4.9167,
+    32.5
+   ],
+   "b": [
+    4.9167,
+    34.4167
+   ],
+   "ext": false
+  },
+  {
+   "id": "W20",
+   "type": "Generic - 4\"",
+   "a": [
+    8.0833,
+    43.4167
+   ],
+   "b": [
+    9.9167,
+    43.4167
+   ],
+   "ext": false
+  },
+  {
+   "id": "W21",
+   "type": "Generic - 4\"",
+   "a": [
+    30.5833,
+    0.1667
+   ],
+   "b": [
+    30.5833,
+    1.25
+   ],
+   "ext": false
+  }
+ ],
+ "openings": [
+  {
+   "kind": "door",
+   "dir": "V",
+   "x": 10.028,
+   "a": 39.476,
+   "b": 42.297,
+   "w": 2.821,
+   "host": "W14",
+   "ext": false,
+   "swing": "drawn (leaf 2'-10\")",
+   "mark": "101",
+   "w_ftin": "2'-10\""
+  },
+  {
+   "kind": "door",
+   "dir": "V",
+   "x": 14.294,
+   "a": 39.392,
+   "b": 42.372,
+   "w": 2.98,
+   "host": "W05",
+   "ext": true,
+   "swing": "unknown",
+   "mark": "102",
+   "w_ftin": "3'-0\""
+  },
+  {
+   "kind": "door",
+   "dir": "V",
+   "x": 14.294,
+   "a": 46.626,
+   "b": 49.48,
+   "w": 2.854,
+   "host": "W05",
+   "ext": true,
+   "swing": "unknown",
+   "mark": "103",
+   "w_ftin": "2'-10\""
+  },
+  {
+   "kind": "door",
+   "dir": "V",
+   "x": 50.586,
+   "a": 16.972,
+   "b": 21.276,
+   "w": 4.304,
+   "host": "W03",
+   "ext": true,
+   "swing": "unknown",
+   "mark": "104",
+   "w_ftin": "4'-4\""
+  },
+  {
+   "kind": "door",
+   "dir": "V",
+   "x": 50.586,
+   "a": 12.188,
+   "b": 14.616,
+   "w": 2.428,
+   "host": "W03",
+   "ext": true,
+   "swing": "unknown",
+   "mark": "105",
+   "w_ftin": "2'-5\""
+  },
+  {
+   "kind": "door",
+   "dir": "H",
+   "y": 34.447,
+   "a": 10.321,
+   "b": 13.226,
+   "w": 2.906,
+   "host": "W10",
+   "ext": false,
+   "swing": "drawn (leaf 2'-11\")",
+   "mark": "106",
+   "w_ftin": "2'-11\""
+  },
+  {
+   "kind": "door",
+   "dir": "H",
+   "y": 34.447,
+   "a": 16.602,
+   "b": 19.567,
+   "w": 2.966,
+   "host": "W10",
+   "ext": false,
+   "swing": "unknown",
+   "mark": "107",
+   "w_ftin": "3'-0\""
+  },
+  {
+   "kind": "door",
+   "dir": "H",
+   "y": 39.154,
+   "a": 16.987,
+   "b": 19.795,
+   "w": 2.808,
+   "host": "W07",
+   "ext": true,
+   "swing": "unknown",
+   "mark": "108",
+   "w_ftin": "2'-10\""
+  },
+  {
+   "kind": "opening",
+   "dir": "V",
+   "x": 0.164,
+   "a": 34.995,
+   "b": 38.916,
+   "w": 3.922,
+   "host": "W01",
+   "ext": true,
+   "mark": "201",
+   "w_ftin": "3'-11\""
+  },
+  {
+   "kind": "opening",
+   "dir": "V",
+   "x": 16.131,
+   "a": 19.165,
+   "b": 22.646,
+   "w": 3.482,
+   "host": "W09",
+   "ext": false,
+   "mark": "202",
+   "w_ftin": "3'-6\""
+  },
+  {
+   "kind": "opening",
+   "dir": "H",
+   "y": 39.154,
+   "a": 10.266,
+   "b": 14.056,
+   "w": 3.789,
+   "host": "W12",
+   "ext": false,
+   "mark": "203",
+   "w_ftin": "3'-9\""
+  },
+  {
+   "kind": "opening",
+   "dir": "H",
+   "y": 46.222,
+   "a": 10.266,
+   "b": 14.056,
+   "w": 3.789,
+   "host": "W13",
+   "ext": false,
+   "mark": "204",
+   "w_ftin": "3'-9\""
+  },
+  {
+   "kind": "window",
+   "dir": "V",
+   "x": 50.586,
+   "a": 1.311,
+   "b": 11.169,
+   "w": 9.858,
+   "host": "W03",
+   "ext": true,
+   "mark": "01",
+   "w_ftin": "9'-10\""
+  },
+  {
+   "kind": "window",
+   "dir": "V",
+   "x": 50.586,
+   "a": 29.252,
+   "b": 33.781,
+   "w": 4.529,
+   "host": "W03",
+   "ext": true,
+   "mark": "02",
+   "w_ftin": "4'-6\""
+  }
+ ],
+ "rooms": [
+  {
+   "polycam_name": "Dining Room",
+   "name": "DINING",
+   "area_sf_csv": 656.8,
+   "area_sf_poly": 669.0,
+   "ceiling_ft": 8.0,
+   "centroid": [
+    24.81,
+    24.32
+   ],
+   "poly": [
+    [
+     50.59,
+     15.22
+    ],
+    [
+     50.59,
+     34.45
+    ],
+    [
+     20.22,
+     34.45
+    ],
+    [
+     16.13,
+     34.45
+    ],
+    [
+     16.13,
+     22.88
+    ],
+    [
+     16.13,
+     18.93
+    ],
+    [
+     14.35,
+     18.93
+    ],
+    [
+     14.35,
+     15.22
+    ]
+   ],
+   "number": "101"
+  },
+  {
+   "polycam_name": "Kitchen 1",
+   "name": "PREP / BACK OF HOUSE",
+   "area_sf_csv": 541.1,
+   "area_sf_poly": 551.7,
+   "ceiling_ft": 8.0,
+   "centroid": [
+    26.53,
+    5.47
+   ],
+   "poly": [
+    [
+     14.35,
+     15.22
+    ],
+    [
+     14.35,
+     3.69
+    ],
+    [
+     12.65,
+     3.69
+    ],
+    [
+     12.65,
+     0.16
+    ],
+    [
+     30.57,
+     0.16
+    ],
+    [
+     50.59,
+     0.16
+    ],
+    [
+     50.59,
+     15.22
+    ]
+   ],
+   "number": "102"
+  },
+  {
+   "polycam_name": "Kitchen 2",
+   "name": "KITCHEN",
+   "area_sf_csv": 483.2,
+   "area_sf_poly": 498.7,
+   "ceiling_ft": 8.0,
+   "centroid": [
+    10.23,
+    18.39
+   ],
+   "poly": [
+    [
+     0.16,
+     0.16
+    ],
+    [
+     12.65,
+     0.16
+    ],
+    [
+     12.65,
+     3.69
+    ],
+    [
+     14.35,
+     3.69
+    ],
+    [
+     14.35,
+     18.93
+    ],
+    [
+     16.13,
+     18.93
+    ],
+    [
+     16.13,
+     22.88
+    ],
+    [
+     16.13,
+     34.45
+    ],
+    [
+     4.91,
+     34.45
+    ],
+    [
+     4.91,
+     32.5
+    ],
+    [
+     0.16,
+     32.5
+    ]
+   ],
+   "number": "103"
+  },
+  {
+   "polycam_name": "Hallway",
+   "name": "CORRIDOR",
+   "area_sf_csv": 95.0,
+   "area_sf_poly": 103.7,
+   "ceiling_ft": 8.0,
+   "centroid": [
+    10.12,
+    36.11
+   ],
+   "poly": [
+    [
+     0.16,
+     39.15
+    ],
+    [
+     0.16,
+     32.5
+    ],
+    [
+     4.91,
+     32.5
+    ],
+    [
+     4.91,
+     34.45
+    ],
+    [
+     16.13,
+     34.45
+    ],
+    [
+     20.22,
+     34.45
+    ],
+    [
+     20.22,
+     39.15
+    ],
+    [
+     14.29,
+     39.15
+    ],
+    [
+     10.03,
+     39.15
+    ]
+   ],
+   "number": "104"
+  },
+  {
+   "polycam_name": "Bathroom 1",
+   "name": "RESTROOM 1",
+   "area_sf_csv": 58.8,
+   "area_sf_poly": 64.3,
+   "ceiling_ft": 8.0,
+   "centroid": [
+    6.1,
+    42.92
+   ],
+   "poly": [
+    [
+     0.16,
+     46.22
+    ],
+    [
+     0.16,
+     39.15
+    ],
+    [
+     10.03,
+     39.15
+    ],
+    [
+     10.03,
+     43.38
+    ],
+    [
+     8.11,
+     43.38
+    ],
+    [
+     8.11,
+     46.22
+    ]
+   ],
+   "number": "105"
+  },
+  {
+   "polycam_name": "Bathroom 2",
+   "name": "RESTROOM 2",
+   "area_sf_csv": 53.9,
+   "area_sf_poly": 57.6,
+   "ceiling_ft": 8.0,
+   "centroid": [
+    4.14,
+    49.85
+   ],
+   "poly": [
+    [
+     0.16,
+     53.48
+    ],
+    [
+     0.16,
+     46.22
+    ],
+    [
+     8.11,
+     46.22
+    ],
+    [
+     8.11,
+     53.48
+    ]
+   ],
+   "number": "106"
+  },
+  {
+   "polycam_name": "Other 1",
+   "name": "STORAGE / OFFICE",
+   "area_sf_csv": 41.7,
+   "area_sf_poly": 44.9,
+   "ceiling_ft": 8.0,
+   "centroid": [
+    10.97,
+    49.12
+   ],
+   "poly": [
+    [
+     8.11,
+     46.22
+    ],
+    [
+     10.03,
+     46.22
+    ],
+    [
+     14.29,
+     46.22
+    ],
+    [
+     14.29,
+     53.48
+    ],
+    [
+     8.11,
+     53.48
+    ]
+   ],
+   "number": "107"
+  },
+  {
+   "polycam_name": "Other 2",
+   "name": "STORAGE",
+   "area_sf_csv": 26.5,
+   "area_sf_poly": 30.1,
+   "ceiling_ft": 8.0,
+   "centroid": [
+    11.73,
+    42.83
+   ],
+   "poly": [
+    [
+     10.03,
+     39.15
+    ],
+    [
+     14.29,
+     39.15
+    ],
+    [
+     14.29,
+     46.22
+    ],
+    [
+     10.03,
+     46.22
+    ],
+    [
+     10.03,
+     43.38
+    ]
+   ],
+   "number": "108"
+  },
+  {
+   "polycam_name": "Other 3",
+   "name": "CLOSET",
+   "area_sf_csv": 4.0,
+   "area_sf_poly": 5.5,
+   "ceiling_ft": 7.5,
+   "centroid": [
+    9.07,
+    44.8
+   ],
+   "poly": [
+    [
+     10.03,
+     43.38
+    ],
+    [
+     10.03,
+     46.22
+    ],
+    [
+     8.11,
+     46.22
+    ],
+    [
+     8.11,
+     43.38
+    ]
+   ],
+   "number": "109"
+  }
+ ],
+ "equipment": [
+  {
+   "layer": "Appliances",
+   "room": "CLOSET",
+   "polycam_room": "Other 3",
+   "bbox": [
+    7.94,
+    43.17,
+    9.92,
+    46.09
+   ],
+   "w": 1.97,
+   "d": 2.92,
+   "center": [
+    8.93,
+    44.63
+   ],
+   "kind": "Fridge",
+   "csv_dims": "2'-11\" x 5'-3\" x 2'-0\"",
+   "tag": "E01"
+  },
+  {
+   "layer": "Fixtures",
+   "room": "CORRIDOR",
+   "polycam_room": "Hallway",
+   "bbox": [
+    14.16,
+    37.23,
+    15.95,
+    38.74
+   ],
+   "w": 1.79,
+   "d": 1.51,
+   "center": [
+    15.05,
+    37.99
+   ],
+   "kind": "Cabinet",
+   "csv_dims": "1'-9\" x 2'-8\" x 1'-6\"",
+   "tag": "E02"
+  },
+  {
+   "layer": "Fixtures",
+   "room": "DINING",
+   "polycam_room": "Dining Room",
+   "bbox": [
+    19.65,
+    18.92,
+    22.43,
+    26.78
+   ],
+   "w": 2.78,
+   "d": 7.86,
+   "center": [
+    21.04,
+    22.85
+   ],
+   "kind": "Cabinet",
+   "csv_dims": "7'-10\" x 3'-2\" x 2'-9\"",
+   "tag": "E03"
+  },
+  {
+   "layer": "Fixtures",
+   "room": "DINING",
+   "polycam_room": "Dining Room",
+   "bbox": [
+    25.81,
+    27.79,
+    29.13,
+    33.26
+   ],
+   "w": 3.33,
+   "d": 5.47,
+   "center": [
+    27.47,
+    30.52
+   ],
+   "kind": "Cabinet",
+   "csv_dims": "5'-6\" x 3'-5\" x 3'-4\"",
+   "tag": "E04"
+  },
+  {
+   "layer": "Furniture",
+   "room": "DINING",
+   "polycam_room": "Dining Room",
+   "bbox": [
+    46.97,
+    29.82,
+    49.85,
+    34.25
+   ],
+   "w": 2.88,
+   "d": 4.43,
+   "center": [
+    48.41,
+    32.04
+   ],
+   "kind": "Dining table",
+   "csv_dims": "4'-5\" x 2'-9\" x 2'-11\"",
+   "tag": "E05"
+  },
+  {
+   "layer": "Furniture",
+   "room": "DINING",
+   "polycam_room": "Dining Room",
+   "bbox": [
+    46.26,
+    24.34,
+    50.28,
+    26.88
+   ],
+   "w": 4.01,
+   "d": 2.53,
+   "center": [
+    48.27,
+    25.61
+   ],
+   "kind": "Desk",
+   "csv_dims": "4'-0\" x 2'-7\" x 2'-6\"",
+   "tag": "E06"
+  },
+  {
+   "layer": "Furniture",
+   "room": "DINING",
+   "polycam_room": "Dining Room",
+   "bbox": [
+    38.44,
+    28.49,
+    40.43,
+    30.28
+   ],
+   "w": 1.99,
+   "d": 1.79,
+   "center": [
+    39.43,
+    29.38
+   ],
+   "kind": "Chair",
+   "csv_dims": "1'-9\" x 3'-7\" x 2'-0\"",
+   "tag": "E07"
+  },
+  {
+   "layer": "Furniture",
+   "room": "DINING",
+   "polycam_room": "Dining Room",
+   "bbox": [
+    21.44,
+    22.01,
+    22.96,
+    23.43
+   ],
+   "w": 1.52,
+   "d": 1.41,
+   "center": [
+    22.2,
+    22.72
+   ],
+   "kind": "Dining chair",
+   "csv_dims": "1'-5\" x 2'-9\" x 1'-6\"",
+   "tag": "E08"
+  },
+  {
+   "layer": "Furniture",
+   "room": "DINING",
+   "polycam_room": "Dining Room",
+   "bbox": [
+    19.12,
+    22.07,
+    20.64,
+    23.48
+   ],
+   "w": 1.52,
+   "d": 1.41,
+   "center": [
+    19.88,
+    22.78
+   ],
+   "kind": "Dining chair",
+   "csv_dims": "1'-5\" x 2'-9\" x 1'-6\"",
+   "tag": "E09"
+  },
+  {
+   "layer": "Fixtures",
+   "room": "KITCHEN",
+   "polycam_room": "Kitchen 2",
+   "bbox": [
+    0.33,
+    19.96,
+    2.91,
+    26.28
+   ],
+   "w": 2.58,
+   "d": 6.32,
+   "center": [
+    1.62,
+    23.12
+   ],
+   "kind": "Cabinet",
+   "csv_dims": "6'-4\" x 3'-4\" x 2'-7\"",
+   "tag": "E10"
+  },
+  {
+   "layer": "Furniture",
+   "room": "KITCHEN",
+   "polycam_room": "Kitchen 2",
+   "bbox": [
+    12.68,
+    26.38,
+    15.12,
+    31.28
+   ],
+   "w": 2.44,
+   "d": 4.9,
+   "center": [
+    13.9,
+    28.83
+   ],
+   "kind": "Dining table",
+   "csv_dims": "4'-11\" x 3'-2\" x 2'-5\"",
+   "tag": "E11"
+  },
+  {
+   "layer": "Appliances",
+   "room": "KITCHEN",
+   "polycam_room": "Kitchen 2",
+   "bbox": [
+    0.33,
+    2.08,
+    4.33,
+    4.91
+   ],
+   "w": 4.0,
+   "d": 2.83,
+   "center": [
+    2.33,
+    3.5
+   ],
+   "kind": null,
+   "tag": "E12"
+  },
+  {
+   "layer": "Fixtures",
+   "room": "KITCHEN",
+   "polycam_room": "Kitchen 2",
+   "bbox": [
+    7.85,
+    9.89,
+    11.07,
+    11.8
+   ],
+   "w": 3.22,
+   "d": 1.91,
+   "center": [
+    9.46,
+    10.84
+   ],
+   "kind": "Cabinet",
+   "csv_dims": "3'-3\" x 3'-3\" x 1'-11\"",
+   "tag": "E13"
+  },
+  {
+   "layer": "Fixtures",
+   "room": "KITCHEN",
+   "polycam_room": "Kitchen 2",
+   "bbox": [
+    0.33,
+    10.43,
+    1.99,
+    13.09
+   ],
+   "w": 1.66,
+   "d": 2.66,
+   "center": [
+    1.16,
+    11.76
+   ],
+   "kind": "Sink",
+   "csv_dims": "2'-8\" x 1'-3\" x 1'-8\"",
+   "tag": "E14"
+  },
+  {
+   "layer": "Fixtures",
+   "room": "KITCHEN",
+   "polycam_room": "Kitchen 2",
+   "bbox": [
+    12.91,
+    27.99,
+    14.69,
+    30.31
+   ],
+   "w": 1.78,
+   "d": 2.32,
+   "center": [
+    13.8,
+    29.15
+   ],
+   "kind": "Sink",
+   "csv_dims": "2'-4\" x 0'-10\" x 1'-9\"",
+   "tag": "E15"
+  },
+  {
+   "layer": "Fixtures",
+   "room": "KITCHEN",
+   "polycam_room": "Kitchen 2",
+   "bbox": [
+    5.43,
+    31.7,
+    7.35,
+    33.65
+   ],
+   "w": 1.92,
+   "d": 1.94,
+   "center": [
+    6.39,
+    32.67
+   ],
+   "kind": "Cabinet",
+   "csv_dims": "1'-11\" x 3'-2\" x 1'-11\"",
+   "tag": "E16"
+  },
+  {
+   "layer": "Fixtures",
+   "room": "KITCHEN",
+   "polycam_room": "Kitchen 2",
+   "bbox": [
+    0.33,
+    7.35,
+    1.82,
+    9.37
+   ],
+   "w": 1.49,
+   "d": 2.02,
+   "center": [
+    1.07,
+    8.36
+   ],
+   "kind": "Sink",
+   "csv_dims": "2'-0\" x 1'-3\" x 1'-6\"",
+   "tag": "E17"
+  },
+  {
+   "layer": "Fixtures",
+   "room": "KITCHEN",
+   "polycam_room": "Kitchen 2",
+   "bbox": [
+    12.53,
+    15.31,
+    13.99,
+    17.23
+   ],
+   "w": 1.46,
+   "d": 1.92,
+   "center": [
+    13.26,
+    16.27
+   ],
+   "kind": "Sink",
+   "csv_dims": "1'-11\" x 1'-0\" x 1'-6\"",
+   "tag": "E18"
+  },
+  {
+   "layer": "Fixtures",
+   "room": "PREP / BACK OF HOUSE",
+   "polycam_room": "Kitchen 1",
+   "bbox": [
+    14.35,
+    3.44,
+    21.78,
+    14.59
+   ],
+   "w": 7.43,
+   "d": 11.16,
+   "center": [
+    18.06,
+    9.01
+   ],
+   "kind": null,
+   "tag": "E19"
+  },
+  {
+   "layer": "Appliances",
+   "room": "PREP / BACK OF HOUSE",
+   "polycam_room": "Kitchen 1",
+   "bbox": [
+    36.01,
+    0.33,
+    38.88,
+    3.27
+   ],
+   "w": 2.87,
+   "d": 2.95,
+   "center": [
+    37.44,
+    1.8
+   ],
+   "kind": "Fridge",
+   "csv_dims": "2'-10\" x 6'-6\" x 2'-11\"",
+   "tag": "E20"
+  },
+  {
+   "layer": "Fixtures",
+   "room": "PREP / BACK OF HOUSE",
+   "polycam_room": "Kitchen 1",
+   "bbox": [
+    32.42,
+    0.83,
+    36.09,
+    3.06
+   ],
+   "w": 3.67,
+   "d": 2.22,
+   "center": [
+    34.25,
+    1.95
+   ],
+   "kind": "Cabinet",
+   "csv_dims": "3'-8\" x 7'-0\" x 2'-3\"",
+   "tag": "E21"
+  },
+  {
+   "layer": "Furniture",
+   "room": "PREP / BACK OF HOUSE",
+   "polycam_room": "Kitchen 1",
+   "bbox": [
+    47.58,
+    13.1,
+    50.03,
+    15.39
+   ],
+   "w": 2.45,
+   "d": 2.29,
+   "center": [
+    48.81,
+    14.24
+   ],
+   "kind": "Dining table",
+   "csv_dims": "2'-5\" x 2'-7\" x 2'-3\"",
+   "tag": "E22"
+  },
+  {
+   "layer": "Furniture",
+   "room": "PREP / BACK OF HOUSE",
+   "polycam_room": "Kitchen 1",
+   "bbox": [
+    45.67,
+    4.06,
+    48.16,
+    6.22
+   ],
+   "w": 2.49,
+   "d": 2.16,
+   "center": [
+    46.92,
+    5.14
+   ],
+   "kind": "Desk",
+   "csv_dims": "2'-6\" x 2'-8\" x 2'-2\"",
+   "tag": "E23"
+  },
+  {
+   "layer": "Furniture",
+   "room": "PREP / BACK OF HOUSE",
+   "polycam_room": "Kitchen 1",
+   "bbox": [
+    42.71,
+    0.35,
+    44.32,
+    2.22
+   ],
+   "w": 1.61,
+   "d": 1.87,
+   "center": [
+    43.51,
+    1.28
+   ],
+   "kind": "Dining chair",
+   "csv_dims": "1'-7\" x 2'-9\" x 1'-10\"",
+   "tag": "E24"
+  },
+  {
+   "layer": "Appliances",
+   "room": "PREP / BACK OF HOUSE",
+   "polycam_room": "Kitchen 1",
+   "bbox": [
+    14.62,
+    9.76,
+    14.95,
+    13.25
+   ],
+   "w": 0.33,
+   "d": 3.5,
+   "center": [
+    14.78,
+    11.51
+   ],
+   "kind": "TV",
+   "csv_dims": "3'-6\" x 2'-1\" x 0'-4\"",
+   "tag": "E25"
+  },
+  {
+   "layer": "Fixtures",
+   "room": "RESTROOM 1",
+   "polycam_room": "Bathroom 1",
+   "bbox": [
+    0.84,
+    43.4,
+    2.4,
+    45.84
+   ],
+   "w": 1.56,
+   "d": 2.44,
+   "center": [
+    1.62,
+    44.62
+   ],
+   "kind": "Toilet",
+   "csv_dims": "1'-7\" x 3'-3\" x 2'-5\"",
+   "tag": "E26"
+  },
+  {
+   "layer": "Fixtures",
+   "room": "RESTROOM 1",
+   "polycam_room": "Bathroom 1",
+   "bbox": [
+    4.76,
+    44.28,
+    6.77,
+    45.84
+   ],
+   "w": 2.01,
+   "d": 1.55,
+   "center": [
+    5.76,
+    45.06
+   ],
+   "kind": "Sink",
+   "csv_dims": "2'-0\" x 1'-0\" x 1'-7\"",
+   "tag": "E27"
+  },
+  {
+   "layer": "Fixtures",
+   "room": "RESTROOM 2",
+   "polycam_room": "Bathroom 2",
+   "bbox": [
+    1.28,
+    46.4,
+    2.81,
+    48.72
+   ],
+   "w": 1.53,
+   "d": 2.32,
+   "center": [
+    2.05,
+    47.56
+   ],
+   "kind": "Toilet",
+   "csv_dims": "1'-6\" x 2'-11\" x 2'-4\"",
+   "tag": "E28"
+  },
+  {
+   "layer": "Furniture",
+   "room": "STORAGE",
+   "polycam_room": "Other 2",
+   "bbox": [
+    11.52,
+    41.42,
+    13.69,
+    43.44
+   ],
+   "w": 2.17,
+   "d": 2.02,
+   "center": [
+    12.61,
+    42.43
+   ],
+   "kind": "Dining chair",
+   "csv_dims": "1'-7\" x 3'-5\" x 1'-10\"",
+   "tag": "E29"
+  }
+ ]
+}
