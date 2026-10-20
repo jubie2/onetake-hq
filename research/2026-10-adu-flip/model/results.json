@@ -1,0 +1,1756 @@
+{
+ "rows": [
+  {
+   "addr": "3115 Natchez Ave (duplex)",
+   "area": "Bay Park 92117",
+   "kind": "flip",
+   "status": "$995k, cut from $1.095M on 6/12. No pending/sold found by Oct",
+   "price": 995000,
+   "arv": 1450000,
+   "mo": 7,
+   "plan": "Medium rehab of both units, sell as a duplex",
+   "call": "WATCH",
+   "risk": "Status stale since June. Confirm the legal unit count with permits. No Bay Park duplex sold comp",
+   "links": [
+    [
+     "Listing (MLS 260013038SD)",
+     "https://cdn-production.prevu.com/listings/3115-natchez-san-diego-ca-92117-pidbdad06a8"
+    ],
+    [
+     "Comp: 2851 Grandview, sold $1.65M",
+     "https://www.coldwellbankerhomes.com/ca/san-diego/2851-grandview-st/pid_71644499/"
+    ]
+   ],
+   "facts": [
+    "Fixer duplex, 1,431 sf total, built 1953, 8,265 sf lot, zoned RM-1-1",
+    "Rents seen: $4,950 (2 bd) + $2,400 (1 bd) \u2248 $88k/yr",
+    "Best hold in the set: an RM lot with a duplex can add up to 2 detached ADUs"
+   ],
+   "lot": "8,265 sf",
+   "zoning": "RM-1-1",
+   "kw": {
+    "rehab": 157410
+   },
+   "allin": 1367873.3958333333,
+   "profit": 82126.60416666674,
+   "roi": 0.06003962385468702,
+   "cash": 270463.3958333334,
+   "coc": 0.3036514568399315,
+   "build": 173151.0,
+   "carry": 90547.39583333333,
+   "sell": 94250.0,
+   "low": -55915.20999999996,
+   "high": 178046.07250000024,
+   "ceiling": 978655.4962850068,
+   "breakeven": 1070101.4859973327,
+   "rank": 1
+  },
+  {
+   "addr": "3225 Logan Ave",
+   "area": "Logan Heights 92113",
+   "kind": "flip",
+   "status": "$580k trust sale, no court approval (date/status unverified)",
+   "price": 580000,
+   "arv": 820000,
+   "mo": 5,
+   "plan": "Cosmetic flip of house + rear unit",
+   "call": "WATCH",
+   "risk": "Square footage, lot and permits for the rear unit are unknown (1,400 sf assumed)",
+   "links": [
+    [
+     "Listing",
+     "https://www.neighborhoods.com/ca/san-diego/3225-logan-ave/property/41116077"
+    ],
+    [
+     "92113 recent sales",
+     "https://www.redfin.com/zipcode/92113/recently-sold"
+    ]
+   ],
+   "facts": [
+    "\"Cosmetic fixer\" with an additional rear unit",
+    "Comps: 2855 Franklin Ave $810k, 639 S Gregory $805k (Jul\u2013Aug 2026)"
+   ],
+   "lot": "Unverified",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 70000
+   },
+   "allin": 760360.0,
+   "profit": 59640.0,
+   "roi": 0.07843653006470619,
+   "cash": 144060.00000000003,
+   "coc": 0.41399416909620984,
+   "build": 77000.0,
+   "carry": 41360.0,
+   "sell": 53300.0,
+   "low": -14531.166666666628,
+   "high": 111963.33333333337,
+   "ceiling": 542489.2537660225,
+   "breakeven": 635429.655733261,
+   "rank": 2
+  },
+  {
+   "addr": "5800 Marengo Ave",
+   "area": "La Mesa 91942",
+   "kind": "flip",
+   "status": "PENDING at $699,999 (33 days on market)",
+   "price": 700000,
+   "arv": 1050000,
+   "mo": 6,
+   "plan": "Medium rehab flip",
+   "call": "WATCH",
+   "risk": "Already under contract. Canyon-rim lot; likely fire zone",
+   "links": [
+    [
+     "Listing",
+     "https://contentcodes3.realgeeks.com/property/NDP2606687/"
+    ],
+    [
+     "Comp: 5760 Marengo sold $1.085M",
+     "https://contentcodes3.realgeeks.com/property/250039924/"
+    ]
+   ],
+   "facts": [
+    "4 bd / 2 ba, 1,284 sf, built 1956, ~12,700 sf lot",
+    "Neighbor 5760 Marengo (1,374 sf) sold $1.085M on 4/17/2026"
+   ],
+   "lot": "~12,700 sf",
+   "zoning": "R1 (est.)",
+   "kw": {
+    "rehab": 141240
+   },
+   "allin": 993247.8999999999,
+   "profit": 56752.10000000009,
+   "roi": 0.05713790082012768,
+   "cash": 188757.90000000002,
+   "coc": 0.3006607935349995,
+   "build": 155364.0,
+   "carry": 59133.9,
+   "sell": 68250.0,
+   "low": -49629.45333333325,
+   "high": 129383.67166666687,
+   "ceiling": 660130.9979257893,
+   "breakeven": 752318.137819774,
+   "rank": 3
+  },
+  {
+   "addr": "2168 Leighton Ct",
+   "area": "Paradise Hills 92139",
+   "kind": "flip",
+   "status": "Probate $649k (June); another site shows $749k",
+   "price": 649000,
+   "arv": 860000,
+   "mo": 5,
+   "plan": "Cosmetic flip",
+   "call": "WATCH",
+   "risk": "Which price is current? Probate court overbids and 30\u201360 day delays",
+   "links": [
+    [
+     "Coldwell Banker",
+     "https://www.coldwellbankerhomes.com/ca/san-diego/2168-leighton-ct-ct/pid_71967644/"
+    ],
+    [
+     "RubyHome ($749k)",
+     "https://www.rubyhome.com/idx/2168-leighton-ct-ct-san-diego-ca-92139/1803366673_spid/"
+    ]
+   ],
+   "facts": [
+    "4 bd / 2 ba, ~1,400 sf, built 1980, newer roof/HVAC/windows, RV parking",
+    "Comp: 3107 Mt Miguel Dr sold $835k (6/25/2026). At $749k this loses ~$85k"
+   ],
+   "lot": "Street avg ~11,600 sf",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 70000
+   },
+   "allin": 837201.1249999999,
+   "profit": 22798.875000000116,
+   "roi": 0.027232255570607506,
+   "cash": 159651.12500000003,
+   "coc": 0.14280434917073156,
+   "build": 77000.0,
+   "carry": 45566.125,
+   "sell": 55900.0,
+   "low": -54829.54166666651,
+   "high": 77598.83333333349,
+   "ceiling": 577248.9641017697,
+   "breakeven": 670189.3660690082,
+   "rank": 4
+  },
+  {
+   "addr": "9077 Covina St",
+   "area": "Mira Mesa 92126",
+   "kind": "flip",
+   "status": "Active $905k as of 6/29 (likely sold since)",
+   "price": 905000,
+   "arv": 1150000,
+   "mo": 5,
+   "plan": "Cosmetic flip",
+   "call": "WATCH",
+   "risk": "Status stale; small lot means a JADU at most",
+   "links": [
+    [
+     "Listing",
+     "https://www.rubyhome.com/idx/9077-covina-street-san-diego-ca-92126/1804316116_spid/"
+    ],
+    [
+     "Comp: 11377 Volans sold $1.14M",
+     "https://www.coldwellbankerhomes.com/ca/san-diego/11377-volans-st/pid_67933385/"
+    ]
+   ],
+   "facts": [
+    "4 bd / 2 ba, 1,657 sf, built 1976, 5,600 sf lot, \"cosmetic fixer\""
+   ],
+   "lot": "5,600 sf",
+   "zoning": "RS (est.)",
+   "kw": {
+    "rehab": 82850
+   },
+   "allin": 1146182.9375,
+   "profit": 3817.0625,
+   "roi": 0.0033302384594256795,
+   "cash": 219332.93750000003,
+   "coc": 0.017403051924200847,
+   "build": 91135.0,
+   "carry": 61722.9375,
+   "sell": 74750.0,
+   "low": -97660.33333333326,
+   "high": 75946.84166666679,
+   "ceiling": 815607.191263602,
+   "breakeven": 908547.5932308406,
+   "rank": 5
+  },
+  {
+   "addr": "648 51st St",
+   "area": "Emerald Hills 92114",
+   "kind": "flip",
+   "status": "Active $600k, reduced from $695k \u2192 $650k \u2192 $600k (updated early Oct)",
+   "price": 600000,
+   "arv": 760000,
+   "mo": 5,
+   "plan": "Cosmetic flip",
+   "call": "WATCH",
+   "risk": "Split-level on a slope. Listing says \"R-2\", which is not a City of SD zone: check the real zone",
+   "links": [
+    [
+     "Listing",
+     "https://www.neighborhoods.com/ca/san-diego/648-51-st/property/40949109"
+    ],
+    [
+     "Coldwell Banker",
+     "https://www.coldwellbanker.com/ca/san-diego/648-51st-st/lid-P00800000HF8JegPZRI0m6C9vOJK4PwDFBZV0Jn2"
+    ]
+   ],
+   "facts": [
+    "3 bd / 2 ba, ~1,300 sf, built 1954, 9,200 sf lot, cul-de-sac",
+    "Was listed for rent at $3,095/mo",
+    "If the zone is RM-1-1, 3 homes are allowed by right (a hold play, not modeled)"
+   ],
+   "lot": "9,200 sf",
+   "zoning": "\"R-2\" per listing",
+   "kw": {
+    "rehab": 65000
+   },
+   "allin": 772264.5833333333,
+   "profit": -12264.583333333256,
+   "roi": -0.015881323056918542,
+   "cash": 147864.58333333334,
+   "coc": -0.08294469883761835,
+   "build": 71500.0,
+   "carry": 42364.583333333336,
+   "sell": 49400.0,
+   "low": -82223.49999999988,
+   "high": 36837.50000000012,
+   "ceiling": 495660.84498315444,
+   "breakeven": 588601.246950393,
+   "rank": 6
+  },
+  {
+   "addr": "5789 Tex St",
+   "area": "La Mesa 91942",
+   "kind": "flip",
+   "status": "Active $599k, cash only. Raised from $499k on 9/21 (multiple-offer signal)",
+   "price": 599000,
+   "arv": 960000,
+   "mo": 6,
+   "plan": "Heavy rehab flip",
+   "call": "WATCH",
+   "risk": "Will likely trade above list. Walk away above the offer ceiling",
+   "links": [
+    [
+     "Coldwell Banker",
+     "https://www.coldwellbankerhomes.com/ca/la-mesa/5789-tex/pid_73688902/"
+    ],
+    [
+     "Zillow",
+     "https://www.zillow.com/homedetails/5789-Tex-St-La-Mesa-CA-91942/17028822_zpid/"
+    ]
+   ],
+   "facts": [
+    "3 bd / 2 ba, 1,132 sf, built 1958, 10,500 sf lot, \"major fixer\"",
+    "Taxes $1,804 on a $64,973 assessment: long-held, possibly an estate"
+   ],
+   "lot": "10,500 sf",
+   "zoning": "R1 (est.)",
+   "kw": {
+    "rehab": 226400
+   },
+   "allin": 975559.2499999999,
+   "profit": -15559.249999999884,
+   "roi": -0.015949056912739935,
+   "cash": 177609.25,
+   "coc": -0.08760382694031918,
+   "build": 249040.0,
+   "carry": 56134.25,
+   "sell": 62400.0,
+   "low": -135596.86666666658,
+   "high": 62100.258333333535,
+   "ceiling": 492469.2325420604,
+   "breakeven": 584656.372436045,
+   "rank": 7
+  },
+  {
+   "addr": "710 Eucalyptus St",
+   "area": "Oceanside 92054",
+   "kind": "flip",
+   "status": "Active $1.199M (MLS NDP2603324), tenant-occupied",
+   "price": 1199000,
+   "arv": 1650000,
+   "mo": 7,
+   "plan": "Medium rehab flip (no ADU)",
+   "call": "WATCH",
+   "risk": "Tenant relocation under AB 1482; living sf unknown",
+   "links": [
+    [
+     "Listing",
+     "https://theboutiquere.com/properties/retsPdf/NDP2603324/710-Eucalyptus-Street"
+    ]
+   ],
+   "facts": [
+    "4 bd / 3 ba, built 1945, ~7,400 sf lot",
+    "Same street as the 1105 Eucalyptus lot"
+   ],
+   "lot": "~7,400 sf",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 198000,
+    "extra": 15000
+   },
+   "allin": 1666500.208333333,
+   "profit": -16500.208333333023,
+   "roi": -0.009901113873747956,
+   "cash": 327100.2083333334,
+   "coc": -0.05044389429589843,
+   "build": 232800.0,
+   "carry": 109465.20833333333,
+   "sell": 107250.0,
+   "low": -179285.62499999977,
+   "high": 95475.25000000023,
+   "ceiling": 1092465.2314726613,
+   "breakeven": 1183911.2211849873,
+   "rank": 8
+  },
+  {
+   "addr": "805 51st St",
+   "area": "Emerald Hills 92114",
+   "kind": "flip",
+   "status": "Trustee sale (TS# 22-6999) was set for 7/24/2026. Outcome unknown. Modeled at an assumed $560k all-cash bid",
+   "price": 560000,
+   "arv": 800000,
+   "mo": 6,
+   "plan": "Medium rehab flip, no ADU",
+   "call": "WATCH",
+   "risk": "Auction = all cash, no inspection, likely occupied. Find out if it sold or went REO",
+   "links": [
+    [
+     "Auction listing",
+     "https://www.auction.com/details/805-51st-st-san-diego-ca-2091620"
+    ]
+   ],
+   "facts": [
+    "4 bd / 2 ba, 1,289 sf, built 1973, ~12,200 sf lot",
+    "Identical tract model to 825 51st St next door, which sold for ~$816k in Aug 2026",
+    "A home costume business is listed at this address, so it is probably occupied"
+   ],
+   "lot": "~12,200 sf",
+   "zoning": "RS (unverified)",
+   "kw": {
+    "rehab": 141790,
+    "extra": 10000
+   },
+   "allin": 836239.025,
+   "profit": -36239.02500000002,
+   "roi": -0.04333572569158683,
+   "cash": 156449.02500000002,
+   "coc": -0.23163471296800997,
+   "build": 165969.0,
+   "carry": 49870.025,
+   "sell": 52000.0,
+   "low": -126357.85333333339,
+   "high": 23585.427916666726,
+   "ceiling": 434405.139433049,
+   "breakeven": 526592.2793270338,
+   "rank": 9
+  },
+  {
+   "addr": "9371 Fermi Ave",
+   "area": "Serra Mesa 92123",
+   "kind": "flip",
+   "status": "Active $825k (MLS 260021658SD)",
+   "price": 825000,
+   "arv": 975000,
+   "mo": 5,
+   "plan": "Cosmetic flip",
+   "call": "WATCH",
+   "risk": "Ask too close to resale value; offer far below",
+   "links": [
+    [
+     "Listing",
+     "https://lauragetzoff.remax.com/property/25-260021658SD-9371-fermi-san-diego-CA-92123"
+    ]
+   ],
+   "facts": [
+    "3 bd / 2 ba, 1,053 sf, built 1959, ~6,098 sf lot",
+    "Comp: 8232 Polizzi Pl sold $1.095M (Oct 2025)"
+   ],
+   "lot": "~6,098 sf",
+   "zoning": "RS-1-7 (est.)",
+   "kw": {
+    "rehab": 52650
+   },
+   "allin": 1014215.1874999999,
+   "profit": -39215.18749999988,
+   "roi": -0.038665549464570494,
+   "cash": 196940.1875,
+   "coc": -0.19912232235485144,
+   "build": 57915.0,
+   "carry": 55550.1875,
+   "sell": 63375.0,
+   "low": -122232.99999999988,
+   "high": 20453.825000000186,
+   "ceiling": 695612.8451380552,
+   "breakeven": 788553.2471052937,
+   "rank": 10
+  },
+  {
+   "addr": "4575 Dwight St",
+   "area": "City Heights 92105",
+   "kind": "flip",
+   "status": "Active $599k (cut from $625k, 7/30)",
+   "price": 599000,
+   "arv": 690000,
+   "mo": 5,
+   "plan": "Cosmetic flip",
+   "call": "PASS",
+   "risk": "Not a real fixer; price is ~87% of resale value",
+   "links": [
+    [
+     "Coldwell Banker",
+     "https://www.coldwellbankerhomes.com/ca/san-diego/4575-dwight-st/pid_72707439/"
+    ]
+   ],
+   "facts": [
+    "2 bd / 1 ba, 780 sf",
+    "Comp: 4417 Dwight, remodeled 2/2, sold $720k (3/4/2026)",
+    "Seller paid $454k in 2020"
+   ],
+   "lot": "Unverified",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 39000
+   },
+   "allin": 736922.7916666665,
+   "profit": -46922.79166666651,
+   "roi": -0.063673959059596,
+   "cash": 143922.7916666667,
+   "coc": -0.32602752575382465,
+   "build": 42900.0,
+   "carry": 41187.79166666667,
+   "sell": 44850.0,
+   "low": -106707.95833333326,
+   "high": -4180.833333333256,
+   "ceiling": 462449.3668435115,
+   "breakeven": 555389.76881075,
+   "rank": 11
+  },
+  {
+   "addr": "7265 Skyline Dr",
+   "area": "Skyline 92114",
+   "kind": "flip",
+   "status": "$575k probate, \"needs major repairs\" (received 7/6)",
+   "price": 575000,
+   "arv": 780000,
+   "mo": 7,
+   "plan": "Medium rehab flip (1,200 sf assumed)",
+   "call": "WATCH",
+   "risk": "Size and condition unknown; listing 3.5 months old",
+   "links": [
+    [
+     "Coldwell Banker",
+     "https://www.coldwellbankerhomes.com/ca/san-diego/7265-skyline-dr/pid_72285947/"
+    ]
+   ],
+   "facts": [
+    "Comps: 5454 Roswell $730k, 5533 Roswell $750k (spring 2026)"
+   ],
+   "lot": "Unverified",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 132000
+   },
+   "allin": 835761.4583333334,
+   "profit": -55761.45833333337,
+   "roi": -0.06671934650412366,
+   "cash": 164311.45833333334,
+   "coc": -0.33936439307970784,
+   "build": 145200.0,
+   "carry": 56236.45833333333,
+   "sell": 50700.0,
+   "low": -142696.875,
+   "high": 2110.75,
+   "ceiling": 432562.39283673075,
+   "breakeven": 524008.3825490569,
+   "rank": 12
+  },
+  {
+   "addr": "1854 Grove Rd",
+   "area": "Casa de Oro\u2013Mt Helix 92020 (County)",
+   "kind": "flip",
+   "status": "Listed $775k (new, Oct)",
+   "price": 775000,
+   "arv": 1100000,
+   "mo": 6,
+   "plan": "Medium rehab flip",
+   "call": "WATCH",
+   "risk": "Probably septic (a neighbor's listing says so), which blocks an ADU. Near-retail price",
+   "links": [
+    [
+     "Redfin",
+     "https://redfin.com/CA/El-Cajon/1854-Grove-Rd-92020/home/5702943"
+    ]
+   ],
+   "facts": [
+    "4 bd / 2 ba, 1,934 sf, 0.53 ac, zoned RR",
+    "Only comp is 1834 Grove Rd at $837.5k, a stale 2021 sale"
+   ],
+   "lot": "23,087 sf",
+   "zoning": "RR",
+   "kw": {
+    "rehab": 212740
+   },
+   "allin": 1159900.4,
+   "profit": -59900.39999999991,
+   "roi": -0.05164271001199751,
+   "cash": 216910.4,
+   "coc": -0.27615273403211604,
+   "build": 234014.0,
+   "carry": 67761.4,
+   "sell": 71500.0,
+   "low": -187601.45333333325,
+   "high": 24227.609166666865,
+   "ceiling": 627592.3945609586,
+   "breakeven": 719779.5344549434,
+   "rank": 13
+  },
+  {
+   "addr": "2839 Emerald Dr",
+   "area": "Oceanside",
+   "kind": "flip",
+   "status": "Asking $844.9k, \"contractor's delight\" (date unverified)",
+   "price": 844900,
+   "arv": 1100000,
+   "mo": 6,
+   "plan": "Medium rehab flip",
+   "call": "WATCH",
+   "risk": "Living sf, status and comps unverified",
+   "links": [
+    [
+     "Oceanside fixers",
+     "https://www.foreclosure.com/listings/oceanside-ca/fixer-upper/"
+    ]
+   ],
+   "facts": [
+    "3 bd / 2 ba, built 1962, 7,840 sf lot"
+   ],
+   "lot": "7,840 sf",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 154000
+   },
+   "allin": 1168320.275,
+   "profit": -68320.2749999999,
+   "roi": -0.058477351169823624,
+   "cash": 224655.275,
+   "coc": -0.30411159942716637,
+   "build": 169400.0,
+   "carry": 69846.775,
+   "sell": 71500.0,
+   "low": -183123.43333333347,
+   "high": 9439.554166666698,
+   "ceiling": 689730.3526158101,
+   "breakeven": 781917.4925097948,
+   "rank": 14
+  },
+  {
+   "addr": "8474 Parkbrook St",
+   "area": "Encanto 92114",
+   "kind": "flip",
+   "status": "$695k, one snapshot shows pending",
+   "price": 695000,
+   "arv": 830000,
+   "mo": 6,
+   "plan": "Cosmetic flip + tenant buyout",
+   "call": "PASS",
+   "risk": "Probably in escrow; month-to-month tenants",
+   "links": [
+    [
+     "Listing",
+     "https://www.homefront.com/homes/ca/san-diego/property/8474-parkbrook-83a33f93-770e-3bf9-b35f-e5553c782fd9"
+    ]
+   ],
+   "facts": [
+    "4 bd / 2 ba, 1,385 sf, built 1971, 5,798 sf lot, views",
+    "Comp: 1417 S 58th St remodeled 4/2 sold $880k (8/14/2026)"
+   ],
+   "lot": "5,798 sf",
+   "zoning": "RS (est.)",
+   "kw": {
+    "rehab": 69250,
+    "extra": 8000
+   },
+   "allin": 899295.6249999999,
+   "profit": -69295.62499999988,
+   "roi": -0.07705544547711982,
+   "cash": 177345.625,
+   "coc": -0.39073771907257304,
+   "build": 84175.0,
+   "carry": 55745.625,
+   "sell": 53950.0,
+   "low": -146006.99999999988,
+   "high": -15514.156249999884,
+   "ceiling": 538931.205346854,
+   "breakeven": 631118.345240839,
+   "rank": 15
+  },
+  {
+   "addr": "4535 Bannock Ave",
+   "area": "Clairemont 92117",
+   "kind": "flip",
+   "status": "$850k, 8 days on market as of 6/30 (likely gone)",
+   "price": 850000,
+   "arv": 1160000,
+   "mo": 7,
+   "plan": "Medium rehab + convert 2/1 to 3/2",
+   "call": "PASS",
+   "risk": "Ask is ~$175k over flip value",
+   "links": [
+    [
+     "Listing",
+     "https://www.rubyhome.com/idx/4535-bannock-avenue-san-diego-ca-92117/1803978316_spid/"
+    ]
+   ],
+   "facts": [
+    "2 bd / 1 ba, 1,561 sf, built 1958",
+    "Comp: 5848 Chateau Dr remodeled 4/3 sold $1.165M (7/8/2026)"
+   ],
+   "lot": "Unverified",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 211710
+   },
+   "allin": 1253017.9791666665,
+   "profit": -93017.97916666651,
+   "roi": -0.0742351512214766,
+   "cash": 243407.9791666667,
+   "coc": -0.3821484385397863,
+   "build": 232881.0,
+   "carry": 81986.97916666667,
+   "sell": 75400.0,
+   "low": -225350.135,
+   "high": -5451.002499999944,
+   "ceiling": 673492.79862831,
+   "breakeven": 764938.7883406363,
+   "rank": 16
+  },
+  {
+   "addr": "6809 Ballinger Ave",
+   "area": "San Carlos 92119",
+   "kind": "flip",
+   "status": "Active $888k as of 5/12 (probably gone)",
+   "price": 888000,
+   "arv": 1000000,
+   "mo": 5,
+   "plan": "Cosmetic flip",
+   "call": "PASS",
+   "risk": "Not marketed as a fixer",
+   "links": [
+    [
+     "MLS record",
+     "https://about.mlslistings.com/property/CRNDP2604116"
+    ]
+   ],
+   "facts": [
+    "3 bd / 2 ba, 1,273 sf, 7,200 sf lot",
+    "Comps: 8754 Joeve Ct $965k (Aug 2026), 8661 Dent Dr $981k (Feb 2026)"
+   ],
+   "lot": "7,200 sf",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 63650
+   },
+   "allin": 1096197.6458333333,
+   "profit": -96197.64583333326,
+   "roi": -0.0877557493386181,
+   "cash": 212747.64583333337,
+   "coc": -0.45216785105436397,
+   "build": 70015.0,
+   "carry": 59862.645833333336,
+   "sell": 65000.0,
+   "low": -184361.12499999977,
+   "high": -33503.424999999814,
+   "ceiling": 705653.119312241,
+   "breakeven": 798593.5212794795,
+   "rank": 17
+  },
+  {
+   "addr": "128 Old Oak Dr",
+   "area": "Encanto 92114",
+   "kind": "flip",
+   "status": "$575k trustee sale; offers closed 9/28",
+   "price": 575000,
+   "arv": 700000,
+   "mo": 7,
+   "plan": "Medium rehab + add a bath",
+   "call": "PASS",
+   "risk": "Almost certainly in escrow above list",
+   "links": [
+    [
+     "Listing",
+     "https://www.rubyhome.com/idx/128-old-oak-dr-san-diego-ca-92114/431614011_spid/"
+    ]
+   ],
+   "facts": [
+    "3 bd / 1.5 ba, 964 sf, built 1962"
+   ],
+   "lot": "~5,950 sf",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 106040
+   },
+   "allin": 800653.375,
+   "profit": -100653.375,
+   "roi": -0.12571404573171255,
+   "cash": 160363.375,
+   "coc": -0.6276581233090162,
+   "build": 116644.0,
+   "carry": 54884.375,
+   "sell": 45500.0,
+   "low": -176833.615,
+   "high": -49619.05999999994,
+   "ceiling": 391510.5353400648,
+   "breakeven": 482956.52505239076,
+   "rank": 18
+  },
+  {
+   "addr": "2987 Demeter Way",
+   "area": "Bay Terraces 92139",
+   "kind": "flip",
+   "status": "$749,999 as-is (another snapshot $899,999)",
+   "price": 749999,
+   "arv": 880000,
+   "mo": 5,
+   "plan": "Cosmetic flip",
+   "call": "PASS",
+   "risk": "Garage converted to living space with a kitchen (likely unpermitted)",
+   "links": [
+    [
+     "Listing",
+     "https://www.rubyhome.com/idx/2987-demeter-way-san-diego-ca-92139/1802052409_spid/"
+    ]
+   ],
+   "facts": [
+    "4 bd / 4 ba, 1,992 sf, built 1975"
+   ],
+   "lot": "~4,400 sf",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 99600
+   },
+   "allin": 981002.1740416666,
+   "profit": -101002.17404166656,
+   "roi": -0.10295815515427863,
+   "cash": 186703.0240416667,
+   "coc": -0.5409777081014274,
+   "build": 109560.0,
+   "carry": 52993.18904166667,
+   "sell": 57200.0,
+   "low": -188620.15645833325,
+   "high": -40874.13283333334,
+   "ceiling": 563186.7714827866,
+   "breakeven": 656127.1734500251,
+   "rank": 19
+  },
+  {
+   "addr": "3112 Luna Ave",
+   "area": "Bay Ho 92117",
+   "kind": "flip",
+   "status": "Active $995k (updated ~10/1)",
+   "price": 995000,
+   "arv": 1120000,
+   "mo": 5,
+   "plan": "Cosmetic + add a second bath",
+   "call": "PASS",
+   "risk": "900 sf house priced near retail; unpermitted space",
+   "links": [
+    [
+     "Listing",
+     "https://www.neighborhoods.com/ca/san-diego/3112-luna-ave/property/35883820"
+    ]
+   ],
+   "facts": [
+    "3 bd / 1 ba, ~900 sf, 5,100 sf lot"
+   ],
+   "lot": "5,100 sf",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 85000
+   },
+   "allin": 1243526.4583333333,
+   "profit": -123526.45833333326,
+   "roi": -0.09933560923093877,
+   "cash": 239976.45833333337,
+   "coc": -0.5147440677774813,
+   "build": 93500.0,
+   "carry": 67301.45833333334,
+   "sell": 72800.0,
+   "low": -225418.45833333326,
+   "high": -51753.333333333256,
+   "ceiling": 787253.6111218681,
+   "breakeven": 880194.0130891064,
+   "rank": 20
+  },
+  {
+   "addr": "7443 Central Ave",
+   "area": "Lemon Grove 91945",
+   "kind": "flip",
+   "status": "New listing $699,999",
+   "price": 700000,
+   "arv": 865000,
+   "mo": 6,
+   "plan": "Medium rehab flip",
+   "call": "PASS",
+   "risk": "Fixer priced near retail",
+   "links": [
+    [
+     "Lemon Grove listings",
+     "https://www.homes.com/lemon-grove-ca/"
+    ]
+   ],
+   "facts": [
+    "3 bd / 2 ba, 1,472 sf, 0.2\u20130.33 ac, pool",
+    "Comp: 2019 Fairhaven St sold $665k (1,216 sf)"
+   ],
+   "lot": "0.2\u20130.33 ac",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 161920
+   },
+   "allin": 1004953.2,
+   "profit": -139953.19999999995,
+   "roi": -0.1392634005245219,
+   "cash": 191808.2,
+   "coc": -0.7296518084211204,
+   "build": 178112.0,
+   "carry": 60116.200000000004,
+   "sell": 56225.0,
+   "low": -240929.79333333322,
+   "high": -73512.04333333333,
+   "ceiling": 478794.00783590693,
+   "breakeven": 570981.1477298917,
+   "rank": 21
+  },
+  {
+   "addr": "4627 Dwight St",
+   "area": "City Heights 92105",
+   "kind": "flip",
+   "status": "Active $699k (modified 6/8)",
+   "price": 699000,
+   "arv": 700000,
+   "mo": 5,
+   "plan": "Cosmetic flip",
+   "call": "PASS",
+   "risk": "Priced at full resale value",
+   "links": [
+    [
+     "MLS record",
+     "https://www.mlslistings.com/property/CRPTP2604202"
+    ]
+   ],
+   "facts": [
+    "2 bd / 1 ba, 706 sf, built 1941, 5,081 sf lot"
+   ],
+   "lot": "5,081 sf",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 35300
+   },
+   "allin": 840939.8333333333,
+   "profit": -140939.83333333326,
+   "roi": -0.16759799898486585,
+   "cash": 165989.83333333334,
+   "coc": -0.8490871428872646,
+   "build": 38830.0,
+   "carry": 47124.833333333336,
+   "sell": 45500.0,
+   "low": -202157.87499999988,
+   "high": -97289.34999999986,
+   "ceiling": 475069.5504008054,
+   "breakeven": 568009.9523680438,
+   "rank": 22
+  },
+  {
+   "addr": "4858 Chateau Dr",
+   "area": "Clairemont 92117",
+   "kind": "flip",
+   "status": "Active $1.079M (new, ~late Sep)",
+   "price": 1079000,
+   "arv": 1150000,
+   "mo": 5,
+   "plan": "Cosmetic flip",
+   "call": "PASS",
+   "risk": "Not a fixer; priced at retail",
+   "links": [
+    [
+     "Listing",
+     "https://dawnsellssandiego.realgeeks.com/property/260021828/"
+    ]
+   ],
+   "facts": [
+    "3 bd / 2 ba, 1,008 sf, built 1963, RV parking"
+   ],
+   "lot": "Unverified",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 50400
+   },
+   "allin": 1296312.0416666667,
+   "profit": -146312.04166666674,
+   "roi": -0.11286791834360617,
+   "cash": 254012.0416666667,
+   "coc": -0.5760043528120142,
+   "build": 55440.0,
+   "carry": 70937.04166666667,
+   "sell": 74750.0,
+   "low": -243074.4583333335,
+   "high": -76495.1333333333,
+   "ceiling": 850076.5983812878,
+   "breakeven": 943017.0003485264,
+   "rank": 23
+  },
+  {
+   "addr": "3106 Menlo Ave",
+   "area": "City Heights 92105",
+   "kind": "flip",
+   "status": "$625.9k (MLS 260018657)",
+   "price": 625900,
+   "arv": 725000,
+   "mo": 7,
+   "plan": "Medium rehab + pool repair",
+   "call": "PASS",
+   "risk": "945 sf 2/1; spread too thin",
+   "links": [
+    [
+     "City Heights fixers",
+     "https://www.redfin.com/neighborhood/547396/CA/San-Diego/City-Heights/fixer-upper"
+    ]
+   ],
+   "facts": [
+    "2 bd / 1 ba, 945 sf, large lot, pool needs work"
+   ],
+   "lot": "Large (unverified)",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 118950
+   },
+   "allin": 872813.0416666666,
+   "profit": -147813.04166666663,
+   "roi": -0.169352466805964,
+   "cash": 174723.0416666667,
+   "coc": -0.8459848240775338,
+   "build": 130845.0,
+   "carry": 59554.54166666667,
+   "sell": 47125.0,
+   "low": -229407.4624999998,
+   "high": -93621.88749999995,
+   "ceiling": 399284.9114116974,
+   "breakeven": 490730.9011240236,
+   "rank": 24
+  },
+  {
+   "addr": "1105 Eucalyptus St",
+   "area": "South Oceanside 92054",
+   "kind": "land",
+   "status": "Lot asking $450k (MLS 260022001) per one search snapshot; a second check could not find it. Likely the same hilltop as 0 Clementine St, active at $600k",
+   "price": 450000,
+   "arv": 2350000,
+   "mo": 24,
+   "plan": "New 2,400 sf house + 750 sf detached ADU, sell as one parcel",
+   "call": "WATCH",
+   "risk": "Private-drive hilltop: access, retaining walls, utility runs. Needs a $2.5M+ sale to break even",
+   "links": [
+    [
+     "0 Clementine St listing",
+     "https://theboutiquere.com/properties/retsPdf/260005417SD/0-Clementine-St"
+    ],
+    [
+     "Oceanside land search",
+     "https://www.homes.com/oceanside-ca/92054/land-for-sale/"
+    ]
+   ],
+   "facts": [
+    "5,523 sf lot, ocean views, end of a private drive",
+    "Plans and a soils report exist; the listing says it is not subject to Coastal Commission review",
+    "SB 9 marketed, but a lot split needs a 3-year owner-occupancy affidavit (not usable on a flip)",
+    "Nearby new builds: 1714 California St asking $2.65M (2,988 sf incl. ADU); 1716 California pending at $2.999M"
+   ],
+   "lot": "5,523 sf",
+   "zoning": "RS (unverified)",
+   "kw": {
+    "hard": 1301250,
+    "soft": 175000,
+    "ltv": 0.6,
+    "pts": 0.025,
+    "cont": 0.12
+   },
+   "allin": 2532543.75,
+   "profit": -182543.75,
+   "roi": -0.0720792088981681,
+   "cash": 633543.75,
+   "coc": -0.28813124586897115,
+   "build": 1632400.0,
+   "carry": 290643.75,
+   "sell": 152750.0,
+   "low": -709896.25,
+   "high": 129404.58333333349,
+   "ceiling": 211767.49578414822,
+   "breakeven": 296084.5278246206,
+   "rank": 25
+  },
+  {
+   "addr": "3041 Menlo Ave",
+   "area": "Swan Canyon 92105",
+   "kind": "flip",
+   "status": "$749,999\u2013$799k (relisted)",
+   "price": 749999,
+   "arv": 900000,
+   "mo": 7,
+   "plan": "Medium rehab flip",
+   "call": "PASS",
+   "risk": "Canyon slope; 2 unpermitted bedrooms",
+   "links": [
+    [
+     "Listing",
+     "https://homes.backatyou.com/details/3yd-MRMLSCA-PTP2601758"
+    ]
+   ],
+   "facts": [
+    "3 bd / 2 ba ~1,700 sf + 2 lower bedrooms, 13,672 sf lot"
+   ],
+   "lot": "13,672 sf",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 187000
+   },
+   "allin": 1098294.7397916666,
+   "profit": -198294.73979166662,
+   "roi": -0.18054783712182831,
+   "cash": 215295.5897916667,
+   "coc": -0.9210348432290176,
+   "build": 205700.0,
+   "carry": 72845.75479166667,
+   "sell": 58500.0,
+   "low": -308317.1388749997,
+   "high": -126710.66524999985,
+   "ceiling": 477220.4229377024,
+   "breakeven": 568666.4126500286,
+   "rank": 26
+  },
+  {
+   "addr": "7059 Bullock Dr",
+   "area": "Encanto 92114",
+   "kind": "flip",
+   "status": "$799k investor-only, as-is",
+   "price": 799000,
+   "arv": 890000,
+   "mo": 7,
+   "plan": "Medium rehab flip",
+   "call": "PASS",
+   "risk": "Priced near resale value",
+   "links": [
+    [
+     "92114 listings",
+     "https://www.redfin.com/city/16904/CA/San-Diego/fixer-upper"
+    ]
+   ],
+   "facts": [
+    "4 bd / 2.5 ba, 1,691 sf, built 1985"
+   ],
+   "lot": "Unverified",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 186010
+   },
+   "allin": 1150088.8124999998,
+   "profit": -260088.81249999977,
+   "roi": -0.22614671986473203,
+   "cash": 227078.8125,
+   "coc": -1.145368031638794,
+   "build": 204611.0,
+   "carry": 76642.8125,
+   "sell": 57850.0,
+   "low": -370172.81000000006,
+   "high": -188659.5774999999,
+   "ceiling": 469713.2215660126,
+   "breakeven": 561159.2112783387,
+   "rank": 27
+  },
+  {
+   "addr": "0 Lake Murray Blvd (lot)",
+   "area": "La Mesa 91942",
+   "kind": "land",
+   "status": "Active $330k (listed 6/6)",
+   "price": 330000,
+   "arv": 1450000,
+   "mo": 26,
+   "plan": "New 2,000 sf house",
+   "call": "PASS",
+   "risk": "Cheap for a reason? Irregular 5-sided lot; slope and utilities unknown",
+   "links": [
+    [
+     "Listing",
+     "https://www.coldwellbankerhomes.com/ca/la-mesa/0-lake-murray-blvd/pid_71787554/"
+    ]
+   ],
+   "facts": [
+    "0.45 ac, \"R1 Urban Residential\""
+   ],
+   "lot": "19,633 sf",
+   "zoning": "R1",
+   "kw": {
+    "hard": 850000,
+    "soft": 130000,
+    "ltv": 0.6,
+    "pts": 0.025,
+    "cont": 0.12
+   },
+   "allin": 1728803.3333333333,
+   "profit": -278803.33333333326,
+   "roi": -0.16126954868589252,
+   "cash": 456553.3333333333,
+   "coc": -0.6106698012645473,
+   "build": 1082000.0,
+   "carry": 217603.3333333333,
+   "sell": 94250.0,
+   "low": -623151.6666666667,
+   "high": -76173.33333333326,
+   "ceiling": 14067.278287461715,
+   "breakeven": 97470.11398387526,
+   "rank": 28
+  },
+  {
+   "addr": "9035 Rohr",
+   "area": "Serra Mesa 92123",
+   "kind": "flip",
+   "status": "Active $899k, sold as-is, \"significant repairs\" (MLS CV26194366)",
+   "price": 899000,
+   "arv": 1275000,
+   "mo": 7,
+   "plan": "Heavy rehab flip",
+   "call": "WATCH",
+   "risk": "Scope decides it: at $110/sf medium the deal gets close; at $200/sf heavy it's \u2212$300k. Possible canyon edge",
+   "links": [
+    [
+     "Listing",
+     "https://dawnsellssandiego.realgeeks.com/property/CV26194366/"
+    ]
+   ],
+   "facts": [
+    "4 bd / 3 ba, 2,243 sf, built 1958, ~9,500 sf lot (2\u00d7 a typical Serra Mesa lot)",
+    "Comp: 8514 Glenhaven, renovated with a permitted conversion ADU, asking $1.199M"
+   ],
+   "lot": "~9,500 sf",
+   "zoning": "RS-1-7 (est.)",
+   "kw": {
+    "rehab": 448600
+   },
+   "allin": 1586993.5416666667,
+   "profit": -311993.54166666674,
+   "roi": -0.19659408401814282,
+   "cash": 291368.5416666667,
+   "coc": -1.0707866397725105,
+   "build": 493460.0,
+   "carry": 98173.54166666666,
+   "sell": 82875.0,
+   "low": -508827.97499999986,
+   "high": -190350.65000000014,
+   "ceiling": 522248.42827205185,
+   "breakeven": 613694.4179843778,
+   "rank": 29
+  },
+  {
+   "addr": "0 Dwight St (lot)",
+   "area": "City Heights 92105",
+   "kind": "land",
+   "status": "Active $284.9k (cut from $350k, 8/4)",
+   "price": 284900,
+   "arv": 1350000,
+   "mo": 24,
+   "plan": "Two new 1,000 sf units (SB 9 duplex)",
+   "call": "PASS",
+   "risk": "New construction at $425/sf can't beat City Heights resale prices",
+   "links": [
+    [
+     "Land listing",
+     "https://www.landbrokermls.com/property/1193951/lots-land-other-in-san-diego"
+    ],
+    [
+     "Coldwell Banker",
+     "https://www.coldwellbankerhomes.com/ca/san-diego/0-dwight-st/pid_72010009/"
+    ]
+   ],
+   "facts": [
+    "~0.13 ac flat cul-de-sac lot, utilities in the street (not connected)",
+    "4284 Dwight (old house + new 1,200 sf back unit) has sat since Nov 2025, cut $950k \u2192 $899k"
+   ],
+   "lot": "~5,660 sf",
+   "zoning": "RS (est.)",
+   "kw": {
+    "hard": 850000,
+    "soft": 175000,
+    "ltv": 0.6,
+    "pts": 0.025,
+    "cont": 0.12
+   },
+   "allin": 1705416.4000000001,
+   "profit": -355416.40000000014,
+   "roi": -0.20840446943045704,
+   "cash": 421726.39999999997,
+   "coc": -0.8427653568759276,
+   "build": 1127000.0,
+   "carry": 201492.9,
+   "sell": 87750.0,
+   "low": -692075.0,
+   "high": -158588.16666666674,
+   "ceiling": null,
+   "breakeven": null,
+   "rank": 30
+  },
+  {
+   "addr": "1706 California St",
+   "area": "Oceanside",
+   "kind": "adu",
+   "status": "Asking $989k (date unverified)",
+   "price": 989000,
+   "arv": 1450000,
+   "mo": 14,
+   "plan": "Rehab 912 sf house + build 1,000 sf ADU",
+   "call": "PASS",
+   "risk": "Priced as land; the ADU adds less value than it costs",
+   "links": [
+    [
+     "Oceanside large lots",
+     "https://www.redfin.com/city/13753/CA/Oceanside/amenity/large+lot"
+    ]
+   ],
+   "facts": [
+    "2 bd / 1 ba, 912 sf, 0.27 ac flat lot near the coast"
+   ],
+   "lot": "~11,760 sf",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 100320,
+    "hard": 375000,
+    "soft": 60000
+   },
+   "allin": 1872935.5166666666,
+   "profit": -422935.5166666666,
+   "roi": -0.22581424341793718,
+   "cash": 402715.5166666667,
+   "coc": -1.0502091406046723,
+   "build": 582852.0,
+   "carry": 191998.51666666666,
+   "sell": 94250.0,
+   "low": -641220.5733333332,
+   "high": -287331.55333333346,
+   "ceiling": 536274.641079287,
+   "breakeven": 622848.4813505519,
+   "rank": 31
+  },
+  {
+   "addr": "6602 Crawford St",
+   "area": "Allied Gardens 92120",
+   "kind": "adu",
+   "status": "$999.9k (as of June)",
+   "price": 999900,
+   "arv": 1200000,
+   "mo": 13,
+   "plan": "Keep house + build 800 sf ADU",
+   "call": "PASS",
+   "risk": "Retail price; ADU premium is below ADU cost",
+   "links": [
+    [
+     "MLS record",
+     "https://www.mlslistings.com/property/CRPTP2604418"
+    ]
+   ],
+   "facts": [
+    "Updated 1,601 sf house, corner lot with gated RV side yard"
+   ],
+   "lot": "Corner lot",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 15000,
+    "hard": 300000,
+    "soft": 50000
+   },
+   "allin": 1657524.9541666666,
+   "profit": -457524.9541666666,
+   "roi": -0.2760289991511415,
+   "cash": 364609.95416666666,
+   "coc": -1.254833964180604,
+   "build": 396500.0,
+   "carry": 168126.45416666666,
+   "sell": 78000.0,
+   "low": -621863.6125,
+   "high": -353348.75,
+   "ceiling": 513527.31634618866,
+   "breakeven": 600765.14848606,
+   "rank": 32
+  },
+  {
+   "addr": "2721 Lomita St (lot)",
+   "area": "Oceanside",
+   "kind": "land",
+   "status": "~$660k (date unverified)",
+   "price": 660000,
+   "arv": 2300000,
+   "mo": 24,
+   "plan": "New 2,400 sf house + 750 sf ADU",
+   "call": "PASS",
+   "risk": "Land price too high for new construction",
+   "links": [
+    [
+     "Oceanside land",
+     "https://www.homes.com/oceanside-ca/land-for-sale/"
+    ]
+   ],
+   "facts": [
+    "7,492 sf ocean-view lot"
+   ],
+   "lot": "7,492 sf",
+   "zoning": "Unverified",
+   "kw": {
+    "hard": 1301250,
+    "soft": 175000,
+    "ltv": 0.6,
+    "pts": 0.025,
+    "cont": 0.12
+   },
+   "allin": 2778353.75,
+   "profit": -478353.75,
+   "roi": -0.1721716502083293,
+   "cash": 756603.75,
+   "coc": -0.632238143149568,
+   "build": 1632400.0,
+   "carry": 326553.75,
+   "sell": 149500.0,
+   "low": -1011091.25,
+   "high": -163282.9166666665,
+   "ceiling": 172349.28330522723,
+   "breakeven": 256666.31534569978,
+   "rank": 33
+  },
+  {
+   "addr": "5205 Tipton St",
+   "area": "College East 92115",
+   "kind": "adu",
+   "status": "$949k (2025 MLS number; recheck)",
+   "price": 949000,
+   "arv": 1550000,
+   "mo": 15,
+   "plan": "Garage-conversion ADU + 1,200 sf ADU, sell as income property",
+   "call": "PASS",
+   "risk": "Rent claims in the listing are unverified; tight lot",
+   "links": [
+    [
+     "Listing",
+     "https://www.showcase.com/5205-tipton-st-san-diego-ca-92115/41723694/"
+    ]
+   ],
+   "facts": [
+    "5,301 sf lot in a Sustainable Development Area"
+   ],
+   "lot": "5,301 sf",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 25000,
+    "hard": 625000,
+    "soft": 85000
+   },
+   "allin": 2079498.625,
+   "profit": -529498.625,
+   "roi": -0.2546280236179526,
+   "cash": 437098.625,
+   "coc": -1.211393938839318,
+   "build": 800000.0,
+   "carry": 215513.62499999997,
+   "sell": 100750.0,
+   "low": -796806.875,
+   "high": -367753.25,
+   "ceiling": 408135.5386102459,
+   "breakeven": 494055.41832241416,
+   "rank": 34
+  },
+  {
+   "addr": "7205 Ballinger Ave",
+   "area": "San Carlos 92119",
+   "kind": "adu",
+   "status": "Active $1.05M (MLS NDP2607654)",
+   "price": 1050000,
+   "arv": 1275000,
+   "mo": 13,
+   "plan": "Keep house + build 1,000 sf ADU",
+   "call": "PASS",
+   "risk": "No rehab spread; large San Carlos lots are often sloped or in a fire zone",
+   "links": [
+    [
+     "Listing",
+     "https://contentcodes3.realgeeks.com/property/NDP2607654/"
+    ]
+   ],
+   "facts": [
+    "4 bd / 2 ba, 1,390 sf, ~12,600 sf lot, 4th bedroom has its own entrance (cheap JADU)"
+   ],
+   "lot": "~12,600 sf",
+   "zoning": "Unverified",
+   "kw": {
+    "rehab": 15000,
+    "hard": 375000,
+    "soft": 60000
+   },
+   "allin": 1819093.75,
+   "profit": -544093.75,
+   "roi": -0.2991015443816461,
+   "cash": 393718.75,
+   "coc": -1.3819350742122392,
+   "build": 489000.0,
+   "carry": 181468.75,
+   "sell": 82875.0,
+   "low": -732131.25,
+   "high": -426768.75,
+   "ceiling": 488106.57555159734,
+   "breakeven": 575344.4076914686,
+   "rank": 35
+  },
+  {
+   "addr": "3195 Buena Vista Ave (burned shell)",
+   "area": "Lemon Grove 91945",
+   "kind": "land",
+   "status": "Active $317k (listed 7/14)",
+   "price": 317000,
+   "arv": 1000000,
+   "mo": 24,
+   "plan": "Demolish + new 1,800 sf house",
+   "call": "PASS",
+   "risk": "New construction never works at this resale level",
+   "links": [
+    [
+     "Property record",
+     "https://www.propertyshark.com/mason/Property/54521058/3195-Buena-Vista-Ave-Lemon-Grove-CA-91945/"
+    ]
+   ],
+   "facts": [
+    "~8,100 sf, public water + sewer, fire-damaged 1949 structure",
+    "Zoning conflict: RMH vs R-1"
+   ],
+   "lot": "~8,100 sf",
+   "zoning": "RMH or R-1",
+   "kw": {
+    "hard": 805000,
+    "soft": 130000,
+    "ltv": 0.6,
+    "pts": 0.025,
+    "cont": 0.12
+   },
+   "allin": 1613187.0,
+   "profit": -613187.0,
+   "roi": -0.3801090636113482,
+   "cash": 422987.0,
+   "coc": -1.4496592093846856,
+   "build": 1031600.0,
+   "carry": 194832.0,
+   "sell": 65000.0,
+   "low": -917445.0,
+   "high": -439101.66666666674,
+   "ceiling": null,
+   "breakeven": null,
+   "rank": 36
+  },
+  {
+   "addr": "2055 Riviera Dr (\"Vista Riviera\")",
+   "area": "Vista 92084",
+   "kind": "land",
+   "status": "Active $457k, 79 days on market, cut from $499k. Sold for $349k in June 2023",
+   "price": 457000,
+   "arv": 1350000,
+   "mo": 24,
+   "plan": "Seller's plans: 1,495 sf house + 1,200 sf ADU",
+   "call": "PASS",
+   "risk": "Vista resale ceiling is too low for new construction. Septic vs sewer unknown; may be unincorporated County",
+   "links": [
+    [
+     "Compass listing",
+     "https://www.compass.com/listing/2055-riviera-drive-vista-ca-92084/1910417654108431433/"
+    ],
+    [
+     "MLS record",
+     "https://www.mlslistings.com/property/SD260004828"
+    ]
+   ],
+   "facts": [
+    "1.02 acre vacant lot, water and power on site",
+    "Relisted repeatedly; ask cut ~10% over 9 months"
+   ],
+   "lot": "1.02 ac",
+   "zoning": "Unverified",
+   "kw": {
+    "hard": 1085375,
+    "soft": 190000,
+    "ltv": 0.6,
+    "pts": 0.025,
+    "cont": 0.12
+   },
+   "allin": 2221947.625,
+   "profit": -871947.625,
+   "roi": -0.3924249227071678,
+   "cash": 584622.625,
+   "coc": -1.4914708868819437,
+   "build": 1405620.0,
+   "carry": 264722.625,
+   "sell": 87750.0,
+   "low": -1282577.125,
+   "high": -636946.5416666667,
+   "ceiling": null,
+   "breakeven": null,
+   "rank": 37
+  },
+  {
+   "addr": "216 Pajama Dr (lot)",
+   "area": "Fire Mountain, Oceanside",
+   "kind": "land",
+   "status": "$699\u2013800k across sites, maybe pending",
+   "price": 750000,
+   "arv": 3200000,
+   "mo": 30,
+   "plan": "2 \u00d7 (1,800 sf house + 750 sf ADU)",
+   "call": "PASS",
+   "risk": "\"Approved 4-unit SB 9\" needs a 3-year owner-occupancy affidavit",
+   "links": [
+    [
+     "Fire Mountain land",
+     "https://www.homes.com/oceanside-ca/fire-mountain-neighborhood/land-for-sale/"
+    ]
+   ],
+   "facts": [
+    "0.25 ac"
+   ],
+   "lot": "0.25 ac",
+   "zoning": "RS (SB 9)",
+   "kw": {
+    "hard": 2092500,
+    "soft": 350000,
+    "ltv": 0.6,
+    "pts": 0.025,
+    "cont": 0.12
+   },
+   "allin": 4235256.25,
+   "profit": -1035256.25,
+   "roi": -0.2444376889828095,
+   "cash": 1134756.25,
+   "coc": -0.9123159709408959,
+   "build": 2693600.0,
+   "carry": 572406.25,
+   "sell": 208000.0,
+   "low": -1863030.0,
+   "high": -554450.2083333335,
+   "ceiling": null,
+   "breakeven": null,
+   "rank": 38
+  },
+  {
+   "addr": "8840 Leigh Ave (4.67 ac)",
+   "area": "Spring Valley 91977 (County)",
+   "kind": "land",
+   "status": "Active $999k",
+   "price": 999000,
+   "arv": 3000000,
+   "mo": 36,
+   "plan": "Subdivide + sell 12 finished lots",
+   "call": "PASS",
+   "risk": "Multi-year County map; the seller's \"~17 lots\" claim is unvetted",
+   "links": [
+    [
+     "Offering memo",
+     "https://images.loopnet.ca/d2/wwHXAeFzQs2-VU2zHjkZEx4L0wMdJiLdfIUN5xXDN8o/8840%20Leigh%20Ave%20OM%203.pdf"
+    ]
+   ],
+   "facts": [
+    "~203,000 sf, utilities nearby"
+   ],
+   "lot": "4.67 ac",
+   "zoning": "Unverified",
+   "kw": {
+    "hard": 1440000,
+    "soft": 750000,
+    "ltv": 0.6,
+    "pts": 0.025,
+    "cont": 0.12
+   },
+   "allin": 4258236.0,
+   "profit": -1258236.0,
+   "roi": -0.2954829182788366,
+   "cash": 1273836.0,
+   "coc": -0.9877535255715807,
+   "build": 2362800.0,
+   "carry": 686451.0,
+   "sell": 195000.0,
+   "low": -1914522.0,
+   "high": -863462.0,
+   "ceiling": null,
+   "breakeven": 3560.1265822782693,
+   "rank": 39
+  },
+  {
+   "addr": "1822 Amalfi St",
+   "area": "La Jolla 92037",
+   "kind": "land",
+   "status": "Active $2.249M (cut from $2.549M). Sold $2.26M in May 2024",
+   "price": 2249000,
+   "arv": 6440000,
+   "mo": 30,
+   "plan": "New 4,200 sf luxury house + 750 sf ADU",
+   "call": "PASS",
+   "risk": "Steep-hillside + coastal permits (12\u201318 months). Luxury hillside costs outrun resale",
+   "links": [
+    [
+     "Listing (MLS 260012734)",
+     "https://www.bcre.com/listing-sandicor/260012734-1822-amalfi-st-1-la-jolla-ca-92037/"
+    ],
+    [
+     "2024 sale record",
+     "https://www.coldwellbankerhomes.com/ca/la-jolla/1822-amalfi-st-1/pid_57267329/"
+    ]
+   ],
+   "facts": [
+    "~10,980 sf (155\u00d7114 ft), MLS tags gentle and steep slope",
+    "2024 listing claimed a vested coastal permit; 2026 listing says no approved plans",
+    "Comps: 1543 Soledad Ave sold $3.45M (3,108 sf, Jul 2025); 1745 Amalfi asking $6.295M",
+    "Breaks even only at a land price near $1.0M"
+   ],
+   "lot": "10,980 sf",
+   "zoning": "RS-1 + Coastal (est.)",
+   "kw": {
+    "hard": 3417500,
+    "soft": 295000,
+    "ltv": 0.6,
+    "pts": 0.025,
+    "cont": 0.12
+   },
+   "allin": 7917506.25,
+   "profit": -1477506.25,
+   "roi": -0.18661257766610542,
+   "cash": 2437006.25,
+   "coc": -0.6062792206626471,
+   "build": 4122600.0,
+   "carry": 1093571.25,
+   "sell": 418600.0,
+   "low": -2927580.0,
+   "high": -615470.791666667,
+   "ceiling": 961239.7959183669,
+   "breakeven": 1042872.4489795922,
+   "rank": 40
+  }
+ ],
+ "adu": [
+  {
+   "addr": "5789 Tex St",
+   "base": -15559.249999999884,
+   "with_adu": -210475.4375,
+   "delta": -194916.18750000012,
+   "adu_cost": 354375.0,
+   "premium": 250000
+  },
+  {
+   "addr": "9371 Fermi Ave",
+   "base": -39215.18749999988,
+   "with_adu": -264345.0,
+   "delta": -225129.81250000012,
+   "adu_cost": 354375.0,
+   "premium": 225000
+  },
+  {
+   "addr": "5800 Marengo Ave",
+   "base": 56752.10000000009,
+   "with_adu": -141647.5791666666,
+   "delta": -198399.6791666667,
+   "adu_cost": 354375.0,
+   "premium": 250000
+  },
+  {
+   "addr": "9035 Rohr",
+   "base": -311993.54166666674,
+   "with_adu": -572462.083333333,
+   "delta": -260468.54166666628,
+   "adu_cost": 390000.0,
+   "premium": 250000
+  },
+  {
+   "addr": "648 51st St",
+   "base": -12264.583333333256,
+   "with_adu": -247318.75,
+   "delta": -235054.16666666674,
+   "adu_cost": 354375.0,
+   "premium": 200000
+  },
+  {
+   "addr": "3225 Logan Ave",
+   "base": 59640.0,
+   "with_adu": -174343.75,
+   "delta": -233983.75,
+   "adu_cost": 354375.0,
+   "premium": 200000
+  }
+ ],
+ "sold": [
+  [
+   "825 51st St, 92114",
+   "Sold ~$816k (Aug 2026). It had permitted plans for 6 ADUs and sold for about house-only value. The market paid ~$0 for the plans.",
+   "https://www.compass.com/listing/825-51st-street-san-diego-ca-92114/1707475997327550881/"
+  ],
+  [
+   "2845 Arcola Ave, Bay Park 92117",
+   "\"Major fixer\" listed $1.048M, sold $1.168M (8/10/2026). Retail buyers outbid flip math by $140\u2013300k.",
+   "https://dawnsellssandiego.realgeeks.com/property/260017283/"
+  ],
+  [
+   "5760 Marengo Ave, La Mesa",
+   "Sold $1.085M (4/17/2026), 1,374 sf. The resale value anchor for 5800 Marengo and 5789 Tex.",
+   "https://contentcodes3.realgeeks.com/property/250039924/"
+  ],
+  [
+   "San Jose ADU condo (first AB 1033 sale in CA)",
+   "749 sf 2-bed ADU sold separately for $530k (June 2026). No San Diego County ADU condo sale is on record yet.",
+   "https://abc7news.com/post/san-jose-749-square-foot-2-bedroom-adu-condo-sells-530000-first-kind-sale-ca/19465939/"
+  ]
+ ]
+}
