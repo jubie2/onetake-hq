@@ -1,0 +1,391 @@
+{
+  "summary": "Skeptic-verify the remaining finalists (Fermi, 4575 Dwight, Skyline) and SB 1123 eligibility + comps for 4269 Hillside Carlsbad",
+  "agentCount": 4,
+  "logs": [],
+  "result": [
+    {
+      "addr": "9371 Fermi Ave, San Diego, CA 92123 (Serra Mesa; Redfin sometimes labels this stretch of Fermi Ave as Kearny Mesa)",
+      "status_latest": "SOLD 2026-09-28 for $830,000 (listed at $825,000 under MLS 260021658SD, with an open house around Sep 5-6, 2026; closed about $5K over ask). Shown as sold 09/28/26 at $830,000 in a Compass comparable-sales listing, in Movoto's nearby-sales section and on a Trulia off-market page. Older RE/MAX and Trulia open-house pages that still say 'Active $825K' are stale.",
+      "status_refuted": true,
+      "price_latest": 830000,
+      "sold_comps": [
+        {
+          "address": "8511 Fensmuir St, San Diego, CA 92123",
+          "sold_price": 960000,
+          "sold_date": "2026-07-09 (Redfin; Movoto says 2026-06-17)",
+          "sqft": 1161,
+          "condition": "Remodeled kitchen and bathrooms, newer roof, upgraded windows (Redfin listing text). Compass shows a 1958 SFR ranch; Redfin text calls it an end unit, so property type conflicts. Best size-matched renovated comp: about $827/sf.",
+          "url": "https://www.compass.com/homedetails/8511-Fensmuir-St-San-Diego-CA-92123/398618136139174881_lid/"
+        },
+        {
+          "address": "8862 Gowdy Ave, San Diego, CA 92123",
+          "sold_price": 935000,
+          "sold_date": "2026-09-29",
+          "sqft": 1032,
+          "condition": "Unknown; the snippet does not mention a remodel. Asked $899K and sold over ask. Beds and sqft conflict across sites (2bd vs 3bd). About $906/sf.",
+          "url": "https://www.trulia.com/sold/92123_zip/"
+        },
+        {
+          "address": "9162 Fermi Ave, San Diego, CA 92123",
+          "sold_price": 1091250,
+          "sold_date": "2026-06-16",
+          "sqft": 1450,
+          "condition": "Renovated per listing text (flooring, bathrooms, kitchen with custom cabinets and stainless appliances). Public record shows no renovation year. Larger than the target band, about $753/sf.",
+          "url": "https://www.redfin.com/CA/San-Diego/9162-Fermi-Ave-92123/home/5212576"
+        },
+        {
+          "address": "9430 Fermi Ave, San Diego, CA 92123",
+          "sold_price": 810000,
+          "sold_date": "2026-08-10 (another Redfin page says 2025-12-12; the dates conflict)",
+          "sqft": 1200,
+          "condition": "Unknown, likely dated: sold 7% under its $875K list. Same street, so it is an as-is benchmark, not a renovated comp.",
+          "url": "https://www.redfin.com/neighborhood/2417/CA/San-Diego/Serra-Mesa/recently-sold"
+        },
+        {
+          "address": "9321 Fermi Ave, San Diego, CA 92123",
+          "sold_price": 1100000,
+          "sold_date": "2026-02-24 (per a Redfin sidebar; conflicts with a Coldwell Banker listing at $1,049,000 dated around April 2026, MLS 260008521)",
+          "sqft": 1200,
+          "condition": "Fully remodeled kitchen per the CB listing. LOW RELIABILITY: the sold date and price conflict with the later listing and need verification. About $917/sf if accurate.",
+          "url": "https://www.coldwellbankerhomes.com/ca/san-diego/9321-fermi-ave/pid_70606022/"
+        },
+        {
+          "address": "2687 Lionel St, San Diego, CA 92123",
+          "sold_price": 1035000,
+          "sold_date": "2026-08-17",
+          "sqft": 1316,
+          "condition": "Unknown; sold about 4% under list. Larger than the target band.",
+          "url": "https://www.redfin.com/neighborhood/2417/CA/San-Diego/Serra-Mesa/recently-sold"
+        },
+        {
+          "address": "8884 Haveteur Way, San Diego, CA 92123",
+          "sold_price": 985000,
+          "sold_date": "2026-07-13",
+          "sqft": 1344,
+          "condition": "Unknown; larger than the target band.",
+          "url": "https://www.redfin.com/neighborhood/2417/CA/San-Diego/Serra-Mesa/recently-sold"
+        }
+      ],
+      "resale_base": 945000,
+      "resale_low": 900000,
+      "resale_high": 1000000,
+      "resale_confidence": "L",
+      "resale_refuted": false,
+      "new_red_flags": [
+        "The deal is gone: the property closed 2026-09-28 at $830,000, so it is no longer available at $825K.",
+        "Fermi Ave trades at a discount. 9430 Fermi (1,200 sf) sold for $810K, 7% under list, and Redfin inconsistently labels this stretch as Kearny Mesa rather than Serra Mesa. Possible nearby commercial or industrial edge effects were not verified.",
+        "The $975K assumption sits at the top of the supported range. The cleanest renovated, size-matched sold comp (8511 Fensmuir, 1,161 sf) closed at $960K, about 110 sf larger than the subject.",
+        "The only same-street remodeled comp near 1,200 sf (9321 Fermi, $1.1M) has a sold date and price that conflict with a later $1,049K listing, so it cannot be relied on.",
+        "Lot size differs from the claim: the listing shows 0.1377 ac, about 5,998 sf, not about 6,098 sf (minor).",
+        "Thin flip margin: $830K buy against a $945K base resale leaves about $115K gross before rehab, carry and about 6-8% transaction costs.",
+        "Slope/canyon, fire zone and unpermitted space were NOT verified (search budget exhausted). Check the City of San Diego VHFHSZ map and canyon-edge brush management, compare assessor sf with the 1,053 listing sf, and check permits for the covered patio and vaulted-ceiling work. Same-street renovated comp 9162 Fermi shows no renovation year in public record, a common sign of unpermitted remodels."
+      ],
+      "notes": "STATUS: Refuted. MLS 260021658SD was listed at $825K with an open house around Sep 5-6, 2026, and sold 2026-09-28 for $830,000, about 0.6% over ask. Sources for the sale: a Compass comparable-sales listing, Movoto's nearby sales and Trulia off-market data. Redfin estimate: about $830.5K. The listing confirms 3bd/2ba, 1,053 sf, built 1959, brick fireplace, vaulted ceilings, a sizable backyard and a covered patio (lauragetzoff.remax.com/property/25-260021658SD-9371-fermi-san-diego-CA-92123).\n\nRESALE: The $975K assumption is not refuted under the 5% rule, but it is optimistic. The renovated sold comps run from about $753/sf at 1,450 sf (9162 Fermi, $1.091M) to about $827/sf at 1,161 sf (8511 Fensmuir, $960K, remodeled kitchen and baths). 8862 Gowdy (1,032 sf, condition unknown) sold for $935K, about $906/sf. The unverified 9321 Fermi sale ($1.1M at 1,200 sf, remodeled kitchen) would be about $917/sf. Applying about $870-$920/sf to 1,053 sf gives roughly $915K-$970K, so the base estimate is about $945K, 3.1% below $975K. That is within the 5% tolerance, so resale_refuted is false. Confidence is Low: only one renovated sold comp in the 1,000-1,200 sf band is confirmed (Fensmuir), it has conflicting property-type and date data, and same-street as-is evidence (9430 Fermi at $810K) shows Fermi Ave trading below Serra Mesa's roughly $1.0M median (Redfin, as of July 2026). The asking prices for 2783 Mobley ($950K) and 2573 Raymell were not counted as comps. 2828 Mission Village ($1.099M, 7/2/26) was excluded because it is a 3/2 plus ADU at 1,870 sf.\n\nUNVERIFIED: canyon or slope position, fire hazard zone and unpermitted space; these need direct checks. Search budget: 12 used (one errored on a blocked domain).",
+      "eligibility": ""
+    },
+    {
+      "addr": "4575 Dwight St, San Diego, CA 92105 (City Heights / Fairmount Village)",
+      "status_latest": "SOLD on 9/30/2026 for $570,000 after 67 days on market. Redfin's 92105 recently-sold snippet reads \"SOLD SEP 30, 2026 $570,000 Last Sold Price 2 beds 1 bath 780 sq ft\" and calls it a sale at list price, which implies a further cut below $599K. Coldwell Banker's page (pid_72707439) still shows Active at $599,000, updated 7/30/2026, so that page is out of date.",
+      "status_refuted": true,
+      "price_latest": 570000,
+      "sold_comps": [
+        {
+          "address": "4779 Castle Ave, San Diego, CA 92105 (2bd/1ba)",
+          "sold_price": 500000,
+          "sold_date": "2026-05-15",
+          "sqft": 742,
+          "condition": "unknown (snippet gives no condition)",
+          "url": "https://www.redfin.com/zipcode/92105/recently-sold"
+        },
+        {
+          "address": "5934 Dwight St, San Diego, CA 92105 (2bd/1ba)",
+          "sold_price": 725000,
+          "sold_date": "not shown in snippet (listed on Redfin 92105 recently-sold page)",
+          "sqft": 780,
+          "condition": "unknown",
+          "url": "https://www.redfin.com/zipcode/92105/recently-sold"
+        },
+        {
+          "address": "4163 Poplar St, San Diego, CA 92105 (2bd/1ba)",
+          "sold_price": 750000,
+          "sold_date": "not shown in snippet (listed on Redfin 92105 recently-sold page)",
+          "sqft": 792,
+          "condition": "unknown",
+          "url": "https://www.redfin.com/zipcode/92105/recently-sold"
+        },
+        {
+          "address": "3741 47th St, San Diego, CA 92105 (2bd/1ba)",
+          "sold_price": 690000,
+          "sold_date": "not shown in snippet (listed on Redfin 92105 recently-sold page)",
+          "sqft": 924,
+          "condition": "unknown; larger than the 700-850 sf target",
+          "url": "https://www.redfin.com/zipcode/92105/recently-sold"
+        },
+        {
+          "address": "3610 Central Ave, San Diego, CA 92105 (2bd/1ba)",
+          "sold_price": 465000,
+          "sold_date": "2026-06-10",
+          "sqft": 864,
+          "condition": "distressed, sold as-is, needs full renovation",
+          "url": "https://www.redfin.com/zipcode/92105/recently-sold"
+        },
+        {
+          "address": "4575 Dwight St, San Diego, CA 92105 (SUBJECT, as-is)",
+          "sold_price": 570000,
+          "sold_date": "2026-09-30",
+          "sqft": 780,
+          "condition": "unrenovated subject; as-is sale price ($731/sf)",
+          "url": "https://www.redfin.com/zipcode/92105/recently-sold"
+        }
+      ],
+      "resale_base": 700000,
+      "resale_low": 650000,
+      "resale_high": 750000,
+      "resale_confidence": "L",
+      "resale_refuted": false,
+      "new_red_flags": [
+        "The deal is gone. The subject closed 9/30/2026 at $570K, so it can no longer be bought at $599K. Any plan built on the 'relisted, active' status is stale.",
+        "The price fell from $625K (6/19) to $599K (7/24-7/30) to a $570K close at 67 DOM. Demand for an unrenovated 780 sf 2/1 was weak even at $599K.",
+        "Coldwell Banker still shows Active at $599K, and Trulia/Neighborhoods still show $625K. Aggregator status on this street is unreliable.",
+        "The 4417 Dwight comp ($720K, 3/4/26, 809 sf) could not be checked. No search result showed its sold price, and Redfin's page title lists it as 2bd/2ba, so it is not a like-for-like 2/1 comp.",
+        "Sold prices for 2/1 homes in 92105 spread widely, from $465K (distressed) and $500K (742 sf Castle Ave) up to $725-750K. Three of the higher comps have no sale date in the snippets, so it is not confirmed they closed in 2026.",
+        "Redfin's City Heights East page shows a ~$465K median sale price, down 30.9% YoY (date range not stated). That may signal a softening submarket."
+      ],
+      "eligibility": "",
+      "notes": "I used all 12 standard WebSearch calls. The key finding is that the subject is no longer active: Redfin's 92105 recently-sold snippet shows 4575 Dwight St SOLD 9/30/2026 for $570,000 (2bd/1ba, 780 sf, 67 DOM). A direct search for \"4575 Dwight St\" with \"$570,000\" returned only the stale Coldwell Banker Active $599K page, so the sale rests on the Redfin snippet alone. It should be confirmed with county recorder data. Resale check: the assumed $690K renovated value ($885/sf) is $655.5K-$724.5K at ±5%. The sold evidence mostly falls inside or near that band. The 3610 Central Ave listing remarks say remodeled 2/1 comps closed between $649,900 and $720,000 in early 2026 (midpoint ~$685K); this is secondhand from listing text. 3741 47th St sold for $690K at 924 sf. 5934 Dwight sold for $725K at 780 sf (~$929/sf) and 4163 Poplar for $750K at 792 sf (~$947/sf), both condition and date unknown. 4779 Castle Ave sold for $500K at 742 sf, condition unknown, probably not renovated. I set the base at $700K (range $650K-$750K), within 1.5% of the assumed value, so the resale assumption is NOT refuted. Confidence is L because most comps lack condition data and three lack sale dates. The 4417 Dwight $720K comp could not be verified. The subject's own as-is sale implies roughly a $120-130K gross spread to a ~$690-700K renovated value, but that is moot because the property has closed."
+    },
+    {
+      "addr": "7265 Skyline Dr, San Diego, CA 92114",
+      "status_latest": "SOLD / off market. Movoto and Redfin snippets show the sale closed 2026-08-12 at $500,000, which is $75k (13%) under the $575k list price. Trulia shows it off market. The Coldwell Banker page that says 'active' at $575k is a stale copy of the July 2026 listing.",
+      "status_refuted": true,
+      "price_latest": 500000,
+      "sold_comps": [
+        {
+          "address": "8034 Skyline Dr, San Diego, CA 92114",
+          "sold_price": 895000,
+          "sold_date": "2026-06-12",
+          "sqft": 1762,
+          "condition": "Remodeled according to the listing text (designer kitchen, quartz counters, island, stainless appliances). 4bd/3ba, about $508/sf. Redfin's 'year renovated' field shows 1960, so the remodel rests on the listing text only. Prior sale 2025-02-13 at $880k.",
+          "url": "https://www.redfin.com/CA/San-Diego/8034-Skyline-Dr-92114/home/6023929"
+        },
+        {
+          "address": "5454 Roswell St, San Diego, CA 92114 (Encanto)",
+          "sold_price": 730000,
+          "sold_date": "2026-03 (snippets disagree: Mar 12 or Mar 27)",
+          "sqft": 1491,
+          "condition": "Renovated April 2024, with remodeled baths. 3bd/2ba, about $490/sf.",
+          "url": "https://www.redfin.com/zipcode/92114/recently-sold"
+        },
+        {
+          "address": "7109 Peter Pan Ave, San Diego, CA 92114",
+          "sold_price": 710000,
+          "sold_date": "2026-09-22",
+          "sqft": 1634,
+          "condition": "Condition unknown. 3bd/2ba, same 1,634 sf as the subject, about 1-2 blocks away. Data is messy: elsewhere it shows as pending at $705k, and one snippet gives an Aug 12 sold tag. Exact source page unclear (came from a Redfin 92114 sold-list snippet).",
+          "url": "https://www.redfin.com/zipcode/92114/recently-sold"
+        },
+        {
+          "address": "5533 Roswell St, San Diego, CA 92114",
+          "sold_price": 750000,
+          "sold_date": "2026-04-24",
+          "sqft": 1269,
+          "condition": "Condition unknown. 3bd/2ba, about $591/sf.",
+          "url": "https://www.redfin.com/zipcode/92114/recently-sold"
+        },
+        {
+          "address": "351 Ridgecrest Dr, San Diego, CA 92114",
+          "sold_price": 765000,
+          "sold_date": "2026-05-12",
+          "sqft": 1065,
+          "condition": "Condition unknown. 3bd/2ba, small, about $718/sf.",
+          "url": "https://www.redfin.com/neighborhood/557412/CA/San-Diego/South-Bay-Terraces/recently-sold"
+        },
+        {
+          "address": "5859 Skyline Dr, San Diego, CA 92114",
+          "sold_price": 550000,
+          "sold_date": "2026-01-16",
+          "sqft": 1134,
+          "condition": "No renovation shown, built 1956, probably dated. 3bd with conflicting bath count (1 or 2). Low end, not a renovated comp.",
+          "url": "https://www.redfin.com/CA/San-Diego/5859-Skyline-Dr-92114/home/5876962"
+        }
+      ],
+      "resale_base": 800000,
+      "resale_low": 760000,
+      "resale_high": 850000,
+      "resale_confidence": "M",
+      "resale_refuted": false,
+      "new_red_flags": [
+        "DEAL IS GONE: the sale closed 2026-08-12 at $500,000 (aggregator snippets from Movoto and Redfin). The 'received 7/6/26, active at $575k' lead is stale.",
+        "Size is wrong: the home is 3bd/2ba, 1,634 sf, built 1960, not the assumed 1,200 sf. A rehab budget sized for 1,200 sf is about 36% too small.",
+        "Lot size conflicts between sources: Trulia says 6,100 sf, Redfin public records say 5,700 sf.",
+        "Neighborhood label conflicts: the listing says Encanto, Trulia says Bay Terraces. Pull comps from the actual tract, Skyline/Peter Pan.",
+        "Probate fixer described as 'needs major repairs'. The 2025 assessed value is $61,623 (Prop 13), so taxes will reset to the purchase price.",
+        "Trulia AVM is $705,800 as-is, versus the $500k actual sale. The AVM overstates an as-is value."
+      ],
+      "eligibility": "",
+      "notes": "Used all 12 WebSearch calls. Facts come only from search snippets (Coldwell Banker, Trulia, Movoto, Redfin) and are not verified against county recorder data.\n\nSubject: 3bd/2ba, 1,634 sf, built 1960, 2-car garage, peek-a-boo views, lot 5,700-6,100 sf. Probate fixer with 'major repairs'. Listed by Marilyn Martinez, Century 21 Masters, at $575k (MLS DW26143111, received 7/6/26). Sold 8/12/26 at $500k ($306/sf as-is).\n\nResale estimate: the two clearly renovated 2026 sold comps run $490-508/sf (5454 Roswell: $730k at 1,491 sf; 8034 Skyline: $895k at 1,762 sf, but 4bd/3ba). Applied to 1,634 sf and adjusted down for 8034's extra bed and bath, that gives about $800k base, range $760k-$850k. Other 2026 sales support it: small 3/2 homes of unknown condition sold for $750k-$765k (5533 Roswell, 351 Ridgecrest), and 7109 Peter Pan, same size and condition unknown, sold for $710k on 9/22/26, a likely floor for an unrenovated or lightly updated house.\n\n$800k is +2.6% from the assumed $780k, within the 5% threshold, so the resale assumption is not refuted. The assumed $780k is tied to a 1,200 sf house, though, and the real house is larger.\n\nNot counted as comps: the $750k (4/22/26) and $755k (3/6/26) comp prices on the 829 Plaza Cuernavaca page, because their addresses weren't shown; 7121 Skyline Dr, which is an active listing at $760k, not a sale; and 7468 Skyline Dr, which sold in 2024.\n\nMoot for acquisition at $575k: the property already sold. Watch for a flip relist by the new owner."
+    },
+    {
+      "addr": "4269 Hillside Dr, Carlsbad, CA 92008 (APN 206-160-14-00 per listing; Hedionda Point / Olde Carlsbad)",
+      "status_latest": "Active (last confirmed). Land listing MLS 260013644SD at $995,000, listed 6/5/2026. Listing agent Seth O'Byrne (O'Byrne Team) still shows it active. Movoto showed it updated about 3 weeks before its snapshot. I found no pending or sold status as of 10/21/2026, but no search result was dated after mid-October, so this is not confirmed live.",
+      "status_refuted": false,
+      "price_latest": 995000,
+      "eligibility": "VACANT: Likely, but not confirmed. Every 2022-2026 MLS listing calls it land (R1, 34,412 sf / 0.79 ac). They say water, sewer and power are on site and suggest a detached ADU as a possible use. But Trulia's record for 4269 Hillside shows a 1946 house (3 bed, 3 bath, 1,500 sf) on a 1.68-ac parcel, sold for $1,000,000 on 2/28/2023. The Coldwell Banker listing (NDP2511605) says tax records show the 4269 address 'due to a previous submission for a lot split'. If that split was never recorded, the legal lot may still be the 1.68-ac parent with a house on it. That would exceed SB 1123's 1.5-ac limit and would not be vacant. Get a title report or recorded parcel map before relying on 0.79 ac. SIZE/UNITS: 0.79 ac is under 1.5 ac, and 8 units is under the 10-unit cap, if the 0.79-ac lot is a legal lot. COASTAL ZONE: Probably inside it. The site is on the north shore of Agua Hedionda Lagoon. City staff report CDP 99-24 (a house on adjacent Highland Dr) says a single-family home there is 'within the City's Coastal Zone' and needs a Coastal Development Permit. SB 684/1123 do not override the Coastal Act, so a CDP would likely be needed and the approval would not be purely ministerial (it could be appealed). Confirm on the city's coastal zone map. VERY HIGH FIRE HAZARD SEVERITY ZONE: Not determined. Carlsbad has adopted CAL FIRE's updated map, which includes moderate, high and very high zones. Being in a very high zone is an SB 684/1123 exclusion unless mitigation applies. The listing describes the lot as 'elevated and wooded' next to the lagoon, so this needs a parcel check. SUBSTANTIALLY SURROUNDED BY URBAN USES: Not verified. The site is inside an established single-family area (Highland Dr, Park Dr, Sunnyhill Dr homes), so it probably passes. Lagoon-side open space on the perimeter could matter for the 75%-of-perimeter test. SLOPE: Not measured. 'Elevated and wooded' suggests slope. Carlsbad's Hillside Development rules (CMC 21.95) apply where slopes are 15% or more and the elevation difference exceeds 15 ft. Expect grading, retaining-wall and tree costs. CARLSBAD IMPLEMENTATION: Yes. The city publishes Information Bulletin IB-166 on ministerial small-lot subdivisions under SB 684 and SB 1123, and Form P-48, an SB-1123 eligibility checklist. Council Policy 44 (Small Lot Guidelines) is an existing design policy. I could not retrieve the text of IB-166 or P-48, so any local objective standards or limits are not confirmed.",
+      "sold_comps": [
+        {
+          "address": "2564 Delphinium Ln, Carlsbad, CA 92008",
+          "sold_price": 1099144,
+          "sold_date": "2026-07-24",
+          "sqft": 1739,
+          "url": "https://www.coldwellbankerhomes.com/ca/carlsbad/2564-delphinium-ln/pid_72164051/",
+          "condition": "New 2025 builder townhome (attached), 3 bed / 2 full + 2 half bath, HOA $360/mo, Hedionda Point area. $632/sf. Movoto dates the sale 7/29/2026."
+        },
+        {
+          "address": "2559 Delphinium Ln, Carlsbad, CA 92008",
+          "sold_price": 1005545,
+          "sold_date": "2026-05-22",
+          "sqft": 1688,
+          "url": "https://www.coldwellbankerhomes.com/ca/carlsbad/2559-delphinium-ln/pid_68605301/",
+          "condition": "New 2025 builder townhome (attached), 3 bed / 2 full + 2 half bath. $596/sf."
+        },
+        {
+          "address": "2586 Delphinium Ln, Carlsbad, CA 92008",
+          "sold_price": 998000,
+          "sold_date": "2026-05-22",
+          "sqft": 1688,
+          "url": "https://www.rubyhome.com/idx/2586-delphinium-ln-carlsbad-ca-92008/32124335_spid/",
+          "condition": "New builder townhome (attached), 3 bed / 2 full + 2 half bath, built 2025 or 2026 (sources differ). $591/sf. The sold date comes from a listing page and is approximate."
+        },
+        {
+          "address": "2600 Oxalis Way, Carlsbad, CA 92008",
+          "sold_price": 1134404,
+          "sold_date": "2026-10-13",
+          "sqft": null,
+          "url": "https://www.movoto.com/carlsbad-ca/hedionda-point/sold/",
+          "condition": "New construction in the same builder community (Hedionda Point sold list). Square footage not shown, so no $/sf."
+        },
+        {
+          "address": "2780 James Dr, Carlsbad, CA 92008",
+          "sold_price": 4326000,
+          "sold_date": "2025-06-30",
+          "sqft": 4066,
+          "url": "https://www.trulia.com/home/2780-james-dr-carlsbad-ca-92008-99561303",
+          "condition": "New 2024 large custom luxury detached house, 5 bed, Olde Carlsbad. $1,064/sf. Not comparable to a 1,600 sf small-lot home. Included only to bracket the detached luxury end."
+        }
+      ],
+      "resale_base": 1090000,
+      "resale_low": 960000,
+      "resale_high": 1200000,
+      "resale_confidence": "M",
+      "resale_refuted": true,
+      "new_red_flags": [
+        "Probably the same parcel as the 2025 '4275 Hillside Dr' listing (NDP2506068) at $1,275,000: same 34,412 sf / 0.79 ac, same utilities-on-site description, seller financing offered. The ask has dropped 22% to $995K.",
+        "Lot has been marketed for years: NDP2207064 (2022, $1,025,000), a reported $1.0M sale 2/28/2023, NDP2511605 (2025), 4275 address (2025, $1.275M), and 260013644SD (2026, $995K).",
+        "Legal-lot risk: tax records carry the 4269 address 'due to a previous submission for a lot split'. Trulia shows a 1.68-ac parcel with a 1946 house. If the split is not recorded, the lot exceeds the 1.5-ac SB 1123 limit and may not be vacant.",
+        "Likely inside the Coastal Zone (the adjacent Highland Dr house needed CDP 99-24). A CDP undermines ministerial certainty and could be appealed to the Coastal Commission.",
+        "Elevated, wooded lagoon-edge lot: possible Very High Fire Hazard Severity Zone exclusion, Hillside Development standards (CMC 21.95), and grading, retaining and tree costs. None verified.",
+        "Sold comps for new 3-bed townhomes in the same Hedionda Point area, 1,688-1,739 sf, closed at $998K-$1.10M ($591-$632/sf), about 26-30% below the $850/sf assumption.",
+        "Direct competition: the same builder community still has active listings at about $999K-$1.15M (Oxalis Way, Allium Way, Delphinium Ln) that 8 new homes would sell against.",
+        "A search snippet mentioned a site 'in the final stages of development approval for a four-townhome project'. It is unclear whether that refers to this parcel. If it does, an existing entitlement may conflict with or limit an 8-home SB 1123 plan."
+      ],
+      "notes": "Searches used: 12 of 12 (one returned a domain error). STATUS: Active at $995,000 (MLS 260013644SD, listed 6/5/2026), per the listing agent's page (obyrneteam.com) and landbrokermls/byowner. No pending or sale found, but not confirmed live for 10/21/2026. The 4275 Hillside $1.275M listing has the same lot size and description, so it looks like the same parcel listed earlier under the other address. One search summary called it a 'different parcel', but the identical 34,412 sf figure makes that doubtful. RESALE: I found no sold new small-lot DETACHED comps in 92008/92010/92011 for 2025-2026. The closest sold product is new 3-bed builder townhomes on Delphinium Ln in Hedionda Point (the same area as the subject). They closed at $591-$632/sf, about $610/sf on average. A new 2,000+ sf Oxalis Way home closed at $1,134,404 on 10/13/2026, with no sf shown. For a ~1,600 sf detached small-lot home I applied an estimated 10-12% detached premium, about $680/sf, giving a base of about $1.09M. That premium is my assumption, not from a comp. Range: $960K ($600/sf, townhome parity) to $1.20M ($750/sf). The assumed $1.36M ($850/sf) is about 25% above base, so resale is refuted. The only 92008 new detached house above $850/sf was a 4,066 sf custom luxury home (2780 James Dr, $1,064/sf), which is a different product. At $1.09M x 8 = about $8.7M gross, compared with the plan's about $10.9M. ELIGIBILITY: Carlsbad has SB 684/1123 procedures (IB-166 and Form P-48), but this parcel's legal-lot status, likely Coastal Zone location and unverified fire-zone status are threshold issues to clear first. Sources: https://www.movoto.com/carlsbad-ca/4269-hillside-dr-carlsbad-ca-92008-202_ndp2207064/ ; https://www.trulia.com/p/ca/carlsbad/4269-hillside-dr-carlsbad-ca-92008--2079326807 ; https://www.coldwellbanker.com/ca/carlsbad/4269-hillside-dr/lid-P00800000H3qd1ZnN7i8Z7Yju7kZTQib8WuaNh8S ; https://obyrneteam.com/properties/4269-hillside-drive-unit-1-carlsbad-ca-us-92008-260013644 ; https://www.landbrokermls.com/property/810104352/land-for-sale-in-carlsbad-ca ; https://theboutiquere.com/properties/retsPdf/NDP2506068/4275-Hillside-Drive ; https://www.carlsbadca.gov/departments/community-development/departmental-information-bulletins ; https://www.carlsbadca.gov/departments/community-development/permit-center/applications-and-forms/planning-submittals-forms ; https://records.carlsbadca.gov/WebLink/DocView.aspx?id=6367019&dbid=0&repo=CityofCarlsbad ; https://www.carlsbadca.gov/Home/Components/News/News/3101 ; https://www.coldwellbankerhomes.com/ca/carlsbad/2564-delphinium-ln/pid_72164051/ ; https://www.coldwellbankerhomes.com/ca/carlsbad/2559-delphinium-ln/pid_68605301/ ; https://www.rubyhome.com/idx/2586-delphinium-ln-carlsbad-ca-92008/32124335_spid/ ; https://www.movoto.com/carlsbad-ca/hedionda-point/sold/ ; https://www.trulia.com/home/2780-james-dr-carlsbad-ca-92008-99561303"
+    }
+  ],
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Verify"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "verify:9371 Fermi Ave, San Diego 9212",
+      "phaseIndex": 1,
+      "phaseTitle": "Verify",
+      "agentId": "a0c921f1e5fb5c6b8",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1792552938424,
+      "queuedAt": 1792552938401,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "9371 Fermi Ave, San Diego, CA 92123 (Serra Mesa; Redfin som…",
+      "promptPreview": "You are a skeptical real-estate fact checker. Target: 9371 Fermi Ave, San Diego 92123 (Serra Mesa).\nClaimed: Active $825,000 (MLS 260021658SD, date unknown), 3bd/2ba, 1,053 sf, built 1959, ~6,098 sf lot, dated but not a gut job. Assumed renovated resale $975,000 (cosmetic). Refute status/price (pending/sold/price cuts) and test the $975K resale with SOLD Serra Mesa comps of ~1,000–1,200 sf renovat…",
+      "promptFramed": true,
+      "lastProgressAt": 1792553103239,
+      "tokens": 79140,
+      "toolCalls": 14,
+      "durationMs": 164815,
+      "resultPreview": "{\"addr\":\"9371 Fermi Ave, San Diego, CA 92123 (Serra Mesa; Redfin sometimes labels this stretch of Fermi Ave as Kearny Mesa)\",\"status_latest\":\"SOLD 2026-09-28 for $830,000 (listed at $825,000 under MLS 260021658SD, with an open house around Sep 5-6, 2026; closed about $5K over ask). Shown as sold 09/28/26 at $830,000 in a Compass comparable-sales listing, in Movoto's nearby-sales section and on a T…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "verify:4575 Dwight St, San Diego 9210",
+      "phaseIndex": 1,
+      "phaseTitle": "Verify",
+      "agentId": "ac17db998cd84a9b3",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1792552938424,
+      "queuedAt": 1792552938401,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "4575 Dwight St, San Diego, CA 92105 (City Heights / Fairmou…",
+      "promptPreview": "You are a skeptical real-estate fact checker. Target: 4575 Dwight St, San Diego 92105 (City Heights / Fairmount Village).\nClaimed: $599,000 (relisted PTP2605616 after $625K on 6/19/26; updated 7/30/26), 2bd/1ba, 780 sf; seller bought $454K in 2020. Assumed renovated resale $690,000 (cosmetic). Refute status (pending/sold/expired since July) and test resale with SOLD 2026 comps of ~700–850 sf in 92…",
+      "promptFramed": true,
+      "lastProgressAt": 1792553072727,
+      "tokens": 76952,
+      "toolCalls": 14,
+      "durationMs": 132371,
+      "resultPreview": "{\"addr\":\"4575 Dwight St, San Diego, CA 92105 (City Heights / Fairmount Village)\",\"status_latest\":\"SOLD on 9/30/2026 for $570,000 after 67 days on market. Redfin's 92105 recently-sold snippet reads \\\"SOLD SEP 30, 2026 $570,000 Last Sold Price 2 beds 1 bath 780 sq ft\\\" and calls it a sale at list price, which implies a further cut below $599K. Coldwell Banker's page (pid_72707439) still shows Active…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "verify:7265 Skyline Dr, San Diego 921",
+      "phaseIndex": 1,
+      "phaseTitle": "Verify",
+      "agentId": "a7ca3102c8345e94d",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1792553074968,
+      "queuedAt": 1792552938402,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "7265 Skyline Dr, San Diego, CA 92114",
+      "promptPreview": "You are a skeptical real-estate fact checker. Target: 7265 Skyline Dr, San Diego 92114.\nClaimed: $575,000 probate \"needs major repairs\" (CB, received 7/6/26, MLS DW26143111); beds/sf unknown (assumed 1,200 sf). Assumed renovated resale $780,000. Find beds/baths/sf/lot, current status, and SOLD 2026 renovated comps nearby (Skyline/Encanto).\nRULES: Today is 2026-10-21. WebFetch and curl are BLOCKED …",
+      "promptFramed": true,
+      "lastProgressAt": 1792553229210,
+      "tokens": 79106,
+      "toolCalls": 14,
+      "durationMs": 154242,
+      "resultPreview": "{\"addr\":\"7265 Skyline Dr, San Diego, CA 92114\",\"status_latest\":\"SOLD / off market. Movoto and Redfin snippets show the sale closed 2026-08-12 at $500,000, which is $75k (13%) under the $575k list price. Trulia shows it off market. The Coldwell Banker page that says 'active' at $575k is a stale copy of the July 2026 listing.\",\"status_refuted\":true,\"price_latest\":500000,\"sold_comps\":[{\"address\":\"803…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "verify:4269 Hillside Dr, Carlsbad 920",
+      "phaseIndex": 1,
+      "phaseTitle": "Verify",
+      "agentId": "a41223b32f27dcd48",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1792553105109,
+      "queuedAt": 1792552938402,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "4269 Hillside Dr, Carlsbad, CA 92008 (APN 206-160-14-00 per…",
+      "promptPreview": "You are a skeptical real-estate fact checker. Target: 4269 Hillside Dr, Carlsbad 92008 — SB 1123 small-lot subdivision.\nClaimed: vacant 0.79-ac R-1 lot, Active $995,000 (MLS 260013644SD, listed 6/5/26; maybe relist of 4275 Hillside at $1.275M). Plan being tested: SB 1123 ministerial small-lot subdivision into ~8 detached homes averaging ≤1,750 sf (~1,600 sf), each sold at ~$850/sf (~$1.36M). (1) S…",
+      "promptFramed": true,
+      "lastProgressAt": 1792553305477,
+      "tokens": 80986,
+      "toolCalls": 14,
+      "durationMs": 200366,
+      "resultPreview": "{\"addr\":\"4269 Hillside Dr, Carlsbad, CA 92008 (APN 206-160-14-00 per listing; Hedionda Point / Olde Carlsbad)\",\"status_latest\":\"Active (last confirmed). Land listing MLS 260013644SD at $995,000, listed 6/5/2026. Listing agent Seth O'Byrne (O'Byrne Team) still shows it active. Movoto showed it updated about 3 weeks before its snapshot. I found no pending or sold status as of 10/21/2026, but no sear…"
+    }
+  ],
+  "totalTokens": 316184,
+  "totalToolCalls": 56
+}

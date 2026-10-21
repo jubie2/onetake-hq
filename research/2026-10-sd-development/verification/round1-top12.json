@@ -1,0 +1,865 @@
+{
+  "summary": "Adversarially verify status, price and sold-comp resale for the top San Diego deal candidates, then critique the model",
+  "agentCount": 13,
+  "logs": [
+    "12/12 verifications returned"
+  ],
+  "result": {
+    "verdicts": [
+      {
+        "addr": "3115 Natchez Ave (duplex)",
+        "status_latest": "SOLD at $970,000, closed 2026-07-17. History: listed at $1,095,000 on 5/28/26, cut to $995,000 on 6/12/26, pending 6/23/26. Movoto's history line says it sold 7/20/26, but its own header and Coldwell Banker both say 7/17/26. Source: Coldwell Banker MLS 260013038 and Movoto. VERIFIED-snippet",
+        "status_refuted": true,
+        "price_latest": 970000,
+        "sold_comps": [
+          {
+            "address": "4440-42 Clairemont Dr, San Diego, CA 92117 (duplex, 4bd/2ba)",
+            "sold_price": 1233000,
+            "sold_date": "2025-07-28",
+            "sqft": 1400,
+            "condition": "Partly renovated: only the front unit was fully remodeled (rear unit condition not stated). Sold about 15 months ago, outside the 6-9 month window",
+            "url": "https://www.compass.com/homedetails/4440-42-Clairemont-Dr-San-Diego-CA-92117/1871355756670064721_lid/"
+          },
+          {
+            "address": "4810-12 Jumano Ave, San Diego, CA 92117 (Bay Park duplex, 4bd/2ba)",
+            "sold_price": 1249500,
+            "sold_date": "2025-07-09",
+            "sqft": 1616,
+            "condition": "Condition not stated. Listed at $1,297,000 and sold about 4% under asking. Larger than the subject. About 15 months old",
+            "url": "https://www.coldwellbankerhomes.com/ca/san-diego/4810-12-jumano-ave/pid_65754185/"
+          },
+          {
+            "address": "4701-3 Kleefeld Ave, San Diego, CA 92117 (2 units, Clairemont, about 1.5-2 mi away)",
+            "sold_price": 1100000,
+            "sold_date": "2026-06-30",
+            "sqft": null,
+            "condition": "Rear unit has remodeled kitchen cabinets; otherwise unknown. Taken from a Compass comp table. Another snippet gives $1,250,000 with no date (possibly an earlier sale), so this figure is uncertain",
+            "url": "https://www.compass.com/homedetails/4701-Kleefeld-Ave-San-Diego-CA-92117/1641444402202313353_lid/"
+          }
+        ],
+        "resale_base": 1300000,
+        "resale_low": 1200000,
+        "resale_high": 1450000,
+        "resale_confidence": "L",
+        "resale_refuted": true,
+        "new_red_flags": [
+          "The deal is gone. It sold on 7/17/2026 for $970k after going pending on 6/23/2026, so the 'still for sale at $995k in Oct' claim is stale.",
+          "Bedroom count does not match. Movoto and Coldwell Banker list 4bd/2ba, but the facts imply 2bd + 1bd = 3bd. A Redfin rental shows a 3bd/1ba unit at $4,500. One unit may have an unpermitted bedroom or conversion.",
+          "Size does not match. A rental listing gives the 2bd unit as 1,450 sf, while the whole building is recorded at 1,431 sf. This may point to unrecorded or unpermitted space.",
+          "Zoning does not match. The listing data says 'R-2:MINOR' while the facts say RM-1-1. Check before relying on the 2-detached-ADU upside.",
+          "Units are likely tenant-occupied. Rents of $4,950 and $2,400 were listed, and the second unit is marketed as 'ideal for tenants'. A medium rehab of both units may trigger San Diego / AB 1482 no-fault relocation rules and costs, plus vacancy time.",
+          "Possible slope. Rental ads mention an ocean view from the backyard deck, which suggests a sloped Bay Park lot. This affects ADU feasibility and cost. Not verified."
+        ],
+        "searches_used": 11,
+        "notes": "STATUS REFUTED: Coldwell Banker (MLS 260013038) and Movoto both show the property SOLD for $970,000 on 2026-07-17 after a pending on 6/23/26. The price history was $1,095,000 (5/28/26), then $995,000 (6/12/26). It is no longer available.\n\nRESALE: The $1.45M assumption is not backed by verified sold duplex comps. The best verified duplexes of similar size nearby (4bd/2ba, 1,400-1,616 sf) closed at $1.233M (4440-42 Clairemont Dr, front unit remodeled, 7/2025) and $1.2495M (4810-12 Jumano Ave, Bay Park, 7/2025). Both are about 14-15% below $1.45M. Both are also older than the 6-9 month window. The only 2026 2-unit sale found was 4701-3 Kleefeld Ave at $1.1M (6/30/26), which is farther away and has a conflicting $1.25M figure.\n\nA Compass comp table on the Jumano page lists three January 2026 sales in 92117 at $1.28M (1/29/26), $1.44M (1/26/26) and $1.478M (1/20/26). Their addresses, product type and size could not be confirmed, so they are not counted. If they turn out to be renovated duplexes of similar size, $1.45M would be the top of the range rather than the base. For reference, the as-is automated estimates are Movoto $1.193M and Redfin $1.141M.\n\nMy base of about $1.30M is roughly the 2025 comps plus modest appreciation and a full both-unit renovation. It is not a direct comp, so confidence is L. It is still more than 5% below the assumed $1.45M, so resale is marked refuted.\n\nAlso noted: a CEQA notice from December 2025 covers converting 3112-3114 Natchez (across the street) into condos, so there is redevelopment activity on the block.\n\nThe second link in the args (2851 Grandview St) is a 92110 single-family home, 3bd/2ba, that sold for $1.25M on 6/5/2025. It is not a duplex comp."
+      },
+      {
+        "addr": "3225 Logan Ave",
+        "status_latest": "UNKNOWN. Last seen ACTIVE at $580,000, listed 2026-08-21 (MLS 260020581, LPT Realty, about 6 days on market when captured), per Redfin and Trulia snippets: VERIFIED-snippet. Compass shows it 'off market' with no MLS number, but that looks like its public-record page, not proof of a sale. No snippet showed pending, sold, price-cut or relist evidence after the snapshot. The listing is about 2 months old, so its current status is unconfirmed.",
+        "status_refuted": false,
+        "price_latest": 580000,
+        "sold_comps": [
+          {
+            "address": "3228 Franklin Ave, San Diego 92113 (about 1 block north of the subject)",
+            "sold_price": 660000,
+            "sold_date": "2026-07-01",
+            "sqft": 994,
+            "condition": "unknown; 3bd/2ba, about $664/sf. The closest match on size and location",
+            "url": "https://www.redfin.com/CA/San-Diego/3228-Franklin-Ave-92113/home/5862036"
+          },
+          {
+            "address": "729 S 33rd St, San Diego 92113 (about 0.2 mi)",
+            "sold_price": 665000,
+            "sold_date": "2026-09-08",
+            "sqft": 880,
+            "condition": "unknown; 3bd/2ba, built 1926, 5,412 sf lot (bigger than the subject's). Listed in May at $665k, so a long time on market; about $756/sf",
+            "url": "https://www.redfin.com/CA/San-Diego/729-S-33rd-St-92113/home/5863566"
+          },
+          {
+            "address": "8 S Francis St, San Diego 92113",
+            "sold_price": 689000,
+            "sold_date": "2026-09-11",
+            "sqft": 1200,
+            "condition": "unknown; 4bd/2ba, about $574/sf. Distance not confirmed",
+            "url": "https://www.redfin.com/zipcode/92113/recently-sold"
+          },
+          {
+            "address": "2888 Ocean View Blvd, San Diego 92113 (about 0.5 mi)",
+            "sold_price": 895000,
+            "sold_date": "2026-08-13",
+            "sqft": 1450,
+            "condition": "unknown, likely updated (3bd/3ba, sold at its $895k list price after 42 DOM); about $617/sf",
+            "url": "https://www.redfin.com/zipcode/92113/recently-sold"
+          },
+          {
+            "address": "2855 Franklin Ave, San Diego 92113 (claimed comp)",
+            "sold_price": 810000,
+            "sold_date": "2026-08-12 (sources conflict: 06/12, 08/12, 09/11)",
+            "sqft": 1682,
+            "condition": "unknown; 4bd/2ba, list $799k, 76 DOM, about $482/sf. 58% larger than the subject",
+            "url": "https://www.redfin.com/neighborhood/9947/CA/San-Diego/Memorial/housing-market"
+          },
+          {
+            "address": "639 S Gregory St, San Diego 92113 (claimed comp)",
+            "sold_price": 805000,
+            "sold_date": "2026-07-22",
+            "sqft": 1603,
+            "condition": "unknown; 5bd/2ba, list $759k. Public record says 3bd/1ba, 1,262 sf, so the extra listed space may be unpermitted. Previous sale was $557.5k in 2022, original condition",
+            "url": "https://www.compass.com/homedetails/639-S-Gregory-St-Logan-Heights-CA-92113/1BCIF0_pid/"
+          },
+          {
+            "address": "3186 Logan Ave, San Diego 92113 (2 units, same block area)",
+            "sold_price": 710000,
+            "sold_date": "2026-08-05 (Redfin; Coldwell Banker still shows Pending)",
+            "sqft": 2328,
+            "condition": "unknown, probably a fixer (list $599k); 5bd/4ba across 2 units. A same-street 2-unit property twice the subject's size sold for $710k",
+            "url": "https://www.coldwellbankerhomes.com/ca/san-diego/3186-logan-ave/pid_72361883/"
+          },
+          {
+            "address": "4156 Franklin Ave, San Diego 92113 (about 1 mi east)",
+            "sold_price": 570000,
+            "sold_date": "2026-08-13",
+            "sqft": 1158,
+            "condition": "unknown; 3bd/2ba, about $492/sf",
+            "url": "https://www.redfin.com/zipcode/92113/recently-sold"
+          }
+        ],
+        "resale_base": 735000,
+        "resale_low": 665000,
+        "resale_high": 800000,
+        "resale_confidence": "L",
+        "resale_refuted": true,
+        "new_red_flags": [
+          "Size mismatch with the claimed comps: per Redfin and Compass, the subject is only 1,066 sf in total (4bd/2ba, one story) including the rear unit. The two comps behind $820k are 1,603 sf and 1,682 sf, about 50-58% larger. Sold comps of similar size nearby (994, 880 and 1,200 sf) closed at $660k-$689k in Jul-Sep 2026.",
+          "Rear unit may be unpermitted: public records list the property as Single Family, built 1971. Check whether the 'additional unit in the rear' is a permitted second dwelling or ADU, and what the 4bd/2ba split between the two structures actually is.",
+          "Very small lot: 3,271 sf (Compass) or about 3,498 sf (Redfin), so the two sources disagree. This leaves little room to add space or an ADU.",
+          "Zoning conflict: Redfin says RM-1-1 (Southeastern San Diego multi-unit), Compass says R-4. Confirm with the City zoning lookup.",
+          "Trust sale sold as-is. Seller disclosures may be limited, so do a full inspection (sewer lateral, electrical, foundation).",
+          "Possible tenant in the rear unit: the listing pitches it as 'owner occupied or investment opportunity'. Occupancy is not confirmed; check for leases and San Diego tenant-protection rules before planning a vacant flip.",
+          "A 2-unit property on the same street (3186 Logan Ave, 2,328 sf) sold for only $710k on 2026-08-05 per Redfin, while Coldwell Banker shows it Pending. Buyers for 2-unit stock on this street may pay less than the thesis assumes.",
+          "Not checked: flood zone, freeway noise or air quality, slope and easements. The searches returned nothing on these."
+        ],
+        "notes": "PRICE AND STATUS: $580k is confirmed. The property was listed 2026-08-21 (MLS 260020581, Tony Johnson / LPT Realty), described as a cosmetic fixer with a rear unit, trust sale, no court approval needed. No snippet showed pending, sold or a price cut since then. Compass shows 'off market', which is ambiguous. After about 2 months the status is UNKNOWN, so call the agent.\n\nRESALE: The assumed $820k depends on two SOLD comps, and both are real: 2855 Franklin Ave $810k (4/2, 1,682 sf; sold Aug 2026, sources disagree on the date) and 639 S Gregory St $805k (7/22/26; listed at 1,603 sf, public record 1,262 sf). But both are about 50-58% larger than the subject's 1,066 sf combined. Sold comps that match the subject's size and location close at $660k-$689k:\n- 3228 Franklin Ave, 994 sf: $660k on 7/1/26\n- 729 S 33rd St, 880 sf: $665k on 9/8/26\n- 8 S Francis St, 1,200 sf: $689k on 9/11/26\n\nFor reference, 2888 Ocean View, 1,450 sf, sold for $895k on 8/13/26. Small-home sales here run about $575-$756/sf, which works out to roughly $610k-$805k for 1,066 sf. I add some premium for renovated condition and rent from a second unit, giving base $735k (range $665k-$800k). The assumed $820k is about 11.6% above base, so resale_refuted = true.\n\nConfidence is L because none of the snippets confirm the condition of any comp. If the small comps were unrenovated, a full flip could land near $800k, the top of the range. No sold comp with the same setup (a renovated house plus rear unit of about 1,000 sf) turned up. 2948-50 Franklin Ave, a multi-family listed at 1,144 sf, sold for $1.15M on 2/17/26, but it is 8 months old and its square footage looks incomplete, so I treated it as an outlier.\n\nUsed 11 of 11 searches.",
+        "searches_used": 11
+      },
+      {
+        "addr": "5800 Marengo Ave",
+        "status_latest": "SOLD at $801,550, closed 8/31/2026 per Trulia snippet (\"SOLD AUG 31, 2026 $801,550\", 4bd/2ba, 1,284 sf). Movoto shows the same price dated 09/01/26. VERIFIED-snippet: two separate searches returned it. The PENDING-at-$699,999 snapshot is stale. It closed about $101.5K (14.5%) over list.",
+        "status_refuted": true,
+        "price_latest": 801550,
+        "sold_comps": [
+          {
+            "address": "5760 Marengo Ave, La Mesa, CA 91942",
+            "sold_price": 1085000,
+            "sold_date": "2026-04-17",
+            "sqft": 1374,
+            "condition": "Probably renovated but not confirmed. Bought for $390K in Jun 2020 per Trulia, then sold for $1.085M. 3bd/2ba, has a pool, 0.26 ac lot, built 1956. Same block, same side of the street.",
+            "url": "https://www.trulia.com/home/5760-marengo-ave-la-mesa-ca-91942-17028661"
+          },
+          {
+            "address": "8045 Laird St, La Mesa, CA 91942",
+            "sold_price": 965000,
+            "sold_date": "2026-02-23",
+            "sqft": 1417,
+            "condition": "Listing says 'beautifully updated single-story', Lake Murray Village. 4bd/2ba, about 6,500 sf lot (much smaller than subject).",
+            "url": "https://www.redfin.com/CA/La-Mesa/8045-Laird-St-91942/home/5602792"
+          },
+          {
+            "address": "5875 Lake Murray Blvd, La Mesa, CA 91942",
+            "sold_price": 930000,
+            "sold_date": "2026-09-04",
+            "sqft": 1712,
+            "condition": "Condition unclear: one snippet called it remodeled. Asked $1.1M, cut to $1.05M in Feb 2026, sold for $930K. On a busy boulevard. 4bd/2ba. Low weight.",
+            "url": "https://www.redfin.com/CA/La-Mesa/5875-Lake-Murray-Blvd-91942/home/5602370"
+          }
+        ],
+        "resale_base": 1010000,
+        "resale_low": 950000,
+        "resale_high": 1060000,
+        "resale_confidence": "L",
+        "resale_refuted": false,
+        "new_red_flags": [
+          "The deal is gone: it closed 8/31/2026 at $801,550, not pending at $700K. Even at $801.55K, the purchase is about $101.5K higher than the flip model assumed.",
+          "The listing calls it a 'canyon-rim lot'. Possible slope, rear-yard drop-off, geotech and retaining-wall issues. Canyon brush could also mean a fire-hazard zone and insurance trouble (not checked).",
+          "The subject has no pool, while the best comp (5760 Marengo) does. The $1.085M neighbor comp overstates the subject's value unless you adjust for the pool and the extra 90 sf.",
+          "Data conflict: one Movoto entry shows 3bd/2ba, 1,400 sf at $679,900 for this address. Bed count and square footage are not settled.",
+          "5875 Lake Murray Blvd (1,712 sf) sold for only $930K in Sep 2026 after cuts from $1.1M, a sign that buyers are pushing back on ~$1M-plus asks nearby."
+        ],
+        "notes": "STATUS: Refuted. Trulia shows SOLD Aug 31, 2026 at $801,550 and Movoto shows SOLD 09/01/26 at $801,550. Two separate searches returned this, so it is no longer available as a backup-offer opportunity. Redfin's automated estimate for the subject was ~$798K-$824K, which matches that sale. RESALE: Only three 2026 sold comps were found within about 1 mile, and I could not confirm the renovated condition of any of them. Adjustments: 5760 Marengo ($1.085M, 1,374 sf, with pool) comes to about $1.03M after taking off ~$27K for 90 sf and ~$25K for the pool. 8045 Laird ($965K, 1,417 sf, updated, small lot) comes to about $925K after the size adjustment, or about $975K after adding a premium for the subject's 12,700 sf lot. 5875 Lake Murray Blvd ($930K, 1,712 sf, busy road, condition unclear) gets low weight. Weighted base is about $1.01M, about 3.8% below the assumed $1.05M. That is inside the 5% threshold, so resale is not refuted, but $1.05M sits at the top of the supported range. Older reference: 5810 Marengo, fully renovated, sold for $1.105M on 12/6/2024. That is outside the window but suggests canyon-side homes on this street can reach about $1.1M renovated. 5770 Marengo sold 3/19/2026 but I found no price. Confidence is L: few comps, conditions unverified, no sqft for 5810. Sources: https://www.trulia.com/sold/San_Diego,Del_Cerro,CA/2_p/ , https://www.movoto.com/ca/91942/sold/ , https://contentcodes3.realgeeks.com/property/NDP2606687/ , https://www.redfin.com/CA/La-Mesa/5810-Marengo-Ave-91942/home/5602398 . Searches used: 11 of 11.",
+        "searches_used": 11
+      },
+      {
+        "addr": "2168 Leighton Ct",
+        "status_latest": "ACTIVE at $749,000 (MLS PTP2604558, Berkshire Hathaway HomeServices / Carlos Rodrigues, 18 days on market, last updated 2026-06-22). VERIFIED-snippet from RubyHome. No newer record found, so status as of 2026-10-21 is UNKNOWN.",
+        "status_refuted": true,
+        "price_latest": 749000,
+        "sold_comps": [],
+        "resale_base": 860000,
+        "resale_low": null,
+        "resale_high": null,
+        "resale_confidence": "L",
+        "resale_refuted": false,
+        "new_red_flags": [
+          "The assumed $649k price is not supported. The only asking price any snippet confirms is $749,000 (MLS PTP2604558). No snippet confirms a $649k probate price or probate status. The Coldwell Banker link in the facts did not show up in search, so it could not be checked.",
+          "The listing data is 4 months old (last updated 2026-06-22). At 18 days on market then, it could now be pending, sold, expired or relisted. Check the current status before making an offer.",
+          "The average lot on Leighton Ct is about 11,596 sq ft (Redfin street page), versus about 6,205 sq ft on nearby Gunzan St. Oversized cul-de-sac lots in Paradise Hills are often sloped or back onto a canyon. Check the topography, whether it is in a fire hazard zone, brush-clearance rules and usable yard area. This is unverified and inferred only from lot size.",
+          "The seller already did the roof, HVAC, energy-efficient windows and new exterior stucco, so the $749k ask already includes much of the value a cosmetic flip would add. There is little room left for the planned work.",
+          "If it is probate (unconfirmed), court confirmation and overbids could add delay and push the price up.",
+          "Market depth looks limited. 2361 Calle Tortuosa (4bd/2ba, 1,262 sf) is asking $765k after 243 days on market, which suggests buyers resist higher prices in 92139."
+        ],
+        "notes": "Status/price: RubyHome shows 2168 Leighton Ct ACTIVE at $749,000: 4bd/2ba, about 1,400 sf, single story, built 1980, RV parking, newer roof/HVAC/windows/stucco. Last updated 6/22/2026 with 18 days on market. No snippet confirmed the $649k probate price used as 'price', and no pending, sold or price-cut record was found. I marked the status refuted because the only verified price is $749k and the data is 4 months old. At $749k the facts already show a loss of about $85k.\n\nResale: None of my 11 searches turned up any SOLD comp in 92139 from the last 6–9 months. The claimed comp, 3107 Mt Miguel Dr sold $835k on 6/25/2026, could not be verified: the only result was a Redfin street directory page with no sale data. For reference only, these are asking prices, not comps: 7040 Gunzan St, fully renovated, 4/2, 1,400 sf, asking $859k. 6965 Ramfos Ln, 4/2, 1,300 sf, built 1978, asking $824.9k. 7257 Latrobe, updated, 4/2, 1,765 sf, asking $897k. 2361 Calle Tortuosa, 4/2, 1,262 sf, asking $765k after 243 days on market. Redfin's Paradise Hills median sale price was about $750k in Nov 2025, but that covers all conditions.\n\nThese asking prices suggest the $860k assumption sits at or above the top of the range for a renovated 1,400 sf house. Homes usually close at or below asking, so actual resale could be lower, but without SOLD comps I cannot refute it. resale_base is kept at the assumed $860k with confidence L, and resale_low/high are null because no sold evidence was found. 6548 Bantam Lake Cir (92119) sold for $1.01M on 4/23/2026, but it is in a different submarket, well over 1 mile away, and was excluded. 2160 Leighton Ct next door is a separate property, a rental at $3,945/mo.\n\nSources: rubyhome.com/idx/2168-leighton-ct-ct-san-diego-ca-92139/1803366673_spid/, redfin.com/sitemap/16904/CA/San-Diego-County/San-Diego/street/Leighton+Ct, redfin.com/neighborhood/2090/CA/San-Diego/Paradise-Hills/housing-market, darciwatson.c21.com/property/7040-gunzan-st--san-diego-ca-92139-REN030740099, neighborhoods.com/ca/san-diego/6965-ramfos-ln/property/103238, rubyhome.com/idx/2361-calle-tortuosa-san-diego-ca-92139/430681219_spid/.",
+        "searches_used": 11
+      },
+      {
+        "addr": "9077 Covina St",
+        "status_latest": "SOLD for $1,050,000 on 2026-07-23 (list $905,000, 16% over list, 24 days on market). VERIFIED-snippet, from Redfin text that showed up in 3 separate searches. The text read: \"SOLD JUL 23, 2026 $1,050,000 Last Sold Price ... 9077 Covina St ... List Price $905,000 Sale to List 16% over list Days on Market 24 days\". A Zillow agent-profile snippet (zillow.com/profile/DavisDuongRealtor) also shows the $1,050,000 sale.",
+        "status_refuted": true,
+        "price_latest": 1050000,
+        "sold_comps": [
+          {
+            "address": "8775 Betelgeuse Way, San Diego CA 92126 (4bd/2ba, built 1973)",
+            "sold_price": 1241000,
+            "sold_date": "2026-07-23",
+            "sqft": 1614,
+            "condition": "Probably a flip. The same house sold 2026-04-06 for $875,000 (Coldwell Banker MLS 260005874, list $895k, 'updated electric and HVAC') and resold 3.5 months later. No snippet confirms the remodel itself.",
+            "url": "https://www.redfin.com/CA/San-Diego/8775-Betelgeuse-Way-92126/home/4799362"
+          },
+          {
+            "address": "11095 Delphinus Way, San Diego CA 92126 (4bd/2ba)",
+            "sold_price": 1200000,
+            "sold_date": "2026-05-29",
+            "sqft": 1614,
+            "condition": "Unknown. The sale appears only in Movoto/Redfin nearby-sold widgets; the Redfin property page shows off-market with a 2022 sale.",
+            "url": "https://www.redfin.com/CA/San-Diego/11095-Delphinus-Way-92126/home/4801280"
+          },
+          {
+            "address": "8821 Covina St, San Diego CA 92126 (4bd/2ba, same street)",
+            "sold_price": 1149900,
+            "sold_date": "2026-08-13",
+            "sqft": 1592,
+            "condition": "Unknown. Seen in the nearby-sales widget on the 8777 Covina St Redfin page.",
+            "url": "https://www.redfin.com/CA/San-Diego/8777-Covina-St-92126/home/6404073"
+          },
+          {
+            "address": "10421 Calico Cir, San Diego CA 92126 (4bd/2ba)",
+            "sold_price": 1150000,
+            "sold_date": "2026-08-20",
+            "sqft": 1680,
+            "condition": "Unknown. It sold earlier for $1,165,000 on 2025-08-11, so it was probably already in finished condition. Some pages still show it active at $1.16M. It is in west Mira Mesa, possibly more than 1 mile away.",
+            "url": "https://www.redfin.com/neighborhood/1722/CA/San-Diego/Mira-Mesa/recently-sold"
+          },
+          {
+            "address": "8715 Covina Cir, San Diego CA 92126 (4bd/2ba)",
+            "sold_price": 975000,
+            "sold_date": "2026-03-24",
+            "sqft": 1320,
+            "condition": "Renovated: quartz counters, renovated baths, LVP floors, new appliances. It is smaller than the subject (about $739/sf).",
+            "url": "https://www.compass.com/homedetails/8715-Covina-Cir-San-Diego-CA-92126/1BS36P_pid/"
+          },
+          {
+            "address": "11396 Camarosa Cir, San Diego CA 92126 (4bd/2ba)",
+            "sold_price": 841000,
+            "sold_date": "2026-07-31",
+            "sqft": 1624,
+            "condition": "Unknown. The price suggests as-is or fixer condition, so it is not a finished-product comp.",
+            "url": "https://www.redfin.com/neighborhood/1722/CA/San-Diego/Mira-Mesa/recently-sold"
+          }
+        ],
+        "resale_low": 1150000,
+        "resale_base": 1200000,
+        "resale_high": 1270000,
+        "resale_confidence": "M",
+        "resale_refuted": false,
+        "new_red_flags": [
+          "The deal is no longer available. It SOLD 2026-07-23 for $1,050,000, $145k (16%) over the $905k list price the plan assumed.",
+          "At the actual $1.05M sale price the flip does not work. Resale of about $1.20M minus rehab and roughly 8-10% selling and carrying costs leaves about zero or a loss.",
+          "Square footage conflict: one Homes.com listing text says '1,567 square foot home' while the header and other sites say 1,657 sf. Check against the assessor's record.",
+          "Listing text describes a two-story layout with 2 bed/1 bath down and 2 bed/1 bath plus a 'lounge area' upstairs. If assessor square footage is lower, check permits for the upstairs space.",
+          "Unverified: one search summary mentioned a Compass record of a $985,000 sale on 2024-11-20 for this address. No snippet showed it clearly. If it is real, a recent owner relisted at $905k as a fixer, which is odd and worth checking.",
+          "No slope, canyon, easement, septic, fire-zone, tenant or flood evidence was found. These were not searched specifically because of the search budget."
+        ],
+        "searches_used": 10,
+        "notes": "STATUS: Refuted. Redfin snippets (3 searches) show 9077 Covina St SOLD 7/23/2026 at $1,050,000 against a $905k list, 24 DOM, 16% over list. The 6/29 'Active $905k' snapshot (RubyHome, MLS 260015827SD) is stale.\n\nRESALE: Sold 4bd/2ba comps of about 1,600 sf within the star-streets/Covina area in Mar-Aug 2026 are $1,149,900 (8821 Covina St, 1,592 sf), $1,150,000 (10421 Calico Cir, 1,680 sf), $1,200,000 (11095 Delphinus Way, 1,614 sf) and $1,241,000 (8775 Betelgeuse Way, 1,614 sf). The Betelgeuse sale is a probable flip: it was bought for $875k on 4/6/26 and resold for $1.241M on 7/23/26. The one confirmed-renovated comp is 8715 Covina Cir, $975k at 1,320 sf. These run about $685-769/sf, median about $730/sf, which is about $1.21M at 1,657 sf. I set base at $1.20M, which is +4.3% vs the assumed $1.15M, within the 5% threshold, so resale is not refuted. The best flip comp (Betelgeuse) points to $1.24-1.27M, so $1.15M looks conservative, not aggressive. Confidence is M because most comps' condition comes from aggregator widgets, not listing remarks.\n\nThe as-is market for fixers here is about $841k-$1.05M: Camarosa $841k, Betelgeuse pre-flip $875k, and the subject itself at $1.05M.\n\nLIMITS: Comp prices come from aggregator 'nearby sold' widgets (Redfin, Movoto, Compass) and should be checked against county records. Search summaries sometimes contradicted each other, and only figures that appeared as quoted snippet text were used."
+      },
+      {
+        "addr": "648 51st St",
+        "status_latest": "ACTIVE $600,000 \"Just Reduced\" (neighborhoods.com snippet, stamped \"Last Updated: 17 days ago\", so about early Oct 2026). VERIFIED-snippet. No pending, sold, or withdrawn evidence found. Other pages are stale: Coldwell Banker shows \"Coming Soon\" $650,000, last updated Aug 6, 2026, and Weichert shows $650,000. Both carry MLS# PTP2605868.",
+        "status_refuted": false,
+        "price_latest": 600000,
+        "sold_comps": [],
+        "resale_base": 760000,
+        "resale_low": null,
+        "resale_high": null,
+        "resale_confidence": "L",
+        "resale_refuted": false,
+        "new_red_flags": [
+          "Hillside/canyon-edge lot: the listing says 'perched on a hillside' with 'Valley/Canyon' views and 'no neighbors to the right or behind'. Expect slope, possible brush-management or Very High Fire Hazard Severity Zone obligations (not verified), possible geotech and retaining-wall costs, and less usable or buildable lot than 9,200 sf suggests.",
+          "Zoning conflict: the listing remarks say 'zoned R-2' with ADU potential. That is not a City of San Diego base-zone name, and it does not confirm the RM-1-1 '3 homes by right' idea in the facts. Check the actual zone on ZAPP/SanGIS before giving it any value.",
+          "Possible tenant occupancy: the home was listed for rent at $3,095/mo. Occupancy status and lease terms are unconfirmed, and a tenant could delay a flip and add relocation costs.",
+          "Market resistance: on 'Coming Soon' at $650k in early Aug 2026, then cut to $600k within about 2 months (the claimed $695k original ask was not seen in snippets). Slow absorption at this price suggests buyers are discounting the condition, the slope, or something else."
+        ],
+        "notes": "STATUS: I could not refute it. The latest snippet (neighborhoods.com) shows For Sale at $600k, 'Just Reduced', updated about 17 days ago. No pending or sold evidence turned up in 11 searches. Coldwell Banker and Weichert still show the stale $650k / 'Coming Soon' (Aug 6, 2026). I saw no snippet with the $695k original price. Facts check out: 3bd/2ba, 1,300 sf, built 1954, lot 0.2112 ac (about 9,200 sf), cul-de-sac, gated, agent Simon Sung (Noble Real Estate Services), MLS PTP2605868.\n\nRESALE: I found no sold comps. Every 92114 search returned only active asking prices; Redfin's Emerald Hills recently-sold page showed only '1 home sold in past month' with no details. The $760k assumption is kept unverified at confidence L. Asking-price context only (NOT comps): 5567 Las Alturas Ter (Valencia Park, 3/2, 1,293 sf, 1952, 'completely remodeled') ask $749,999; 649 S 61st St (renovated 3/2, built 1962) ask $775k, later $789,999; 101 Coolwater Dr (3/2, 1960, 'fully remodeled') ask $799k; 866 Merlin Dr (Emerald Hills, remodeled 3/2, 1,696 sf, larger) ask $749,900; 5316 Roswell St (3/2, 1,361 sf, built 2011) ask $849k cut to $825k. These asks put renovated 1,300-sf 3/2s in 92114 at about $750-800k list, which fits a $760k sale but does not prove it. Several of these same-size remodels are sitting active, so they compete with this flip on exit, and sold prices may come in below these asks. The hillside/canyon position could help (view) or hurt (slope, fire, access). Pull MLS closed sales (92114, 3bd, 1,100-1,500 sf, last 6-9 months) before relying on $760k.\n\nSearches used: 11 of 11.",
+        "searches_used": 11
+      },
+      {
+        "addr": "5789 Tex St",
+        "status_latest": "ACTIVE at $599,000 as of 2026-09-21 (Coldwell Banker history: listed 9/11/26 at $499,000, price increased 20.04% to $599,000 on 9/21/26), VERIFIED-snippet. I found no status after 9/21 (pending/sold/withdrawn), so the current status is UNKNOWN.",
+        "status_refuted": false,
+        "price_latest": 599000,
+        "sold_comps": [
+          {
+            "address": "6955 Bruce Ct, La Mesa, CA 91942",
+            "sold_price": 960000,
+            "sold_date": "2026-10-02",
+            "sqft": 1245,
+            "condition": "Renovated (new flooring, paint, lighting, rebuilt bathrooms). 3bd/2ba, built 1954, ~6,200 sf lot, PLUS a detached ~500 sf casita/ADU. Larger and better product than the subject. Distance from Tex St not verified.",
+            "url": "https://www.redfin.com/zipcode/91942/recently-sold"
+          },
+          {
+            "address": "5914 Dugan Ave, La Mesa, CA 91942",
+            "sold_price": 872212,
+            "sold_date": "2026-02-27",
+            "sqft": 1250,
+            "condition": "3bd/2ba, condition unknown (snippet came from a Redfin comparables module). Nearby street to Tex St, about 8 months old.",
+            "url": "https://www.redfin.com/city/10202/CA/La-Mesa/recently-sold"
+          },
+          {
+            "address": "5735 Tex St, La Mesa, CA 91942",
+            "sold_price": 1057500,
+            "sold_date": "2026-10-02",
+            "sqft": 1834,
+            "condition": "Same street. 2bd/3ba, built 1958, condition unknown. Listed $1.2M, then $1,099,999, then pending. About 62% larger than the subject, so it only bounds the top end (~$577/sf).",
+            "url": "https://www.movoto.com/ca/91942/sold/"
+          }
+        ],
+        "resale_base": 880000,
+        "resale_low": 830000,
+        "resale_high": 930000,
+        "resale_confidence": "L",
+        "resale_refuted": true,
+        "new_red_flags": [
+          "Bed/bath and size data conflict. One Coldwell Banker MLS snapshot (MLS# DW26199214, $499k, 9/12/26) shows 2 bd / 1 ba at 1,132 sf, while other pages show 3 bd / 2 ba. A Redfin snippet also tied a '$648,000, 3bd/2ba, 1,507 sf' figure to '5789 Tex'. This could mean an unpermitted bedroom/bath conversion or addition. Check permits and assessor records; the assessor record may only support 2/1.",
+          "Listing says 'cash only due to condition'. It is probably not financeable or insurable as-is (possible roof, foundation, electrical or plumbing problems). Budget for a heavier rehab than a cosmetic one.",
+          "The 20% price increase 10 days after listing points to a multiple-offer or reset situation. By 10/21 (about 40 days on market) it may already be in escrow, and I found no status after 9/21.",
+          "Trust-owned (a living trust per Blockshopper) with a 'DW' (Downey-area, CRMLS) MLS prefix, so likely an out-of-area trustee/estate listing agent. Possible delays in trustee or probate timing and an as-is sale with limited disclosures.",
+          "The $960k assumption matches 6955 Bruce Ct exactly. That sale includes a ~500 sf detached ADU and a 113 sf larger main house, so using it without adjustment overstates the subject's resale value.",
+          "Slope, canyon, easement, sewer/septic, fire zone and flood zone were NOT checked (search budget used up). The 10,500 sf lot is big for the area, so check its topography."
+        ],
+        "notes": "I used all 11 searches. STATUS: The only dated evidence is the Coldwell Banker history: active at $599k on 9/21/26 after listing at $499k on 9/11. Nothing I found shows pending or sold, but I found nothing after 9/21 either, so the claim stands and is not confirmed as current. RESALE: The assumed $960k looks taken directly from 6955 Bruce Ct (sold $960,000 on 10/2/26: 1,245 sf, renovated, 3/2). That sale includes a ~500 sf detached casita/ADU, and the subject (1,132 sf, no ADU) lacks both. My adjustments: minus ~$100-150k for the ADU, minus ~$40-50k for the 113 sf of main-house space, plus ~$20-40k for the subject's larger 10,500 sf lot. That gives roughly $830-900k. 5914 Dugan Ave (1,250 sf, 3/2) sold $872,212 on 2/27/26, condition unknown, which supports a value in the mid-to-high $800ks for a slightly smaller renovated house. 5735 Tex St (same street, 1,834 sf) sold $1,057,500 on 10/2/26, about $577/sf; that only bounds the top end. My base is $880k (range $830-930k), about 8% below the $960k assumption, so I marked it refuted. Confidence is LOW: only two near-size sold comps, the Dugan Ave condition is unknown, and I did not verify Bruce Ct's distance from Tex St. One search summary wrongly attributed the $960k / 1,245 sf sale to 5735 Tex St; Redfin ties it to 6955 Bruce Ct. Re-run the flip numbers at about $880k resale. The 10,500 sf lot could hold an ADU, which might close the gap, but that is not in the plan. Sources: https://www.coldwellbankerhomes.com/ca/la-mesa/5789-tex/pid_73688902/ ; https://www.coldwellbanker.com/ca/la-mesa/5789-tex-st/lid-P00800000HH9OAi2mPt8pRp9Qj37CJlj3qsgu8SD ; https://www.redwagonteam.com/properties/listing/CRMLS/260019880SD/6955-Bruce-Court-La-Mesa-CA-91942/ ; https://www.movoto.com/ca/91942/sold/ ; https://blockshopper.com/ut/summit/cities/la-mesa/streets/tex-st",
+        "searches_used": 11
+      },
+      {
+        "addr": "710 Eucalyptus St",
+        "status_latest": "ACTIVE $1,199,000 (MLS NDP2603324), per an undated brokerage listing sheet (theboutiquere.com). VERIFIED-snippet as of capture; capture date UNKNOWN. No pending, sold, price-cut or relist evidence found as of 2026-10-21.",
+        "status_refuted": false,
+        "price_latest": 1199000,
+        "sold_comps": [
+          {
+            "address": "423 S Nevada St, Oceanside, CA 92054",
+            "sold_price": 1755000,
+            "sold_date": "UNKNOWN (snippet says sold; no close date shown)",
+            "sqft": 1575,
+            "condition": "Remodeled by sellers, 'countless upgrades', solar; 3bd/2ba, built 1920, 4,792 sf lot. Distance to Eucalyptus St not verified.",
+            "url": "https://obyrneteam.com/properties/423-s-nevada-st-oceanside-ca-92054-2601009"
+          }
+        ],
+        "resale_base": 1650000,
+        "resale_low": null,
+        "resale_high": null,
+        "resale_confidence": "L",
+        "resale_refuted": false,
+        "new_red_flags": [
+          "Bed/bath count is inflated. The listing description says the MAIN HOME is 3bd/2ba. The '4bd/3ba' total includes a 'detached rear structure with converted garage space', which is likely an unpermitted garage conversion. The listing says ADU/JADU use is 'subject to City approval, buyer to verify'. An appraiser may count only 3bd/2ba, which undercuts a 4/3 resale story. The garage and covered parking are also gone.",
+          "Main home is tenant-occupied ('do not disturb occupants'). Showings and inspections are limited. Vacating for a rehab triggers CA AB 1482 just-cause rules (no-fault substantial-remodel notice plus relocation pay), which adds time and holding cost. The occupancy status of the rear structure is unclear.",
+          "Living square footage is unknown. The 7,400 sf figure is the lot, not the house, so price per square foot and comp matching cannot be checked.",
+          "The MLS number prefix (NDP26...) suggests the listing started around spring 2026. If it is still active in Oct 2026, it has been on the market a long time at $1.199M, which hints at buyer resistance or tenant/condition issues (not verified).",
+          "The listing says the property may have audio/video surveillance (minor)."
+        ],
+        "searches_used": 11,
+        "notes": "Status: the only source with details is the undated theboutiquere.com listing sheet, which shows Active at $1,199,000. Redfin only lists the address in its street sitemap. Searches on Redfin, Compass, Movoto, Coldwell Banker, Trulia, PropertyShark and RubyHome found no pending, sold or reduced-price record. The claim stands, but its date is unconfirmed.\n\nResale: I found only one confirmed SOLD remodeled house in 92054: 423 S Nevada St, 3bd/2ba, 1,575 sf, remodeled, sold at $1,755,000. The close date is not shown, and its distance from Eucalyptus St is not confirmed. One undated comp of unknown distance can neither support nor refute $1.65M. It does suggest a well-remodeled ~1,500-1,600 sf 3/2 in coastal 92054 can sell in the $1.7M range, which is about 6% above the assumed figure. Other renovated houses that came up (321 S Freeman $1.549M, 316 S Ditmar $1.849M with ADU, 619 S Ditmar $1.997M) were only asking prices, so I excluded them. I kept the assumed $1.65M with confidence L. resale_low and resale_high are null because I could not support a range with sold data.\n\nKey risk for the flip math: the resale should probably be underwritten as a 3bd/2ba main house plus an unpermitted rear structure, not as a legal 4/3. Living square footage still has to be confirmed from county records. Recommend pulling MLS sold comps (3/2, renovated, within 0.5-1 mi, last 6 months) and the city permit history for the garage conversion before relying on $1.65M."
+      },
+      {
+        "addr": "7060 Glenroy St",
+        "price_latest": 790000,
+        "status_latest": "ACTIVE at $790,000 after a $9K cut, 28 DOM, per the RealGeeks listing snippet (VERIFIED-snippet; the snippet shows no date). A Weichert page shows $850,000 with no date, which conflicts with this. No evidence of pending, sold, expired or relisted status as of 2026-10-21 searches.",
+        "status_refuted": false,
+        "sold_comps": [
+          {
+            "address": "6821 Estrella Ave, San Diego CA 92120 (Allied Gardens)",
+            "sold_price": 865000,
+            "sold_date": "2026-07-14",
+            "sqft": 920,
+            "condition": "2bd/2ba, 40 DOM; condition not stated in snippet",
+            "url": "https://contentcodes3.realgeeks.com/property/PTP2604275/"
+          },
+          {
+            "address": "6642 Eldridge St, San Diego CA 92120 (Allied Gardens)",
+            "sold_price": 880000,
+            "sold_date": "2026-02-02",
+            "sqft": 886,
+            "condition": "2bd/1ba (same product type), 96 DOM; condition not stated",
+            "url": "https://contentcodes3.realgeeks.com/property/PTP2508170/"
+          },
+          {
+            "address": "6886 Clara Lee Ave, San Diego CA 92120",
+            "sold_price": 1065000,
+            "sold_date": "2026-05-19",
+            "sqft": 1123,
+            "condition": "Remodeled; larger (about $948/sf)",
+            "url": "https://contentcodes3.realgeeks.com/property/260009571/"
+          },
+          {
+            "address": "6875 Estrella Ave, San Diego CA 92120",
+            "sold_price": 1125000,
+            "sold_date": "2026-06-02",
+            "sqft": 1390,
+            "condition": "Fully remodeled 3bd/2ba; much larger (about $809/sf)",
+            "url": "https://contentcodes3.realgeeks.com/property/260009685/"
+          },
+          {
+            "address": "4709 Greenbrier, San Diego CA 92120",
+            "sold_price": 885000,
+            "sold_date": "2026-08-20",
+            "sqft": 1314,
+            "condition": "3bd/2ba 1958, unremodeled ('room to update'), list $900K",
+            "url": "https://contentcodes3.realgeeks.com/property/260017692/"
+          },
+          {
+            "address": "4633 Rainier Ave, San Diego CA 92120",
+            "sold_price": 850000,
+            "sold_date": "2026-07-06",
+            "sqft": 1225,
+            "condition": "3bd/2ba, largely original fixer",
+            "url": "https://contentcodes3.realgeeks.com/property/260013998/"
+          },
+          {
+            "address": "6549 Glenroy St, San Diego CA 92120",
+            "sold_price": 804520,
+            "sold_date": "2025-12-03",
+            "sqft": 1019,
+            "condition": "3bd/1ba 1955, about 6,000 sf lot, list $749K; condition unknown; about 10.5 months old, just outside window",
+            "url": "https://contentcodes3.realgeeks.com/property/250042191/"
+          }
+        ],
+        "resale_base": 900000,
+        "resale_low": 865000,
+        "resale_high": 940000,
+        "resale_confidence": "L",
+        "resale_refuted": false,
+        "new_red_flags": [
+          "The listed price is unclear between sources: Weichert shows $850,000 and RealGeeks shows $790,000 after a $9K cut. The $9K cut implies an original price of $799K, so the $850K figure is unexplained. The price history needs checking.",
+          "The same product type is slow to sell. 6642 Eldridge St (2bd/1ba, 886 sf) took 96 DOM to close at $880K, and 6821 Estrella (2bd/2ba, 920 sf) closed at $865K. This is weak demand evidence for a 2/1 resale at $930K.",
+          "The facts cite '92120 sales $865-975K', but the $975K end appears to be an ACTIVE asking price (5349 Waring Rd at $975K on mlslistings), not a closed sale.",
+          "No A/C. Only 1 bath, which is a penalty against the 3/2 comps that make up most closed 2026 sales. Lot size is still unknown.",
+          "Converting the garage to an ADU removes the 2-car garage that is part of the resale story. You can't count both the garage and the ADU in the resale value.",
+          "Slope, canyon, easement, fire-zone, flood and tenant status could not be checked: no listing remarks or lot data surfaced. This is not cleared, only unverified."
+        ],
+        "notes": "Status: no evidence refutes ACTIVE at $790K. The only conflict is an undated Weichert page at $850K. Resale: the two closest-size SOLD comps are both 2-bed, about 900 sf, in Allied Gardens, and closed at $865K (7/14/2026) and $880K (2/2/2026, 96 DOM). Their condition is not stated. Remodeled comps are all larger. 6886 Clara Lee (1,123 sf) sold for $1.065M, about $948/sf, which scales to about $863K at 910 sf. 6875 Estrella (1,390 sf) sold for $1.125M. Unremodeled 3/2 homes of 1,225-1,314 sf closed at $850-885K. The assumed $930K means about $1,022/sf. That is above every remodeled comp's $/sf and would set a new high for 2-bed product in this window. My interpolated base is about $900K, roughly 3% below the $930K assumption. That is under the 5% refutation threshold, so resale_refuted=false, but the evidence leans below the assumption. If the two 2-bed comps turn out to be renovated, the true value is about $870K and the assumption would be refuted. Confidence is L because comp condition is unknown. Implied flip margin is thin: about $900K resale against $790K purchase, plus renovation and about 7-8% selling and holding costs. The '7173 Eldridge $1.5M with ADU' fact was not checked, and it is not comparable for a cosmetic flip. Searches used: 11 of 11. All sold figures come from RealGeeks snippets relayed by search, not county records.",
+        "searches_used": 11
+      },
+      {
+        "addr": "1105 Eucalyptus St",
+        "status_latest": "ACTIVE $600,000 as 0 Clementine St (MLS 260005417SD), based on a theboutiquere.com brokerage page snippet with no date (UNKNOWN as of 2026-10-21). No snippet showed it pending, sold, expired or cut in price. The $450K MLS 260022001 price could not be found anywhere.",
+        "status_refuted": false,
+        "price_latest": 600000,
+        "sold_comps": [
+          {
+            "address": "1752 Whaley St, Oceanside, CA 92054 (8 Pacific enclave, Fire Mountain)",
+            "sold_price": 2350000,
+            "sold_date": "2025-08-11",
+            "sqft": 2997,
+            "condition": "New construction (built 2025), 5bd/4ba, ocean and mountain views, part of an 8-home HOA enclave ($270/mo). Sold at its $2.35M list price after 81 days. It is about 14 months old, outside the 6-9 month window, across I-5 in Fire Mountain, and roughly 1 mile or more away (distance not verified).",
+            "url": "https://www.movoto.com/oceanside-ca/1752-whaley-st-oceanside-ca-92054-210_250028291/"
+          },
+          {
+            "address": "506 S Pacific St, Oceanside, CA 92054",
+            "sold_price": 3200000,
+            "sold_date": "2026-06-05",
+            "sqft": null,
+            "condition": "NOT COMPARABLE: built 2001, panoramic ocean view, on S Pacific St near the beach. Listed at $3.65M on 2026-02-26 and sold after a price cut. Shown only as a sign of the market, not used for the base.",
+            "url": "https://www.movoto.com/oceanside-ca/506-s-pacific-st-oceanside-ca-92054/pid_zu65ldc48g/"
+          }
+        ],
+        "resale_base": 2350000,
+        "resale_low": 2100000,
+        "resale_high": 2500000,
+        "resale_confidence": "L",
+        "resale_refuted": false,
+        "new_red_flags": [
+          "I could not confirm the address. 1105 Eucalyptus St does not show up in any index, and Redfin's street list has 1101 and 1107 Eucalyptus but no 1105. The claim that it is the same parcel as 0 Clementine St is unverified.",
+          "Two MLS numbers with different prices ($600K on 260005417SD and $450K on 260022001) suggest a relist or duplicate, or a data error. Only the $600K listing was found.",
+          "The listing says the plans were 'reviewed by the city'. That does not mean they are approved or permitted. Get the permit and plan-check status before counting on the timeline.",
+          "The lot sits at the end of a private drive on a hilltop pad. Check the access or ingress easement, the private-road maintenance agreement, and how construction vehicles and the fire department would get in. Check slope and retaining-wall costs against the soils report.",
+          "Building 2,400 sf plus a 750 sf ADU on a 5,523 sf lot is a lot of house for the land. Check setbacks, lot coverage and parking under the zoning.",
+          "The new-construction market looks soft. 1714 California St (2,988 sf including ADU, built 2026) dropped from $2.65M to $2.589M and was still active on the Elliman page dated 2026-09-14. 506 S Pacific sold only after a cut from $3.65M to $3.2M.",
+          "The 1716 California St comp in the facts is not like-for-like. It is 3,853 sf on a 17,460 sf lot, and it was still only pending at $2.999M as of an MLS record last modified 2026-05-12, with no close found."
+        ],
+        "notes": "I used all 11 searches. STATUS: I found nothing dated after the snapshot that shows a pending, sale, expiry or price cut on 0 Clementine St. The brokerage page that shows Active $600K has no date, so the listing may be stale. I could not find MLS 260022001 or the $450K price at all.\n\nRESALE: I found only one closed sale that is roughly the same product. 1752 Whaley St, a new 2,997 sf ocean-view home in the Fire Mountain 8 Pacific enclave, sold for $2,350,000 on 2025-08-11, which is about $784/sf. That matches the assumed $2.35M almost exactly. A planned 2,400 sf main house at about $784/sf is roughly $1.88M; adding the ADU's contribution (my estimate, not from any sold sale) lands near $2.3M. But that comp is 14 months old, possibly more than 1 mile away, and part of an HOA enclave. I found no closed new-construction sale in South O within 6-9 months.\n\nThe asking-price evidence suggests about $2.59M is the ceiling, since 1714 California is still unsold after a cut to $2.589M. 1716 California's $2.999M pending price is for a much bigger house on a much bigger lot. So I am keeping the $2.35M base at Low confidence and calling it not refuted. The low-to-high range of $2.1M to $2.5M is my judgment, not taken from comps. Treat any value above $2.5M as unsupported. Before relying on this, get MLS sold data for 92054 new builds of 2,400-3,200 sf closed from 2026-01 to 2026-10.",
+        "searches_used": 11
+      },
+      {
+        "addr": "0 Dwight St (lot)",
+        "status_latest": "ACTIVE at $284,900, listing last updated 2026-08-04 (LandBroker MLS #1193951, agent Maria Prado). VERIFIED-snippet. I found nothing dated after Aug 4 showing it went pending, sold, expired or got another price cut, so as of 2026-10-21 the status is unconfirmed but not contradicted.",
+        "status_refuted": false,
+        "price_latest": 284900,
+        "sold_comps": [],
+        "resale_base": null,
+        "resale_low": null,
+        "resale_high": null,
+        "resale_confidence": "L",
+        "resale_refuted": false,
+        "new_red_flags": [
+          "Lot size is unverified. The LandBroker listing's acreage field reads '0 acres', and no snippet confirms the ~0.13 ac claim. Pull the assessor parcel record (APN) before counting on two 1,000 sf units plus setbacks and parking.",
+          "How the units sell when finished: an SB 9 duplex on one parcel without an urban lot split sells as one two-unit property, not as two homes sold separately. An SB 9 lot split needs a 3-year owner-occupancy affidavit, which an investor flip usually can't sign. This is general SB 9 law, not from a snippet. The $1.35M figure ($675/sf over 2,000 sf) assumes a buyer pays that for a two-unit parcel.",
+          "Same street, same kind of property, not selling: 4284 Dwight (1936 front unit of 714 sf plus a newer 1,200 sf back unit, 1,922 sf total, 3,781 sf lot) was listed 2025-11-22 at $950k and is now asking $899k, still active about 11 months later (MLS PT25258967). That is an asking price, not a sale, but it points to $1.35M for two new 1,000 sf units being aggressive.",
+          "Possible second or older listing: an undated Redfin page shows a vacant 'Dwight St, San Diego, CA 92105' at $325,000, separate from the 0 Dwight St entry. Confirm which parcel and APN this deal is, and whether the $325k is an earlier price.",
+          "Weak local market: an undated Redfin City Heights East snapshot shows a $465K median sale price, $538 per sq ft sold, down 30.9% year over year, with 12 sales (all property types).",
+          "Utilities: the listing says city water, sewer, electric and trash are available, but the facts say they are not connected. Budget for new sewer and water laterals, an SDG&E service connection, City of San Diego capacity and impact fees, and street or curb work on a cul-de-sac."
+        ],
+        "searches_used": 11,
+        "notes": "STATUS: The LandBroker MLS listing (#1193951) shows 0 Dwight St ACTIVE at $284,900, updated 2026-08-04. That matches the claimed cut from $350k on 8/4. It is described as a flat cul-de-sac lot with city water, sewer, electricity and trash available, pitched for a single home, an ADU or multiple units. I found no evidence of a later pending, sold or expired status, or of a newer price, so the status is not refuted. I could not see the Coldwell Banker page (pid_72010009) in any search result. A separate undated Redfin entry shows a vacant Dwight St lot at $325k; it may be the same parcel at an earlier price or a different lot.\n\nRESALE: Eight comp-focused searches (Redfin, Compass, neighborhoods.com, Trulia/Movoto, open web) found ZERO verifiable SOLD sales of new construction in 92105 / City Heights with a price and date. What turned up was only asking prices: 3677 Highland (2024 build, restored Craftsman plus new ADU), active at $1,075,000; 4792 Dwight (remodeled), $769,900; 4204 Dwight, $639,900; 4244 46th St, $676/sf. None of these count as comps. The only sold-type data was an undated Redfin City Heights East snapshot: $465K median sale, $538 per sq ft. Even at $538/sf, 2,000 sf comes to about $1.08M, about 20% below the assumed $1.35M, but that figure mixes all property types and conditions, so I can't treat it as a comp. The closest match to the planned product is 4284 Dwight on the same street (two units on one lot, 1,200 sf of it new). It has been asking $950k and then $899k since Nov 2025 without selling, which counts against $1.35M. Because no SOLD comps were found, resale_base is null, confidence is L, and resale_refuted is false, since the rule requires sold comps to refute. The $1.35M assumption is unsupported, and the asking-price evidence suggests it is high.\n\nFEASIBILITY: If no lot split is possible (the owner-occupancy rule), the exit is a single two-unit parcel. Check the lot's size, zoning (it must be single-family zoned for SB 9) and slope or canyon setting with the assessor and the city's zoning map. The listing says 'flat', but I could not verify the size.\n\nSources: landbrokermls.com/property/1193951; mlslistings.com/property/crpt25258967/4284-dwight-san-diego-ca-92105; ghadaa.remax.com/property/25-PT25258967-4284-dwight-san-diego-CA-92105; redfin.com/neighborhood/10982/CA/San-Diego/City-Heights-East/recently-sold; redfin.com/neighborhood/461/CA/San-Diego/Cherokee-Point; sereno.com/260011353SD/3677-highland-san-diego-california-92105-crmls."
+      },
+      {
+        "addr": "Trenton Ave lot (1 of 8)",
+        "status_latest": "UNKNOWN. Last ask seen was $274K. A Zillow snippet shows a $274K Trenton Ave lot (2,981 sf, Coldwell Banker West) that had been on Zillow 372 days when the page was captured, so it was listed around Aug 2025 (VERIFIED-snippet for the ask only). The parent listing, MLS PTP2506586 (3546 Trenton Ave, APN 425-042-24), was received 2025-08-28 at $1,296,000 and changed to $399K the next day. Redfin pages for APNs 425-042-25 and -27 show OFF MARKET, with the listing removed Aug 2025. I found no 2026-dated active, pending or sold record for this lot.",
+        "status_refuted": true,
+        "price_latest": 274000,
+        "sold_comps": [
+          {
+            "address": "3602 Ticonderoga St, San Diego, CA 92117",
+            "sold_price": 2175000,
+            "sold_date": "2026-04-24",
+            "sqft": 2577,
+            "condition": "Built 1980 resale, not new construction. 4bd/3.5ba on a 0.43-acre lot with a bay view. MLS 260006384 lists 2,577 sf (assessor says 1,895 sf). About $844/sf on MLS sf. On the access street for the Trenton lots. Listed $2.1M, sold over ask.",
+            "url": "https://www.redfin.com/CA/San-Diego/3602-Ticonderoga-St-92117/home/5195432"
+          },
+          {
+            "address": "4627 Huron Ave, San Diego, CA 92117",
+            "sold_price": 1700000,
+            "sold_date": "2026-03-25",
+            "sqft": 2827,
+            "condition": "Built 1953 resale, not new construction. 5bd/3ba on a 0.52-acre lot with panoramic bay views. About $601/sf. Listed $1.89M on 2026-03-02 and sold about 10% under ask. MLS PW26042176.",
+            "url": "https://www.redfin.com/CA/San-Diego/4627-Huron-Ave-92117/home/5204393"
+          }
+        ],
+        "resale_base": 1500000,
+        "resale_low": 1200000,
+        "resale_high": 1750000,
+        "resale_confidence": "L",
+        "resale_refuted": true,
+        "new_red_flags": [
+          "Marketing is stale, not a fresh Jul-Aug 2026 listing. The parent MLS PTP2506586 dates to 2025-08-28, the $274K lot showed 372 days on market, and individual APN listings (-25, -27) show removed Aug 2025 / off market on Redfin. After 14+ months with no sale, demand is weak.",
+          "Price history jumps around: the listing went from $1,296,000 to $399K one day later. Package asks range from $700K to $2.999M, and per-lot asks seen were $224K, $274K, $399K, $600K and $700K.",
+          "Movoto shows the 8 adjoining lots (APNs 425-042-26 thru -31) as 'Off-market $175,000, SOLD' with no date. This may be the seller's very low basis or an older sale. Check the chain of title and the recorded legal-lot status.",
+          "Lot sizes conflict across sources: 2,487 sf (Zillow, tax-assessed value $37,884), 2,981 sf, 3,046 sf, 3,165 sf and 3,479 sf. One listing also claims a '7,300 sf lot'. Confirm the exact parcel sizes with the assessor.",
+          "Zoning is shown as R-1 single-family. A ~3,000 sf lot is substandard for San Diego RS zones, so floor-area ratio and setback limits may cap house size. Unverified: confirm with the City that ~1,800 sf is buildable.",
+          "View lots above Mission Bay off Ticonderoga are likely hillside (possible slope, grading or retaining-wall costs). I found no slope, canyon, easement, fire-zone or flood data either way, so this is unverified.",
+          "The shared driveway has not been built, and the access/easement agreement for 8 lots is unconfirmed. The paper-street concern from the facts still stands."
+        ],
+        "searches_used": 11,
+        "notes": "STATUS: I found no evidence of a pending or sold close on this lot in 2026, but the claimed 'Jul-Aug 2026' timing looks wrong. Every listing record traces back to an Aug 2025 listing (MLS PTP2506586, received 2025-08-28), and the pages are roughly 370-600 days old. Two individual APN pages on Redfin show off market with the listing removed Aug 2025. The $274K ask appears in a Zillow snippet (372 days on market at capture), but I could not confirm it is still active today (2026-10-21). That is why the status is marked refuted as stale/unverified, not as sold. The 'SOLD JUL 29, 2026' and 'SOLD AUG 31, 2026' tags on the Redfin APN pages are probably cards for nearby homes, so I did not treat them as sales of these lots.\n\nRESALE: I found no SOLD new-construction single-family comps of ~1,800 sf in Bay Park in the last 6-9 months. The two sold comps nearby are older view homes on very large lots. 3602 Ticonderoga sold for $2.175M on 2026-04-24 (2,577 sf, about $844/sf, 0.43 ac, bay view). 4627 Huron sold for $1.70M on 2026-03-25 (2,827 sf, about $601/sf, 0.52 ac, panoramic views, 10% under ask). The assumed $1.7M for 1,800 sf works out to about $944/sf, which is above both sold comps. Those comps also have lots 14-17x larger than a ~3,000 sf lot behind other lots with shared-driveway access. Applying $601-844/sf to 1,800 sf gives $1.08-1.52M. A new-construction premium of roughly 10-20% is mostly cancelled out by the tiny lot and the driveway access, so I put base at about $1.5M (low $1.2M, high $1.75M). That is about 12% below the assumption.\n\nConfidence is L because neither comp is new construction. New-build listings nearby support caution: the Tonopah townhomes (2,208 sf) were cut to $1.94M and remain unsold, 1850 Illion is unsold at $2.85M+, 4810 Canyon Vw (built 2025, townhome) was listed at $1.199M with no sale shown, and Mira Vista Toll Brothers resale condos run 1,546-1,614 sf. 3244-3248 Clairemont Dr (a new 6-unit building, sold $3.05M on 2025-11-10) is a different product and was excluded. 3500 Trenton Ave (0.15 ac lot) sold for $450K on 2022-06-10, which is too old to use as a land comp.\n\nSources: zillow.com Trenton-Ave-San-Diego-CA-92117/99564558_zpid; coldwellbankerhomes.com/ca/san-diego/3546-trenton-ave/pid_67166403; compass.com/listing/3546-trenton-avenue-san-diego-ca-92117/1917916569703141625; redfin.com/CA/San-Diego/425-042-25-00-Trenton-Ave-92117/home/194799047; redfin.com/CA/San-Diego/425-042-27-00-Trenton-Ave-92117/home/194799076; movoto.com 3500 Trenton Apt 29-36 listing; redfin 4627 Huron and 3602 Ticonderoga pages."
+      }
+    ],
+    "critique": "**Verdict:** once the verification results are applied, none of the 58 ranked deals makes money in the base case. The model's own numbers also put every deal above the team's capital. The model leans optimistic on the inputs that move profit most (resale value, buying at list price, lender terms, schedule) and pessimistic only on small items.\n\n## Errors to fix\n\n1. **The sort key is wrong** (rank2.py). It ranks by base profit and ignores capital. Change `out.sort(key=lambda r: -r[\"sc\"][\"base\"][\"profit\"])` to a capital gate plus EV:\n   `ok = r[\"sc\"][\"cons\"][\"equity\"] <= CAP and r[\"sc\"][\"cons\"][\"profit\"] > -0.5*CAP`, then sort by `(-ok, -r[\"ev\"])`, with `CAP=150_000`.\n2. **ranked.json is out of date.** data2.py has 59 rows and ranked.json has 58: the SB 1123 \"4269 Hillside – 8 homes\" row was never run. Under the current sort it would rank **#1** (base +$1.02M), even though cons is −$1.17M, EV is −$114k and it needs **$3.2M equity**. That alone shows fix #1 is needed. Re-run.\n3. **Apply the verification results.** Mark Natchez, Marengo and Covina `dead`. Set Leighton `price=749_000`. Set resale to Natchez 1.30M, Logan 735k, Tex 880k, Trenton 1.5M and Glenroy 900k. Re-run results:\n\n| Deal | Base (was) | Cons | Peak equity |\n|---|---|---|---|\n| Natchez @ $970k close | −39k (+72k) | −174k | 280k |\n| Logan | −21k (+57k) | −94k | 157k |\n| Marengo @ $801.55k | −97k (+47k) | −205k | 284k |\n| Leighton @ $749k | −84k (+20k) | −167k | 243k |\n| Covina @ $1.05M | −111k (−6k) | −224k | 333k |\n| Tex | −96k (−24k) | −206k | 259k |\n| Trenton | −444k (−275k) | −789k | 871k |\n\n4. **The `stale` flag is in the wrong place.** Staleness is a risk that the deal is gone, not a risk to profit. Take it out of the flag count `n` and use `ev = p_avail*ev_profit - (1-p_avail)*3_000`, where $3k is the cost of a dead deal. Replace the generic flag count with cost adders for each flag:\n   - slope: +$40–150k and +2 months\n   - tenant: +2 months' rent per unit (City of San Diego tenant ordinance; 3 months for seniors or disabled tenants) and +3–6 months\n   - unpermitted space: value only the permitted square footage\n   - auction: cost ×1.10\n5. **Tenant and possession costs are booked as `demo`** (from_v1 `extra`). `demo` is a hard cost, so these costs pick up contingency and the ×1.15 stress. Move them to a soft key `possession` that is not in `HARD_KEYS`.\n6. **Contingency:** use `0.15` as the default for flips, since all of these houses are pre-1980. Use 0.15 for flat land and 0.20 for hillside land.\n7. **Lender terms assume an experienced borrower.**\n   - Flips: cap the loan at `min(0.85p+build, 0.70*resale)`, use `pts=0.025`, and add $2.5k for appraisal and underwriting plus $250 per draw.\n   - Ground-up: lenders rarely fund a first-time builder without an experienced general contractor. Tag these rows \"JV only\", or use `min(0.5p+0.85build, 0.70(p+build), 0.60 resale)`.\n   - Stress test with these terms plus 15% contingency and +2 months: Logan and 648 51st each lose about $35–42k and need about $210k of equity.\n8. **Land interest is overstated.** The model charges interest on 50% of the build loan for the whole term, including the permitting months. Add `entitle_mo` and use `interest = rate*(acq*mo + 0.5*bld*(mo-entitle_mo))/12`. On 0 Dwight this is $115k as modeled versus $76k. It does not change the verdict.\n9. **Cost lines that are missing:**\n   - Flips: about $15k of hard-cost allowance for sewer lateral, panel or service upgrade, pre-1978 lead and asbestos testing, termite Section 1 work, and structural or Title 24 engineering. These still need a stamp even with an in-house architect.\n   - New builds and ADUs: builder's risk and general liability. Use `INS_MO = max(350, 0.007*hard/12)`.\n   - New single-family homes: fire sprinklers, which California requires ($4–8/sf).\n   - Supplemental property tax on the new improvements.\n   - ADUs: school fees above 500 sf, and impact fees at 750 sf and above. The 1,000 and 1,200 sf soft budgets ($62k and $72k) look light if a separate meter or SDG&E service is needed.\n   - Sale: seller concessions of 1–2% in the cons case.\n   - Income tax: flip profit is ordinary income, at roughly 35–45% combined. Add an `after_tax` line. Without it, flips can't be compared fairly to a §121 house hack.\n10. **`max_price` should target the cons case as well.** Use `offer = min(max_price(d,max(150k,0.15*ARV),\"base\"), max_price(d,0,\"cons\"))`.\n11. **financing.py `fha_duplex()`:**\n    - Annual mortgage insurance should be 0.75%, not 0.55%, when the base loan is above $726,200.\n    - Reserves are `3*0`; change to 3 months of PITI.\n    - The 203(k) down payment should be based on `min(price+rehab, 1.10*ARV)`.\n    - `gain` subtracts the full net housing cost. It should subtract only the amount above the son's current rent.\n    - The function is never called from rank2.py.\n\n## Bias check\n\n| Assumption | In the model | Realistic for 2026 San Diego | Bias |\n|---|---|---|---|\n| Resale value | listing comps | Verification cut 4 of 11 by 8–12% (mean −4%), and none were raised enough to matter | **Optimistic** |\n| Purchase price | list price | Good fixers closed 14–16% over list (Marengo, Covina). The ones still for sale are price-cut leftovers (648 51st) | **Optimistic** |\n| Hard money | 11% + 2 pts, 75% of resale | First-timers get 11.5–12.5% + 2–3 pts + fees, capped at 65–70% | Optimistic |\n| Ground-up loan | 65% of resale | Usually not available without an experienced GC | **Optimistic** |\n| New build | $400/sf | $425–550/sf hard cost with Title 24, solar and sprinklers. Hillside is $550+, before site work | Optimistic |\n| Detached ADU | $315–400/sf | $350–500/sf plus utilities. $315 for 1,200 sf is low | Mildly optimistic |\n| Contingency | 10–12% | 15–20% for first-timers on 1920s–60s houses | Optimistic |\n| Selling cost | 6.5% | Fair. Add 1–2% concessions in a soft market | Fair |\n| Flip schedule | 5–7 months | 7–9 months including permits and 30–45 days on market | Optimistic |\n| Land interest | full term at 50% of build loan | Lower, because draws start after permits | Pessimistic (about $40k) |\n| ADU premium | $150–247k (92120 tier) | Break-even premium on Glenroy is $341k (499 sf) to $626k (1,200 sf). Capitalized rent at a 5.5% cap rate is $386–580k. The 7173 Eldridge sale ($1.5M) disagrees with the low premium | Probably pessimistic, but not supported either way |\n\n**EV method:**\n- The weights are ad hoc: 25/50/25 with no flags, shifted by 8 and 4 points per flag. A first-timer's real distribution is skewed toward the cons case.\n- The cons case barely matches the verified base: resale −7% versus a verified −4% mean and −10% on the worst cases.\n- The ±7% resale range doesn't widen with time. For 24–36 month land deals, use 0.85–0.88 resale in cons, 0 months saved in opt (not −3), and cost ×0.97 in opt (not ×0.92).\n- `long` and `resale_low` are added automatically, so they double-penalize risk the scenarios already price.\n- EV is risk-neutral. With $150k of capital, a $200k cons loss ruins the team, so rank on P(loss > capital) or require cons ≥ 0.\n\n## Missing strategies\n\nThese are ordered by fit for $70–150K plus an architect/engineer father.\n\n1. **Owner-occupied house hack with the son as occupant.** Use FHA 203(k) at 3.5% down, or Fannie HomeStyle at 5% down on 2–4 units. 2025 San Diego County FHA limits were about $1.10M for 1 unit and $1.41M for 2 units; check the 2026 figures.\n   - Fannie lets ADU rent count toward qualifying.\n   - The §121 exclusion applies to the owner-occupied part after 2 years.\n   - Cash needed is about $50–90k.\n   - FHA appraisals fail unpermitted units, which hurts Logan, Natchez and 710 Eucalyptus.\n2. **SB 9 lot split using the son's 3-year owner-occupancy affidavit.** Investors can't sign it, so this is a real edge. Then sell the entitled new lot or build on it.\n3. **Entitle-and-sell / land-banking.** Control a lot through an option or a long escrow with an entitlement contingency. The father draws the plans and gets the SB 9, SB 684 or SB 1123 map or the building permit, then the team sells the lot permit-ready to a builder. Cash needed is about $30–100k. Trenton, 0 Dwight and 1105 Eucalyptus fit this better than building them.\n4. **Buy lots that already have approved plans or permits.** This saves 6–12 months of carry. Check whether \"reviewed by the city\" actually means approved.\n5. **BRRRR hold with a garage-conversion ADU or JADU** ($80–180k), refinanced with a DSCR loan. The model's ADU options list has no conversion or attached option.\n6. **Assumable VA or FHA loans.** 6511 Wunderlin has a 5.5% VA loan. Model the gap between price and loan balance, funded by seller carry or a JV.\n7. **More JV structures.** Model:\n   - a 70/30 split after an 8% preferred return, instead of 50/50\n   - a landowner JV, where the owner contributes the lot\n   - a fee-developer setup, where the father earns A&E fees plus a 10–20% promote\n8. **SB 1123 or SB 684 only as a JV or entitle-and-sell play.** Check Coastal Zone and fire-zone eligibility.\n9. **Off-market sourcing** (probate and trust sales, tired landlords, expired listings) and seller financing. The MLS at list price never reaches the max-offer numbers.\n10. **Son gets a real estate license** to recapture the buyer-side commission and list the team's own deals. That is about $20–40k per deal.\n11. **AB 1033 separate sale of the ADU as a condo,** only if the city has adopted it.\n\n## Challenges\n\n1. **\"The top 5 are real opportunities.\"** After verification, 3 have sold, Leighton's real price is $749k, and Logan's resale is refuted. All 5 now lose $21k–$111k in base and $94k–$224k in cons. Even Natchez at its actual $970k close loses $39k. Logan's offer for a $150k profit is $420k against a $580k list, 28% below list, which a market selling fixers over list won't give. The real conclusion is \"no listed deal works at list; change the sourcing or the strategy.\"\n2. **\"Adding an ADU never pays\"** (as-is plan wins for every house). That result comes from assuming a hard-money flip exit plus a premium of roughly 40–50% of break-even, with no conversion or JADU option. The defensible version is narrower: a detached ADU does not pay in a 6-month hard-money flip. It may pay in a hold or house hack, where the value is capitalized rent and the financing is a 30-year loan. Settle it with a paired-sales study (for example 7173 Eldridge against nearby house-only sales).\n3. **\"648 51st (−$14k), 710 Eucalyptus (−$27k) and Logan are near break-even, so negotiate and go.\"** Every flip needs $137k–$336k of base equity, and $165k–$483k in cons, before reserves. Under first-timer terms Logan and 648 51st need about $210k and still lose money. 648 51st also has hillside, fire-zone and tenant exposure. 710 Eucalyptus is tenant-occupied, has an unpermitted rear conversion (really 3bd/2ba), and needs $333k of equity. \"Near break-even\" here means a JV is required, and a 50/50 split leaves the team almost nothing.\n\nThe re-run script is /tmp/claude-0/-home-user/df7d2ca5-3ef0-57f9-86a5-cd5421f1cf16/scratchpad/review/check.py."
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Verify"
+    },
+    {
+      "type": "workflow_phase",
+      "index": 2,
+      "title": "Critique"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "verify:3115 Natchez Ave (duplex)",
+      "phaseIndex": 1,
+      "phaseTitle": "Verify",
+      "agentId": "a08c98fa250441b92",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1792551541796,
+      "queuedAt": 1792551541762,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "3115 Natchez Ave (duplex)",
+      "promptPreview": "You are a skeptical real-estate fact checker. Today is 2026-10-21.\nRead /tmp/claude-0/-home-user/df7d2ca5-3ef0-57f9-86a5-cd5421f1cf16/scratchpad/m2/verify_args.json (a JSON array). Find the entry whose \"addr\" is exactly: \"3115 Natchez Ave (duplex)\". It holds the claimed status, price, assumed finished resale (\"resale_assumed\"), plan, facts and listing links.\n\nYour job is to REFUTE these claims if …",
+      "promptFramed": true,
+      "lastProgressAt": 1792551687299,
+      "tokens": 78218,
+      "toolCalls": 14,
+      "durationMs": 145502,
+      "resultPreview": "{\"addr\":\"3115 Natchez Ave (duplex)\",\"status_latest\":\"SOLD at $970,000, closed 2026-07-17. History: listed at $1,095,000 on 5/28/26, cut to $995,000 on 6/12/26, pending 6/23/26. Movoto's history line says it sold 7/20/26, but its own header and Coldwell Banker both say 7/17/26. Source: Coldwell Banker MLS 260013038 and Movoto. VERIFIED-snippet\",\"status_refuted\":true,\"price_latest\":970000,\"sold_comp…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "verify:3225 Logan Ave",
+      "phaseIndex": 1,
+      "phaseTitle": "Verify",
+      "agentId": "ad4015426794a8ed1",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1792551541796,
+      "queuedAt": 1792551541763,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "3225 Logan Ave",
+      "promptPreview": "You are a skeptical real-estate fact checker. Today is 2026-10-21.\nRead /tmp/claude-0/-home-user/df7d2ca5-3ef0-57f9-86a5-cd5421f1cf16/scratchpad/m2/verify_args.json (a JSON array). Find the entry whose \"addr\" is exactly: \"3225 Logan Ave\". It holds the claimed status, price, assumed finished resale (\"resale_assumed\"), plan, facts and listing links.\n\nYour job is to REFUTE these claims if the evidenc…",
+      "promptFramed": true,
+      "lastProgressAt": 1792551728569,
+      "tokens": 81032,
+      "toolCalls": 15,
+      "durationMs": 184217,
+      "resultPreview": "{\"addr\":\"3225 Logan Ave\",\"status_latest\":\"UNKNOWN. Last seen ACTIVE at $580,000, listed 2026-08-21 (MLS 260020581, LPT Realty, about 6 days on market when captured), per Redfin and Trulia snippets: VERIFIED-snippet. Compass shows it 'off market' with no MLS number, but that looks like its public-record page, not proof of a sale. No snippet showed pending, sold, price-cut or relist evidence after t…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "verify:5800 Marengo Ave",
+      "phaseIndex": 1,
+      "phaseTitle": "Verify",
+      "agentId": "ae2cfc83f5c58ba9c",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1792551689465,
+      "queuedAt": 1792551541763,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "5800 Marengo Ave",
+      "promptPreview": "You are a skeptical real-estate fact checker. Today is 2026-10-21.\nRead /tmp/claude-0/-home-user/df7d2ca5-3ef0-57f9-86a5-cd5421f1cf16/scratchpad/m2/verify_args.json (a JSON array). Find the entry whose \"addr\" is exactly: \"5800 Marengo Ave\". It holds the claimed status, price, assumed finished resale (\"resale_assumed\"), plan, facts and listing links.\n\nYour job is to REFUTE these claims if the evide…",
+      "promptFramed": true,
+      "lastProgressAt": 1792551836737,
+      "tokens": 78558,
+      "toolCalls": 14,
+      "durationMs": 147271,
+      "resultPreview": "{\"addr\":\"5800 Marengo Ave\",\"status_latest\":\"SOLD at $801,550, closed 8/31/2026 per Trulia snippet (\\\"SOLD AUG 31, 2026 $801,550\\\", 4bd/2ba, 1,284 sf). Movoto shows the same price dated 09/01/26. VERIFIED-snippet: two separate searches returned it. The PENDING-at-$699,999 snapshot is stale. It closed about $101.5K (14.5%) over list.\",\"status_refuted\":true,\"price_latest\":801550,\"sold_comps\":[{\"addre…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "verify:2168 Leighton Ct",
+      "phaseIndex": 1,
+      "phaseTitle": "Verify",
+      "agentId": "a805ed27aef0677b6",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1792551730584,
+      "queuedAt": 1792551541763,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "2168 Leighton Ct",
+      "promptPreview": "You are a skeptical real-estate fact checker. Today is 2026-10-21.\nRead /tmp/claude-0/-home-user/df7d2ca5-3ef0-57f9-86a5-cd5421f1cf16/scratchpad/m2/verify_args.json (a JSON array). Find the entry whose \"addr\" is exactly: \"2168 Leighton Ct\". It holds the claimed status, price, assumed finished resale (\"resale_assumed\"), plan, facts and listing links.\n\nYour job is to REFUTE these claims if the evide…",
+      "promptFramed": true,
+      "lastProgressAt": 1792551825696,
+      "tokens": 76326,
+      "toolCalls": 15,
+      "durationMs": 95112,
+      "resultPreview": "{\"addr\":\"2168 Leighton Ct\",\"status_latest\":\"ACTIVE at $749,000 (MLS PTP2604558, Berkshire Hathaway HomeServices / Carlos Rodrigues, 18 days on market, last updated 2026-06-22). VERIFIED-snippet from RubyHome. No newer record found, so status as of 2026-10-21 is UNKNOWN.\",\"status_refuted\":true,\"price_latest\":749000,\"sold_comps\":[],\"resale_base\":860000,\"resale_low\":null,\"resale_high\":null,\"resale_co…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 5,
+      "label": "verify:9077 Covina St",
+      "phaseIndex": 1,
+      "phaseTitle": "Verify",
+      "agentId": "af42203e62a121369",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1792551827428,
+      "queuedAt": 1792551541763,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "9077 Covina St",
+      "promptPreview": "You are a skeptical real-estate fact checker. Today is 2026-10-21.\nRead /tmp/claude-0/-home-user/df7d2ca5-3ef0-57f9-86a5-cd5421f1cf16/scratchpad/m2/verify_args.json (a JSON array). Find the entry whose \"addr\" is exactly: \"9077 Covina St\". It holds the claimed status, price, assumed finished resale (\"resale_assumed\"), plan, facts and listing links.\n\nYour job is to REFUTE these claims if the evidenc…",
+      "promptFramed": true,
+      "lastProgressAt": 1792551985200,
+      "tokens": 79229,
+      "toolCalls": 14,
+      "durationMs": 157771,
+      "resultPreview": "{\"addr\":\"9077 Covina St\",\"status_latest\":\"SOLD for $1,050,000 on 2026-07-23 (list $905,000, 16% over list, 24 days on market). VERIFIED-snippet, from Redfin text that showed up in 3 separate searches. The text read: \\\"SOLD JUL 23, 2026 $1,050,000 Last Sold Price ... 9077 Covina St ... List Price $905,000 Sale to List 16% over list Days on Market 24 days\\\". A Zillow agent-profile snippet (zillow.co…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 6,
+      "label": "verify:648 51st St",
+      "phaseIndex": 1,
+      "phaseTitle": "Verify",
+      "agentId": "a28b864d841645c54",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1792551838780,
+      "queuedAt": 1792551541763,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "648 51st St",
+      "promptPreview": "You are a skeptical real-estate fact checker. Today is 2026-10-21.\nRead /tmp/claude-0/-home-user/df7d2ca5-3ef0-57f9-86a5-cd5421f1cf16/scratchpad/m2/verify_args.json (a JSON array). Find the entry whose \"addr\" is exactly: \"648 51st St\". It holds the claimed status, price, assumed finished resale (\"resale_assumed\"), plan, facts and listing links.\n\nYour job is to REFUTE these claims if the evidence a…",
+      "promptFramed": true,
+      "lastProgressAt": 1792551926083,
+      "tokens": 75771,
+      "toolCalls": 14,
+      "durationMs": 87302,
+      "resultPreview": "{\"addr\":\"648 51st St\",\"status_latest\":\"ACTIVE $600,000 \\\"Just Reduced\\\" (neighborhoods.com snippet, stamped \\\"Last Updated: 17 days ago\\\", so about early Oct 2026). VERIFIED-snippet. No pending, sold, or withdrawn evidence found. Other pages are stale: Coldwell Banker shows \\\"Coming Soon\\\" $650,000, last updated Aug 6, 2026, and Weichert shows $650,000. Both carry MLS# PTP2605868.\",\"status_refuted…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 7,
+      "label": "verify:5789 Tex St",
+      "phaseIndex": 1,
+      "phaseTitle": "Verify",
+      "agentId": "a68832e6e436264f3",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1792551928016,
+      "queuedAt": 1792551541763,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "5789 Tex St",
+      "promptPreview": "You are a skeptical real-estate fact checker. Today is 2026-10-21.\nRead /tmp/claude-0/-home-user/df7d2ca5-3ef0-57f9-86a5-cd5421f1cf16/scratchpad/m2/verify_args.json (a JSON array). Find the entry whose \"addr\" is exactly: \"5789 Tex St\". It holds the claimed status, price, assumed finished resale (\"resale_assumed\"), plan, facts and listing links.\n\nYour job is to REFUTE these claims if the evidence a…",
+      "promptFramed": true,
+      "lastProgressAt": 1792552087210,
+      "tokens": 76587,
+      "toolCalls": 14,
+      "durationMs": 159193,
+      "resultPreview": "{\"addr\":\"5789 Tex St\",\"status_latest\":\"ACTIVE at $599,000 as of 2026-09-21 (Coldwell Banker history: listed 9/11/26 at $499,000, price increased 20.04% to $599,000 on 9/21/26), VERIFIED-snippet. I found no status after 9/21 (pending/sold/withdrawn), so the current status is UNKNOWN.\",\"status_refuted\":false,\"price_latest\":599000,\"sold_comps\":[{\"address\":\"6955 Bruce Ct, La Mesa, CA 91942\",\"sold_pric…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 8,
+      "label": "verify:710 Eucalyptus St",
+      "phaseIndex": 1,
+      "phaseTitle": "Verify",
+      "agentId": "a3d72c03113ffbb4e",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1792551987561,
+      "queuedAt": 1792551541763,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "710 Eucalyptus St",
+      "promptPreview": "You are a skeptical real-estate fact checker. Today is 2026-10-21.\nRead /tmp/claude-0/-home-user/df7d2ca5-3ef0-57f9-86a5-cd5421f1cf16/scratchpad/m2/verify_args.json (a JSON array). Find the entry whose \"addr\" is exactly: \"710 Eucalyptus St\". It holds the claimed status, price, assumed finished resale (\"resale_assumed\"), plan, facts and listing links.\n\nYour job is to REFUTE these claims if the evid…",
+      "promptFramed": true,
+      "lastProgressAt": 1792552080401,
+      "tokens": 76251,
+      "toolCalls": 14,
+      "durationMs": 92840,
+      "resultPreview": "{\"addr\":\"710 Eucalyptus St\",\"status_latest\":\"ACTIVE $1,199,000 (MLS NDP2603324), per an undated brokerage listing sheet (theboutiquere.com). VERIFIED-snippet as of capture; capture date UNKNOWN. No pending, sold, price-cut or relist evidence found as of 2026-10-21.\",\"status_refuted\":false,\"price_latest\":1199000,\"sold_comps\":[{\"address\":\"423 S Nevada St, Oceanside, CA 92054\",\"sold_price\":1755000,\"s…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 9,
+      "label": "verify:7060 Glenroy St",
+      "phaseIndex": 1,
+      "phaseTitle": "Verify",
+      "agentId": "a8a5ab85282b8d00a",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1792552082472,
+      "queuedAt": 1792551541763,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "7060 Glenroy St",
+      "promptPreview": "You are a skeptical real-estate fact checker. Today is 2026-10-21.\nRead /tmp/claude-0/-home-user/df7d2ca5-3ef0-57f9-86a5-cd5421f1cf16/scratchpad/m2/verify_args.json (a JSON array). Find the entry whose \"addr\" is exactly: \"7060 Glenroy St\". It holds the claimed status, price, assumed finished resale (\"resale_assumed\"), plan, facts and listing links.\n\nYour job is to REFUTE these claims if the eviden…",
+      "promptFramed": true,
+      "lastProgressAt": 1792552195371,
+      "tokens": 75602,
+      "toolCalls": 15,
+      "durationMs": 112898,
+      "resultPreview": "{\"addr\":\"7060 Glenroy St\",\"price_latest\":790000,\"status_latest\":\"ACTIVE at $790,000 after a $9K cut, 28 DOM, per the RealGeeks listing snippet (VERIFIED-snippet; the snippet shows no date). A Weichert page shows $850,000 with no date, which conflicts with this. No evidence of pending, sold, expired or relisted status as of 2026-10-21 searches.\",\"status_refuted\":false,\"sold_comps\":[{\"address\":\"6821…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 10,
+      "label": "verify:1105 Eucalyptus St",
+      "phaseIndex": 1,
+      "phaseTitle": "Verify",
+      "agentId": "a2bd17e5d1d551da6",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1792552089157,
+      "queuedAt": 1792551541764,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "1105 Eucalyptus St",
+      "promptPreview": "You are a skeptical real-estate fact checker. Today is 2026-10-21.\nRead /tmp/claude-0/-home-user/df7d2ca5-3ef0-57f9-86a5-cd5421f1cf16/scratchpad/m2/verify_args.json (a JSON array). Find the entry whose \"addr\" is exactly: \"1105 Eucalyptus St\". It holds the claimed status, price, assumed finished resale (\"resale_assumed\"), plan, facts and listing links.\n\nYour job is to REFUTE these claims if the evi…",
+      "promptFramed": true,
+      "lastProgressAt": 1792552223042,
+      "tokens": 75107,
+      "toolCalls": 14,
+      "durationMs": 133884,
+      "resultPreview": "{\"addr\":\"1105 Eucalyptus St\",\"status_latest\":\"ACTIVE $600,000 as 0 Clementine St (MLS 260005417SD), based on a theboutiquere.com brokerage page snippet with no date (UNKNOWN as of 2026-10-21). No snippet showed it pending, sold, expired or cut in price. The $450K MLS 260022001 price could not be found anywhere.\",\"status_refuted\":false,\"price_latest\":600000,\"sold_comps\":[{\"address\":\"1752 Whaley St,…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 11,
+      "label": "verify:0 Dwight St (lot)",
+      "phaseIndex": 1,
+      "phaseTitle": "Verify",
+      "agentId": "a67fdd0d55809d580",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1792552197172,
+      "queuedAt": 1792551541764,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "0 Dwight St (lot)",
+      "promptPreview": "You are a skeptical real-estate fact checker. Today is 2026-10-21.\nRead /tmp/claude-0/-home-user/df7d2ca5-3ef0-57f9-86a5-cd5421f1cf16/scratchpad/m2/verify_args.json (a JSON array). Find the entry whose \"addr\" is exactly: \"0 Dwight St (lot)\". It holds the claimed status, price, assumed finished resale (\"resale_assumed\"), plan, facts and listing links.\n\nYour job is to REFUTE these claims if the evid…",
+      "promptFramed": true,
+      "lastProgressAt": 1792552305718,
+      "tokens": 74772,
+      "toolCalls": 14,
+      "durationMs": 108545,
+      "resultPreview": "{\"addr\":\"0 Dwight St (lot)\",\"status_latest\":\"ACTIVE at $284,900, listing last updated 2026-08-04 (LandBroker MLS #1193951, agent Maria Prado). VERIFIED-snippet. I found nothing dated after Aug 4 showing it went pending, sold, expired or got another price cut, so as of 2026-10-21 the status is unconfirmed but not contradicted.\",\"status_refuted\":false,\"price_latest\":284900,\"sold_comps\":[],\"resale_ba…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 12,
+      "label": "verify:Trenton Ave lot (1 of 8)",
+      "phaseIndex": 1,
+      "phaseTitle": "Verify",
+      "agentId": "a9b6838ccee65104f",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1792552224783,
+      "queuedAt": 1792551541764,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Trenton Ave lot (1 of 8)",
+      "promptPreview": "You are a skeptical real-estate fact checker. Today is 2026-10-21.\nRead /tmp/claude-0/-home-user/df7d2ca5-3ef0-57f9-86a5-cd5421f1cf16/scratchpad/m2/verify_args.json (a JSON array). Find the entry whose \"addr\" is exactly: \"Trenton Ave lot (1 of 8)\". It holds the claimed status, price, assumed finished resale (\"resale_assumed\"), plan, facts and listing links.\n\nYour job is to REFUTE these claims if t…",
+      "promptFramed": true,
+      "lastProgressAt": 1792552415646,
+      "tokens": 80464,
+      "toolCalls": 14,
+      "durationMs": 190862,
+      "resultPreview": "{\"addr\":\"Trenton Ave lot (1 of 8)\",\"status_latest\":\"UNKNOWN. Last ask seen was $274K. A Zillow snippet shows a $274K Trenton Ave lot (2,981 sf, Coldwell Banker West) that had been on Zillow 372 days when the page was captured, so it was listed around Aug 2025 (VERIFIED-snippet for the ask only). The parent listing, MLS PTP2506586 (3546 Trenton Ave, APN 425-042-24), was received 2025-08-28 at $1,29…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 13,
+      "label": "critic",
+      "phaseIndex": 2,
+      "phaseTitle": "Critique",
+      "agentId": "a7378119e750b3911",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1792552417612,
+      "queuedAt": 1792552417608,
+      "attempt": 1,
+      "lastToolName": "Bash",
+      "lastToolSummary": "mkdir -p /tmp/claude-0/-home-user/df7d2ca5-3ef0-57f9-86a5-c…",
+      "promptPreview": "You are a skeptical development-finance reviewer for a first-time San Diego father/son team (~$70–150K capital, father is an architect/engineer). Today is 2026-10-21.\nRead the model at /tmp/claude-0/-home-user/df7d2ca5-3ef0-57f9-86a5-cd5421f1cf16/scratchpad/m2/model.py, /tmp/claude-0/-home-user/df7d2ca5-3ef0-57f9-86a5-cd5421f1cf16/scratchpad/m2/adu_size.py and the ranked output /tmp/claude-0/-home…",
+      "promptFramed": true,
+      "lastProgressAt": 1792552759963,
+      "tokens": 111951,
+      "toolCalls": 6,
+      "durationMs": 342351,
+      "resultPreview": "**Verdict:** once the verification results are applied, none of the 58 ranked deals makes money in the base case. The model's own numbers also put every deal above the team's capital. The model leans optimistic on the inputs that move profit most (resale value, buying at list price, lender terms, schedule) and pessimistic only on small items.\n\n## Errors to fix\n\n1. **The sort key is wrong** (rank2.…"
+    }
+  ],
+  "totalTokens": 1039868,
+  "totalToolCalls": 177
+}
